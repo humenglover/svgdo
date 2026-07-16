@@ -316,10 +316,10 @@ function EditorPage() {
       const doc = parser.parseFromString(svgCode, 'image/svg+xml')
       const errorNode = doc.querySelector('parsererror')
       if (errorNode) {
-        return errorNode.querySelector('div')?.textContent || errorNode.textContent || 'Syntax Error'
+        return errorNode.querySelector('div')?.textContent || errorNode.textContent || t('pages.svgConverter.syntaxError')
       }
     } catch (e) {
-      return 'Syntax Error'
+      return t('pages.svgConverter.syntaxError')
     }
     return null
   }, [svgCode])
