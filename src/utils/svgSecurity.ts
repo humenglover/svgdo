@@ -8,13 +8,16 @@ export const sanitizeSVG = (svgCode: string): string => {
     code = code.replace(/<svg/i, '<svg xmlns="http://www.w3.org/2000/svg"');
   }
 
-  // Flexbox size collapse prevention: If SVG only has viewBox but no width/height, extract them and inject.
-  if (code && !code.match(/width=["']/i) && !code.match(/height=["']/i)) {
-    const viewBoxMatch = code.match(/viewBox=["'][\d\.\s-]+[\d\.\s-]+([\d\.]+)\s+([\d\.]+)["']/i);
-    if (viewBoxMatch && viewBoxMatch[1] && viewBoxMatch[2]) {
-      const w = viewBoxMatch[1];
-      const h = viewBoxMatch[2];
-      code = code.replace(/<svg/i, `<svg width="${w}" height="${h}"`);
+  const svgStartTagMatch = code.match(/<svg[^>]*>/i);
+  if (svgStartTagMatch) {
+    const svgTag = svgStartTagMatch[0];
+    if (!svgTag.match(/\s+width=["']/i) && !svgTag.match(/\s+height=["']/i)) {
+      const viewBoxMatch = svgTag.match(/viewBox=["']\s*[-\d.]+[,\s]+[-\d.]+[,\s]+([-\d.]+)[,\s]+([-\d.]+)\s*["']/i);
+      if (viewBoxMatch && viewBoxMatch[1] && viewBoxMatch[2]) {
+        const w = viewBoxMatch[1];
+        const h = viewBoxMatch[2];
+        code = code.replace(/<svg/i, `<svg width="${w}" height="${h}"`);
+      }
     }
   }
 
