@@ -35,6 +35,53 @@ const FALLBACK_ICONS = [
   'activity', 'align-center', 'align-justify', 'align-left', 'align-right', 'anchor', 'aperture', 'archive', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'at-sign', 'award', 'bar-chart', 'battery', 'bell', 'bluetooth', 'bold', 'book', 'bookmark', 'box', 'briefcase', 'calendar', 'camera', 'cast', 'check', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'chrome', 'circle', 'clipboard', 'clock', 'cloud', 'code', 'coffee', 'command', 'compass', 'copy', 'cpu', 'credit-card', 'crop', 'crosshair', 'database', 'delete', 'disc', 'dollar-sign', 'download', 'droplet', 'eye-off', 'eye', 'facebook', 'feather', 'figma', 'file', 'film', 'filter', 'flag', 'folder', 'framer', 'frown', 'gift', 'github', 'gitlab', 'globe', 'hard-drive', 'hash', 'headphones', 'heart', 'hexagon', 'home', 'image', 'inbox', 'info', 'instagram', 'italic', 'key', 'layers', 'life-buoy', 'link', 'linkedin', 'list', 'loader', 'lock', 'log-in', 'log-out', 'mail', 'map-pin', 'map', 'maximize', 'menu', 'message-circle', 'message-square', 'mic', 'minimize', 'minus', 'monitor', 'moon', 'mouse-pointer', 'move', 'music', 'navigation', 'octagon', 'package', 'paperclip', 'pause', 'percent', 'phone', 'pie-chart', 'play', 'plus', 'pocket', 'power', 'printer', 'radio', 'refresh-ccw', 'refresh-cw', 'repeat', 'rewind', 'save', 'scissors', 'search', 'send', 'server', 'settings', 'share-2', 'share', 'shield', 'shopping-bag', 'shopping-cart', 'shuffle', 'skip-back', 'skip-forward', 'slack', 'slash', 'smartphone', 'smile', 'speaker', 'square', 'star', 'sun', 'tablet', 'tag', 'target', 'terminal', 'thermometer', 'thumbs-down', 'thumbs-up', 'trash-2', 'trash', 'trello', 'trending-down', 'trending-up', 'triangle', 'truck', 'tv', 'twitch', 'twitter', 'type', 'umbrella', 'underline', 'upload', 'user', 'users', 'video', 'voicemail', 'volume-2', 'volume-x', 'volume', 'watch', 'wifi', 'wind', 'x', 'youtube', 'zap', 'zoom-in', 'zoom-out'
 ]
 
+const LANG_OPTIONS = [
+  { code: 'zh', label: '中文', native: '中文' },
+  { code: 'en', label: 'EN', native: 'English' },
+  { code: 'ja', label: '日本語', native: '日本語' },
+]
+
+function LanguageDropdown() {
+  const [open, setOpen] = useState(false)
+  const current = LANG_OPTIONS.find(l => l.code === i18n.language) || LANG_OPTIONS[1]
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-secondary hover:text-primary hover:bg-bg-subtle transition-colors"
+      >
+        <Languages size={15} />
+        <span>{current.label}</span>
+        <ChevronDown size={12} className={open ? 'rotate-180 transition-transform' : 'transition-transform'} />
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
+          <div className="absolute right-0 top-full mt-1 z-20 w-36 bg-bg-raised border border-border rounded-xl shadow-lg py-1 overflow-hidden">
+            {LANG_OPTIONS.map(lang => (
+              <button
+                key={lang.code}
+                onClick={() => {
+                  i18n.changeLanguage(lang.code)
+                  localStorage.setItem('lang', lang.code)
+                  setOpen(false)
+                }}
+                className={`w-full flex items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors hover:bg-bg-subtle ${
+                  i18n.language === lang.code ? 'text-blue bg-blue/5' : 'text-secondary'
+                }`}
+              >
+                <span>{lang.native}</span>
+                <span className="text-[11px] text-tertiary">{lang.label}</span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t } = useTranslation()
@@ -355,12 +402,6 @@ function EditorPage() {
     } catch { toast.error(t('common.error.exportFailed')); setIsExporting(false) }
   }
 
-  const toggleLang = () => {
-    const cycle: Record<string, string> = { zh: 'en', en: 'ja', ja: 'zh' }
-    const next = cycle[i18n.language] || 'en'
-    i18n.changeLanguage(next); localStorage.setItem('lang', next)
-  }
-
   const togglePanel = (panel: string) => {
     setActivePanels(prev => prev.includes(panel) ? prev.filter(p => p !== panel) : [...prev, panel])
   }
@@ -572,7 +613,7 @@ function EditorPage() {
             </div>
             <div className="hidden md:block w-px h-4 bg-border mx-2"></div>
             <div className="hidden md:flex items-center gap-1">
-              <button onClick={toggleLang} className="p-2 rounded-lg text-secondary hover:text-primary hover:bg-bg-subtle transition-colors"><Languages size={18} /></button>
+              <LanguageDropdown />
               <button onClick={toggleTheme} className="p-2 rounded-lg text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</button>
             </div>
             <button onClick={() => setIsMenuOpen(true)} className="md:hidden p-1.5 -mr-1 text-secondary hover:text-primary hover:bg-bg-subtle rounded-lg transition-colors">
@@ -827,10 +868,24 @@ function EditorPage() {
             </div>
             <div className="flex flex-col p-2 overflow-y-auto">
               <div className="flex flex-col mb-2 pb-2 border-b border-border space-y-1">
-                <button onClick={() => { toggleLang(); setIsMenuOpen(false); }} className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors w-full text-left">
-                  <span>{t('common.language')}</span>
-                  <span className="px-2.5 py-1 bg-bg-subtle border border-border rounded-full text-xs font-bold text-primary">{t('common.langLabel')}</span>
-                </button>
+                <div className="flex flex-col space-y-1">
+                  <span className="px-3 py-1.5 text-[11px] font-semibold text-secondary/70 uppercase tracking-wider">{t('common.language')}</span>
+                  <div className="flex gap-1.5 px-3">
+                    {LANG_OPTIONS.map(lang => (
+                      <button
+                        key={lang.code}
+                        onClick={() => { i18n.changeLanguage(lang.code); localStorage.setItem('lang', lang.code); setIsMenuOpen(false); }}
+                        className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                          i18n.language === lang.code
+                            ? 'bg-blue text-white'
+                            : 'bg-bg-subtle text-secondary hover:text-primary hover:bg-bg-muted'
+                        }`}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <button onClick={() => { toggleTheme(); setIsMenuOpen(false); }} className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors w-full text-left">
                   <span>{t('common.theme')}</span>
                   <span className="px-2.5 py-1 bg-bg-subtle border border-border rounded-full text-xs font-bold text-primary capitalize">{theme === 'dark' ? t('common.dark') : t('common.light')}</span>
