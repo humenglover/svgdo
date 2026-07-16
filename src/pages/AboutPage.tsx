@@ -134,44 +134,22 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {[
-            {
-              key: "privacy",
-              icon: Shield,
-              color: "text-green-500",
-              bg: "bg-green-500/10",
-              title: "绝对隐私",
-              desc: "纯前端架构，文件永不上云。从上传、编辑到导出，所有流程在本地瞬间完成，告别数据泄露风险。"
-            },
-            {
-              key: "performance",
-              icon: Zap,
-              color: "text-orange",
-              bg: "bg-orange/10",
-              title: "实时引擎",
-              desc: "依托原生 DOMParser 和轻量级状态管理，无论属性调节还是代码改动，画布响应时间均为毫秒级。"
-            },
-            {
-              key: "design",
-              icon: Palette,
-              color: "text-purple-500",
-              bg: "bg-purple-500/10",
-              title: "极致纯粹",
-              desc: "极简的面板布局、随心定制的暗黑模式，甚至连悬浮框的阴影我们都精确到像素级，只为最好的视觉享受。"
-            }
+            { key: "privacy", icon: Shield, color: "text-green-500", bg: "bg-green-500/10" },
+            { key: "performance", icon: Zap, color: "text-orange", bg: "bg-orange/10" },
+            { key: "design", icon: Palette, color: "text-purple-500", bg: "bg-purple-500/10" },
           ].map((feat, idx) => (
             <RevealSection key={feat.key} delay={idx * 150} className="bg-bg-base group p-6 md:p-8 rounded-[24px] border border-border hover:border-orange/50 transition-all duration-300 hover:shadow-[0_20px_40px_rgb(0,0,0,0.05)] dark:hover:shadow-none relative overflow-hidden h-full">
               <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500 -translate-y-2 translate-x-2">
                 <feat.icon size={80} className={feat.color} />
               </div>
-
               <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center mb-5 relative z-10 transition-transform group-hover:scale-110 duration-500", feat.bg, feat.color)}>
                 <feat.icon size={22} strokeWidth={2} />
               </div>
               <h3 className="text-lg font-bold text-primary mb-2 tracking-tight relative z-10">
-                {t(`pages.about.features.${feat.key}`, feat.title)}
+                {t(`pages.about.features.${feat.key}`)}
               </h3>
               <p className="text-secondary text-sm font-medium leading-relaxed relative z-10">
-                {t(`pages.about.features.${feat.key}Desc`, feat.desc)}
+                {t(`pages.about.features.${feat.key}Desc`)}
               </p>
             </RevealSection>
           ))}

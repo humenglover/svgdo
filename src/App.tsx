@@ -170,7 +170,7 @@ function EditorPage() {
     setOptimizedCode('')
     setOptimizeMode(null)
     pushToHistory(cleanCode)
-    
+
     // Auto scale to fit comfortably
     try {
       const parser = new DOMParser()
@@ -193,7 +193,7 @@ function EditorPage() {
         setZoom(optimalZoom)
         setPan({ x: 0, y: 0 })
       }
-    } catch(e) {
+    } catch (e) {
       setZoom(100)
       setPan({ x: 0, y: 0 })
     }
@@ -238,7 +238,7 @@ function EditorPage() {
     else if (dir.includes('w')) anchor_screen_x = rect.right;
     if (dir.includes('s')) anchor_screen_y = rect.top;
     else if (dir.includes('n')) anchor_screen_y = rect.bottom;
-    
+
     const ptAnchor = getMousePositionInSVG(anchor_screen_x, anchor_screen_y, svgEl, ctm);
 
     const startDist = Math.sqrt(
@@ -731,20 +731,6 @@ function EditorPage() {
 
         {/* Actions Area */}
         <div className="w-full grid grid-cols-3 gap-3">
-          <div className="col-span-3 relative">
-            <textarea 
-              placeholder={t('pages.svgConverter.empty.pastePlaceholder')}
-              className="w-full h-20 p-4 bg-white dark:bg-bg-surface border border-border rounded-2xl text-xs font-mono focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none resize-none transition-all shadow-sm placeholder:text-tertiary"
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val.trim().toLowerCase().startsWith('<svg')) {
-                  handleLoadNewSvg(val);
-                } else if (val.trim() !== '') {
-                  toast.error(t('common.error.invalidSvg'));
-                }
-              }}
-            />
-          </div>
           <button onClick={() => setShowCodePrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
             <Code2 size={16} /> <span className="truncate">{t('pages.svgConverter.pasteCode')}</span>
           </button>
@@ -866,7 +852,7 @@ function EditorPage() {
                           elementDragState.current = null;
                           lastPanPos.current = null;
                           setSelectionBox(null);
-                          
+
                           const dist = Math.hypot(
                             e.touches[0].clientX - e.touches[1].clientX,
                             e.touches[0].clientY - e.touches[1].clientY
@@ -1088,7 +1074,7 @@ function EditorPage() {
 
                         const target = e.target as HTMLElement
                         if (target.closest('#selection-box-overlay')) return;
-                        
+
                         const el = target.closest('[data-editor-id]') as HTMLElement | null
                         if (el) {
                           const id = el.getAttribute('data-editor-id')!
