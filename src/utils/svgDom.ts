@@ -170,22 +170,22 @@ export function updateElementAttribute(
   }
 
   walk(svgEl)
-  
+
   if (!foundEl) return svgCode
+  const el = foundEl as Element
 
   if (attrValue === '' || attrValue === null || attrValue === undefined) {
-    foundEl.removeAttribute(attrName)
-    if (foundEl.hasAttribute('style')) {
-      const svgElNode = foundEl as SVGElement;
+    el.removeAttribute(attrName)
+    if (el.hasAttribute('style')) {
+      const svgElNode = el as SVGElement;
       if (svgElNode.style && typeof svgElNode.style.removeProperty === 'function') {
         svgElNode.style.removeProperty(attrName);
       }
     }
   } else {
-    foundEl.setAttribute(attrName, attrValue)
-    // 强制清除内联 style 中的同名属性，否则内联 style 优先级会压制刚修改的属性
-    if (foundEl.hasAttribute('style')) {
-      const svgElNode = foundEl as SVGElement;
+    el.setAttribute(attrName, attrValue)
+    if (el.hasAttribute('style')) {
+      const svgElNode = el as SVGElement;
       if (svgElNode.style && typeof svgElNode.style.removeProperty === 'function') {
         svgElNode.style.removeProperty(attrName);
       }
@@ -318,8 +318,9 @@ export function removeSvgElement(svgCode: string, elementIndex: number): string 
   }
 
   walk(svgEl)
-  if (foundEl && foundEl.parentNode) {
-    (foundEl as Element).parentNode!.removeChild(foundEl as Element)
+  const target = foundEl as Element | null
+  if (target && target.parentNode) {
+    target.parentNode.removeChild(target)
     const serializer = new XMLSerializer()
     return serializer.serializeToString(svgEl).replace(/xmlns="http:\/\/www\.w3\.org\/1999\/xhtml"/g, '')
   }
@@ -355,19 +356,20 @@ export function moveSvgElementLayer(svgCode: string, elementIndex: number, actio
   }
 
   walk(svgEl)
-  if (foundEl && foundEl.parentNode) {
-    const parent = foundEl.parentNode
-    
+  const target = foundEl as Element | null
+  if (target && target.parentNode) {
+    const parent = target.parentNode as Element
+
     if (action === 'forward') {
-      const next = foundEl.nextElementSibling
-      if (next) parent.insertBefore(next, foundEl)
+      const next = target.nextElementSibling
+      if (next) parent.insertBefore(next, target)
     } else if (action === 'backward') {
-      const prev = foundEl.previousElementSibling
-      if (prev) parent.insertBefore(foundEl, prev)
+      const prev = target.previousElementSibling
+      if (prev) parent.insertBefore(target, prev)
     } else if (action === 'front') {
-      parent.appendChild(foundEl)
+      parent.appendChild(target)
     } else if (action === 'back') {
-      parent.insertBefore(foundEl, parent.firstElementChild)
+      parent.insertBefore(target, parent.firstElementChild)
     }
     
     // Re-walk to find new index

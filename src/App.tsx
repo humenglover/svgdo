@@ -84,6 +84,8 @@ function EditorPage() {
     startYInSVG: number;
     lastDx: number;
     lastDy: number;
+    lastTx?: number;
+    lastTy?: number;
     originalTransform: string;
     paddingX: number;
     paddingY: number;
@@ -213,8 +215,8 @@ function EditorPage() {
     e.stopPropagation();
     if (!selectedElement) return;
 
-    const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as SVGElement | null;
-    const svgEl = el?.ownerSVGElement;
+    const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as HTMLElement | null;
+    const svgEl = (el as any)?.ownerSVGElement as SVGSVGElement | undefined;
     if (!el || !svgEl) return;
 
     const rect = el.getBoundingClientRect();
@@ -892,7 +894,7 @@ function EditorPage() {
                             if (info) setSelectedElement(info)
                           }
 
-                          const svgEl = el.ownerSVGElement
+                          const svgEl = (el as any).ownerSVGElement as SVGSVGElement | undefined
                           if (!svgEl) return;
 
                           let parentCTM = svgEl.getScreenCTM()
