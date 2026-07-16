@@ -1,58 +1,10 @@
 [
   {
-    "name": "1st-place",
-    "id": 0
-  },
-  {
-    "name": "2k",
-    "id": 0
-  },
-  {
-    "name": "2nd-place",
-    "id": 0
-  },
-  {
     "name": "30fps",
     "id": 0
   },
   {
-    "name": "3rd-place",
-    "id": 0
-  },
-  {
-    "name": "4g-signal-1",
-    "id": 0
-  },
-  {
-    "name": "4g-signal-2",
-    "id": 0
-  },
-  {
-    "name": "4g-signal-plus-2",
-    "id": 0
-  },
-  {
-    "name": "4g-signal-plus",
-    "id": 0
-  },
-  {
-    "name": "4g-signal",
-    "id": 0
-  },
-  {
-    "name": "4g",
-    "id": 0
-  },
-  {
-    "name": "4k-2",
-    "id": 0
-  },
-  {
-    "name": "4k",
-    "id": 0
-  },
-  {
-    "name": "5g-signal-plus-2",
+    "name": "5g",
     "id": 0
   },
   {
@@ -60,11 +12,7 @@
     "id": 0
   },
   {
-    "name": "5g-signal",
-    "id": 0
-  },
-  {
-    "name": "5g",
+    "name": "5g-signal-plus-2",
     "id": 0
   },
   {
@@ -76,47 +24,11 @@
     "id": 0
   },
   {
-    "name": "acorn-2",
-    "id": 0
-  },
-  {
-    "name": "acorn",
-    "id": 0
-  },
-  {
-    "name": "acrobatic-2",
-    "id": 0
-  },
-  {
-    "name": "acrobatic",
-    "id": 0
-  },
-  {
     "name": "action-cam-alt-2",
     "id": 0
   },
   {
-    "name": "action-cam-alt-3",
-    "id": 0
-  },
-  {
     "name": "action-cam-alt-4",
-    "id": 0
-  },
-  {
-    "name": "action-cam",
-    "id": 0
-  },
-  {
-    "name": "action-camera",
-    "id": 0
-  },
-  {
-    "name": "activity",
-    "id": 0
-  },
-  {
-    "name": "adapter-2",
     "id": 0
   },
   {
@@ -128,47 +40,7 @@
     "id": 0
   },
   {
-    "name": "adapter",
-    "id": 0
-  },
-  {
     "name": "add-collection",
-    "id": 0
-  },
-  {
-    "name": "add-contact-book",
-    "id": 0
-  },
-  {
-    "name": "add-file-10",
-    "id": 0
-  },
-  {
-    "name": "add-file-11",
-    "id": 0
-  },
-  {
-    "name": "add-file-12",
-    "id": 0
-  },
-  {
-    "name": "add-file-2",
-    "id": 0
-  },
-  {
-    "name": "add-file-3",
-    "id": 0
-  },
-  {
-    "name": "add-file-4",
-    "id": 0
-  },
-  {
-    "name": "add-file-5",
-    "id": 0
-  },
-  {
-    "name": "add-file-6",
     "id": 0
   },
   {
@@ -176,35 +48,11 @@
     "id": 0
   },
   {
-    "name": "add-file-8",
-    "id": 0
-  },
-  {
-    "name": "add-file-9",
-    "id": 0
-  },
-  {
-    "name": "add-file",
-    "id": 0
-  },
-  {
     "name": "add-music-collection",
     "id": 0
   },
   {
-    "name": "add-playlist-2",
-    "id": 0
-  },
-  {
-    "name": "add-playlist-3",
-    "id": 0
-  },
-  {
     "name": "add-playlist",
-    "id": 0
-  },
-  {
-    "name": "add-user-2",
     "id": 0
   },
   {
@@ -213,14 +61,6 @@
   },
   {
     "name": "add-user-4",
-    "id": 0
-  },
-  {
-    "name": "add-user-5",
-    "id": 0
-  },
-  {
-    "name": "add-user-6",
     "id": 0
   },
   {
@@ -236,19 +76,11 @@
     "id": 0
   },
   {
-    "name": "add-user-circle-left",
-    "id": 0
-  },
-  {
     "name": "add-user-circle",
     "id": 0
   },
   {
-    "name": "add-user-left-2",
-    "id": 0
-  },
-  {
-    "name": "add-user-left-3",
+    "name": "add-user-circle-left",
     "id": 0
   },
   {
@@ -256,47 +88,7 @@
     "id": 0
   },
   {
-    "name": "add-user-left-5",
-    "id": 0
-  },
-  {
-    "name": "add-user-left-6",
-    "id": 0
-  },
-  {
-    "name": "add-user-left-7",
-    "id": 0
-  },
-  {
     "name": "add-user-left-8",
-    "id": 0
-  },
-  {
-    "name": "add-user-left-9",
-    "id": 0
-  },
-  {
-    "name": "add-user-left",
-    "id": 0
-  },
-  {
-    "name": "add-user-square-left",
-    "id": 0
-  },
-  {
-    "name": "add-user-square",
-    "id": 0
-  },
-  {
-    "name": "add-user",
-    "id": 0
-  },
-  {
-    "name": "address-book",
-    "id": 0
-  },
-  {
-    "name": "adhesive-tape-2",
     "id": 0
   },
   {
@@ -304,59 +96,7 @@
     "id": 0
   },
   {
-    "name": "adhesive-tape-left-2",
-    "id": 0
-  },
-  {
-    "name": "adhesive-tape-left-3",
-    "id": 0
-  },
-  {
-    "name": "adhesive-tape-left",
-    "id": 0
-  },
-  {
-    "name": "adhesive-tape",
-    "id": 0
-  },
-  {
-    "name": "adventure-backpack",
-    "id": 0
-  },
-  {
-    "name": "agenda-2",
-    "id": 0
-  },
-  {
-    "name": "agenda-book",
-    "id": 0
-  },
-  {
-    "name": "agenda-left",
-    "id": 0
-  },
-  {
-    "name": "agenda-pencil-left",
-    "id": 0
-  },
-  {
     "name": "agenda-pencil",
-    "id": 0
-  },
-  {
-    "name": "agenda",
-    "id": 0
-  },
-  {
-    "name": "aim-2",
-    "id": 0
-  },
-  {
-    "name": "aim",
-    "id": 0
-  },
-  {
-    "name": "air-conditioner-alt-3",
     "id": 0
   },
   {
@@ -368,26 +108,6 @@
     "id": 0
   },
   {
-    "name": "air-conditioner-temperature",
-    "id": 0
-  },
-  {
-    "name": "air-conditioner",
-    "id": 0
-  },
-  {
-    "name": "air-conditioning",
-    "id": 0
-  },
-  {
-    "name": "airbnb-circle",
-    "id": 0
-  },
-  {
-    "name": "airbnb-square",
-    "id": 0
-  },
-  {
     "name": "airbnb",
     "id": 0
   },
@@ -396,7 +116,7 @@
     "id": 0
   },
   {
-    "name": "airplane-3",
+    "name": "airplane-disable",
     "id": 0
   },
   {
@@ -404,39 +124,7 @@
     "id": 0
   },
   {
-    "name": "airplane-disable-3",
-    "id": 0
-  },
-  {
-    "name": "airplane-disable",
-    "id": 0
-  },
-  {
-    "name": "airplane-mode",
-    "id": 0
-  },
-  {
-    "name": "airplane",
-    "id": 0
-  },
-  {
     "name": "alarm",
-    "id": 0
-  },
-  {
-    "name": "align-center-2",
-    "id": 0
-  },
-  {
-    "name": "align-center-3",
-    "id": 0
-  },
-  {
-    "name": "align-center-circle-2",
-    "id": 0
-  },
-  {
-    "name": "align-center-circle-3",
     "id": 0
   },
   {
@@ -448,51 +136,7 @@
     "id": 0
   },
   {
-    "name": "align-center-disable",
-    "id": 0
-  },
-  {
-    "name": "align-center-square-2",
-    "id": 0
-  },
-  {
-    "name": "align-center-square-3",
-    "id": 0
-  },
-  {
-    "name": "align-center-square",
-    "id": 0
-  },
-  {
-    "name": "align-center",
-    "id": 0
-  },
-  {
-    "name": "align-justify",
-    "id": 0
-  },
-  {
-    "name": "align-left-2",
-    "id": 0
-  },
-  {
-    "name": "align-left-circle-2",
-    "id": 0
-  },
-  {
-    "name": "align-left-circle",
-    "id": 0
-  },
-  {
-    "name": "align-left-disable-2",
-    "id": 0
-  },
-  {
     "name": "align-left-slash",
-    "id": 0
-  },
-  {
-    "name": "align-left-square-2",
     "id": 0
   },
   {
@@ -500,51 +144,11 @@
     "id": 0
   },
   {
-    "name": "align-left",
-    "id": 0
-  },
-  {
-    "name": "align-right-2",
-    "id": 0
-  },
-  {
-    "name": "align-right-circle-2",
-    "id": 0
-  },
-  {
-    "name": "align-right-circle",
-    "id": 0
-  },
-  {
-    "name": "align-right-disable",
-    "id": 0
-  },
-  {
-    "name": "align-right-square-2",
-    "id": 0
-  },
-  {
-    "name": "align-right-square",
-    "id": 0
-  },
-  {
-    "name": "align-right",
-    "id": 0
-  },
-  {
-    "name": "alignment-left-circle",
-    "id": 0
-  },
-  {
-    "name": "alignment-left-slash",
+    "name": "align-left-square-2",
     "id": 0
   },
   {
     "name": "alignment-left-square",
-    "id": 0
-  },
-  {
-    "name": "alignment-left",
     "id": 0
   },
   {
@@ -556,107 +160,7 @@
     "id": 0
   },
   {
-    "name": "alignment-right-square",
-    "id": 0
-  },
-  {
-    "name": "alignment-right",
-    "id": 0
-  },
-  {
     "name": "alpha-circle",
-    "id": 0
-  },
-  {
-    "name": "alpha-square",
-    "id": 0
-  },
-  {
-    "name": "alpha",
-    "id": 0
-  },
-  {
-    "name": "amazon-circle",
-    "id": 0
-  },
-  {
-    "name": "amazon-square",
-    "id": 0
-  },
-  {
-    "name": "amazon",
-    "id": 0
-  },
-  {
-    "name": "ambulance-2",
-    "id": 0
-  },
-  {
-    "name": "ambulance-left-2",
-    "id": 0
-  },
-  {
-    "name": "ambulance-left",
-    "id": 0
-  },
-  {
-    "name": "ambulance",
-    "id": 0
-  },
-  {
-    "name": "analysis-left",
-    "id": 0
-  },
-  {
-    "name": "analysis",
-    "id": 0
-  },
-  {
-    "name": "anchor",
-    "id": 0
-  },
-  {
-    "name": "angel-180",
-    "id": 0
-  },
-  {
-    "name": "angel-45",
-    "id": 0
-  },
-  {
-    "name": "angel-90",
-    "id": 0
-  },
-  {
-    "name": "aperture",
-    "id": 0
-  },
-  {
-    "name": "app-store-circle",
-    "id": 0
-  },
-  {
-    "name": "app-store-square",
-    "id": 0
-  },
-  {
-    "name": "app-store",
-    "id": 0
-  },
-  {
-    "name": "appartment-2",
-    "id": 0
-  },
-  {
-    "name": "appartment-3",
-    "id": 0
-  },
-  {
-    "name": "appartment-4",
-    "id": 0
-  },
-  {
-    "name": "appartment",
     "id": 0
   },
   {
@@ -664,39 +168,7 @@
     "id": 0
   },
   {
-    "name": "apple",
-    "id": 0
-  },
-  {
     "name": "approved-file-2",
-    "id": 0
-  },
-  {
-    "name": "approved-file-3",
-    "id": 0
-  },
-  {
-    "name": "approved-file",
-    "id": 0
-  },
-  {
-    "name": "architecture",
-    "id": 0
-  },
-  {
-    "name": "archive",
-    "id": 0
-  },
-  {
-    "name": "armchair-2",
-    "id": 0
-  },
-  {
-    "name": "armchair-3",
-    "id": 0
-  },
-  {
-    "name": "armchair-4",
     "id": 0
   },
   {
@@ -704,35 +176,7 @@
     "id": 0
   },
   {
-    "name": "armchair",
-    "id": 0
-  },
-  {
-    "name": "arrival-left",
-    "id": 0
-  },
-  {
-    "name": "arrival",
-    "id": 0
-  },
-  {
-    "name": "arrow-down",
-    "id": 0
-  },
-  {
     "name": "arrow-left",
-    "id": 0
-  },
-  {
-    "name": "arrow-right",
-    "id": 0
-  },
-  {
-    "name": "arrow-up",
-    "id": 0
-  },
-  {
-    "name": "artichoke",
     "id": 0
   },
   {
@@ -740,23 +184,7 @@
     "id": 0
   },
   {
-    "name": "at-sign",
-    "id": 0
-  },
-  {
-    "name": "at",
-    "id": 0
-  },
-  {
     "name": "atom-structure",
-    "id": 0
-  },
-  {
-    "name": "atom",
-    "id": 0
-  },
-  {
-    "name": "attachment-2",
     "id": 0
   },
   {
@@ -764,43 +192,11 @@
     "id": 0
   },
   {
-    "name": "attachment-left",
-    "id": 0
-  },
-  {
-    "name": "attachment-right-2",
-    "id": 0
-  },
-  {
-    "name": "attachment-right",
-    "id": 0
-  },
-  {
-    "name": "attachment-top-2",
-    "id": 0
-  },
-  {
     "name": "attachment-top",
     "id": 0
   },
   {
-    "name": "attachment",
-    "id": 0
-  },
-  {
-    "name": "audible-2",
-    "id": 0
-  },
-  {
-    "name": "audible-circle",
-    "id": 0
-  },
-  {
     "name": "audible-square",
-    "id": 0
-  },
-  {
-    "name": "audio-jack-cable-left",
     "id": 0
   },
   {
@@ -812,71 +208,7 @@
     "id": 0
   },
   {
-    "name": "audio-jack-connector-top-left",
-    "id": 0
-  },
-  {
-    "name": "audio-jack-connector-top-right",
-    "id": 0
-  },
-  {
-    "name": "audio-jack-connector",
-    "id": 0
-  },
-  {
-    "name": "audio-jack",
-    "id": 0
-  },
-  {
-    "name": "autumn",
-    "id": 0
-  },
-  {
-    "name": "avocado-2",
-    "id": 0
-  },
-  {
-    "name": "avocado-3",
-    "id": 0
-  },
-  {
-    "name": "avocado-4",
-    "id": 0
-  },
-  {
-    "name": "avocado",
-    "id": 0
-  },
-  {
-    "name": "award",
-    "id": 0
-  },
-  {
     "name": "axe-2",
-    "id": 0
-  },
-  {
-    "name": "axe-left",
-    "id": 0
-  },
-  {
-    "name": "axe",
-    "id": 0
-  },
-  {
-    "name": "baby-crib-2",
-    "id": 0
-  },
-  {
-    "name": "baby-crib",
-    "id": 0
-  },
-  {
-    "name": "backpack",
-    "id": 0
-  },
-  {
-    "name": "backward-2",
     "id": 0
   },
   {
@@ -884,111 +216,11 @@
     "id": 0
   },
   {
-    "name": "backward-circle",
-    "id": 0
-  },
-  {
-    "name": "backward-square",
-    "id": 0
-  },
-  {
-    "name": "backward",
-    "id": 0
-  },
-  {
-    "name": "badge",
-    "id": 0
-  },
-  {
-    "name": "badminton-racket-2",
-    "id": 0
-  },
-  {
-    "name": "badminton-racket",
-    "id": 0
-  },
-  {
-    "name": "badminton",
-    "id": 0
-  },
-  {
-    "name": "bag-alt-1",
-    "id": 0
-  },
-  {
-    "name": "bag-alt",
-    "id": 0
-  },
-  {
-    "name": "bag",
-    "id": 0
-  },
-  {
-    "name": "balance-scale-left",
-    "id": 0
-  },
-  {
     "name": "balance-scale-right",
     "id": 0
   },
   {
-    "name": "balance-scale",
-    "id": 0
-  },
-  {
-    "name": "balloon",
-    "id": 0
-  },
-  {
-    "name": "banana-left",
-    "id": 0
-  },
-  {
-    "name": "banana",
-    "id": 0
-  },
-  {
-    "name": "bananas-left",
-    "id": 0
-  },
-  {
-    "name": "bananas",
-    "id": 0
-  },
-  {
     "name": "band-aid-left",
-    "id": 0
-  },
-  {
-    "name": "band-aid-right",
-    "id": 0
-  },
-  {
-    "name": "band-aid",
-    "id": 0
-  },
-  {
-    "name": "bank-2",
-    "id": 0
-  },
-  {
-    "name": "bank",
-    "id": 0
-  },
-  {
-    "name": "bar-chart",
-    "id": 0
-  },
-  {
-    "name": "barcode-scan",
-    "id": 0
-  },
-  {
-    "name": "barcode",
-    "id": 0
-  },
-  {
-    "name": "barrier",
     "id": 0
   },
   {
@@ -1000,11 +232,7 @@
     "id": 0
   },
   {
-    "name": "basketball-4",
-    "id": 0
-  },
-  {
-    "name": "basketball-dribble-2",
+    "name": "basketball-dribble",
     "id": 0
   },
   {
@@ -1016,26 +244,6 @@
     "id": 0
   },
   {
-    "name": "basketball-dribble",
-    "id": 0
-  },
-  {
-    "name": "basketball-field-2",
-    "id": 0
-  },
-  {
-    "name": "basketball-field-3",
-    "id": 0
-  },
-  {
-    "name": "basketball-field",
-    "id": 0
-  },
-  {
-    "name": "basketball-hoop",
-    "id": 0
-  },
-  {
     "name": "basketball-jersey",
     "id": 0
   },
@@ -1044,39 +252,7 @@
     "id": 0
   },
   {
-    "name": "basketball-shoes",
-    "id": 0
-  },
-  {
-    "name": "basketball",
-    "id": 0
-  },
-  {
-    "name": "bathroom-2",
-    "id": 0
-  },
-  {
     "name": "bathroom",
-    "id": 0
-  },
-  {
-    "name": "bathtub-10",
-    "id": 0
-  },
-  {
-    "name": "bathtub-11",
-    "id": 0
-  },
-  {
-    "name": "bathtub-12",
-    "id": 0
-  },
-  {
-    "name": "bathtub-13",
-    "id": 0
-  },
-  {
-    "name": "bathtub-2",
     "id": 0
   },
   {
@@ -1084,63 +260,7 @@
     "id": 0
   },
   {
-    "name": "bathtub-4",
-    "id": 0
-  },
-  {
-    "name": "bathtub-5",
-    "id": 0
-  },
-  {
-    "name": "bathtub-6",
-    "id": 0
-  },
-  {
-    "name": "bathtub-7",
-    "id": 0
-  },
-  {
-    "name": "bathtub-8",
-    "id": 0
-  },
-  {
-    "name": "bathtub-9",
-    "id": 0
-  },
-  {
-    "name": "bathtub",
-    "id": 0
-  },
-  {
-    "name": "battery-10-alert-2",
-    "id": 0
-  },
-  {
-    "name": "battery-10-alert",
-    "id": 0
-  },
-  {
-    "name": "battery-10-line",
-    "id": 0
-  },
-  {
-    "name": "battery-10",
-    "id": 0
-  },
-  {
-    "name": "battery-100-alert-2",
-    "id": 0
-  },
-  {
     "name": "battery-100-alert",
-    "id": 0
-  },
-  {
-    "name": "battery-100-line",
-    "id": 0
-  },
-  {
-    "name": "battery-100",
     "id": 0
   },
   {
@@ -1148,63 +268,11 @@
     "id": 0
   },
   {
-    "name": "battery-30",
-    "id": 0
-  },
-  {
-    "name": "battery-50-alert-2",
-    "id": 0
-  },
-  {
-    "name": "battery-50-alert",
-    "id": 0
-  },
-  {
-    "name": "battery-50-line",
-    "id": 0
-  },
-  {
     "name": "battery-50",
     "id": 0
   },
   {
-    "name": "battery-alert-2",
-    "id": 0
-  },
-  {
-    "name": "battery-alert",
-    "id": 0
-  },
-  {
-    "name": "battery-charge-alert",
-    "id": 0
-  },
-  {
-    "name": "battery-charge",
-    "id": 0
-  },
-  {
-    "name": "battery-cross",
-    "id": 0
-  },
-  {
-    "name": "battery",
-    "id": 0
-  },
-  {
     "name": "bed-2",
-    "id": 0
-  },
-  {
-    "name": "bed-left",
-    "id": 0
-  },
-  {
-    "name": "bed-right",
-    "id": 0
-  },
-  {
-    "name": "bed",
     "id": 0
   },
   {
@@ -1216,71 +284,7 @@
     "id": 0
   },
   {
-    "name": "bedroom-4",
-    "id": 0
-  },
-  {
-    "name": "bedroom-5",
-    "id": 0
-  },
-  {
-    "name": "bedroom-6",
-    "id": 0
-  },
-  {
     "name": "bedroom-7",
-    "id": 0
-  },
-  {
-    "name": "bedroom-8",
-    "id": 0
-  },
-  {
-    "name": "bedroom",
-    "id": 0
-  },
-  {
-    "name": "behance",
-    "id": 0
-  },
-  {
-    "name": "bell",
-    "id": 0
-  },
-  {
-    "name": "belt-buckles",
-    "id": 0
-  },
-  {
-    "name": "bench-2",
-    "id": 0
-  },
-  {
-    "name": "bench-press-2",
-    "id": 0
-  },
-  {
-    "name": "bench-press-3",
-    "id": 0
-  },
-  {
-    "name": "bench-press-4",
-    "id": 0
-  },
-  {
-    "name": "bench-press-5",
-    "id": 0
-  },
-  {
-    "name": "bench-press-6",
-    "id": 0
-  },
-  {
-    "name": "bench-press-7",
-    "id": 0
-  },
-  {
-    "name": "bench-press",
     "id": 0
   },
   {
@@ -1296,91 +300,7 @@
     "id": 0
   },
   {
-    "name": "beta",
-    "id": 0
-  },
-  {
-    "name": "bike-2",
-    "id": 0
-  },
-  {
-    "name": "bike-left-2",
-    "id": 0
-  },
-  {
-    "name": "bike-left",
-    "id": 0
-  },
-  {
-    "name": "bike",
-    "id": 0
-  },
-  {
-    "name": "bikecycle-left",
-    "id": 0
-  },
-  {
-    "name": "bikecycle",
-    "id": 0
-  },
-  {
-    "name": "bill-dollar-left",
-    "id": 0
-  },
-  {
-    "name": "bill-dollar",
-    "id": 0
-  },
-  {
-    "name": "bill-euro-left",
-    "id": 0
-  },
-  {
-    "name": "bill-euro",
-    "id": 0
-  },
-  {
     "name": "bill",
-    "id": 0
-  },
-  {
-    "name": "billiard-2",
-    "id": 0
-  },
-  {
-    "name": "billiard-ball",
-    "id": 0
-  },
-  {
-    "name": "billiard",
-    "id": 0
-  },
-  {
-    "name": "binoculars-2",
-    "id": 0
-  },
-  {
-    "name": "binoculars-left-2",
-    "id": 0
-  },
-  {
-    "name": "binoculars",
-    "id": 0
-  },
-  {
-    "name": "birefcase",
-    "id": 0
-  },
-  {
-    "name": "birthday-cake-2",
-    "id": 0
-  },
-  {
-    "name": "birthday-cake-3",
-    "id": 0
-  },
-  {
-    "name": "birthday-cake",
     "id": 0
   },
   {
@@ -1392,39 +312,7 @@
     "id": 0
   },
   {
-    "name": "bitcoin-square",
-    "id": 0
-  },
-  {
-    "name": "bitcoin",
-    "id": 0
-  },
-  {
-    "name": "black-board",
-    "id": 0
-  },
-  {
-    "name": "blackberries",
-    "id": 0
-  },
-  {
-    "name": "bleeding-heart",
-    "id": 0
-  },
-  {
-    "name": "blood-drop",
-    "id": 0
-  },
-  {
-    "name": "blood-plus",
-    "id": 0
-  },
-  {
     "name": "blood",
-    "id": 0
-  },
-  {
-    "name": "bloods-drop",
     "id": 0
   },
   {
@@ -1432,43 +320,7 @@
     "id": 0
   },
   {
-    "name": "blueprint-architecture-2",
-    "id": 0
-  },
-  {
-    "name": "blueprint-architecture",
-    "id": 0
-  },
-  {
-    "name": "bluetooth",
-    "id": 0
-  },
-  {
-    "name": "blunted-cone",
-    "id": 0
-  },
-  {
-    "name": "boat-2",
-    "id": 0
-  },
-  {
     "name": "boat-left-2",
-    "id": 0
-  },
-  {
-    "name": "boat-left",
-    "id": 0
-  },
-  {
-    "name": "boat-right",
-    "id": 0
-  },
-  {
-    "name": "boat",
-    "id": 0
-  },
-  {
-    "name": "bocce-ball",
     "id": 0
   },
   {
@@ -1476,35 +328,7 @@
     "id": 0
   },
   {
-    "name": "bold-2",
-    "id": 0
-  },
-  {
-    "name": "bold-circle",
-    "id": 0
-  },
-  {
     "name": "bold-square",
-    "id": 0
-  },
-  {
-    "name": "bold",
-    "id": 0
-  },
-  {
-    "name": "book",
-    "id": 0
-  },
-  {
-    "name": "bookmark-alt",
-    "id": 0
-  },
-  {
-    "name": "bookmark",
-    "id": 0
-  },
-  {
-    "name": "bottle-2",
     "id": 0
   },
   {
@@ -1516,10 +340,6 @@
     "id": 0
   },
   {
-    "name": "bottom-left-circle",
-    "id": 0
-  },
-  {
     "name": "bottom-left-square",
     "id": 0
   },
@@ -1528,47 +348,7 @@
     "id": 0
   },
   {
-    "name": "bottom-right-square",
-    "id": 0
-  },
-  {
-    "name": "bowling-2",
-    "id": 0
-  },
-  {
     "name": "bowling-3",
-    "id": 0
-  },
-  {
-    "name": "bowling-ball",
-    "id": 0
-  },
-  {
-    "name": "bowling",
-    "id": 0
-  },
-  {
-    "name": "box",
-    "id": 0
-  },
-  {
-    "name": "bracket-2",
-    "id": 0
-  },
-  {
-    "name": "bracket-3",
-    "id": 0
-  },
-  {
-    "name": "bracket-circle-2",
-    "id": 0
-  },
-  {
-    "name": "bracket-circle",
-    "id": 0
-  },
-  {
-    "name": "bracket-square-2",
     "id": 0
   },
   {
@@ -1576,47 +356,7 @@
     "id": 0
   },
   {
-    "name": "bracket",
-    "id": 0
-  },
-  {
-    "name": "brainstorming",
-    "id": 0
-  },
-  {
     "name": "bread-2",
-    "id": 0
-  },
-  {
-    "name": "bread-3",
-    "id": 0
-  },
-  {
-    "name": "bread-left",
-    "id": 0
-  },
-  {
-    "name": "bread-loaf",
-    "id": 0
-  },
-  {
-    "name": "bread-right",
-    "id": 0
-  },
-  {
-    "name": "bread",
-    "id": 0
-  },
-  {
-    "name": "breakfast-2",
-    "id": 0
-  },
-  {
-    "name": "breakfast",
-    "id": 0
-  },
-  {
-    "name": "breeze-2",
     "id": 0
   },
   {
@@ -1628,43 +368,7 @@
     "id": 0
   },
   {
-    "name": "brickwall",
-    "id": 0
-  },
-  {
-    "name": "briefcase",
-    "id": 0
-  },
-  {
-    "name": "brightness",
-    "id": 0
-  },
-  {
-    "name": "bring-backward-2",
-    "id": 0
-  },
-  {
     "name": "bring-backward",
-    "id": 0
-  },
-  {
-    "name": "bring-behind-2",
-    "id": 0
-  },
-  {
-    "name": "bring-behind",
-    "id": 0
-  },
-  {
-    "name": "bring-forward-2",
-    "id": 0
-  },
-  {
-    "name": "bring-forward",
-    "id": 0
-  },
-  {
-    "name": "bring-front-2",
     "id": 0
   },
   {
@@ -1672,35 +376,7 @@
     "id": 0
   },
   {
-    "name": "broccoli",
-    "id": 0
-  },
-  {
-    "name": "browse",
-    "id": 0
-  },
-  {
     "name": "browser",
-    "id": 0
-  },
-  {
-    "name": "bug",
-    "id": 0
-  },
-  {
-    "name": "bullseye",
-    "id": 0
-  },
-  {
-    "name": "bunk-bed-2",
-    "id": 0
-  },
-  {
-    "name": "bunk-bed",
-    "id": 0
-  },
-  {
-    "name": "burger",
     "id": 0
   },
   {
@@ -1708,39 +384,7 @@
     "id": 0
   },
   {
-    "name": "bus-2",
-    "id": 0
-  },
-  {
-    "name": "bus-left-2",
-    "id": 0
-  },
-  {
     "name": "bus-left",
-    "id": 0
-  },
-  {
-    "name": "bus",
-    "id": 0
-  },
-  {
-    "name": "business-card",
-    "id": 0
-  },
-  {
-    "name": "butter",
-    "id": 0
-  },
-  {
-    "name": "cabbage",
-    "id": 0
-  },
-  {
-    "name": "cabinet-2",
-    "id": 0
-  },
-  {
-    "name": "cabinet-3",
     "id": 0
   },
   {
@@ -1748,31 +392,7 @@
     "id": 0
   },
   {
-    "name": "cabinet-5",
-    "id": 0
-  },
-  {
-    "name": "cabinet",
-    "id": 0
-  },
-  {
-    "name": "cableway-2",
-    "id": 0
-  },
-  {
     "name": "cableway-3",
-    "id": 0
-  },
-  {
-    "name": "cableway",
-    "id": 0
-  },
-  {
-    "name": "cake-2",
-    "id": 0
-  },
-  {
-    "name": "cake",
     "id": 0
   },
   {
@@ -1780,43 +400,7 @@
     "id": 0
   },
   {
-    "name": "calendar-alert-3",
-    "id": 0
-  },
-  {
-    "name": "calendar-alert-4",
-    "id": 0
-  },
-  {
-    "name": "calendar-alert",
-    "id": 0
-  },
-  {
     "name": "calendar-event-left",
-    "id": 0
-  },
-  {
-    "name": "calendar-event",
-    "id": 0
-  },
-  {
-    "name": "calendar",
-    "id": 0
-  },
-  {
-    "name": "call-in-2",
-    "id": 0
-  },
-  {
-    "name": "call-in",
-    "id": 0
-  },
-  {
-    "name": "call-left",
-    "id": 0
-  },
-  {
-    "name": "call-out-2",
     "id": 0
   },
   {
@@ -1824,7 +408,7 @@
     "id": 0
   },
   {
-    "name": "call",
+    "name": "camera",
     "id": 0
   },
   {
@@ -1832,35 +416,7 @@
     "id": 0
   },
   {
-    "name": "camera",
-    "id": 0
-  },
-  {
     "name": "campaign",
-    "id": 0
-  },
-  {
-    "name": "campfire-2",
-    "id": 0
-  },
-  {
-    "name": "campfire-left-2",
-    "id": 0
-  },
-  {
-    "name": "campfire-left",
-    "id": 0
-  },
-  {
-    "name": "campfire",
-    "id": 0
-  },
-  {
-    "name": "camping-chair",
-    "id": 0
-  },
-  {
-    "name": "camping-gas-2",
     "id": 0
   },
   {
@@ -1868,19 +424,15 @@
     "id": 0
   },
   {
-    "name": "camping",
+    "name": "camping-gas-2",
+    "id": 0
+  },
+  {
+    "name": "canned-food",
     "id": 0
   },
   {
     "name": "canned-food-2",
-    "id": 0
-  },
-  {
-    "name": "canned-food-3",
-    "id": 0
-  },
-  {
-    "name": "canned-food-4",
     "id": 0
   },
   {
@@ -1892,71 +444,7 @@
     "id": 0
   },
   {
-    "name": "canned-food-7",
-    "id": 0
-  },
-  {
     "name": "canned-food-8",
-    "id": 0
-  },
-  {
-    "name": "canned-food",
-    "id": 0
-  },
-  {
-    "name": "capsule-2",
-    "id": 0
-  },
-  {
-    "name": "capsule-left",
-    "id": 0
-  },
-  {
-    "name": "capsule-pills",
-    "id": 0
-  },
-  {
-    "name": "capsule-right",
-    "id": 0
-  },
-  {
-    "name": "capsule",
-    "id": 0
-  },
-  {
-    "name": "car-alert-left",
-    "id": 0
-  },
-  {
-    "name": "car-alert",
-    "id": 0
-  },
-  {
-    "name": "car-allert",
-    "id": 0
-  },
-  {
-    "name": "car-door-2",
-    "id": 0
-  },
-  {
-    "name": "car-door-3",
-    "id": 0
-  },
-  {
-    "name": "car-door-4",
-    "id": 0
-  },
-  {
-    "name": "car-door-left-2",
-    "id": 0
-  },
-  {
-    "name": "car-door-left-3",
-    "id": 0
-  },
-  {
-    "name": "car-door-left-4",
     "id": 0
   },
   {
@@ -1964,87 +452,7 @@
     "id": 0
   },
   {
-    "name": "car-door",
-    "id": 0
-  },
-  {
-    "name": "car-gearshift",
-    "id": 0
-  },
-  {
-    "name": "car-lifter",
-    "id": 0
-  },
-  {
-    "name": "car-shipping-2",
-    "id": 0
-  },
-  {
-    "name": "car-shipping",
-    "id": 0
-  },
-  {
-    "name": "caravan-2",
-    "id": 0
-  },
-  {
-    "name": "caravan-3",
-    "id": 0
-  },
-  {
-    "name": "caravan-4",
-    "id": 0
-  },
-  {
-    "name": "caravan-5",
-    "id": 0
-  },
-  {
-    "name": "caravan-6",
-    "id": 0
-  },
-  {
-    "name": "caravan",
-    "id": 0
-  },
-  {
-    "name": "cargo-ship-2",
-    "id": 0
-  },
-  {
-    "name": "cargo-ship-3",
-    "id": 0
-  },
-  {
-    "name": "cargo-ship-left-2",
-    "id": 0
-  },
-  {
-    "name": "cargo-ship-left-3",
-    "id": 0
-  },
-  {
-    "name": "cargo-ship-left",
-    "id": 0
-  },
-  {
-    "name": "cargo-ship",
-    "id": 0
-  },
-  {
-    "name": "carpet-2",
-    "id": 0
-  },
-  {
-    "name": "carpet-3",
-    "id": 0
-  },
-  {
-    "name": "carpet-4",
-    "id": 0
-  },
-  {
-    "name": "carpet",
+    "name": "car-door-left-2",
     "id": 0
   },
   {
@@ -2052,7 +460,7 @@
     "id": 0
   },
   {
-    "name": "cart-add",
+    "name": "cart",
     "id": 0
   },
   {
@@ -2060,19 +468,7 @@
     "id": 0
   },
   {
-    "name": "cart-check",
-    "id": 0
-  },
-  {
-    "name": "cart-close",
-    "id": 0
-  },
-  {
     "name": "cart-remove",
-    "id": 0
-  },
-  {
-    "name": "cart",
     "id": 0
   },
   {
@@ -2080,31 +476,7 @@
     "id": 0
   },
   {
-    "name": "cashier-machine-left",
-    "id": 0
-  },
-  {
-    "name": "cashier-machine",
-    "id": 0
-  },
-  {
-    "name": "cashier",
-    "id": 0
-  },
-  {
     "name": "cassette",
-    "id": 0
-  },
-  {
-    "name": "cast",
-    "id": 0
-  },
-  {
-    "name": "catton-candy-left",
-    "id": 0
-  },
-  {
-    "name": "catton-candy-right",
     "id": 0
   },
   {
@@ -2116,39 +488,7 @@
     "id": 0
   },
   {
-    "name": "caution-sign-square",
-    "id": 0
-  },
-  {
-    "name": "caution",
-    "id": 0
-  },
-  {
     "name": "cctv-camera",
-    "id": 0
-  },
-  {
-    "name": "cctv-top",
-    "id": 0
-  },
-  {
-    "name": "cctv",
-    "id": 0
-  },
-  {
-    "name": "cd-music-2",
-    "id": 0
-  },
-  {
-    "name": "cd-music",
-    "id": 0
-  },
-  {
-    "name": "cd",
-    "id": 0
-  },
-  {
-    "name": "ceiling-lamp-2",
     "id": 0
   },
   {
@@ -2156,31 +496,7 @@
     "id": 0
   },
   {
-    "name": "ceiling-lamp-4",
-    "id": 0
-  },
-  {
-    "name": "ceiling-lamp",
-    "id": 0
-  },
-  {
-    "name": "celsius-square",
-    "id": 0
-  },
-  {
-    "name": "celsius",
-    "id": 0
-  },
-  {
     "name": "centos",
-    "id": 0
-  },
-  {
-    "name": "chair-2",
-    "id": 0
-  },
-  {
-    "name": "chair-3",
     "id": 0
   },
   {
@@ -2192,15 +508,7 @@
     "id": 0
   },
   {
-    "name": "chair",
-    "id": 0
-  },
-  {
     "name": "chaise-longue-2",
-    "id": 0
-  },
-  {
-    "name": "chaise-longue-3",
     "id": 0
   },
   {
@@ -2212,27 +520,7 @@
     "id": 0
   },
   {
-    "name": "chaise-longue-6",
-    "id": 0
-  },
-  {
-    "name": "chaise-longue",
-    "id": 0
-  },
-  {
-    "name": "chart-colum",
-    "id": 0
-  },
-  {
-    "name": "chart-column-grow",
-    "id": 0
-  },
-  {
     "name": "chart-column-low",
-    "id": 0
-  },
-  {
-    "name": "chart-column",
     "id": 0
   },
   {
@@ -2240,27 +528,7 @@
     "id": 0
   },
   {
-    "name": "chart-pie-alt",
-    "id": 0
-  },
-  {
-    "name": "chart-pie",
-    "id": 0
-  },
-  {
     "name": "chart-point",
-    "id": 0
-  },
-  {
-    "name": "chart-presentation-left",
-    "id": 0
-  },
-  {
-    "name": "chart-presentation",
-    "id": 0
-  },
-  {
-    "name": "chassis-2",
     "id": 0
   },
   {
@@ -2268,47 +536,7 @@
     "id": 0
   },
   {
-    "name": "chat-2",
-    "id": 0
-  },
-  {
-    "name": "chat-3",
-    "id": 0
-  },
-  {
     "name": "chat-4",
-    "id": 0
-  },
-  {
-    "name": "chat-alert-2",
-    "id": 0
-  },
-  {
-    "name": "chat-alert-3",
-    "id": 0
-  },
-  {
-    "name": "chat-alert-4",
-    "id": 0
-  },
-  {
-    "name": "chat-alert-left-3",
-    "id": 0
-  },
-  {
-    "name": "chat-alert-left-4",
-    "id": 0
-  },
-  {
-    "name": "chat-alert-left",
-    "id": 0
-  },
-  {
-    "name": "chat-alert",
-    "id": 0
-  },
-  {
-    "name": "chat-alt-2",
     "id": 0
   },
   {
@@ -2316,67 +544,7 @@
     "id": 0
   },
   {
-    "name": "chat-alt-4",
-    "id": 0
-  },
-  {
-    "name": "chat-alt-5",
-    "id": 0
-  },
-  {
-    "name": "chat-alt",
-    "id": 0
-  },
-  {
     "name": "chat-left-2",
-    "id": 0
-  },
-  {
-    "name": "chat-left-3",
-    "id": 0
-  },
-  {
-    "name": "chat-left-4",
-    "id": 0
-  },
-  {
-    "name": "chat",
-    "id": 0
-  },
-  {
-    "name": "check-circle",
-    "id": 0
-  },
-  {
-    "name": "check-double",
-    "id": 0
-  },
-  {
-    "name": "check-lists-square-2",
-    "id": 0
-  },
-  {
-    "name": "check-lists-square",
-    "id": 0
-  },
-  {
-    "name": "check-lists",
-    "id": 0
-  },
-  {
-    "name": "check-mark-circle-2",
-    "id": 0
-  },
-  {
-    "name": "check-mark-circle",
-    "id": 0
-  },
-  {
-    "name": "check-mark-square-2",
-    "id": 0
-  },
-  {
-    "name": "check-mark-square",
     "id": 0
   },
   {
@@ -2388,75 +556,11 @@
     "id": 0
   },
   {
-    "name": "cheese-burger",
-    "id": 0
-  },
-  {
-    "name": "cheese-left",
-    "id": 0
-  },
-  {
     "name": "cheese-wedge",
     "id": 0
   },
   {
-    "name": "cheese-wheel",
-    "id": 0
-  },
-  {
-    "name": "cheese",
-    "id": 0
-  },
-  {
     "name": "chemistry-2",
-    "id": 0
-  },
-  {
-    "name": "chemistry-3",
-    "id": 0
-  },
-  {
-    "name": "chemistry-4",
-    "id": 0
-  },
-  {
-    "name": "chemistry-5",
-    "id": 0
-  },
-  {
-    "name": "chemistry-6",
-    "id": 0
-  },
-  {
-    "name": "chemistry",
-    "id": 0
-  },
-  {
-    "name": "cherries",
-    "id": 0
-  },
-  {
-    "name": "chevron-down",
-    "id": 0
-  },
-  {
-    "name": "chevron-left",
-    "id": 0
-  },
-  {
-    "name": "chevron-right",
-    "id": 0
-  },
-  {
-    "name": "chevron-up",
-    "id": 0
-  },
-  {
-    "name": "chicken-drumstick-01",
-    "id": 0
-  },
-  {
-    "name": "chicken-drumstick-02",
     "id": 0
   },
   {
@@ -2468,43 +572,7 @@
     "id": 0
   },
   {
-    "name": "chicken",
-    "id": 0
-  },
-  {
-    "name": "chip",
-    "id": 0
-  },
-  {
-    "name": "chocolate-2",
-    "id": 0
-  },
-  {
-    "name": "chocolate-3",
-    "id": 0
-  },
-  {
-    "name": "chocolate-4",
-    "id": 0
-  },
-  {
-    "name": "chocolate-5",
-    "id": 0
-  },
-  {
-    "name": "chocolate-6",
-    "id": 0
-  },
-  {
-    "name": "chocolate-7",
-    "id": 0
-  },
-  {
     "name": "chocolate-left-2",
-    "id": 0
-  },
-  {
-    "name": "chocolate-left-3",
     "id": 0
   },
   {
@@ -2512,63 +580,7 @@
     "id": 0
   },
   {
-    "name": "chocolate-left-5",
-    "id": 0
-  },
-  {
-    "name": "chocolate-left-6",
-    "id": 0
-  },
-  {
-    "name": "chocolate-left-7",
-    "id": 0
-  },
-  {
-    "name": "chocolate-left",
-    "id": 0
-  },
-  {
-    "name": "chocolate",
-    "id": 0
-  },
-  {
-    "name": "chrome",
-    "id": 0
-  },
-  {
     "name": "chronometer-3-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-5-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-7-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-9-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-watch-3-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-watch-5-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-watch-7-second",
-    "id": 0
-  },
-  {
-    "name": "chronometer-watch-9-second",
-    "id": 0
-  },
-  {
-    "name": "church-2",
     "id": 0
   },
   {
@@ -2580,19 +592,7 @@
     "id": 0
   },
   {
-    "name": "cinema-projector",
-    "id": 0
-  },
-  {
     "name": "circle",
-    "id": 0
-  },
-  {
-    "name": "clipboard-2",
-    "id": 0
-  },
-  {
-    "name": "clipboard-3",
     "id": 0
   },
   {
@@ -2600,43 +600,7 @@
     "id": 0
   },
   {
-    "name": "clipboard-add-3",
-    "id": 0
-  },
-  {
-    "name": "clipboard-add",
-    "id": 0
-  },
-  {
     "name": "clipboard-checklist-2",
-    "id": 0
-  },
-  {
-    "name": "clipboard-checklist-3",
-    "id": 0
-  },
-  {
-    "name": "clipboard-checklist-4",
-    "id": 0
-  },
-  {
-    "name": "clipboard-checklist-5",
-    "id": 0
-  },
-  {
-    "name": "clipboard-checklist-6",
-    "id": 0
-  },
-  {
-    "name": "clipboard-checklist",
-    "id": 0
-  },
-  {
-    "name": "clipboard-delete-2",
-    "id": 0
-  },
-  {
-    "name": "clipboard-delete-3",
     "id": 0
   },
   {
@@ -2644,23 +608,7 @@
     "id": 0
   },
   {
-    "name": "clipboard-edit-2",
-    "id": 0
-  },
-  {
-    "name": "clipboard-edit-3",
-    "id": 0
-  },
-  {
-    "name": "clipboard-edit-left-2",
-    "id": 0
-  },
-  {
-    "name": "clipboard-edit-left-3",
-    "id": 0
-  },
-  {
-    "name": "clipboard-edit-left",
+    "name": "clipboard-delete-2",
     "id": 0
   },
   {
@@ -2668,71 +616,7 @@
     "id": 0
   },
   {
-    "name": "clipboard",
-    "id": 0
-  },
-  {
-    "name": "clock-alt-2",
-    "id": 0
-  },
-  {
-    "name": "clock-alt",
-    "id": 0
-  },
-  {
-    "name": "clock",
-    "id": 0
-  },
-  {
-    "name": "cloud-alert-2",
-    "id": 0
-  },
-  {
-    "name": "cloud-alert-3",
-    "id": 0
-  },
-  {
-    "name": "cloud-alert-4",
-    "id": 0
-  },
-  {
-    "name": "cloud-alert",
-    "id": 0
-  },
-  {
-    "name": "cloud-check",
-    "id": 0
-  },
-  {
-    "name": "cloud-strom-2",
-    "id": 0
-  },
-  {
-    "name": "cloud-strom-3",
-    "id": 0
-  },
-  {
-    "name": "cloud-strom-4",
-    "id": 0
-  },
-  {
-    "name": "cloud-strom",
-    "id": 0
-  },
-  {
-    "name": "cloud",
-    "id": 0
-  },
-  {
     "name": "clouds-strom-2",
-    "id": 0
-  },
-  {
-    "name": "clouds-strom",
-    "id": 0
-  },
-  {
-    "name": "cloudy",
     "id": 0
   },
   {
@@ -2740,43 +624,7 @@
     "id": 0
   },
   {
-    "name": "coat-stand-3",
-    "id": 0
-  },
-  {
-    "name": "coat-stand",
-    "id": 0
-  },
-  {
-    "name": "coconut-01",
-    "id": 0
-  },
-  {
-    "name": "coconut-02",
-    "id": 0
-  },
-  {
-    "name": "code",
-    "id": 0
-  },
-  {
-    "name": "coffee-2",
-    "id": 0
-  },
-  {
     "name": "coffee-3",
-    "id": 0
-  },
-  {
-    "name": "coffee-beans-2",
-    "id": 0
-  },
-  {
-    "name": "coffee-beans-left-1",
-    "id": 0
-  },
-  {
-    "name": "coffee-beans-left",
     "id": 0
   },
   {
@@ -2784,11 +632,11 @@
     "id": 0
   },
   {
-    "name": "coffee-left-2",
+    "name": "coffee-beans-2",
     "id": 0
   },
   {
-    "name": "coffee-left-3",
+    "name": "coffee-beans-left",
     "id": 0
   },
   {
@@ -2800,31 +648,7 @@
     "id": 0
   },
   {
-    "name": "coffee-machine",
-    "id": 0
-  },
-  {
-    "name": "coffee",
-    "id": 0
-  },
-  {
-    "name": "coin",
-    "id": 0
-  },
-  {
-    "name": "cold-2",
-    "id": 0
-  },
-  {
-    "name": "cold",
-    "id": 0
-  },
-  {
     "name": "collection",
-    "id": 0
-  },
-  {
-    "name": "columns-2",
     "id": 0
   },
   {
@@ -2832,71 +656,11 @@
     "id": 0
   },
   {
-    "name": "columns-3",
-    "id": 0
-  },
-  {
-    "name": "columns-4",
-    "id": 0
-  },
-  {
-    "name": "columns",
-    "id": 0
-  },
-  {
     "name": "comet-2",
     "id": 0
   },
   {
-    "name": "comet",
-    "id": 0
-  },
-  {
-    "name": "command",
-    "id": 0
-  },
-  {
-    "name": "compact-disk-2",
-    "id": 0
-  },
-  {
-    "name": "compact-disk-3",
-    "id": 0
-  },
-  {
     "name": "compact-disk-disable",
-    "id": 0
-  },
-  {
-    "name": "compact-disk",
-    "id": 0
-  },
-  {
-    "name": "compass",
-    "id": 0
-  },
-  {
-    "name": "computer-gaming-mouse",
-    "id": 0
-  },
-  {
-    "name": "computer-mouse",
-    "id": 0
-  },
-  {
-    "name": "cone-construction",
-    "id": 0
-  },
-  {
-    "name": "cone-geometric",
-    "id": 0
-  },
-  {
-    "name": "construction-crane-left",
-    "id": 0
-  },
-  {
-    "name": "construction-crane",
     "id": 0
   },
   {
@@ -2908,27 +672,7 @@
     "id": 0
   },
   {
-    "name": "contract",
-    "id": 0
-  },
-  {
     "name": "contrass-alt-2",
-    "id": 0
-  },
-  {
-    "name": "contrass-alt",
-    "id": 0
-  },
-  {
-    "name": "contrass",
-    "id": 0
-  },
-  {
-    "name": "conversation-alt-2",
-    "id": 0
-  },
-  {
-    "name": "conversation-alt",
     "id": 0
   },
   {
@@ -2937,22 +681,6 @@
   },
   {
     "name": "cookie-2",
-    "id": 0
-  },
-  {
-    "name": "cookie-chocolate-chip",
-    "id": 0
-  },
-  {
-    "name": "cookie-left-2",
-    "id": 0
-  },
-  {
-    "name": "cookie-left",
-    "id": 0
-  },
-  {
-    "name": "cookie",
     "id": 0
   },
   {
@@ -2968,23 +696,7 @@
     "id": 0
   },
   {
-    "name": "copy-5",
-    "id": 0
-  },
-  {
-    "name": "copy-alt",
-    "id": 0
-  },
-  {
-    "name": "copy",
-    "id": 0
-  },
-  {
     "name": "corn-2",
-    "id": 0
-  },
-  {
-    "name": "corn",
     "id": 0
   },
   {
@@ -2992,23 +704,7 @@
     "id": 0
   },
   {
-    "name": "couldron",
-    "id": 0
-  },
-  {
-    "name": "coupon",
-    "id": 0
-  },
-  {
     "name": "cpu",
-    "id": 0
-  },
-  {
-    "name": "cradle-2",
-    "id": 0
-  },
-  {
-    "name": "cradle",
     "id": 0
   },
   {
@@ -3020,27 +716,7 @@
     "id": 0
   },
   {
-    "name": "crane-truck-left",
-    "id": 0
-  },
-  {
-    "name": "crane-truck",
-    "id": 0
-  },
-  {
-    "name": "create-note-alt",
-    "id": 0
-  },
-  {
-    "name": "create-note",
-    "id": 0
-  },
-  {
-    "name": "credit-card-2",
-    "id": 0
-  },
-  {
-    "name": "credit-card-alt",
+    "name": "credit-card",
     "id": 0
   },
   {
@@ -3048,31 +724,7 @@
     "id": 0
   },
   {
-    "name": "credit-card",
-    "id": 0
-  },
-  {
-    "name": "crop",
-    "id": 0
-  },
-  {
-    "name": "cross-arrow",
-    "id": 0
-  },
-  {
-    "name": "cross-circle",
-    "id": 0
-  },
-  {
-    "name": "cross",
-    "id": 0
-  },
-  {
-    "name": "crosshair",
-    "id": 0
-  },
-  {
-    "name": "crown-three",
+    "name": "crutch",
     "id": 0
   },
   {
@@ -3080,35 +732,7 @@
     "id": 0
   },
   {
-    "name": "crutch-3",
-    "id": 0
-  },
-  {
-    "name": "crutch-left-2",
-    "id": 0
-  },
-  {
-    "name": "crutch-left-3",
-    "id": 0
-  },
-  {
-    "name": "crutch",
-    "id": 0
-  },
-  {
-    "name": "cruzeiro",
-    "id": 0
-  },
-  {
-    "name": "cube",
-    "id": 0
-  },
-  {
     "name": "cucumber",
-    "id": 0
-  },
-  {
-    "name": "cupcake-2",
     "id": 0
   },
   {
@@ -3116,35 +740,7 @@
     "id": 0
   },
   {
-    "name": "cupcake",
-    "id": 0
-  },
-  {
-    "name": "curling-2",
-    "id": 0
-  },
-  {
-    "name": "curling-stone-2",
-    "id": 0
-  },
-  {
-    "name": "curling-stone",
-    "id": 0
-  },
-  {
-    "name": "curling",
-    "id": 0
-  },
-  {
-    "name": "cursor-2",
-    "id": 0
-  },
-  {
     "name": "cursor-down-2",
-    "id": 0
-  },
-  {
-    "name": "cursor-down-left-2",
     "id": 0
   },
   {
@@ -3156,75 +752,15 @@
     "id": 0
   },
   {
-    "name": "cursor-down-right",
-    "id": 0
-  },
-  {
-    "name": "cursor-down",
-    "id": 0
-  },
-  {
-    "name": "cursor-left-2",
-    "id": 0
-  },
-  {
-    "name": "cursor-left",
-    "id": 0
-  },
-  {
-    "name": "cursor-right-2",
-    "id": 0
-  },
-  {
     "name": "cursor-right",
     "id": 0
   },
   {
-    "name": "cursor-up-2",
-    "id": 0
-  },
-  {
-    "name": "cursor-up-left-2",
-    "id": 0
-  },
-  {
-    "name": "cursor-up-left",
-    "id": 0
-  },
-  {
-    "name": "cursor-up",
-    "id": 0
-  },
-  {
-    "name": "cursor",
-    "id": 0
-  },
-  {
-    "name": "curtains",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-10",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-3",
+    "name": "curve-arrow-down",
     "id": 0
   },
   {
     "name": "curve-arrow-down-4",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-5",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-6",
     "id": 0
   },
   {
@@ -3236,39 +772,7 @@
     "id": 0
   },
   {
-    "name": "curve-arrow-down-9",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-circle-2",
-    "id": 0
-  },
-  {
     "name": "curve-arrow-down-circle",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-square-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down-square",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-down",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-10",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-3",
     "id": 0
   },
   {
@@ -3276,27 +780,7 @@
     "id": 0
   },
   {
-    "name": "curve-arrow-left-5",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-6",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-7",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-8",
-    "id": 0
-  },
-  {
     "name": "curve-arrow-left-9",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-left-circle-2",
     "id": 0
   },
   {
@@ -3304,43 +788,11 @@
     "id": 0
   },
   {
-    "name": "curve-arrow-left-sqaure-2",
-    "id": 0
-  },
-  {
     "name": "curve-arrow-left-sqaure",
     "id": 0
   },
   {
-    "name": "curve-arrow-left",
-    "id": 0
-  },
-  {
     "name": "curve-arrow-right-10",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-3",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-4",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-5",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-6",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-7",
     "id": 0
   },
   {
@@ -3352,27 +804,7 @@
     "id": 0
   },
   {
-    "name": "curve-arrow-right-circle-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-circle",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-square-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right-square",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-right",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up-10",
+    "name": "curve-arrow-up",
     "id": 0
   },
   {
@@ -3384,15 +816,7 @@
     "id": 0
   },
   {
-    "name": "curve-arrow-up-4",
-    "id": 0
-  },
-  {
     "name": "curve-arrow-up-5",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up-6",
     "id": 0
   },
   {
@@ -3400,39 +824,7 @@
     "id": 0
   },
   {
-    "name": "curve-arrow-up-8",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up-9",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up-circle-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up-circle",
-    "id": 0
-  },
-  {
     "name": "curve-arrow-up-square-2",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up-square",
-    "id": 0
-  },
-  {
-    "name": "curve-arrow-up",
-    "id": 0
-  },
-  {
-    "name": "cut-2",
-    "id": 0
-  },
-  {
-    "name": "cut",
     "id": 0
   },
   {
@@ -3440,35 +832,7 @@
     "id": 0
   },
   {
-    "name": "cutting-board-3",
-    "id": 0
-  },
-  {
-    "name": "cutting-board-4",
-    "id": 0
-  },
-  {
-    "name": "cutting-board",
-    "id": 0
-  },
-  {
-    "name": "cyclone",
-    "id": 0
-  },
-  {
-    "name": "cylinder-2",
-    "id": 0
-  },
-  {
-    "name": "cylinder",
-    "id": 0
-  },
-  {
     "name": "daikon",
-    "id": 0
-  },
-  {
-    "name": "danger",
     "id": 0
   },
   {
@@ -3476,7 +840,7 @@
     "id": 0
   },
   {
-    "name": "dartboard",
+    "name": "dashboard-alt",
     "id": 0
   },
   {
@@ -3488,63 +852,11 @@
     "id": 0
   },
   {
-    "name": "dashboard-alt",
-    "id": 0
-  },
-  {
-    "name": "dashboard",
-    "id": 0
-  },
-  {
-    "name": "database-2",
-    "id": 0
-  },
-  {
-    "name": "database-3",
-    "id": 0
-  },
-  {
-    "name": "database-alert",
-    "id": 0
-  },
-  {
-    "name": "database-error",
-    "id": 0
-  },
-  {
     "name": "database",
     "id": 0
   },
   {
-    "name": "datastore",
-    "id": 0
-  },
-  {
-    "name": "date-add",
-    "id": 0
-  },
-  {
-    "name": "date-alert",
-    "id": 0
-  },
-  {
-    "name": "date-alt-add",
-    "id": 0
-  },
-  {
-    "name": "date-alt-alert",
-    "id": 0
-  },
-  {
-    "name": "date-alt-calender",
-    "id": 0
-  },
-  {
-    "name": "date-alt-check",
-    "id": 0
-  },
-  {
-    "name": "date-alt-cross",
+    "name": "database-2",
     "id": 0
   },
   {
@@ -3556,23 +868,7 @@
     "id": 0
   },
   {
-    "name": "date-alt-left",
-    "id": 0
-  },
-  {
-    "name": "date-alt-question",
-    "id": 0
-  },
-  {
-    "name": "date-alt-remove-alt",
-    "id": 0
-  },
-  {
     "name": "date-alt-remove",
-    "id": 0
-  },
-  {
-    "name": "date-alt-right",
     "id": 0
   },
   {
@@ -3580,55 +876,7 @@
     "id": 0
   },
   {
-    "name": "date-alt-star",
-    "id": 0
-  },
-  {
-    "name": "date-alt-up",
-    "id": 0
-  },
-  {
-    "name": "date-calendar",
-    "id": 0
-  },
-  {
-    "name": "date-chart",
-    "id": 0
-  },
-  {
-    "name": "date-check",
-    "id": 0
-  },
-  {
     "name": "date-cross",
-    "id": 0
-  },
-  {
-    "name": "date-double-check",
-    "id": 0
-  },
-  {
-    "name": "date-down",
-    "id": 0
-  },
-  {
-    "name": "date-favorite",
-    "id": 0
-  },
-  {
-    "name": "date-forward",
-    "id": 0
-  },
-  {
-    "name": "date-left",
-    "id": 0
-  },
-  {
-    "name": "date-performance",
-    "id": 0
-  },
-  {
-    "name": "date-question",
     "id": 0
   },
   {
@@ -3636,15 +884,7 @@
     "id": 0
   },
   {
-    "name": "date-remove",
-    "id": 0
-  },
-  {
     "name": "date-right",
-    "id": 0
-  },
-  {
-    "name": "date-search",
     "id": 0
   },
   {
@@ -3656,99 +896,7 @@
     "id": 0
   },
   {
-    "name": "date-up",
-    "id": 0
-  },
-  {
-    "name": "date",
-    "id": 0
-  },
-  {
-    "name": "deadlift",
-    "id": 0
-  },
-  {
-    "name": "deaf",
-    "id": 0
-  },
-  {
-    "name": "deafness",
-    "id": 0
-  },
-  {
-    "name": "debit-card-left",
-    "id": 0
-  },
-  {
-    "name": "debit-card",
-    "id": 0
-  },
-  {
-    "name": "debit-purchase-left",
-    "id": 0
-  },
-  {
-    "name": "debit-purchase",
-    "id": 0
-  },
-  {
-    "name": "decrease-circle",
-    "id": 0
-  },
-  {
-    "name": "dedent-2",
-    "id": 0
-  },
-  {
     "name": "dedent",
-    "id": 0
-  },
-  {
-    "name": "delete-alt-2",
-    "id": 0
-  },
-  {
-    "name": "delete-alt",
-    "id": 0
-  },
-  {
-    "name": "delete-collection",
-    "id": 0
-  },
-  {
-    "name": "delete-contact-book",
-    "id": 0
-  },
-  {
-    "name": "delete-file-2",
-    "id": 0
-  },
-  {
-    "name": "delete-file",
-    "id": 0
-  },
-  {
-    "name": "delete-music-collection",
-    "id": 0
-  },
-  {
-    "name": "delete-playlist-2",
-    "id": 0
-  },
-  {
-    "name": "delete-playlist-3",
-    "id": 0
-  },
-  {
-    "name": "delete-playlist",
-    "id": 0
-  },
-  {
-    "name": "delete-user-2",
-    "id": 0
-  },
-  {
-    "name": "delete-user-5",
     "id": 0
   },
   {
@@ -3756,55 +904,7 @@
     "id": 0
   },
   {
-    "name": "delete-user-circle-left",
-    "id": 0
-  },
-  {
     "name": "delete-user-circle",
-    "id": 0
-  },
-  {
-    "name": "delete-user-left-2",
-    "id": 0
-  },
-  {
-    "name": "delete-user-left-5",
-    "id": 0
-  },
-  {
-    "name": "delete-user-left-8",
-    "id": 0
-  },
-  {
-    "name": "delete-user-left",
-    "id": 0
-  },
-  {
-    "name": "delete-user-square-left",
-    "id": 0
-  },
-  {
-    "name": "delete-user-square",
-    "id": 0
-  },
-  {
-    "name": "delete-user",
-    "id": 0
-  },
-  {
-    "name": "delete",
-    "id": 0
-  },
-  {
-    "name": "delivery-truck-left",
-    "id": 0
-  },
-  {
-    "name": "delivery-truck",
-    "id": 0
-  },
-  {
-    "name": "delta-circle",
     "id": 0
   },
   {
@@ -3812,47 +912,11 @@
     "id": 0
   },
   {
-    "name": "delta",
-    "id": 0
-  },
-  {
-    "name": "denarius-circle",
-    "id": 0
-  },
-  {
-    "name": "denarius-square",
-    "id": 0
-  },
-  {
-    "name": "denarius",
-    "id": 0
-  },
-  {
-    "name": "departure-left",
-    "id": 0
-  },
-  {
     "name": "departure",
     "id": 0
   },
   {
-    "name": "desk-2",
-    "id": 0
-  },
-  {
-    "name": "desk-3",
-    "id": 0
-  },
-  {
-    "name": "desk-4",
-    "id": 0
-  },
-  {
-    "name": "desk-5",
-    "id": 0
-  },
-  {
-    "name": "desk-6",
+    "name": "departure-left",
     "id": 0
   },
   {
@@ -3864,6 +928,10 @@
     "id": 0
   },
   {
+    "name": "desk-lamp",
+    "id": 0
+  },
+  {
     "name": "desk-lamp-left",
     "id": 0
   },
@@ -3872,35 +940,7 @@
     "id": 0
   },
   {
-    "name": "desk-lamp-round-left-2",
-    "id": 0
-  },
-  {
-    "name": "desk-lamp-round-left",
-    "id": 0
-  },
-  {
-    "name": "desk-lamp-round",
-    "id": 0
-  },
-  {
-    "name": "desk-lamp",
-    "id": 0
-  },
-  {
-    "name": "desk",
-    "id": 0
-  },
-  {
-    "name": "device-projector",
-    "id": 0
-  },
-  {
-    "name": "devices",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar-2",
+    "name": "diagram-bar",
     "id": 0
   },
   {
@@ -3912,71 +952,11 @@
     "id": 0
   },
   {
-    "name": "diagram-bar-5",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar-6",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar-downtrend-2",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar-downtrend",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar-uptrend-2",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar-uptrend",
-    "id": 0
-  },
-  {
-    "name": "diagram-bar",
-    "id": 0
-  },
-  {
-    "name": "diameter-2",
-    "id": 0
-  },
-  {
     "name": "diameter-circle-2",
     "id": 0
   },
   {
-    "name": "diameter-circle",
-    "id": 0
-  },
-  {
-    "name": "diameter",
-    "id": 0
-  },
-  {
-    "name": "diary-left",
-    "id": 0
-  },
-  {
-    "name": "diary",
-    "id": 0
-  },
-  {
-    "name": "digibyte",
-    "id": 0
-  },
-  {
     "name": "dimsum",
-    "id": 0
-  },
-  {
-    "name": "direction-arrow-2",
-    "id": 0
-  },
-  {
-    "name": "direction-arrow",
     "id": 0
   },
   {
@@ -3988,43 +968,11 @@
     "id": 0
   },
   {
-    "name": "direction-sign-2",
-    "id": 0
-  },
-  {
     "name": "direction-sign",
     "id": 0
   },
   {
-    "name": "direction",
-    "id": 0
-  },
-  {
     "name": "disable-airplane",
-    "id": 0
-  },
-  {
-    "name": "disc",
-    "id": 0
-  },
-  {
-    "name": "discord",
-    "id": 0
-  },
-  {
-    "name": "discount",
-    "id": 0
-  },
-  {
-    "name": "discussion",
-    "id": 0
-  },
-  {
-    "name": "diskette-save",
-    "id": 0
-  },
-  {
-    "name": "diskette",
     "id": 0
   },
   {
@@ -4036,19 +984,11 @@
     "id": 0
   },
   {
-    "name": "divide-2",
-    "id": 0
-  },
-  {
     "name": "divide-circle",
     "id": 0
   },
   {
     "name": "divide-square",
-    "id": 0
-  },
-  {
-    "name": "divide",
     "id": 0
   },
   {
@@ -4060,42 +1000,6 @@
     "id": 0
   },
   {
-    "name": "dna-4",
-    "id": 0
-  },
-  {
-    "name": "dna",
-    "id": 0
-  },
-  {
-    "name": "document-alert-left",
-    "id": 0
-  },
-  {
-    "name": "document-alert",
-    "id": 0
-  },
-  {
-    "name": "document-error-left",
-    "id": 0
-  },
-  {
-    "name": "document-error",
-    "id": 0
-  },
-  {
-    "name": "dollar-sign",
-    "id": 0
-  },
-  {
-    "name": "dollar-symbol",
-    "id": 0
-  },
-  {
-    "name": "dollar",
-    "id": 0
-  },
-  {
     "name": "dome",
     "id": 0
   },
@@ -4104,23 +1008,7 @@
     "id": 0
   },
   {
-    "name": "done-collection",
-    "id": 0
-  },
-  {
     "name": "done-music-collection",
-    "id": 0
-  },
-  {
-    "name": "done-playlist-2",
-    "id": 0
-  },
-  {
-    "name": "done-playlist-3",
-    "id": 0
-  },
-  {
-    "name": "done-playlist",
     "id": 0
   },
   {
@@ -4132,27 +1020,7 @@
     "id": 0
   },
   {
-    "name": "door-3",
-    "id": 0
-  },
-  {
     "name": "door-handle-2",
-    "id": 0
-  },
-  {
-    "name": "door-handle-3",
-    "id": 0
-  },
-  {
-    "name": "door-handle-4",
-    "id": 0
-  },
-  {
-    "name": "door-handle",
-    "id": 0
-  },
-  {
-    "name": "door-hanger-2",
     "id": 0
   },
   {
@@ -4160,51 +1028,7 @@
     "id": 0
   },
   {
-    "name": "door-hanger-4",
-    "id": 0
-  },
-  {
-    "name": "door-hanger",
-    "id": 0
-  },
-  {
-    "name": "door-house-2",
-    "id": 0
-  },
-  {
-    "name": "door-house",
-    "id": 0
-  },
-  {
-    "name": "door",
-    "id": 0
-  },
-  {
     "name": "double-down-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "double-down-sign-circle",
-    "id": 0
-  },
-  {
-    "name": "double-down-sign-octagon",
-    "id": 0
-  },
-  {
-    "name": "double-down-sign-square",
-    "id": 0
-  },
-  {
-    "name": "double-down-sign",
-    "id": 0
-  },
-  {
-    "name": "double-left-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "double-left-sign-circle",
     "id": 0
   },
   {
@@ -4212,47 +1036,7 @@
     "id": 0
   },
   {
-    "name": "double-left-sign-square",
-    "id": 0
-  },
-  {
-    "name": "double-left-sign",
-    "id": 0
-  },
-  {
     "name": "double-right-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "double-right-sign-circle",
-    "id": 0
-  },
-  {
-    "name": "double-right-sign-octagon",
-    "id": 0
-  },
-  {
-    "name": "double-right-sign-square",
-    "id": 0
-  },
-  {
-    "name": "double-right-sign",
-    "id": 0
-  },
-  {
-    "name": "double-up-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "double-up-sign-circle",
-    "id": 0
-  },
-  {
-    "name": "double-up-sign-octagon",
-    "id": 0
-  },
-  {
-    "name": "double-up-sign-square",
     "id": 0
   },
   {
@@ -4260,11 +1044,7 @@
     "id": 0
   },
   {
-    "name": "doughnut",
-    "id": 0
-  },
-  {
-    "name": "down-2",
+    "name": "down",
     "id": 0
   },
   {
@@ -4272,59 +1052,7 @@
     "id": 0
   },
   {
-    "name": "down-alt",
-    "id": 0
-  },
-  {
-    "name": "down-arrow-circle",
-    "id": 0
-  },
-  {
-    "name": "down-arrow-direction-square",
-    "id": 0
-  },
-  {
-    "name": "down-arrow",
-    "id": 0
-  },
-  {
-    "name": "down-circle-2",
-    "id": 0
-  },
-  {
-    "name": "down-circle",
-    "id": 0
-  },
-  {
-    "name": "down-direction-2",
-    "id": 0
-  },
-  {
     "name": "down-direction-3",
-    "id": 0
-  },
-  {
-    "name": "down-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "down-direction-square",
-    "id": 0
-  },
-  {
-    "name": "down-direction",
-    "id": 0
-  },
-  {
-    "name": "down-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "down-junction-sign",
-    "id": 0
-  },
-  {
-    "name": "down-left-arrow-circle",
     "id": 0
   },
   {
@@ -4332,31 +1060,7 @@
     "id": 0
   },
   {
-    "name": "down-left-direction-2",
-    "id": 0
-  },
-  {
     "name": "down-left-octagon",
-    "id": 0
-  },
-  {
-    "name": "down-left-right-direction",
-    "id": 0
-  },
-  {
-    "name": "down-left",
-    "id": 0
-  },
-  {
-    "name": "down-octagon-2",
-    "id": 0
-  },
-  {
-    "name": "down-octagon",
-    "id": 0
-  },
-  {
-    "name": "down-right-arrow-circle",
     "id": 0
   },
   {
@@ -4364,19 +1068,7 @@
     "id": 0
   },
   {
-    "name": "down-right-direction-2",
-    "id": 0
-  },
-  {
     "name": "down-right-octagon",
-    "id": 0
-  },
-  {
-    "name": "down-right",
-    "id": 0
-  },
-  {
-    "name": "down-sign-1",
     "id": 0
   },
   {
@@ -4384,23 +1076,7 @@
     "id": 0
   },
   {
-    "name": "down-square-2",
-    "id": 0
-  },
-  {
     "name": "down-square-3",
-    "id": 0
-  },
-  {
-    "name": "down-square-4",
-    "id": 0
-  },
-  {
-    "name": "down-square",
-    "id": 0
-  },
-  {
-    "name": "down-trend-left-round",
     "id": 0
   },
   {
@@ -4408,51 +1084,11 @@
     "id": 0
   },
   {
-    "name": "down-trend-round",
-    "id": 0
-  },
-  {
-    "name": "down-trend",
-    "id": 0
-  },
-  {
     "name": "down-up-arrow",
     "id": 0
   },
   {
-    "name": "down-up-left-right-arrow",
-    "id": 0
-  },
-  {
     "name": "down-up-right-left-arrow",
-    "id": 0
-  },
-  {
-    "name": "down-up-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "down",
-    "id": 0
-  },
-  {
-    "name": "download-10",
-    "id": 0
-  },
-  {
-    "name": "download-2",
-    "id": 0
-  },
-  {
-    "name": "download-3",
-    "id": 0
-  },
-  {
-    "name": "download-4",
-    "id": 0
-  },
-  {
-    "name": "download-5",
     "id": 0
   },
   {
@@ -4468,47 +1104,7 @@
     "id": 0
   },
   {
-    "name": "download-9",
-    "id": 0
-  },
-  {
-    "name": "download-alt-2",
-    "id": 0
-  },
-  {
-    "name": "download-alt-3",
-    "id": 0
-  },
-  {
-    "name": "download-alt-4",
-    "id": 0
-  },
-  {
-    "name": "download-alt",
-    "id": 0
-  },
-  {
-    "name": "download-double-arrow-2",
-    "id": 0
-  },
-  {
-    "name": "download-double-arrow-3",
-    "id": 0
-  },
-  {
     "name": "download-double-arrow-4",
-    "id": 0
-  },
-  {
-    "name": "download-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "download",
-    "id": 0
-  },
-  {
-    "name": "draw-compass-2",
     "id": 0
   },
   {
@@ -4516,167 +1112,11 @@
     "id": 0
   },
   {
-    "name": "drawers-2",
-    "id": 0
-  },
-  {
-    "name": "drawers-3",
-    "id": 0
-  },
-  {
     "name": "drawers",
     "id": 0
   },
   {
-    "name": "drawing-tablet-pencil-left",
-    "id": 0
-  },
-  {
-    "name": "drawing-tablet-pencil",
-    "id": 0
-  },
-  {
-    "name": "drawing-tablet-right",
-    "id": 0
-  },
-  {
-    "name": "drawing-tablet",
-    "id": 0
-  },
-  {
-    "name": "dribbble",
-    "id": 0
-  },
-  {
-    "name": "drill-back",
-    "id": 0
-  },
-  {
-    "name": "droplet",
-    "id": 0
-  },
-  {
-    "name": "dumbbell-2",
-    "id": 0
-  },
-  {
-    "name": "dumbbell-3",
-    "id": 0
-  },
-  {
-    "name": "dumbbell",
-    "id": 0
-  },
-  {
-    "name": "ear-left",
-    "id": 0
-  },
-  {
-    "name": "ear",
-    "id": 0
-  },
-  {
-    "name": "earbuds",
-    "id": 0
-  },
-  {
-    "name": "earphone-bluetooth-2",
-    "id": 0
-  },
-  {
-    "name": "earphone-bluetooth",
-    "id": 0
-  },
-  {
-    "name": "earphone",
-    "id": 0
-  },
-  {
-    "name": "edit-alt-2",
-    "id": 0
-  },
-  {
-    "name": "edit-alt-3",
-    "id": 0
-  },
-  {
-    "name": "edit-alt-4",
-    "id": 0
-  },
-  {
-    "name": "edit-alt-5",
-    "id": 0
-  },
-  {
-    "name": "edit-alt-6",
-    "id": 0
-  },
-  {
-    "name": "edit-alt",
-    "id": 0
-  },
-  {
-    "name": "edit-circle-alt",
-    "id": 0
-  },
-  {
-    "name": "edit-circle",
-    "id": 0
-  },
-  {
-    "name": "edit-user-2",
-    "id": 0
-  },
-  {
-    "name": "edit-user-3",
-    "id": 0
-  },
-  {
-    "name": "edit-user-4",
-    "id": 0
-  },
-  {
-    "name": "edit-user-6",
-    "id": 0
-  },
-  {
-    "name": "edit-user-7",
-    "id": 0
-  },
-  {
-    "name": "edit-user-8",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left-2",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left-3",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left-4",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left-6",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left-7",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left-8",
-    "id": 0
-  },
-  {
-    "name": "edit-user-left",
-    "id": 0
-  },
-  {
-    "name": "edit-user",
+    "name": "drawers-2",
     "id": 0
   },
   {
@@ -4684,11 +1124,23 @@
     "id": 0
   },
   {
-    "name": "egg-fried-01",
+    "name": "edit-alt-6",
     "id": 0
   },
   {
-    "name": "egg-fried-02",
+    "name": "edit-user",
+    "id": 0
+  },
+  {
+    "name": "edit-user-8",
+    "id": 0
+  },
+  {
+    "name": "edit-user-left-8",
+    "id": 0
+  },
+  {
+    "name": "egg-fried-01",
     "id": 0
   },
   {
@@ -4696,27 +1148,7 @@
     "id": 0
   },
   {
-    "name": "egg-hard-boiled",
-    "id": 0
-  },
-  {
-    "name": "egg",
-    "id": 0
-  },
-  {
-    "name": "eggplant",
-    "id": 0
-  },
-  {
-    "name": "eggs-2",
-    "id": 0
-  },
-  {
-    "name": "eggs",
-    "id": 0
-  },
-  {
-    "name": "electric-iron",
+    "name": "electrocardiogram",
     "id": 0
   },
   {
@@ -4724,35 +1156,7 @@
     "id": 0
   },
   {
-    "name": "electrocardiogram-3",
-    "id": 0
-  },
-  {
-    "name": "electrocardiogram-4",
-    "id": 0
-  },
-  {
-    "name": "electrocardiogram",
-    "id": 0
-  },
-  {
-    "name": "email-file-text",
-    "id": 0
-  },
-  {
     "name": "email-file",
-    "id": 0
-  },
-  {
-    "name": "email-open",
-    "id": 0
-  },
-  {
-    "name": "email",
-    "id": 0
-  },
-  {
-    "name": "energy-drink",
     "id": 0
   },
   {
@@ -4760,99 +1164,7 @@
     "id": 0
   },
   {
-    "name": "eraser-2",
-    "id": 0
-  },
-  {
-    "name": "eraser-3",
-    "id": 0
-  },
-  {
-    "name": "eraser-4",
-    "id": 0
-  },
-  {
-    "name": "eraser-5",
-    "id": 0
-  },
-  {
-    "name": "eraser",
-    "id": 0
-  },
-  {
     "name": "eruption-2",
-    "id": 0
-  },
-  {
-    "name": "eruption",
-    "id": 0
-  },
-  {
-    "name": "ethereum",
-    "id": 0
-  },
-  {
-    "name": "exchange-2",
-    "id": 0
-  },
-  {
-    "name": "exchange-3",
-    "id": 0
-  },
-  {
-    "name": "exchange-4",
-    "id": 0
-  },
-  {
-    "name": "exchange-5",
-    "id": 0
-  },
-  {
-    "name": "exchange-dollar",
-    "id": 0
-  },
-  {
-    "name": "exchange-euro",
-    "id": 0
-  },
-  {
-    "name": "exchange",
-    "id": 0
-  },
-  {
-    "name": "exclamation",
-    "id": 0
-  },
-  {
-    "name": "exercise-ball",
-    "id": 0
-  },
-  {
-    "name": "export-2",
-    "id": 0
-  },
-  {
-    "name": "export-left-2",
-    "id": 0
-  },
-  {
-    "name": "export-left",
-    "id": 0
-  },
-  {
-    "name": "export",
-    "id": 0
-  },
-  {
-    "name": "eye-alt",
-    "id": 0
-  },
-  {
-    "name": "eye-off",
-    "id": 0
-  },
-  {
-    "name": "eye",
     "id": 0
   },
   {
@@ -4864,31 +1176,7 @@
     "id": 0
   },
   {
-    "name": "facebook",
-    "id": 0
-  },
-  {
-    "name": "faceid",
-    "id": 0
-  },
-  {
-    "name": "facetime-circle",
-    "id": 0
-  },
-  {
     "name": "facetime-square",
-    "id": 0
-  },
-  {
-    "name": "facetime",
-    "id": 0
-  },
-  {
-    "name": "fahrenheit-square",
-    "id": 0
-  },
-  {
-    "name": "fahrenheit",
     "id": 0
   },
   {
@@ -4896,71 +1184,11 @@
     "id": 0
   },
   {
-    "name": "fast-backward-circle",
-    "id": 0
-  },
-  {
-    "name": "fast-backward-square",
-    "id": 0
-  },
-  {
-    "name": "fast-backward",
-    "id": 0
-  },
-  {
-    "name": "fast-forward-2",
-    "id": 0
-  },
-  {
-    "name": "fast-forward-circle",
-    "id": 0
-  },
-  {
     "name": "fast-forward-square",
     "id": 0
   },
   {
-    "name": "fast-forward",
-    "id": 0
-  },
-  {
-    "name": "favourite-alt",
-    "id": 0
-  },
-  {
-    "name": "favourite",
-    "id": 0
-  },
-  {
-    "name": "feather",
-    "id": 0
-  },
-  {
-    "name": "fence",
-    "id": 0
-  },
-  {
-    "name": "fencing-2",
-    "id": 0
-  },
-  {
-    "name": "fencing",
-    "id": 0
-  },
-  {
-    "name": "fighter-jet-left",
-    "id": 0
-  },
-  {
-    "name": "fighter-jet-right",
-    "id": 0
-  },
-  {
-    "name": "fighter-jet",
-    "id": 0
-  },
-  {
-    "name": "figma",
+    "name": "file",
     "id": 0
   },
   {
@@ -4968,43 +1196,7 @@
     "id": 0
   },
   {
-    "name": "file-11",
-    "id": 0
-  },
-  {
     "name": "file-12",
-    "id": 0
-  },
-  {
-    "name": "file-13",
-    "id": 0
-  },
-  {
-    "name": "file-2",
-    "id": 0
-  },
-  {
-    "name": "file-3",
-    "id": 0
-  },
-  {
-    "name": "file-4",
-    "id": 0
-  },
-  {
-    "name": "file-5",
-    "id": 0
-  },
-  {
-    "name": "file-6",
-    "id": 0
-  },
-  {
-    "name": "file-7",
-    "id": 0
-  },
-  {
-    "name": "file-8",
     "id": 0
   },
   {
@@ -5012,15 +1204,7 @@
     "id": 0
   },
   {
-    "name": "file-alert-left",
-    "id": 0
-  },
-  {
-    "name": "file-alert",
-    "id": 0
-  },
-  {
-    "name": "file-audio-2",
+    "name": "file-audio",
     "id": 0
   },
   {
@@ -5032,47 +1216,7 @@
     "id": 0
   },
   {
-    "name": "file-audio",
-    "id": 0
-  },
-  {
-    "name": "file-block",
-    "id": 0
-  },
-  {
     "name": "file-check",
-    "id": 0
-  },
-  {
-    "name": "file-checklist-2",
-    "id": 0
-  },
-  {
-    "name": "file-checklist",
-    "id": 0
-  },
-  {
-    "name": "file-code-2",
-    "id": 0
-  },
-  {
-    "name": "file-code-3",
-    "id": 0
-  },
-  {
-    "name": "file-code-4",
-    "id": 0
-  },
-  {
-    "name": "file-code-5",
-    "id": 0
-  },
-  {
-    "name": "file-code-6",
-    "id": 0
-  },
-  {
-    "name": "file-code-7",
     "id": 0
   },
   {
@@ -5080,39 +1224,7 @@
     "id": 0
   },
   {
-    "name": "file-code",
-    "id": 0
-  },
-  {
-    "name": "file-corrupt-2",
-    "id": 0
-  },
-  {
     "name": "file-corrupt-left-2",
-    "id": 0
-  },
-  {
-    "name": "file-corrupt-left",
-    "id": 0
-  },
-  {
-    "name": "file-corrupt",
-    "id": 0
-  },
-  {
-    "name": "file-done-2",
-    "id": 0
-  },
-  {
-    "name": "file-done-3",
-    "id": 0
-  },
-  {
-    "name": "file-done-4",
-    "id": 0
-  },
-  {
-    "name": "file-done-5",
     "id": 0
   },
   {
@@ -5120,31 +1232,11 @@
     "id": 0
   },
   {
-    "name": "file-edit",
-    "id": 0
-  },
-  {
-    "name": "file-error-left",
-    "id": 0
-  },
-  {
     "name": "file-error",
     "id": 0
   },
   {
-    "name": "file-favorite-2",
-    "id": 0
-  },
-  {
-    "name": "file-favorite-3",
-    "id": 0
-  },
-  {
     "name": "file-favorite-4",
-    "id": 0
-  },
-  {
-    "name": "file-favorite-5",
     "id": 0
   },
   {
@@ -5156,63 +1248,7 @@
     "id": 0
   },
   {
-    "name": "file-favorite-8",
-    "id": 0
-  },
-  {
     "name": "file-favorite-9",
-    "id": 0
-  },
-  {
-    "name": "file-favorite-alt",
-    "id": 0
-  },
-  {
-    "name": "file-favorite",
-    "id": 0
-  },
-  {
-    "name": "file-folder-2",
-    "id": 0
-  },
-  {
-    "name": "file-folder-3",
-    "id": 0
-  },
-  {
-    "name": "file-folder-4",
-    "id": 0
-  },
-  {
-    "name": "file-folder-alert-left",
-    "id": 0
-  },
-  {
-    "name": "file-folder-alert",
-    "id": 0
-  },
-  {
-    "name": "file-folder-approved-2",
-    "id": 0
-  },
-  {
-    "name": "file-folder-approved",
-    "id": 0
-  },
-  {
-    "name": "file-folder-document-2",
-    "id": 0
-  },
-  {
-    "name": "file-folder-document",
-    "id": 0
-  },
-  {
-    "name": "file-folder-done-2",
-    "id": 0
-  },
-  {
-    "name": "file-folder-done",
     "id": 0
   },
   {
@@ -5220,15 +1256,11 @@
     "id": 0
   },
   {
-    "name": "file-movie-2",
+    "name": "file-folder-2",
     "id": 0
   },
   {
-    "name": "file-movie-3",
-    "id": 0
-  },
-  {
-    "name": "file-movie-4",
+    "name": "file-folder-document",
     "id": 0
   },
   {
@@ -5236,15 +1268,7 @@
     "id": 0
   },
   {
-    "name": "file-music-2",
-    "id": 0
-  },
-  {
-    "name": "file-music-3",
-    "id": 0
-  },
-  {
-    "name": "file-music-4",
+    "name": "file-movie-3",
     "id": 0
   },
   {
@@ -5256,47 +1280,7 @@
     "id": 0
   },
   {
-    "name": "file-reload",
-    "id": 0
-  },
-  {
-    "name": "file-remove",
-    "id": 0
-  },
-  {
-    "name": "file-search",
-    "id": 0
-  },
-  {
-    "name": "file-video-2",
-    "id": 0
-  },
-  {
-    "name": "file-video-3",
-    "id": 0
-  },
-  {
-    "name": "file-video-4",
-    "id": 0
-  },
-  {
-    "name": "file-video-alert-2",
-    "id": 0
-  },
-  {
     "name": "file-video-alert-left-2",
-    "id": 0
-  },
-  {
-    "name": "file-video-alert-left",
-    "id": 0
-  },
-  {
-    "name": "file-video-alert",
-    "id": 0
-  },
-  {
-    "name": "file-video-player-2",
     "id": 0
   },
   {
@@ -5304,67 +1288,7 @@
     "id": 0
   },
   {
-    "name": "file-video-player-4",
-    "id": 0
-  },
-  {
-    "name": "file-video-player",
-    "id": 0
-  },
-  {
-    "name": "file-video",
-    "id": 0
-  },
-  {
-    "name": "file-zip-2",
-    "id": 0
-  },
-  {
-    "name": "file-zip-3",
-    "id": 0
-  },
-  {
-    "name": "file-zip-4",
-    "id": 0
-  },
-  {
-    "name": "file-zip-alert-left",
-    "id": 0
-  },
-  {
-    "name": "file-zip-alert",
-    "id": 0
-  },
-  {
-    "name": "file-zip-error-left",
-    "id": 0
-  },
-  {
     "name": "file-zip-error",
-    "id": 0
-  },
-  {
-    "name": "file-zip",
-    "id": 0
-  },
-  {
-    "name": "file",
-    "id": 0
-  },
-  {
-    "name": "files",
-    "id": 0
-  },
-  {
-    "name": "film-movie-2",
-    "id": 0
-  },
-  {
-    "name": "film-movie",
-    "id": 0
-  },
-  {
-    "name": "film-roll",
     "id": 0
   },
   {
@@ -5372,23 +1296,11 @@
     "id": 0
   },
   {
-    "name": "filter-alt-2",
-    "id": 0
-  },
-  {
-    "name": "filter-alt-3",
+    "name": "film-movie-2",
     "id": 0
   },
   {
     "name": "filter-alt",
-    "id": 0
-  },
-  {
-    "name": "filter",
-    "id": 0
-  },
-  {
-    "name": "fire-left",
     "id": 0
   },
   {
@@ -5400,139 +1312,7 @@
     "id": 0
   },
   {
-    "name": "first-aid-kit-2",
-    "id": 0
-  },
-  {
-    "name": "first-aid-kit-3",
-    "id": 0
-  },
-  {
-    "name": "first-aid-kit",
-    "id": 0
-  },
-  {
-    "name": "fish-left",
-    "id": 0
-  },
-  {
-    "name": "fish",
-    "id": 0
-  },
-  {
-    "name": "fishing-float-2",
-    "id": 0
-  },
-  {
-    "name": "fishing-float",
-    "id": 0
-  },
-  {
-    "name": "fishing-hook-left",
-    "id": 0
-  },
-  {
-    "name": "fishing-hook",
-    "id": 0
-  },
-  {
-    "name": "fishing",
-    "id": 0
-  },
-  {
-    "name": "flag-2",
-    "id": 0
-  },
-  {
-    "name": "flag-3",
-    "id": 0
-  },
-  {
-    "name": "flag-4",
-    "id": 0
-  },
-  {
-    "name": "flag-5",
-    "id": 0
-  },
-  {
     "name": "flag-square",
-    "id": 0
-  },
-  {
-    "name": "flag-triagle",
-    "id": 0
-  },
-  {
-    "name": "flag",
-    "id": 0
-  },
-  {
-    "name": "flashlight-bottom",
-    "id": 0
-  },
-  {
-    "name": "flashlight-left",
-    "id": 0
-  },
-  {
-    "name": "flashlight-right",
-    "id": 0
-  },
-  {
-    "name": "flashlight-top",
-    "id": 0
-  },
-  {
-    "name": "flashlight",
-    "id": 0
-  },
-  {
-    "name": "flask-2",
-    "id": 0
-  },
-  {
-    "name": "flask-3",
-    "id": 0
-  },
-  {
-    "name": "flask-4",
-    "id": 0
-  },
-  {
-    "name": "flask",
-    "id": 0
-  },
-  {
-    "name": "flat-screen-tv",
-    "id": 0
-  },
-  {
-    "name": "flickr",
-    "id": 0
-  },
-  {
-    "name": "flipboard",
-    "id": 0
-  },
-  {
-    "name": "flood-2",
-    "id": 0
-  },
-  {
-    "name": "flood",
-    "id": 0
-  },
-  {
-    "name": "floor-lamp",
-    "id": 0
-  },
-  {
-    "name": "floppy-disk-alert-left",
-    "id": 0
-  },
-  {
-    "name": "floppy-disk-alert",
     "id": 0
   },
   {
@@ -5540,67 +1320,7 @@
     "id": 0
   },
   {
-    "name": "floppy-disk",
-    "id": 0
-  },
-  {
-    "name": "folder-add",
-    "id": 0
-  },
-  {
-    "name": "folder-alert-2",
-    "id": 0
-  },
-  {
-    "name": "folder-alert-left-2",
-    "id": 0
-  },
-  {
-    "name": "folder-alert-left",
-    "id": 0
-  },
-  {
-    "name": "folder-alert",
-    "id": 0
-  },
-  {
-    "name": "folder-alt",
-    "id": 0
-  },
-  {
-    "name": "folder-block",
-    "id": 0
-  },
-  {
-    "name": "folder-check",
-    "id": 0
-  },
-  {
-    "name": "folder-code-2",
-    "id": 0
-  },
-  {
-    "name": "folder-code-3",
-    "id": 0
-  },
-  {
-    "name": "folder-code",
-    "id": 0
-  },
-  {
-    "name": "folder-edit",
-    "id": 0
-  },
-  {
-    "name": "folder-favorite",
-    "id": 0
-  },
-  {
-    "name": "folder-remove",
-    "id": 0
-  },
-  {
-    "name": "folder-search",
+    "name": "folder-zip",
     "id": 0
   },
   {
@@ -5608,31 +1328,7 @@
     "id": 0
   },
   {
-    "name": "folder-zip",
-    "id": 0
-  },
-  {
-    "name": "folder",
-    "id": 0
-  },
-  {
-    "name": "font-2",
-    "id": 0
-  },
-  {
     "name": "font-3",
-    "id": 0
-  },
-  {
-    "name": "font-4",
-    "id": 0
-  },
-  {
-    "name": "font-5",
-    "id": 0
-  },
-  {
-    "name": "font-6",
     "id": 0
   },
   {
@@ -5640,19 +1336,7 @@
     "id": 0
   },
   {
-    "name": "font-square-2",
-    "id": 0
-  },
-  {
-    "name": "font-square-3",
-    "id": 0
-  },
-  {
     "name": "font-square",
-    "id": 0
-  },
-  {
-    "name": "font",
     "id": 0
   },
   {
@@ -5660,15 +1344,7 @@
     "id": 0
   },
   {
-    "name": "football-blocking",
-    "id": 0
-  },
-  {
     "name": "football-field-2",
-    "id": 0
-  },
-  {
-    "name": "football-field",
     "id": 0
   },
   {
@@ -5676,23 +1352,7 @@
     "id": 0
   },
   {
-    "name": "football-flag-corner-3",
-    "id": 0
-  },
-  {
     "name": "football-flag-corner-4",
-    "id": 0
-  },
-  {
-    "name": "football-flag-corner",
-    "id": 0
-  },
-  {
-    "name": "forest-2",
-    "id": 0
-  },
-  {
-    "name": "forest-3",
     "id": 0
   },
   {
@@ -5700,27 +1360,7 @@
     "id": 0
   },
   {
-    "name": "forklift-left",
-    "id": 0
-  },
-  {
     "name": "forklift",
-    "id": 0
-  },
-  {
-    "name": "forward-2",
-    "id": 0
-  },
-  {
-    "name": "forward-3",
-    "id": 0
-  },
-  {
-    "name": "forward-circle",
-    "id": 0
-  },
-  {
-    "name": "forward-square",
     "id": 0
   },
   {
@@ -5728,7 +1368,7 @@
     "id": 0
   },
   {
-    "name": "fragile-glass-2",
+    "name": "forward-3",
     "id": 0
   },
   {
@@ -5736,31 +1376,7 @@
     "id": 0
   },
   {
-    "name": "framer",
-    "id": 0
-  },
-  {
     "name": "french-fries",
-    "id": 0
-  },
-  {
-    "name": "frequency-2",
-    "id": 0
-  },
-  {
-    "name": "frequency",
-    "id": 0
-  },
-  {
-    "name": "fried-egg-2",
-    "id": 0
-  },
-  {
-    "name": "fried-egg-left-2",
-    "id": 0
-  },
-  {
-    "name": "fried-egg-left",
     "id": 0
   },
   {
@@ -5768,31 +1384,7 @@
     "id": 0
   },
   {
-    "name": "frown",
-    "id": 0
-  },
-  {
     "name": "frying-pan-2",
-    "id": 0
-  },
-  {
-    "name": "frying-pan-3",
-    "id": 0
-  },
-  {
-    "name": "frying-pan-4",
-    "id": 0
-  },
-  {
-    "name": "frying-pan",
-    "id": 0
-  },
-  {
-    "name": "fuel-truck",
-    "id": 0
-  },
-  {
-    "name": "full-cross-circle-alt",
     "id": 0
   },
   {
@@ -5800,31 +1392,11 @@
     "id": 0
   },
   {
-    "name": "funnel",
+    "name": "full-cross-circle-alt",
     "id": 0
   },
   {
     "name": "gallery-collections-left",
-    "id": 0
-  },
-  {
-    "name": "gallery-collections-round-left",
-    "id": 0
-  },
-  {
-    "name": "gallery-collections-round",
-    "id": 0
-  },
-  {
-    "name": "gallery-collections",
-    "id": 0
-  },
-  {
-    "name": "gallery",
-    "id": 0
-  },
-  {
-    "name": "game-consol",
     "id": 0
   },
   {
@@ -5836,30 +1408,6 @@
     "id": 0
   },
   {
-    "name": "gamepad-cable",
-    "id": 0
-  },
-  {
-    "name": "gamepad",
-    "id": 0
-  },
-  {
-    "name": "gaming-mouse",
-    "id": 0
-  },
-  {
-    "name": "garage-car",
-    "id": 0
-  },
-  {
-    "name": "garage",
-    "id": 0
-  },
-  {
-    "name": "garlic-2",
-    "id": 0
-  },
-  {
     "name": "garlic",
     "id": 0
   },
@@ -5868,47 +1416,7 @@
     "id": 0
   },
   {
-    "name": "gearshift-car",
-    "id": 0
-  },
-  {
-    "name": "gearshift",
-    "id": 0
-  },
-  {
-    "name": "gift",
-    "id": 0
-  },
-  {
-    "name": "ginger",
-    "id": 0
-  },
-  {
-    "name": "github",
-    "id": 0
-  },
-  {
-    "name": "gitlab",
-    "id": 0
-  },
-  {
-    "name": "glass-water-2",
-    "id": 0
-  },
-  {
-    "name": "glass-water-left-2",
-    "id": 0
-  },
-  {
-    "name": "glass-water",
-    "id": 0
-  },
-  {
     "name": "glass",
-    "id": 0
-  },
-  {
-    "name": "globe",
     "id": 0
   },
   {
@@ -5916,39 +1424,7 @@
     "id": 0
   },
   {
-    "name": "goal-2",
-    "id": 0
-  },
-  {
     "name": "goal",
-    "id": 0
-  },
-  {
-    "name": "gold-medal-2",
-    "id": 0
-  },
-  {
-    "name": "gold-medal-3",
-    "id": 0
-  },
-  {
-    "name": "gold-medal-4",
-    "id": 0
-  },
-  {
-    "name": "gold-medal-5",
-    "id": 0
-  },
-  {
-    "name": "gold-medal-6",
-    "id": 0
-  },
-  {
-    "name": "gold-medal",
-    "id": 0
-  },
-  {
-    "name": "golf-2",
     "id": 0
   },
   {
@@ -5956,43 +1432,11 @@
     "id": 0
   },
   {
-    "name": "golf-4",
-    "id": 0
-  },
-  {
-    "name": "golf-ball-2",
-    "id": 0
-  },
-  {
-    "name": "golf-ball",
-    "id": 0
-  },
-  {
-    "name": "golf-cart-left",
-    "id": 0
-  },
-  {
     "name": "golf-cart",
     "id": 0
   },
   {
-    "name": "golf",
-    "id": 0
-  },
-  {
-    "name": "google-circle",
-    "id": 0
-  },
-  {
     "name": "google-square",
-    "id": 0
-  },
-  {
-    "name": "google",
-    "id": 0
-  },
-  {
-    "name": "gps-disable-2",
     "id": 0
   },
   {
@@ -6004,35 +1448,7 @@
     "id": 0
   },
   {
-    "name": "gps-disable",
-    "id": 0
-  },
-  {
-    "name": "gps-fixed",
-    "id": 0
-  },
-  {
-    "name": "gps-location",
-    "id": 0
-  },
-  {
-    "name": "gps-not-fixed",
-    "id": 0
-  },
-  {
-    "name": "gps",
-    "id": 0
-  },
-  {
     "name": "grape-2",
-    "id": 0
-  },
-  {
-    "name": "grape",
-    "id": 0
-  },
-  {
-    "name": "grapes",
     "id": 0
   },
   {
@@ -6040,31 +1456,7 @@
     "id": 0
   },
   {
-    "name": "green-bean",
-    "id": 0
-  },
-  {
-    "name": "greenhouse",
-    "id": 0
-  },
-  {
-    "name": "grill-bbq",
-    "id": 0
-  },
-  {
-    "name": "grill",
-    "id": 0
-  },
-  {
-    "name": "gumroad",
-    "id": 0
-  },
-  {
     "name": "gymnastics-ring",
-    "id": 0
-  },
-  {
-    "name": "half-sun",
     "id": 0
   },
   {
@@ -6072,87 +1464,7 @@
     "id": 0
   },
   {
-    "name": "hamburger-cheese-left",
-    "id": 0
-  },
-  {
-    "name": "hamburger-cheese",
-    "id": 0
-  },
-  {
-    "name": "hamburger",
-    "id": 0
-  },
-  {
-    "name": "hammer-drill-2",
-    "id": 0
-  },
-  {
-    "name": "hammer-drill",
-    "id": 0
-  },
-  {
-    "name": "hand-grip",
-    "id": 0
-  },
-  {
-    "name": "handphone-device",
-    "id": 0
-  },
-  {
-    "name": "handphone-lanscape-left",
-    "id": 0
-  },
-  {
-    "name": "handphone-lanscape-right",
-    "id": 0
-  },
-  {
     "name": "handphone-laptop",
-    "id": 0
-  },
-  {
-    "name": "handphone-lock",
-    "id": 0
-  },
-  {
-    "name": "handphone-rotate-left-2",
-    "id": 0
-  },
-  {
-    "name": "handphone-rotate-left",
-    "id": 0
-  },
-  {
-    "name": "handphone-rotate-right-2",
-    "id": 0
-  },
-  {
-    "name": "handphone-rotate-right",
-    "id": 0
-  },
-  {
-    "name": "handphone",
-    "id": 0
-  },
-  {
-    "name": "hang-up",
-    "id": 0
-  },
-  {
-    "name": "hard-drive",
-    "id": 0
-  },
-  {
-    "name": "hash",
-    "id": 0
-  },
-  {
-    "name": "hastag-circle",
-    "id": 0
-  },
-  {
-    "name": "hastag-square",
     "id": 0
   },
   {
@@ -6160,19 +1472,7 @@
     "id": 0
   },
   {
-    "name": "hat-adventure",
-    "id": 0
-  },
-  {
-    "name": "hat",
-    "id": 0
-  },
-  {
-    "name": "heading-0",
-    "id": 0
-  },
-  {
-    "name": "heading-1",
+    "name": "hastag-square",
     "id": 0
   },
   {
@@ -6188,31 +1488,7 @@
     "id": 0
   },
   {
-    "name": "heading-4",
-    "id": 0
-  },
-  {
-    "name": "heading-square-2",
-    "id": 0
-  },
-  {
     "name": "heading-square",
-    "id": 0
-  },
-  {
-    "name": "heading",
-    "id": 0
-  },
-  {
-    "name": "headphones",
-    "id": 0
-  },
-  {
-    "name": "headset-alt",
-    "id": 0
-  },
-  {
-    "name": "headset",
     "id": 0
   },
   {
@@ -6220,19 +1496,7 @@
     "id": 0
   },
   {
-    "name": "heartbeat",
-    "id": 0
-  },
-  {
     "name": "heat-2",
-    "id": 0
-  },
-  {
-    "name": "heat",
-    "id": 0
-  },
-  {
-    "name": "helicopter-left",
     "id": 0
   },
   {
@@ -6240,27 +1504,7 @@
     "id": 0
   },
   {
-    "name": "help",
-    "id": 0
-  },
-  {
     "name": "hexagon",
-    "id": 0
-  },
-  {
-    "name": "high-quality-2",
-    "id": 0
-  },
-  {
-    "name": "high-quality-3",
-    "id": 0
-  },
-  {
-    "name": "high-quality-4",
-    "id": 0
-  },
-  {
-    "name": "high-quality",
     "id": 0
   },
   {
@@ -6268,47 +1512,7 @@
     "id": 0
   },
   {
-    "name": "high-tide",
-    "id": 0
-  },
-  {
-    "name": "home-2",
-    "id": 0
-  },
-  {
-    "name": "home-3",
-    "id": 0
-  },
-  {
-    "name": "home-alt-1",
-    "id": 0
-  },
-  {
-    "name": "home-alt-2",
-    "id": 0
-  },
-  {
-    "name": "home-alt-3",
-    "id": 0
-  },
-  {
     "name": "home-alt-4",
-    "id": 0
-  },
-  {
-    "name": "home-alt-5",
-    "id": 0
-  },
-  {
-    "name": "home-alt",
-    "id": 0
-  },
-  {
-    "name": "home-telephone",
-    "id": 0
-  },
-  {
-    "name": "home",
     "id": 0
   },
   {
@@ -6316,19 +1520,7 @@
     "id": 0
   },
   {
-    "name": "hospital-3",
-    "id": 0
-  },
-  {
     "name": "hospital-4",
-    "id": 0
-  },
-  {
-    "name": "hospital",
-    "id": 0
-  },
-  {
-    "name": "hot-air-balloon",
     "id": 0
   },
   {
@@ -6348,39 +1540,7 @@
     "id": 0
   },
   {
-    "name": "hot-dog",
-    "id": 0
-  },
-  {
-    "name": "hotel-2",
-    "id": 0
-  },
-  {
-    "name": "hotel-3",
-    "id": 0
-  },
-  {
-    "name": "hotel",
-    "id": 0
-  },
-  {
     "name": "hour-glass",
-    "id": 0
-  },
-  {
-    "name": "house-storm-2",
-    "id": 0
-  },
-  {
-    "name": "house-storm",
-    "id": 0
-  },
-  {
-    "name": "house",
-    "id": 0
-  },
-  {
-    "name": "hula-hoop",
     "id": 0
   },
   {
@@ -6388,23 +1548,11 @@
     "id": 0
   },
   {
-    "name": "hurricane",
-    "id": 0
-  },
-  {
-    "name": "husd-square",
-    "id": 0
-  },
-  {
-    "name": "husd",
+    "name": "ice-cream",
     "id": 0
   },
   {
     "name": "ice-cream-2",
-    "id": 0
-  },
-  {
-    "name": "ice-cream-bar-01",
     "id": 0
   },
   {
@@ -6416,79 +1564,7 @@
     "id": 0
   },
   {
-    "name": "ice-cream-sandwich-02",
-    "id": 0
-  },
-  {
-    "name": "ice-cream-sundae-01",
-    "id": 0
-  },
-  {
-    "name": "ice-cream-sundae-02",
-    "id": 0
-  },
-  {
-    "name": "ice-cream",
-    "id": 0
-  },
-  {
-    "name": "iceberg-2",
-    "id": 0
-  },
-  {
-    "name": "iceberg",
-    "id": 0
-  },
-  {
-    "name": "icicle-2",
-    "id": 0
-  },
-  {
-    "name": "icicle",
-    "id": 0
-  },
-  {
-    "name": "id-card-2",
-    "id": 0
-  },
-  {
     "name": "id-card",
-    "id": 0
-  },
-  {
-    "name": "idea-lamp",
-    "id": 0
-  },
-  {
-    "name": "idea",
-    "id": 0
-  },
-  {
-    "name": "image-frame",
-    "id": 0
-  },
-  {
-    "name": "image",
-    "id": 0
-  },
-  {
-    "name": "import-2",
-    "id": 0
-  },
-  {
-    "name": "import-left-2",
-    "id": 0
-  },
-  {
-    "name": "import-left",
-    "id": 0
-  },
-  {
-    "name": "import",
-    "id": 0
-  },
-  {
-    "name": "inbox-in",
     "id": 0
   },
   {
@@ -6500,51 +1576,7 @@
     "id": 0
   },
   {
-    "name": "indent-2",
-    "id": 0
-  },
-  {
-    "name": "indent",
-    "id": 0
-  },
-  {
-    "name": "infinite-2",
-    "id": 0
-  },
-  {
-    "name": "infinite-3",
-    "id": 0
-  },
-  {
     "name": "infinite",
-    "id": 0
-  },
-  {
-    "name": "info",
-    "id": 0
-  },
-  {
-    "name": "information-chat-right",
-    "id": 0
-  },
-  {
-    "name": "information-chat",
-    "id": 0
-  },
-  {
-    "name": "information-circle",
-    "id": 0
-  },
-  {
-    "name": "information-square",
-    "id": 0
-  },
-  {
-    "name": "information",
-    "id": 0
-  },
-  {
-    "name": "inhaler-2",
     "id": 0
   },
   {
@@ -6552,7 +1584,7 @@
     "id": 0
   },
   {
-    "name": "instagram-2",
+    "name": "inhaler-2",
     "id": 0
   },
   {
@@ -6560,27 +1592,7 @@
     "id": 0
   },
   {
-    "name": "integral",
-    "id": 0
-  },
-  {
-    "name": "investment-dollar",
-    "id": 0
-  },
-  {
-    "name": "investment",
-    "id": 0
-  },
-  {
-    "name": "invoice-dollar-done-left",
-    "id": 0
-  },
-  {
-    "name": "invoice-dollar-done",
-    "id": 0
-  },
-  {
-    "name": "invoice-dollar-left",
+    "name": "instagram-2",
     "id": 0
   },
   {
@@ -6588,35 +1600,7 @@
     "id": 0
   },
   {
-    "name": "invoice-euro-done-left",
-    "id": 0
-  },
-  {
-    "name": "invoice-euro-done",
-    "id": 0
-  },
-  {
-    "name": "invoice-euro-left",
-    "id": 0
-  },
-  {
-    "name": "invoice-euro",
-    "id": 0
-  },
-  {
-    "name": "iron",
-    "id": 0
-  },
-  {
     "name": "ironing",
-    "id": 0
-  },
-  {
-    "name": "italic-2",
-    "id": 0
-  },
-  {
-    "name": "italic",
     "id": 0
   },
   {
@@ -6632,63 +1616,7 @@
     "id": 0
   },
   {
-    "name": "iv-bag",
-    "id": 0
-  },
-  {
-    "name": "jack-connector-1",
-    "id": 0
-  },
-  {
-    "name": "jack-connector-left",
-    "id": 0
-  },
-  {
-    "name": "jack-connector-right-1",
-    "id": 0
-  },
-  {
-    "name": "jack-connector-right",
-    "id": 0
-  },
-  {
-    "name": "jack-connector-top-left",
-    "id": 0
-  },
-  {
-    "name": "jack-connector-top-right",
-    "id": 0
-  },
-  {
     "name": "jack-connector",
-    "id": 0
-  },
-  {
-    "name": "jam-2",
-    "id": 0
-  },
-  {
-    "name": "jam",
-    "id": 0
-  },
-  {
-    "name": "jet-plane-left",
-    "id": 0
-  },
-  {
-    "name": "jet-plane-right",
-    "id": 0
-  },
-  {
-    "name": "jet-plane",
-    "id": 0
-  },
-  {
-    "name": "jetski-2",
-    "id": 0
-  },
-  {
-    "name": "jetski-left-2",
     "id": 0
   },
   {
@@ -6696,31 +1624,7 @@
     "id": 0
   },
   {
-    "name": "jetski",
-    "id": 0
-  },
-  {
-    "name": "jewelry",
-    "id": 0
-  },
-  {
-    "name": "job",
-    "id": 0
-  },
-  {
     "name": "joystick-controller",
-    "id": 0
-  },
-  {
-    "name": "joystick",
-    "id": 0
-  },
-  {
-    "name": "jug-1",
-    "id": 0
-  },
-  {
-    "name": "jug-left-2",
     "id": 0
   },
   {
@@ -6728,43 +1632,7 @@
     "id": 0
   },
   {
-    "name": "jug",
-    "id": 0
-  },
-  {
-    "name": "juice-orange",
-    "id": 0
-  },
-  {
-    "name": "karaoke-add-lyric",
-    "id": 0
-  },
-  {
-    "name": "karaoke-delete-lyric",
-    "id": 0
-  },
-  {
-    "name": "karaoke",
-    "id": 0
-  },
-  {
     "name": "kelvin-square",
-    "id": 0
-  },
-  {
-    "name": "kelvin",
-    "id": 0
-  },
-  {
-    "name": "kerning",
-    "id": 0
-  },
-  {
-    "name": "ketchup",
-    "id": 0
-  },
-  {
-    "name": "kettle-left",
     "id": 0
   },
   {
@@ -6772,19 +1640,7 @@
     "id": 0
   },
   {
-    "name": "key-10",
-    "id": 0
-  },
-  {
-    "name": "key-11",
-    "id": 0
-  },
-  {
-    "name": "key-12",
-    "id": 0
-  },
-  {
-    "name": "key-2",
+    "name": "kettle-left",
     "id": 0
   },
   {
@@ -6792,51 +1648,7 @@
     "id": 0
   },
   {
-    "name": "key-4",
-    "id": 0
-  },
-  {
     "name": "key-5",
-    "id": 0
-  },
-  {
-    "name": "key-6",
-    "id": 0
-  },
-  {
-    "name": "key-7",
-    "id": 0
-  },
-  {
-    "name": "key-8",
-    "id": 0
-  },
-  {
-    "name": "key-9",
-    "id": 0
-  },
-  {
-    "name": "key-lock-circle",
-    "id": 0
-  },
-  {
-    "name": "key-lock-rect",
-    "id": 0
-  },
-  {
-    "name": "key",
-    "id": 0
-  },
-  {
-    "name": "keyboard-2",
-    "id": 0
-  },
-  {
-    "name": "keyboard-3",
-    "id": 0
-  },
-  {
-    "name": "keyboard-4",
     "id": 0
   },
   {
@@ -6852,23 +1664,7 @@
     "id": 0
   },
   {
-    "name": "kitchen-cabinet",
-    "id": 0
-  },
-  {
-    "name": "kiwi-fruit",
-    "id": 0
-  },
-  {
     "name": "kiwi-left",
-    "id": 0
-  },
-  {
-    "name": "kiwi",
-    "id": 0
-  },
-  {
-    "name": "knife-left",
     "id": 0
   },
   {
@@ -6876,43 +1672,11 @@
     "id": 0
   },
   {
-    "name": "lamp-left",
-    "id": 0
-  },
-  {
-    "name": "lamp",
-    "id": 0
-  },
-  {
-    "name": "landing-left",
-    "id": 0
-  },
-  {
-    "name": "landing",
-    "id": 0
-  },
-  {
-    "name": "laotian-kip-circle",
+    "name": "knife-left",
     "id": 0
   },
   {
     "name": "laotian-kip-square",
-    "id": 0
-  },
-  {
-    "name": "laotian-kip",
-    "id": 0
-  },
-  {
-    "name": "laptop-2",
-    "id": 0
-  },
-  {
-    "name": "laptop",
-    "id": 0
-  },
-  {
-    "name": "lari",
     "id": 0
   },
   {
@@ -6924,19 +1688,7 @@
     "id": 0
   },
   {
-    "name": "launch",
-    "id": 0
-  },
-  {
     "name": "laundry-basket-2",
-    "id": 0
-  },
-  {
-    "name": "laundry-basket",
-    "id": 0
-  },
-  {
-    "name": "lawn-mower-2",
     "id": 0
   },
   {
@@ -6948,18 +1700,6 @@
     "id": 0
   },
   {
-    "name": "lcd",
-    "id": 0
-  },
-  {
-    "name": "leaderboard-podium-2",
-    "id": 0
-  },
-  {
-    "name": "leaderboard-podium",
-    "id": 0
-  },
-  {
     "name": "leek",
     "id": 0
   },
@@ -6968,43 +1708,11 @@
     "id": 0
   },
   {
-    "name": "left-alt-circle",
-    "id": 0
-  },
-  {
-    "name": "left-alt",
-    "id": 0
-  },
-  {
-    "name": "left-arrow-circle",
-    "id": 0
-  },
-  {
-    "name": "left-arrow-direction-square",
-    "id": 0
-  },
-  {
     "name": "left-arrow",
     "id": 0
   },
   {
-    "name": "left-bottom-arrow",
-    "id": 0
-  },
-  {
-    "name": "left-bottom-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "left-circle-1",
-    "id": 0
-  },
-  {
-    "name": "left-circle-2",
-    "id": 0
-  },
-  {
-    "name": "left-circle",
+    "name": "left-arrow-direction-square",
     "id": 0
   },
   {
@@ -7016,47 +1724,7 @@
     "id": 0
   },
   {
-    "name": "left-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "left-direction-square",
-    "id": 0
-  },
-  {
-    "name": "left-direction",
-    "id": 0
-  },
-  {
-    "name": "left-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "left-down-direction-2",
-    "id": 0
-  },
-  {
-    "name": "left-down-direction-3",
-    "id": 0
-  },
-  {
-    "name": "left-down-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "left-down-direction",
-    "id": 0
-  },
-  {
     "name": "left-junction-sign",
-    "id": 0
-  },
-  {
-    "name": "left-octagon",
-    "id": 0
-  },
-  {
-    "name": "left-right-arrow-2",
     "id": 0
   },
   {
@@ -7068,15 +1736,7 @@
     "id": 0
   },
   {
-    "name": "left-right-scroll-bar-2",
-    "id": 0
-  },
-  {
     "name": "left-right-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "left-sign-1",
     "id": 0
   },
   {
@@ -7084,15 +1744,11 @@
     "id": 0
   },
   {
-    "name": "left-square-2",
-    "id": 0
-  },
-  {
-    "name": "left-square-3",
-    "id": 0
-  },
-  {
     "name": "left-square",
+    "id": 0
+  },
+  {
+    "name": "left-square-2",
     "id": 0
   },
   {
@@ -7100,35 +1756,7 @@
     "id": 0
   },
   {
-    "name": "left-top-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "left-up-direction-2",
-    "id": 0
-  },
-  {
-    "name": "left-up-direction-3",
-    "id": 0
-  },
-  {
-    "name": "left-up-direction-circle",
-    "id": 0
-  },
-  {
     "name": "left-up-direction",
-    "id": 0
-  },
-  {
-    "name": "left",
-    "id": 0
-  },
-  {
-    "name": "lemon",
-    "id": 0
-  },
-  {
-    "name": "lettuce",
     "id": 0
   },
   {
@@ -7136,67 +1764,7 @@
     "id": 0
   },
   {
-    "name": "lighthouse-2",
-    "id": 0
-  },
-  {
-    "name": "lighthouse",
-    "id": 0
-  },
-  {
-    "name": "lightning",
-    "id": 0
-  },
-  {
-    "name": "like",
-    "id": 0
-  },
-  {
-    "name": "limousine",
-    "id": 0
-  },
-  {
-    "name": "line",
-    "id": 0
-  },
-  {
-    "name": "link-alt-2",
-    "id": 0
-  },
-  {
-    "name": "link-alt-3",
-    "id": 0
-  },
-  {
     "name": "link-alt-4",
-    "id": 0
-  },
-  {
-    "name": "link-alt",
-    "id": 0
-  },
-  {
-    "name": "link",
-    "id": 0
-  },
-  {
-    "name": "linkedin",
-    "id": 0
-  },
-  {
-    "name": "lira",
-    "id": 0
-  },
-  {
-    "name": "list-2",
-    "id": 0
-  },
-  {
-    "name": "list-square-2",
-    "id": 0
-  },
-  {
-    "name": "list-square",
     "id": 0
   },
   {
@@ -7204,51 +1772,15 @@
     "id": 0
   },
   {
+    "name": "list-square",
+    "id": 0
+  },
+  {
     "name": "litecoin-circle",
     "id": 0
   },
   {
-    "name": "litecoin-square",
-    "id": 0
-  },
-  {
-    "name": "litecoin",
-    "id": 0
-  },
-  {
-    "name": "loader",
-    "id": 0
-  },
-  {
-    "name": "loading-2",
-    "id": 0
-  },
-  {
-    "name": "loading-20",
-    "id": 0
-  },
-  {
     "name": "loading-40",
-    "id": 0
-  },
-  {
-    "name": "loading-60",
-    "id": 0
-  },
-  {
-    "name": "loading-80",
-    "id": 0
-  },
-  {
-    "name": "loading",
-    "id": 0
-  },
-  {
-    "name": "location-disable",
-    "id": 0
-  },
-  {
-    "name": "lock-1",
     "id": 0
   },
   {
@@ -7268,23 +1800,15 @@
     "id": 0
   },
   {
-    "name": "lock-file-2",
-    "id": 0
-  },
-  {
     "name": "lock-file",
     "id": 0
   },
   {
-    "name": "lock",
+    "name": "lock-file-2",
     "id": 0
   },
   {
     "name": "log-in-2",
-    "id": 0
-  },
-  {
-    "name": "log-in-3",
     "id": 0
   },
   {
@@ -7296,27 +1820,7 @@
     "id": 0
   },
   {
-    "name": "log-in-double-arrow-2",
-    "id": 0
-  },
-  {
-    "name": "log-in-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "log-in",
-    "id": 0
-  },
-  {
-    "name": "log-out",
-    "id": 0
-  },
-  {
     "name": "lollipop-2",
-    "id": 0
-  },
-  {
-    "name": "lollipop",
     "id": 0
   },
   {
@@ -7324,31 +1828,7 @@
     "id": 0
   },
   {
-    "name": "love-playlist-3",
-    "id": 0
-  },
-  {
-    "name": "love-playlist",
-    "id": 0
-  },
-  {
-    "name": "low-tide-2",
-    "id": 0
-  },
-  {
-    "name": "low-tide",
-    "id": 0
-  },
-  {
-    "name": "lungs",
-    "id": 0
-  },
-  {
     "name": "mail-2",
-    "id": 0
-  },
-  {
-    "name": "mail-notification-2",
     "id": 0
   },
   {
@@ -7356,23 +1836,7 @@
     "id": 0
   },
   {
-    "name": "mail",
-    "id": 0
-  },
-  {
-    "name": "map-pin",
-    "id": 0
-  },
-  {
-    "name": "map",
-    "id": 0
-  },
-  {
-    "name": "maps-location-place-right",
-    "id": 0
-  },
-  {
-    "name": "maps-location-place",
+    "name": "maps",
     "id": 0
   },
   {
@@ -7384,11 +1848,11 @@
     "id": 0
   },
   {
-    "name": "maps",
+    "name": "mark-pen",
     "id": 0
   },
   {
-    "name": "mark-pen",
+    "name": "marshmallow",
     "id": 0
   },
   {
@@ -7400,39 +1864,7 @@
     "id": 0
   },
   {
-    "name": "marshmallow-right",
-    "id": 0
-  },
-  {
-    "name": "marshmallow",
-    "id": 0
-  },
-  {
-    "name": "mask-2",
-    "id": 0
-  },
-  {
-    "name": "mask-3",
-    "id": 0
-  },
-  {
-    "name": "mask",
-    "id": 0
-  },
-  {
-    "name": "matches-fire-2",
-    "id": 0
-  },
-  {
-    "name": "matches-fire-left",
-    "id": 0
-  },
-  {
     "name": "matches-fire",
-    "id": 0
-  },
-  {
-    "name": "maximize-2",
     "id": 0
   },
   {
@@ -7440,47 +1872,7 @@
     "id": 0
   },
   {
-    "name": "maximize-direction",
-    "id": 0
-  },
-  {
-    "name": "maximize-left",
-    "id": 0
-  },
-  {
-    "name": "maximize-size",
-    "id": 0
-  },
-  {
-    "name": "maximize",
-    "id": 0
-  },
-  {
-    "name": "mcdonalds-circle",
-    "id": 0
-  },
-  {
-    "name": "mcdonalds-square",
-    "id": 0
-  },
-  {
-    "name": "mcdonalds",
-    "id": 0
-  },
-  {
     "name": "measuring-tape-2",
-    "id": 0
-  },
-  {
-    "name": "measuring-tape",
-    "id": 0
-  },
-  {
-    "name": "meat-left",
-    "id": 0
-  },
-  {
-    "name": "meat",
     "id": 0
   },
   {
@@ -7488,47 +1880,7 @@
     "id": 0
   },
   {
-    "name": "medal-3",
-    "id": 0
-  },
-  {
-    "name": "medal-4",
-    "id": 0
-  },
-  {
-    "name": "medal-5",
-    "id": 0
-  },
-  {
-    "name": "medal-6",
-    "id": 0
-  },
-  {
-    "name": "medal",
-    "id": 0
-  },
-  {
-    "name": "medical-insurance-2",
-    "id": 0
-  },
-  {
     "name": "medical-insurance",
-    "id": 0
-  },
-  {
-    "name": "medical-receipt-2",
-    "id": 0
-  },
-  {
-    "name": "medical-receipt-3",
-    "id": 0
-  },
-  {
-    "name": "medical-receipt-left-2",
-    "id": 0
-  },
-  {
-    "name": "medical-receipt-left-3",
     "id": 0
   },
   {
@@ -7536,43 +1888,7 @@
     "id": 0
   },
   {
-    "name": "medical-record",
-    "id": 0
-  },
-  {
     "name": "medical-report",
-    "id": 0
-  },
-  {
-    "name": "menu-alt-2",
-    "id": 0
-  },
-  {
-    "name": "menu-alt-3",
-    "id": 0
-  },
-  {
-    "name": "menu-alt-4",
-    "id": 0
-  },
-  {
-    "name": "menu-alt",
-    "id": 0
-  },
-  {
-    "name": "menu-food-2",
-    "id": 0
-  },
-  {
-    "name": "menu-food-left-2",
-    "id": 0
-  },
-  {
-    "name": "menu-food-left",
-    "id": 0
-  },
-  {
-    "name": "menu-food",
     "id": 0
   },
   {
@@ -7580,7 +1896,11 @@
     "id": 0
   },
   {
-    "name": "message-circle",
+    "name": "menu-alt-4",
+    "id": 0
+  },
+  {
+    "name": "menu-food-2",
     "id": 0
   },
   {
@@ -7588,19 +1908,7 @@
     "id": 0
   },
   {
-    "name": "messenger",
-    "id": 0
-  },
-  {
     "name": "meteor-2",
-    "id": 0
-  },
-  {
-    "name": "meteor",
-    "id": 0
-  },
-  {
-    "name": "mic",
     "id": 0
   },
   {
@@ -7608,47 +1916,7 @@
     "id": 0
   },
   {
-    "name": "microphone-audio",
-    "id": 0
-  },
-  {
-    "name": "microphone-disable-2",
-    "id": 0
-  },
-  {
-    "name": "microphone-disable",
-    "id": 0
-  },
-  {
-    "name": "microphone-left",
-    "id": 0
-  },
-  {
-    "name": "microphone-music-2",
-    "id": 0
-  },
-  {
-    "name": "microphone-music",
-    "id": 0
-  },
-  {
-    "name": "microphone-right",
-    "id": 0
-  },
-  {
     "name": "microphone-stand-left",
-    "id": 0
-  },
-  {
-    "name": "microphone-stand",
-    "id": 0
-  },
-  {
-    "name": "microphone",
-    "id": 0
-  },
-  {
-    "name": "microsoft",
     "id": 0
   },
   {
@@ -7656,19 +1924,7 @@
     "id": 0
   },
   {
-    "name": "milk-box",
-    "id": 0
-  },
-  {
     "name": "milk-carton",
-    "id": 0
-  },
-  {
-    "name": "milk",
-    "id": 0
-  },
-  {
-    "name": "milkshake-2",
     "id": 0
   },
   {
@@ -7676,23 +1932,7 @@
     "id": 0
   },
   {
-    "name": "milkshake",
-    "id": 0
-  },
-  {
-    "name": "minimize-direction",
-    "id": 0
-  },
-  {
-    "name": "minimize-left",
-    "id": 0
-  },
-  {
-    "name": "minimize-size",
-    "id": 0
-  },
-  {
-    "name": "minimize",
+    "name": "minus",
     "id": 0
   },
   {
@@ -7700,31 +1940,7 @@
     "id": 0
   },
   {
-    "name": "minus-music-collection",
-    "id": 0
-  },
-  {
-    "name": "minus-plush-slash",
-    "id": 0
-  },
-  {
-    "name": "minus-user-2",
-    "id": 0
-  },
-  {
-    "name": "minus-user-3",
-    "id": 0
-  },
-  {
-    "name": "minus-user-4",
-    "id": 0
-  },
-  {
-    "name": "minus-user-5",
-    "id": 0
-  },
-  {
-    "name": "minus-user-6",
+    "name": "minus-user",
     "id": 0
   },
   {
@@ -7732,43 +1948,7 @@
     "id": 0
   },
   {
-    "name": "minus-user-8",
-    "id": 0
-  },
-  {
-    "name": "minus-user-9",
-    "id": 0
-  },
-  {
-    "name": "minus-user-circle-left",
-    "id": 0
-  },
-  {
-    "name": "minus-user-circle",
-    "id": 0
-  },
-  {
-    "name": "minus-user-left-2",
-    "id": 0
-  },
-  {
-    "name": "minus-user-left-3",
-    "id": 0
-  },
-  {
-    "name": "minus-user-left-4",
-    "id": 0
-  },
-  {
-    "name": "minus-user-left-5",
-    "id": 0
-  },
-  {
     "name": "minus-user-left-6",
-    "id": 0
-  },
-  {
-    "name": "minus-user-left-7",
     "id": 0
   },
   {
@@ -7776,79 +1956,11 @@
     "id": 0
   },
   {
-    "name": "minus-user-left-9",
-    "id": 0
-  },
-  {
-    "name": "minus-user-left",
-    "id": 0
-  },
-  {
-    "name": "minus-user-square-left",
-    "id": 0
-  },
-  {
     "name": "minus-user-square",
     "id": 0
   },
   {
-    "name": "minus-user",
-    "id": 0
-  },
-  {
-    "name": "minus",
-    "id": 0
-  },
-  {
-    "name": "mirror-2",
-    "id": 0
-  },
-  {
-    "name": "mirror-3",
-    "id": 0
-  },
-  {
-    "name": "mirror-4",
-    "id": 0
-  },
-  {
-    "name": "mirror-5",
-    "id": 0
-  },
-  {
-    "name": "mirror",
-    "id": 0
-  },
-  {
-    "name": "mobile-data-circle",
-    "id": 0
-  },
-  {
-    "name": "mobile-data-square",
-    "id": 0
-  },
-  {
-    "name": "mobile-data",
-    "id": 0
-  },
-  {
-    "name": "mobile-hotspot",
-    "id": 0
-  },
-  {
-    "name": "mobile-payment-2",
-    "id": 0
-  },
-  {
-    "name": "mobile-payment-dollar-2",
-    "id": 0
-  },
-  {
-    "name": "mobile-payment-dollar",
-    "id": 0
-  },
-  {
-    "name": "mobile-payment-done-2",
+    "name": "mobile-payment",
     "id": 0
   },
   {
@@ -7860,27 +1972,7 @@
     "id": 0
   },
   {
-    "name": "mobile-payment-euro",
-    "id": 0
-  },
-  {
-    "name": "mobile-payment",
-    "id": 0
-  },
-  {
     "name": "mobile-phone-rotate-left",
-    "id": 0
-  },
-  {
-    "name": "mobile-phone-rotate-right",
-    "id": 0
-  },
-  {
-    "name": "mobile-phone",
-    "id": 0
-  },
-  {
-    "name": "modern-home",
     "id": 0
   },
   {
@@ -7888,67 +1980,7 @@
     "id": 0
   },
   {
-    "name": "molecule-2",
-    "id": 0
-  },
-  {
-    "name": "molecule-3",
-    "id": 0
-  },
-  {
-    "name": "molecule-4",
-    "id": 0
-  },
-  {
     "name": "molecule-5",
-    "id": 0
-  },
-  {
-    "name": "molecule",
-    "id": 0
-  },
-  {
-    "name": "monero",
-    "id": 0
-  },
-  {
-    "name": "money-2",
-    "id": 0
-  },
-  {
-    "name": "money-3",
-    "id": 0
-  },
-  {
-    "name": "money-alt-1",
-    "id": 0
-  },
-  {
-    "name": "money-alt-2",
-    "id": 0
-  },
-  {
-    "name": "money-alt",
-    "id": 0
-  },
-  {
-    "name": "money-bag-dollar",
-    "id": 0
-  },
-  {
-    "name": "money-bag",
-    "id": 0
-  },
-  {
-    "name": "money-dollar-coin",
-    "id": 0
-  },
-  {
-    "name": "money-dollar",
-    "id": 0
-  },
-  {
-    "name": "money-euro",
     "id": 0
   },
   {
@@ -7956,15 +1988,11 @@
     "id": 0
   },
   {
-    "name": "monitor-lcd",
+    "name": "money-3",
     "id": 0
   },
   {
-    "name": "monitor",
-    "id": 0
-  },
-  {
-    "name": "month-left",
+    "name": "money-bag",
     "id": 0
   },
   {
@@ -7972,35 +2000,7 @@
     "id": 0
   },
   {
-    "name": "moon-alt-1",
-    "id": 0
-  },
-  {
-    "name": "moon-alt-2",
-    "id": 0
-  },
-  {
-    "name": "moon-alt-3",
-    "id": 0
-  },
-  {
     "name": "moon-alt-4",
-    "id": 0
-  },
-  {
-    "name": "moon-alt-5",
-    "id": 0
-  },
-  {
-    "name": "moon-alt-6",
-    "id": 0
-  },
-  {
-    "name": "moon-alt-7",
-    "id": 0
-  },
-  {
-    "name": "moon-alt",
     "id": 0
   },
   {
@@ -8008,39 +2008,7 @@
     "id": 0
   },
   {
-    "name": "moon-phase-2",
-    "id": 0
-  },
-  {
-    "name": "moon-phase-3",
-    "id": 0
-  },
-  {
-    "name": "moon-phase-4",
-    "id": 0
-  },
-  {
-    "name": "moon-phase-5",
-    "id": 0
-  },
-  {
-    "name": "moon-phase-6",
-    "id": 0
-  },
-  {
     "name": "moon-phase-7",
-    "id": 0
-  },
-  {
-    "name": "moon-phase",
-    "id": 0
-  },
-  {
-    "name": "moon",
-    "id": 0
-  },
-  {
-    "name": "more-circle-horizontal",
     "id": 0
   },
   {
@@ -8048,83 +2016,7 @@
     "id": 0
   },
   {
-    "name": "more-horizontal",
-    "id": 0
-  },
-  {
-    "name": "more-vertical",
-    "id": 0
-  },
-  {
-    "name": "mortar-left",
-    "id": 0
-  },
-  {
-    "name": "mortar",
-    "id": 0
-  },
-  {
-    "name": "mosque",
-    "id": 0
-  },
-  {
-    "name": "motocross-2",
-    "id": 0
-  },
-  {
-    "name": "motocross-3",
-    "id": 0
-  },
-  {
-    "name": "motocross-4",
-    "id": 0
-  },
-  {
-    "name": "motocross",
-    "id": 0
-  },
-  {
-    "name": "motorcycle",
-    "id": 0
-  },
-  {
     "name": "mountain-2",
-    "id": 0
-  },
-  {
-    "name": "mountain-left-2",
-    "id": 0
-  },
-  {
-    "name": "mountain-left",
-    "id": 0
-  },
-  {
-    "name": "mountain",
-    "id": 0
-  },
-  {
-    "name": "mouse-click",
-    "id": 0
-  },
-  {
-    "name": "mouse-pointer",
-    "id": 0
-  },
-  {
-    "name": "mouse",
-    "id": 0
-  },
-  {
-    "name": "move",
-    "id": 0
-  },
-  {
-    "name": "mp3-player",
-    "id": 0
-  },
-  {
-    "name": "mug-left",
     "id": 0
   },
   {
@@ -8132,19 +2024,7 @@
     "id": 0
   },
   {
-    "name": "multi-folder",
-    "id": 0
-  },
-  {
-    "name": "museum",
-    "id": 0
-  },
-  {
     "name": "mushroom",
-    "id": 0
-  },
-  {
-    "name": "music-1",
     "id": 0
   },
   {
@@ -8152,31 +2032,7 @@
     "id": 0
   },
   {
-    "name": "music-album-2",
-    "id": 0
-  },
-  {
-    "name": "music-album",
-    "id": 0
-  },
-  {
     "name": "music-cassette",
-    "id": 0
-  },
-  {
-    "name": "music-circle",
-    "id": 0
-  },
-  {
-    "name": "music-collection",
-    "id": 0
-  },
-  {
-    "name": "music-disable",
-    "id": 0
-  },
-  {
-    "name": "music-file-2",
     "id": 0
   },
   {
@@ -8184,15 +2040,7 @@
     "id": 0
   },
   {
-    "name": "music-folder-10",
-    "id": 0
-  },
-  {
     "name": "music-folder-2",
-    "id": 0
-  },
-  {
-    "name": "music-folder-3",
     "id": 0
   },
   {
@@ -8200,31 +2048,7 @@
     "id": 0
   },
   {
-    "name": "music-folder-5",
-    "id": 0
-  },
-  {
-    "name": "music-folder-6",
-    "id": 0
-  },
-  {
-    "name": "music-folder-7",
-    "id": 0
-  },
-  {
-    "name": "music-folder-8",
-    "id": 0
-  },
-  {
     "name": "music-folder-9",
-    "id": 0
-  },
-  {
-    "name": "music-folder",
-    "id": 0
-  },
-  {
-    "name": "music-lyric-2",
     "id": 0
   },
   {
@@ -8232,23 +2056,7 @@
     "id": 0
   },
   {
-    "name": "music-player",
-    "id": 0
-  },
-  {
-    "name": "music-square-2",
-    "id": 0
-  },
-  {
-    "name": "music-square",
-    "id": 0
-  },
-  {
     "name": "music-tape",
-    "id": 0
-  },
-  {
-    "name": "music",
     "id": 0
   },
   {
@@ -8260,47 +2068,7 @@
     "id": 0
   },
   {
-    "name": "mute-3",
-    "id": 0
-  },
-  {
     "name": "mute-4",
-    "id": 0
-  },
-  {
-    "name": "mute",
-    "id": 0
-  },
-  {
-    "name": "naira",
-    "id": 0
-  },
-  {
-    "name": "navigation",
-    "id": 0
-  },
-  {
-    "name": "netflix",
-    "id": 0
-  },
-  {
-    "name": "next-button",
-    "id": 0
-  },
-  {
-    "name": "next-square",
-    "id": 0
-  },
-  {
-    "name": "next",
-    "id": 0
-  },
-  {
-    "name": "no-water",
-    "id": 0
-  },
-  {
-    "name": "noodle-2",
     "id": 0
   },
   {
@@ -8308,39 +2076,7 @@
     "id": 0
   },
   {
-    "name": "noodle-left-2",
-    "id": 0
-  },
-  {
-    "name": "noodle-left",
-    "id": 0
-  },
-  {
-    "name": "noodle-macaroni",
-    "id": 0
-  },
-  {
-    "name": "noodle",
-    "id": 0
-  },
-  {
-    "name": "not-visible",
-    "id": 0
-  },
-  {
-    "name": "note-alert",
-    "id": 0
-  },
-  {
-    "name": "note-alt",
-    "id": 0
-  },
-  {
     "name": "note-book",
-    "id": 0
-  },
-  {
-    "name": "note-check",
     "id": 0
   },
   {
@@ -8352,27 +2088,7 @@
     "id": 0
   },
   {
-    "name": "note-question",
-    "id": 0
-  },
-  {
-    "name": "note-remove",
-    "id": 0
-  },
-  {
-    "name": "note-text",
-    "id": 0
-  },
-  {
     "name": "note-up",
-    "id": 0
-  },
-  {
-    "name": "note",
-    "id": 0
-  },
-  {
-    "name": "notebook-left",
     "id": 0
   },
   {
@@ -8380,27 +2096,7 @@
     "id": 0
   },
   {
-    "name": "notification-alert-2",
-    "id": 0
-  },
-  {
-    "name": "notification-alert-left-2",
-    "id": 0
-  },
-  {
-    "name": "notification-alert-left",
-    "id": 0
-  },
-  {
     "name": "notification-alert",
-    "id": 0
-  },
-  {
-    "name": "notification-alt",
-    "id": 0
-  },
-  {
-    "name": "notification-bell",
     "id": 0
   },
   {
@@ -8408,47 +2104,7 @@
     "id": 0
   },
   {
-    "name": "notification-circle",
-    "id": 0
-  },
-  {
-    "name": "notification",
-    "id": 0
-  },
-  {
-    "name": "nucleus",
-    "id": 0
-  },
-  {
-    "name": "nut-2",
-    "id": 0
-  },
-  {
-    "name": "nut",
-    "id": 0
-  },
-  {
-    "name": "obelisk",
-    "id": 0
-  },
-  {
     "name": "ocean-2",
-    "id": 0
-  },
-  {
-    "name": "ocean",
-    "id": 0
-  },
-  {
-    "name": "octagon",
-    "id": 0
-  },
-  {
-    "name": "off-road-2",
-    "id": 0
-  },
-  {
-    "name": "off-road-car",
     "id": 0
   },
   {
@@ -8456,7 +2112,7 @@
     "id": 0
   },
   {
-    "name": "off-road",
+    "name": "olive",
     "id": 0
   },
   {
@@ -8464,19 +2120,7 @@
     "id": 0
   },
   {
-    "name": "olive-oil-left-2",
-    "id": 0
-  },
-  {
-    "name": "olive-oil",
-    "id": 0
-  },
-  {
-    "name": "olive",
-    "id": 0
-  },
-  {
-    "name": "olympic-ring",
+    "name": "olympic-torch",
     "id": 0
   },
   {
@@ -8484,35 +2128,7 @@
     "id": 0
   },
   {
-    "name": "olympic-torch",
-    "id": 0
-  },
-  {
-    "name": "omelette-2",
-    "id": 0
-  },
-  {
-    "name": "omelette",
-    "id": 0
-  },
-  {
-    "name": "onedrive",
-    "id": 0
-  },
-  {
-    "name": "onion-01",
-    "id": 0
-  },
-  {
     "name": "onion-02",
-    "id": 0
-  },
-  {
-    "name": "open-email",
-    "id": 0
-  },
-  {
-    "name": "open-envelop",
     "id": 0
   },
   {
@@ -8520,27 +2136,7 @@
     "id": 0
   },
   {
-    "name": "orange-1",
-    "id": 0
-  },
-  {
-    "name": "orange-juice-left",
-    "id": 0
-  },
-  {
-    "name": "orange-juice",
-    "id": 0
-  },
-  {
     "name": "orange",
-    "id": 0
-  },
-  {
-    "name": "overline-2",
-    "id": 0
-  },
-  {
-    "name": "overline",
     "id": 0
   },
   {
@@ -8548,47 +2144,7 @@
     "id": 0
   },
   {
-    "name": "package-alt",
-    "id": 0
-  },
-  {
-    "name": "package",
-    "id": 0
-  },
-  {
-    "name": "page-break-2",
-    "id": 0
-  },
-  {
-    "name": "page-break-3",
-    "id": 0
-  },
-  {
-    "name": "page-break",
-    "id": 0
-  },
-  {
-    "name": "paint-brush-2",
-    "id": 0
-  },
-  {
-    "name": "paint-brush",
-    "id": 0
-  },
-  {
-    "name": "paint-roller-2",
-    "id": 0
-  },
-  {
     "name": "paint-roller",
-    "id": 0
-  },
-  {
-    "name": "pancake-left",
-    "id": 0
-  },
-  {
-    "name": "pancake",
     "id": 0
   },
   {
@@ -8596,19 +2152,7 @@
     "id": 0
   },
   {
-    "name": "pantone",
-    "id": 0
-  },
-  {
     "name": "paper-clip-2",
-    "id": 0
-  },
-  {
-    "name": "paper-clip-bottom-left-2",
-    "id": 0
-  },
-  {
-    "name": "paper-clip-bottom-left",
     "id": 0
   },
   {
@@ -8616,131 +2160,7 @@
     "id": 0
   },
   {
-    "name": "paper-clip-bottom-right",
-    "id": 0
-  },
-  {
-    "name": "paper-clip-top-right-2",
-    "id": 0
-  },
-  {
-    "name": "paper-clip-top-right",
-    "id": 0
-  },
-  {
-    "name": "paper-clip",
-    "id": 0
-  },
-  {
-    "name": "paper-cup-2",
-    "id": 0
-  },
-  {
-    "name": "paper-cup",
-    "id": 0
-  },
-  {
-    "name": "paperclip",
-    "id": 0
-  },
-  {
-    "name": "parabolic-function-2",
-    "id": 0
-  },
-  {
-    "name": "parabolic-function-3",
-    "id": 0
-  },
-  {
-    "name": "parabolic-function-4",
-    "id": 0
-  },
-  {
-    "name": "parabolic-function",
-    "id": 0
-  },
-  {
-    "name": "paragraph-2",
-    "id": 0
-  },
-  {
-    "name": "paragraph",
-    "id": 0
-  },
-  {
-    "name": "parking-circle",
-    "id": 0
-  },
-  {
     "name": "parking-square",
-    "id": 0
-  },
-  {
-    "name": "parsnip",
-    "id": 0
-  },
-  {
-    "name": "pause-circle",
-    "id": 0
-  },
-  {
-    "name": "pause-square",
-    "id": 0
-  },
-  {
-    "name": "pause",
-    "id": 0
-  },
-  {
-    "name": "payment-error",
-    "id": 0
-  },
-  {
-    "name": "paypal",
-    "id": 0
-  },
-  {
-    "name": "peanut-left",
-    "id": 0
-  },
-  {
-    "name": "peanut-right",
-    "id": 0
-  },
-  {
-    "name": "peanut",
-    "id": 0
-  },
-  {
-    "name": "pear",
-    "id": 0
-  },
-  {
-    "name": "peas",
-    "id": 0
-  },
-  {
-    "name": "pencil-ruler",
-    "id": 0
-  },
-  {
-    "name": "pendulum-2",
-    "id": 0
-  },
-  {
-    "name": "pendulum-3",
-    "id": 0
-  },
-  {
-    "name": "pendulum-4",
-    "id": 0
-  },
-  {
-    "name": "pendulum-5",
-    "id": 0
-  },
-  {
-    "name": "pendulum-6",
     "id": 0
   },
   {
@@ -8748,23 +2168,7 @@
     "id": 0
   },
   {
-    "name": "pennant-10",
-    "id": 0
-  },
-  {
-    "name": "pennant-11",
-    "id": 0
-  },
-  {
-    "name": "pennant-12",
-    "id": 0
-  },
-  {
     "name": "pennant-13",
-    "id": 0
-  },
-  {
-    "name": "pennant-14",
     "id": 0
   },
   {
@@ -8772,95 +2176,7 @@
     "id": 0
   },
   {
-    "name": "pennant-16",
-    "id": 0
-  },
-  {
-    "name": "pennant-17",
-    "id": 0
-  },
-  {
-    "name": "pennant-18",
-    "id": 0
-  },
-  {
-    "name": "pennant-19",
-    "id": 0
-  },
-  {
-    "name": "pennant-2",
-    "id": 0
-  },
-  {
-    "name": "pennant-3",
-    "id": 0
-  },
-  {
-    "name": "pennant-4",
-    "id": 0
-  },
-  {
-    "name": "pennant-5",
-    "id": 0
-  },
-  {
-    "name": "pennant-6",
-    "id": 0
-  },
-  {
-    "name": "pennant-7",
-    "id": 0
-  },
-  {
-    "name": "pennant-8",
-    "id": 0
-  },
-  {
-    "name": "pennant-9",
-    "id": 0
-  },
-  {
-    "name": "pennant",
-    "id": 0
-  },
-  {
-    "name": "pepper-bell-01",
-    "id": 0
-  },
-  {
     "name": "pepper-bell-02",
-    "id": 0
-  },
-  {
-    "name": "pepper-chili",
-    "id": 0
-  },
-  {
-    "name": "percent",
-    "id": 0
-  },
-  {
-    "name": "person-golfing",
-    "id": 0
-  },
-  {
-    "name": "phillippine-peso",
-    "id": 0
-  },
-  {
-    "name": "phone-alert",
-    "id": 0
-  },
-  {
-    "name": "phone-book",
-    "id": 0
-  },
-  {
-    "name": "phone-device-lanscape-left",
-    "id": 0
-  },
-  {
-    "name": "phone-device-lanscape-right",
     "id": 0
   },
   {
@@ -8868,107 +2184,7 @@
     "id": 0
   },
   {
-    "name": "phone-device",
-    "id": 0
-  },
-  {
-    "name": "phone-error-2",
-    "id": 0
-  },
-  {
-    "name": "phone-error-3",
-    "id": 0
-  },
-  {
-    "name": "phone-error-4",
-    "id": 0
-  },
-  {
-    "name": "phone-error-5",
-    "id": 0
-  },
-  {
-    "name": "phone-error-left-2",
-    "id": 0
-  },
-  {
-    "name": "phone-error-left-3",
-    "id": 0
-  },
-  {
-    "name": "phone-error-left-4",
-    "id": 0
-  },
-  {
-    "name": "phone-error-rotate-2",
-    "id": 0
-  },
-  {
-    "name": "phone-error-rotate-3",
-    "id": 0
-  },
-  {
     "name": "phone-error-rotate-left-2",
-    "id": 0
-  },
-  {
-    "name": "phone-error-rotate-left-3",
-    "id": 0
-  },
-  {
-    "name": "phone-error-rotate-left",
-    "id": 0
-  },
-  {
-    "name": "phone-error-rotate",
-    "id": 0
-  },
-  {
-    "name": "phone-error",
-    "id": 0
-  },
-  {
-    "name": "phone-out",
-    "id": 0
-  },
-  {
-    "name": "phone-square",
-    "id": 0
-  },
-  {
-    "name": "phone",
-    "id": 0
-  },
-  {
-    "name": "photo-camera",
-    "id": 0
-  },
-  {
-    "name": "pi-square",
-    "id": 0
-  },
-  {
-    "name": "pi",
-    "id": 0
-  },
-  {
-    "name": "picasa",
-    "id": 0
-  },
-  {
-    "name": "pickup-left",
-    "id": 0
-  },
-  {
-    "name": "pickup",
-    "id": 0
-  },
-  {
-    "name": "picnic-basket-2",
-    "id": 0
-  },
-  {
-    "name": "picnic-basket-3",
     "id": 0
   },
   {
@@ -8976,19 +2192,7 @@
     "id": 0
   },
   {
-    "name": "picnic-basket",
-    "id": 0
-  },
-  {
     "name": "picnic-table",
-    "id": 0
-  },
-  {
-    "name": "pie-chart",
-    "id": 0
-  },
-  {
-    "name": "pilates-2",
     "id": 0
   },
   {
@@ -8996,27 +2200,7 @@
     "id": 0
   },
   {
-    "name": "pilates-4",
-    "id": 0
-  },
-  {
-    "name": "pilates-ball",
-    "id": 0
-  },
-  {
-    "name": "pilates",
-    "id": 0
-  },
-  {
     "name": "pillow-2",
-    "id": 0
-  },
-  {
-    "name": "pillow",
-    "id": 0
-  },
-  {
-    "name": "pills-2",
     "id": 0
   },
   {
@@ -9024,75 +2208,7 @@
     "id": 0
   },
   {
-    "name": "pills-capsule",
-    "id": 0
-  },
-  {
-    "name": "pills",
-    "id": 0
-  },
-  {
-    "name": "pin-drop",
-    "id": 0
-  },
-  {
     "name": "pin",
-    "id": 0
-  },
-  {
-    "name": "pineapple-01",
-    "id": 0
-  },
-  {
-    "name": "pineapple-02",
-    "id": 0
-  },
-  {
-    "name": "ping-pong-2",
-    "id": 0
-  },
-  {
-    "name": "ping-pong-3",
-    "id": 0
-  },
-  {
-    "name": "ping-pong-4",
-    "id": 0
-  },
-  {
-    "name": "ping-pong",
-    "id": 0
-  },
-  {
-    "name": "pinterest-circle",
-    "id": 0
-  },
-  {
-    "name": "pinterest-square",
-    "id": 0
-  },
-  {
-    "name": "pinterest",
-    "id": 0
-  },
-  {
-    "name": "pipe-2",
-    "id": 0
-  },
-  {
-    "name": "pipe-3",
-    "id": 0
-  },
-  {
-    "name": "pipe-4",
-    "id": 0
-  },
-  {
-    "name": "pipe-5",
-    "id": 0
-  },
-  {
-    "name": "pipe-6",
     "id": 0
   },
   {
@@ -9100,19 +2216,7 @@
     "id": 0
   },
   {
-    "name": "pizza-01",
-    "id": 0
-  },
-  {
-    "name": "pizza-02",
-    "id": 0
-  },
-  {
-    "name": "pizza-slice-01",
-    "id": 0
-  },
-  {
-    "name": "pizza-slice-02",
+    "name": "pipe-2",
     "id": 0
   },
   {
@@ -9120,15 +2224,7 @@
     "id": 0
   },
   {
-    "name": "place",
-    "id": 0
-  },
-  {
     "name": "plant-pot",
-    "id": 0
-  },
-  {
-    "name": "plastic-bottle-2",
     "id": 0
   },
   {
@@ -9136,11 +2232,7 @@
     "id": 0
   },
   {
-    "name": "play-octagon",
-    "id": 0
-  },
-  {
-    "name": "play-square",
+    "name": "plastic-bottle-2",
     "id": 0
   },
   {
@@ -9156,39 +2248,11 @@
     "id": 0
   },
   {
-    "name": "playlist",
-    "id": 0
-  },
-  {
-    "name": "plum",
-    "id": 0
-  },
-  {
-    "name": "plunger-2",
-    "id": 0
-  },
-  {
-    "name": "plunger-3",
-    "id": 0
-  },
-  {
     "name": "plunger",
     "id": 0
   },
   {
-    "name": "plus",
-    "id": 0
-  },
-  {
     "name": "plush-minus-slash",
-    "id": 0
-  },
-  {
-    "name": "pocket",
-    "id": 0
-  },
-  {
-    "name": "podcast-2",
     "id": 0
   },
   {
@@ -9200,87 +2264,11 @@
     "id": 0
   },
   {
-    "name": "polkadot",
-    "id": 0
-  },
-  {
-    "name": "popcorn",
-    "id": 0
-  },
-  {
-    "name": "popsicle",
-    "id": 0
-  },
-  {
-    "name": "portfolio",
-    "id": 0
-  },
-  {
     "name": "potato",
     "id": 0
   },
   {
-    "name": "pound-circle",
-    "id": 0
-  },
-  {
-    "name": "pound-square",
-    "id": 0
-  },
-  {
-    "name": "pound",
-    "id": 0
-  },
-  {
-    "name": "power-bank-2",
-    "id": 0
-  },
-  {
-    "name": "power-bank",
-    "id": 0
-  },
-  {
-    "name": "power",
-    "id": 0
-  },
-  {
-    "name": "present-add",
-    "id": 0
-  },
-  {
-    "name": "present-check",
-    "id": 0
-  },
-  {
-    "name": "present-circle",
-    "id": 0
-  },
-  {
-    "name": "present-close",
-    "id": 0
-  },
-  {
     "name": "present-grow",
-    "id": 0
-  },
-  {
-    "name": "present-line",
-    "id": 0
-  },
-  {
-    "name": "present-low",
-    "id": 0
-  },
-  {
-    "name": "present-remove",
-    "id": 0
-  },
-  {
-    "name": "present-statistic",
-    "id": 0
-  },
-  {
-    "name": "presentation-bar-chart",
     "id": 0
   },
   {
@@ -9292,27 +2280,7 @@
     "id": 0
   },
   {
-    "name": "presentation",
-    "id": 0
-  },
-  {
     "name": "pretzel",
-    "id": 0
-  },
-  {
-    "name": "previous-1",
-    "id": 0
-  },
-  {
-    "name": "previous-octagon",
-    "id": 0
-  },
-  {
-    "name": "previous",
-    "id": 0
-  },
-  {
-    "name": "price-tag",
     "id": 0
   },
   {
@@ -9324,38 +2292,6 @@
     "id": 0
   },
   {
-    "name": "primary-11",
-    "id": 0
-  },
-  {
-    "name": "primary-12",
-    "id": 0
-  },
-  {
-    "name": "primary-13",
-    "id": 0
-  },
-  {
-    "name": "primary-14",
-    "id": 0
-  },
-  {
-    "name": "primary-15",
-    "id": 0
-  },
-  {
-    "name": "primary-16",
-    "id": 0
-  },
-  {
-    "name": "primary-17",
-    "id": 0
-  },
-  {
-    "name": "primary-18",
-    "id": 0
-  },
-  {
     "name": "primary-19",
     "id": 0
   },
@@ -9364,39 +2300,7 @@
     "id": 0
   },
   {
-    "name": "primary-20",
-    "id": 0
-  },
-  {
-    "name": "primary-21",
-    "id": 0
-  },
-  {
-    "name": "primary-22",
-    "id": 0
-  },
-  {
-    "name": "primary-23",
-    "id": 0
-  },
-  {
     "name": "primary-24",
-    "id": 0
-  },
-  {
-    "name": "primary-25",
-    "id": 0
-  },
-  {
-    "name": "primary-26",
-    "id": 0
-  },
-  {
-    "name": "primary-27",
-    "id": 0
-  },
-  {
-    "name": "primary-28",
     "id": 0
   },
   {
@@ -9404,47 +2308,7 @@
     "id": 0
   },
   {
-    "name": "primary-3",
-    "id": 0
-  },
-  {
-    "name": "primary-30",
-    "id": 0
-  },
-  {
-    "name": "primary-31",
-    "id": 0
-  },
-  {
-    "name": "primary-32",
-    "id": 0
-  },
-  {
-    "name": "primary-33",
-    "id": 0
-  },
-  {
     "name": "primary-34",
-    "id": 0
-  },
-  {
-    "name": "primary-35",
-    "id": 0
-  },
-  {
-    "name": "primary-4",
-    "id": 0
-  },
-  {
-    "name": "primary-5",
-    "id": 0
-  },
-  {
-    "name": "primary-6",
-    "id": 0
-  },
-  {
-    "name": "primary-7",
     "id": 0
   },
   {
@@ -9452,15 +2316,7 @@
     "id": 0
   },
   {
-    "name": "primary-9",
-    "id": 0
-  },
-  {
-    "name": "primary",
-    "id": 0
-  },
-  {
-    "name": "print-alt-2",
+    "name": "print",
     "id": 0
   },
   {
@@ -9472,43 +2328,11 @@
     "id": 0
   },
   {
-    "name": "print-alt-5",
-    "id": 0
-  },
-  {
     "name": "print-alt-6",
     "id": 0
   },
   {
-    "name": "print-alt-7",
-    "id": 0
-  },
-  {
-    "name": "print-alt-8",
-    "id": 0
-  },
-  {
-    "name": "print-alt-9",
-    "id": 0
-  },
-  {
-    "name": "print-alt",
-    "id": 0
-  },
-  {
-    "name": "print",
-    "id": 0
-  },
-  {
-    "name": "printer",
-    "id": 0
-  },
-  {
-    "name": "processor",
-    "id": 0
-  },
-  {
-    "name": "projector",
+    "name": "protected-file",
     "id": 0
   },
   {
@@ -9520,55 +2344,11 @@
     "id": 0
   },
   {
-    "name": "protected-file-folder-2",
-    "id": 0
-  },
-  {
     "name": "protected-file-folder",
     "id": 0
   },
   {
-    "name": "protected-file",
-    "id": 0
-  },
-  {
-    "name": "protected-lock-file-2",
-    "id": 0
-  },
-  {
-    "name": "protected-lock-file",
-    "id": 0
-  },
-  {
-    "name": "pull-up-bar-2",
-    "id": 0
-  },
-  {
-    "name": "pull-up-bar-3",
-    "id": 0
-  },
-  {
-    "name": "pull-up-bar",
-    "id": 0
-  },
-  {
-    "name": "punching-bag-2",
-    "id": 0
-  },
-  {
-    "name": "punching-bag-3",
-    "id": 0
-  },
-  {
-    "name": "punching-bag",
-    "id": 0
-  },
-  {
-    "name": "push-pin",
-    "id": 0
-  },
-  {
-    "name": "push-up-bar",
+    "name": "protected-file-folder-2",
     "id": 0
   },
   {
@@ -9576,11 +2356,7 @@
     "id": 0
   },
   {
-    "name": "qr-code-scan-2",
-    "id": 0
-  },
-  {
-    "name": "qr-code-scan",
+    "name": "push-up-bar",
     "id": 0
   },
   {
@@ -9588,11 +2364,11 @@
     "id": 0
   },
   {
-    "name": "quality-2",
+    "name": "quality",
     "id": 0
   },
   {
-    "name": "quality-3",
+    "name": "quality-2",
     "id": 0
   },
   {
@@ -9600,43 +2376,7 @@
     "id": 0
   },
   {
-    "name": "quality-5",
-    "id": 0
-  },
-  {
-    "name": "quality",
-    "id": 0
-  },
-  {
-    "name": "question",
-    "id": 0
-  },
-  {
-    "name": "radio-antenna-right",
-    "id": 0
-  },
-  {
-    "name": "radio-antenna",
-    "id": 0
-  },
-  {
     "name": "radio-right",
-    "id": 0
-  },
-  {
-    "name": "radio",
-    "id": 0
-  },
-  {
-    "name": "radish",
-    "id": 0
-  },
-  {
-    "name": "radius-circle-2",
-    "id": 0
-  },
-  {
-    "name": "radius-circle-3",
     "id": 0
   },
   {
@@ -9644,7 +2384,7 @@
     "id": 0
   },
   {
-    "name": "radius",
+    "name": "radius-circle-2",
     "id": 0
   },
   {
@@ -9652,31 +2392,7 @@
     "id": 0
   },
   {
-    "name": "rain",
-    "id": 0
-  },
-  {
-    "name": "rainbow-2",
-    "id": 0
-  },
-  {
-    "name": "rainbow-3",
-    "id": 0
-  },
-  {
-    "name": "rainbow-4",
-    "id": 0
-  },
-  {
     "name": "rainbow",
-    "id": 0
-  },
-  {
-    "name": "rainy-2",
-    "id": 0
-  },
-  {
-    "name": "rainy",
     "id": 0
   },
   {
@@ -9684,47 +2400,7 @@
     "id": 0
   },
   {
-    "name": "rand",
-    "id": 0
-  },
-  {
-    "name": "raspberries",
-    "id": 0
-  },
-  {
-    "name": "receipt-add",
-    "id": 0
-  },
-  {
-    "name": "receipt-check",
-    "id": 0
-  },
-  {
     "name": "receipt-clese",
-    "id": 0
-  },
-  {
-    "name": "receipt-down",
-    "id": 0
-  },
-  {
-    "name": "receipt-remove",
-    "id": 0
-  },
-  {
-    "name": "receipt-up",
-    "id": 0
-  },
-  {
-    "name": "receipt",
-    "id": 0
-  },
-  {
-    "name": "recycle-2",
-    "id": 0
-  },
-  {
-    "name": "recycle-3",
     "id": 0
   },
   {
@@ -9736,55 +2412,11 @@
     "id": 0
   },
   {
-    "name": "recycle-bin",
-    "id": 0
-  },
-  {
-    "name": "recycle",
-    "id": 0
-  },
-  {
-    "name": "reddit",
-    "id": 0
-  },
-  {
-    "name": "refresh-ccw",
-    "id": 0
-  },
-  {
-    "name": "refresh-cw",
-    "id": 0
-  },
-  {
-    "name": "refresh-round",
-    "id": 0
-  },
-  {
     "name": "refresh",
     "id": 0
   },
   {
-    "name": "refrigerator",
-    "id": 0
-  },
-  {
-    "name": "rejected-file-2",
-    "id": 0
-  },
-  {
-    "name": "rejected-file",
-    "id": 0
-  },
-  {
     "name": "repeat",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-10",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-11",
     "id": 0
   },
   {
@@ -9800,87 +2432,11 @@
     "id": 0
   },
   {
-    "name": "report-pie-chart-4",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-5",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-6",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-7",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-8",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart-9",
-    "id": 0
-  },
-  {
-    "name": "report-pie-chart",
-    "id": 0
-  },
-  {
-    "name": "repost-2",
-    "id": 0
-  },
-  {
-    "name": "repost-round",
-    "id": 0
-  },
-  {
-    "name": "research-left",
-    "id": 0
-  },
-  {
-    "name": "research-presentation-left",
-    "id": 0
-  },
-  {
-    "name": "research-presentation",
-    "id": 0
-  },
-  {
-    "name": "research",
-    "id": 0
-  },
-  {
     "name": "responsive",
     "id": 0
   },
   {
-    "name": "retweet-2",
-    "id": 0
-  },
-  {
     "name": "retweet-round-2",
-    "id": 0
-  },
-  {
-    "name": "retweet-round",
-    "id": 0
-  },
-  {
-    "name": "retweet",
-    "id": 0
-  },
-  {
-    "name": "reward-2",
-    "id": 0
-  },
-  {
-    "name": "reward-3",
-    "id": 0
-  },
-  {
-    "name": "reward-4",
     "id": 0
   },
   {
@@ -9896,23 +2452,7 @@
     "id": 0
   },
   {
-    "name": "reward",
-    "id": 0
-  },
-  {
-    "name": "rewind",
-    "id": 0
-  },
-  {
-    "name": "rice-cooker-2",
-    "id": 0
-  },
-  {
-    "name": "rice-cooker",
-    "id": 0
-  },
-  {
-    "name": "right-2",
+    "name": "right-alt",
     "id": 0
   },
   {
@@ -9920,11 +2460,7 @@
     "id": 0
   },
   {
-    "name": "right-alt",
-    "id": 0
-  },
-  {
-    "name": "right-arrow-circle",
+    "name": "right-arrow",
     "id": 0
   },
   {
@@ -9932,15 +2468,7 @@
     "id": 0
   },
   {
-    "name": "right-arrow",
-    "id": 0
-  },
-  {
-    "name": "right-bottom-arrow",
-    "id": 0
-  },
-  {
-    "name": "right-bottom-double-arrow",
+    "name": "right-circle",
     "id": 0
   },
   {
@@ -9948,7 +2476,7 @@
     "id": 0
   },
   {
-    "name": "right-circle",
+    "name": "right-direction",
     "id": 0
   },
   {
@@ -9956,43 +2484,7 @@
     "id": 0
   },
   {
-    "name": "right-direction-3",
-    "id": 0
-  },
-  {
-    "name": "right-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "right-direction-square",
-    "id": 0
-  },
-  {
-    "name": "right-direction",
-    "id": 0
-  },
-  {
-    "name": "right-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "right-down-direction-2",
-    "id": 0
-  },
-  {
-    "name": "right-down-direction-3",
-    "id": 0
-  },
-  {
     "name": "right-down-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "right-down-direction",
-    "id": 0
-  },
-  {
-    "name": "right-junction-sign",
     "id": 0
   },
   {
@@ -10000,23 +2492,7 @@
     "id": 0
   },
   {
-    "name": "right-left-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "right-octagon",
-    "id": 0
-  },
-  {
-    "name": "right-sign-1",
-    "id": 0
-  },
-  {
-    "name": "right-sign",
-    "id": 0
-  },
-  {
-    "name": "right-square-2",
+    "name": "right-square",
     "id": 0
   },
   {
@@ -10024,23 +2500,7 @@
     "id": 0
   },
   {
-    "name": "right-square",
-    "id": 0
-  },
-  {
-    "name": "right-top-arrow",
-    "id": 0
-  },
-  {
-    "name": "right-top-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "right-up-direction-2",
-    "id": 0
-  },
-  {
-    "name": "right-up-direction-3",
+    "name": "right-up-direction",
     "id": 0
   },
   {
@@ -10048,15 +2508,7 @@
     "id": 0
   },
   {
-    "name": "right-up-direction",
-    "id": 0
-  },
-  {
-    "name": "right",
-    "id": 0
-  },
-  {
-    "name": "road-block",
+    "name": "roadmap",
     "id": 0
   },
   {
@@ -10064,55 +2516,7 @@
     "id": 0
   },
   {
-    "name": "roadmap-3",
-    "id": 0
-  },
-  {
-    "name": "roadmap",
-    "id": 0
-  },
-  {
-    "name": "rocket-left",
-    "id": 0
-  },
-  {
-    "name": "rocket-right",
-    "id": 0
-  },
-  {
-    "name": "rocket",
-    "id": 0
-  },
-  {
-    "name": "rocking-chair-2",
-    "id": 0
-  },
-  {
-    "name": "rocking-chair",
-    "id": 0
-  },
-  {
     "name": "rod-of-asclepius",
-    "id": 0
-  },
-  {
-    "name": "rollerblades-2",
-    "id": 0
-  },
-  {
-    "name": "rollerblades-3",
-    "id": 0
-  },
-  {
-    "name": "rollerblades-4",
-    "id": 0
-  },
-  {
-    "name": "rollerblades",
-    "id": 0
-  },
-  {
-    "name": "rope-2",
     "id": 0
   },
   {
@@ -10124,27 +2528,7 @@
     "id": 0
   },
   {
-    "name": "rope",
-    "id": 0
-  },
-  {
-    "name": "rotate-handphone-lock",
-    "id": 0
-  },
-  {
-    "name": "rotate-left",
-    "id": 0
-  },
-  {
-    "name": "rotate-lock",
-    "id": 0
-  },
-  {
-    "name": "rotate-right",
-    "id": 0
-  },
-  {
-    "name": "router-2",
+    "name": "router",
     "id": 0
   },
   {
@@ -10152,91 +2536,7 @@
     "id": 0
   },
   {
-    "name": "router-4",
-    "id": 0
-  },
-  {
-    "name": "router-5",
-    "id": 0
-  },
-  {
-    "name": "router-6",
-    "id": 0
-  },
-  {
-    "name": "router-7",
-    "id": 0
-  },
-  {
-    "name": "router",
-    "id": 0
-  },
-  {
-    "name": "ruble-2",
-    "id": 0
-  },
-  {
-    "name": "ruble",
-    "id": 0
-  },
-  {
-    "name": "rugby-ball-2",
-    "id": 0
-  },
-  {
-    "name": "rugby-ball",
-    "id": 0
-  },
-  {
-    "name": "rugby-goal-2",
-    "id": 0
-  },
-  {
-    "name": "rugby-goal",
-    "id": 0
-  },
-  {
-    "name": "ruler-10",
-    "id": 0
-  },
-  {
-    "name": "ruler-2",
-    "id": 0
-  },
-  {
-    "name": "ruler-3",
-    "id": 0
-  },
-  {
-    "name": "ruler-4",
-    "id": 0
-  },
-  {
-    "name": "ruler-5",
-    "id": 0
-  },
-  {
     "name": "ruler-6",
-    "id": 0
-  },
-  {
-    "name": "ruler-7",
-    "id": 0
-  },
-  {
-    "name": "ruler-8",
-    "id": 0
-  },
-  {
-    "name": "ruler-9",
-    "id": 0
-  },
-  {
-    "name": "ruler",
-    "id": 0
-  },
-  {
-    "name": "rupiah-2",
     "id": 0
   },
   {
@@ -10244,35 +2544,7 @@
     "id": 0
   },
   {
-    "name": "safebox-2",
-    "id": 0
-  },
-  {
-    "name": "safebox-3",
-    "id": 0
-  },
-  {
-    "name": "safebox",
-    "id": 0
-  },
-  {
     "name": "sailboat-2",
-    "id": 0
-  },
-  {
-    "name": "sailboat-left-2",
-    "id": 0
-  },
-  {
-    "name": "sailboat-left",
-    "id": 0
-  },
-  {
-    "name": "sailboat",
-    "id": 0
-  },
-  {
-    "name": "salad",
     "id": 0
   },
   {
@@ -10280,35 +2552,7 @@
     "id": 0
   },
   {
-    "name": "salmon",
-    "id": 0
-  },
-  {
-    "name": "sand-clock",
-    "id": 0
-  },
-  {
     "name": "sandwich-01",
-    "id": 0
-  },
-  {
-    "name": "sandwich-02",
-    "id": 0
-  },
-  {
-    "name": "sandwich-03",
-    "id": 0
-  },
-  {
-    "name": "sandwich-burger",
-    "id": 0
-  },
-  {
-    "name": "sandwich-grilled",
-    "id": 0
-  },
-  {
-    "name": "sandwich-sub",
     "id": 0
   },
   {
@@ -10316,39 +2560,7 @@
     "id": 0
   },
   {
-    "name": "satellite-2",
-    "id": 0
-  },
-  {
-    "name": "satellite-3",
-    "id": 0
-  },
-  {
-    "name": "satellite-4",
-    "id": 0
-  },
-  {
-    "name": "satellite-dish-2",
-    "id": 0
-  },
-  {
     "name": "satellite-dish",
-    "id": 0
-  },
-  {
-    "name": "satellite",
-    "id": 0
-  },
-  {
-    "name": "save-error-left-2",
-    "id": 0
-  },
-  {
-    "name": "save-error-left-3",
-    "id": 0
-  },
-  {
-    "name": "save-error-left",
     "id": 0
   },
   {
@@ -10356,63 +2568,7 @@
     "id": 0
   },
   {
-    "name": "save-left",
-    "id": 0
-  },
-  {
-    "name": "save",
-    "id": 0
-  },
-  {
-    "name": "scan-alt",
-    "id": 0
-  },
-  {
-    "name": "scan-lock",
-    "id": 0
-  },
-  {
-    "name": "scan",
-    "id": 0
-  },
-  {
-    "name": "scanner-left",
-    "id": 0
-  },
-  {
-    "name": "scanner",
-    "id": 0
-  },
-  {
-    "name": "schedule-left",
-    "id": 0
-  },
-  {
-    "name": "schedule",
-    "id": 0
-  },
-  {
     "name": "school-bag",
-    "id": 0
-  },
-  {
-    "name": "school-bus",
-    "id": 0
-  },
-  {
-    "name": "scissors-2",
-    "id": 0
-  },
-  {
-    "name": "scissors-3",
-    "id": 0
-  },
-  {
-    "name": "scissors",
-    "id": 0
-  },
-  {
-    "name": "scooter-left",
     "id": 0
   },
   {
@@ -10420,31 +2576,11 @@
     "id": 0
   },
   {
-    "name": "screen-capture",
-    "id": 0
-  },
-  {
-    "name": "screen-lock",
+    "name": "scooter-left",
     "id": 0
   },
   {
     "name": "screenchot",
-    "id": 0
-  },
-  {
-    "name": "scroll-left-right",
-    "id": 0
-  },
-  {
-    "name": "scroll-up-down",
-    "id": 0
-  },
-  {
-    "name": "sea-2",
-    "id": 0
-  },
-  {
-    "name": "sea",
     "id": 0
   },
   {
@@ -10460,43 +2596,7 @@
     "id": 0
   },
   {
-    "name": "search-alt",
-    "id": 0
-  },
-  {
-    "name": "search",
-    "id": 0
-  },
-  {
-    "name": "seat-car",
-    "id": 0
-  },
-  {
-    "name": "secure",
-    "id": 0
-  },
-  {
-    "name": "secured-file-2",
-    "id": 0
-  },
-  {
     "name": "secured-file-3",
-    "id": 0
-  },
-  {
-    "name": "secured-file-folder-2",
-    "id": 0
-  },
-  {
-    "name": "secured-file-folder",
-    "id": 0
-  },
-  {
-    "name": "secured-file",
-    "id": 0
-  },
-  {
-    "name": "security-camera-top",
     "id": 0
   },
   {
@@ -10504,35 +2604,11 @@
     "id": 0
   },
   {
-    "name": "segway-2",
-    "id": 0
-  },
-  {
     "name": "segway-3",
     "id": 0
   },
   {
-    "name": "segway",
-    "id": 0
-  },
-  {
-    "name": "seismometer-circle",
-    "id": 0
-  },
-  {
     "name": "seismometer-square",
-    "id": 0
-  },
-  {
-    "name": "send-alt",
-    "id": 0
-  },
-  {
-    "name": "send",
-    "id": 0
-  },
-  {
-    "name": "server",
     "id": 0
   },
   {
@@ -10544,67 +2620,11 @@
     "id": 0
   },
   {
-    "name": "settings-alt",
-    "id": 0
-  },
-  {
-    "name": "settings",
-    "id": 0
-  },
-  {
-    "name": "shake",
-    "id": 0
-  },
-  {
-    "name": "share-2",
-    "id": 0
-  },
-  {
-    "name": "share-alt-2",
-    "id": 0
-  },
-  {
-    "name": "share-alt-3",
-    "id": 0
-  },
-  {
     "name": "share-alt",
     "id": 0
   },
   {
-    "name": "share",
-    "id": 0
-  },
-  {
     "name": "shekel",
-    "id": 0
-  },
-  {
-    "name": "shelf",
-    "id": 0
-  },
-  {
-    "name": "shield",
-    "id": 0
-  },
-  {
-    "name": "ship",
-    "id": 0
-  },
-  {
-    "name": "shipping-2",
-    "id": 0
-  },
-  {
-    "name": "shipping-3",
-    "id": 0
-  },
-  {
-    "name": "shipping-4",
-    "id": 0
-  },
-  {
-    "name": "shipping-5",
     "id": 0
   },
   {
@@ -10616,47 +2636,7 @@
     "id": 0
   },
   {
-    "name": "shipping-box",
-    "id": 0
-  },
-  {
-    "name": "shipping-left",
-    "id": 0
-  },
-  {
-    "name": "shipping",
-    "id": 0
-  },
-  {
-    "name": "shooting-star-2",
-    "id": 0
-  },
-  {
-    "name": "shooting-star",
-    "id": 0
-  },
-  {
-    "name": "shopping-bag",
-    "id": 0
-  },
-  {
-    "name": "shopping-cart",
-    "id": 0
-  },
-  {
-    "name": "shovel-2",
-    "id": 0
-  },
-  {
     "name": "shovel",
-    "id": 0
-  },
-  {
-    "name": "shower-2",
-    "id": 0
-  },
-  {
-    "name": "shower-3",
     "id": 0
   },
   {
@@ -10664,47 +2644,7 @@
     "id": 0
   },
   {
-    "name": "shuffle-circle",
-    "id": 0
-  },
-  {
-    "name": "shuffle-square",
-    "id": 0
-  },
-  {
-    "name": "shuffle",
-    "id": 0
-  },
-  {
-    "name": "shuttlecock-2",
-    "id": 0
-  },
-  {
     "name": "shuttlecock",
-    "id": 0
-  },
-  {
-    "name": "siacoin-circle",
-    "id": 0
-  },
-  {
-    "name": "siacoin",
-    "id": 0
-  },
-  {
-    "name": "sigma-2",
-    "id": 0
-  },
-  {
-    "name": "sigma-circle-2",
-    "id": 0
-  },
-  {
-    "name": "sigma-circle",
-    "id": 0
-  },
-  {
-    "name": "sigma-square-2",
     "id": 0
   },
   {
@@ -10712,11 +2652,7 @@
     "id": 0
   },
   {
-    "name": "sigma",
-    "id": 0
-  },
-  {
-    "name": "sign-alt",
+    "name": "sign-in",
     "id": 0
   },
   {
@@ -10724,15 +2660,7 @@
     "id": 0
   },
   {
-    "name": "sign-in-3",
-    "id": 0
-  },
-  {
     "name": "sign-in-4",
-    "id": 0
-  },
-  {
-    "name": "sign-in-5",
     "id": 0
   },
   {
@@ -10741,38 +2669,6 @@
   },
   {
     "name": "sign-in-alt-3",
-    "id": 0
-  },
-  {
-    "name": "sign-in-alt",
-    "id": 0
-  },
-  {
-    "name": "sign-in-double-arrow-2",
-    "id": 0
-  },
-  {
-    "name": "sign-in-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "sign-in",
-    "id": 0
-  },
-  {
-    "name": "sign-out-2",
-    "id": 0
-  },
-  {
-    "name": "sign-out-3",
-    "id": 0
-  },
-  {
-    "name": "sign-out-4",
-    "id": 0
-  },
-  {
-    "name": "sign-out-5",
     "id": 0
   },
   {
@@ -10788,23 +2684,7 @@
     "id": 0
   },
   {
-    "name": "sign-out-alt",
-    "id": 0
-  },
-  {
-    "name": "sign-out-double-arrow-2",
-    "id": 0
-  },
-  {
     "name": "sign-out-double-arrow-left-2",
-    "id": 0
-  },
-  {
-    "name": "sign-out-double-arrow-left",
-    "id": 0
-  },
-  {
-    "name": "sign-out-double-arrow",
     "id": 0
   },
   {
@@ -10812,27 +2692,7 @@
     "id": 0
   },
   {
-    "name": "sign-out-left-3",
-    "id": 0
-  },
-  {
-    "name": "sign-out-left-4",
-    "id": 0
-  },
-  {
-    "name": "sign-out-left-5",
-    "id": 0
-  },
-  {
-    "name": "sign-out-left",
-    "id": 0
-  },
-  {
-    "name": "sign-out",
-    "id": 0
-  },
-  {
-    "name": "sign",
+    "name": "signal",
     "id": 0
   },
   {
@@ -10840,55 +2700,7 @@
     "id": 0
   },
   {
-    "name": "signal-4g",
-    "id": 0
-  },
-  {
-    "name": "signal-5g",
-    "id": 0
-  },
-  {
-    "name": "signal",
-    "id": 0
-  },
-  {
-    "name": "sink-2",
-    "id": 0
-  },
-  {
-    "name": "sink",
-    "id": 0
-  },
-  {
-    "name": "skateboard-2",
-    "id": 0
-  },
-  {
-    "name": "skateboard-left",
-    "id": 0
-  },
-  {
     "name": "skateboard-right",
-    "id": 0
-  },
-  {
-    "name": "skateboard",
-    "id": 0
-  },
-  {
-    "name": "skateboarding-2",
-    "id": 0
-  },
-  {
-    "name": "skateboarding",
-    "id": 0
-  },
-  {
-    "name": "skatepark-park-2",
-    "id": 0
-  },
-  {
-    "name": "skatepark-park-3",
     "id": 0
   },
   {
@@ -10896,63 +2708,7 @@
     "id": 0
   },
   {
-    "name": "ski-lift",
-    "id": 0
-  },
-  {
-    "name": "skiing-2",
-    "id": 0
-  },
-  {
-    "name": "skiing",
-    "id": 0
-  },
-  {
-    "name": "skip-back",
-    "id": 0
-  },
-  {
-    "name": "skip-forward",
-    "id": 0
-  },
-  {
-    "name": "skull-2",
-    "id": 0
-  },
-  {
-    "name": "skull",
-    "id": 0
-  },
-  {
-    "name": "skype-circle",
-    "id": 0
-  },
-  {
-    "name": "skype-square",
-    "id": 0
-  },
-  {
-    "name": "skype",
-    "id": 0
-  },
-  {
-    "name": "slack",
-    "id": 0
-  },
-  {
-    "name": "slash",
-    "id": 0
-  },
-  {
     "name": "sleeping-bag-2",
-    "id": 0
-  },
-  {
-    "name": "sleeping-bag",
-    "id": 0
-  },
-  {
-    "name": "smart-band-2",
     "id": 0
   },
   {
@@ -10960,31 +2716,7 @@
     "id": 0
   },
   {
-    "name": "smart-glasses",
-    "id": 0
-  },
-  {
-    "name": "smart-home",
-    "id": 0
-  },
-  {
-    "name": "smart-house",
-    "id": 0
-  },
-  {
     "name": "smart-refrigerator",
-    "id": 0
-  },
-  {
-    "name": "smart-watch-circle-heart",
-    "id": 0
-  },
-  {
-    "name": "smart-watch-circle",
-    "id": 0
-  },
-  {
-    "name": "smart-watch-heart",
     "id": 0
   },
   {
@@ -10992,19 +2724,7 @@
     "id": 0
   },
   {
-    "name": "smartphone-rotate-left-1",
-    "id": 0
-  },
-  {
     "name": "smartphone-rotate-left",
-    "id": 0
-  },
-  {
-    "name": "smartphone-rotate-right",
-    "id": 0
-  },
-  {
-    "name": "smartphone",
     "id": 0
   },
   {
@@ -11012,39 +2732,7 @@
     "id": 0
   },
   {
-    "name": "snapchat",
-    "id": 0
-  },
-  {
-    "name": "snow-2",
-    "id": 0
-  },
-  {
-    "name": "snow",
-    "id": 0
-  },
-  {
     "name": "soda-bottle-2",
-    "id": 0
-  },
-  {
-    "name": "soda-bottle",
-    "id": 0
-  },
-  {
-    "name": "soda-can-apple",
-    "id": 0
-  },
-  {
-    "name": "soda-can-grape",
-    "id": 0
-  },
-  {
-    "name": "soda-can-orange",
-    "id": 0
-  },
-  {
-    "name": "soda-glass",
     "id": 0
   },
   {
@@ -11052,55 +2740,7 @@
     "id": 0
   },
   {
-    "name": "sofa",
-    "id": 0
-  },
-  {
-    "name": "sort-ascending",
-    "id": 0
-  },
-  {
     "name": "sort-descending",
-    "id": 0
-  },
-  {
-    "name": "sort",
-    "id": 0
-  },
-  {
-    "name": "sound-increase",
-    "id": 0
-  },
-  {
-    "name": "sound-max",
-    "id": 0
-  },
-  {
-    "name": "sound-min",
-    "id": 0
-  },
-  {
-    "name": "sound-mute-alt",
-    "id": 0
-  },
-  {
-    "name": "sound-mute",
-    "id": 0
-  },
-  {
-    "name": "sound-reduce",
-    "id": 0
-  },
-  {
-    "name": "soundcloud",
-    "id": 0
-  },
-  {
-    "name": "soup-2",
-    "id": 0
-  },
-  {
-    "name": "soup-3",
     "id": 0
   },
   {
@@ -11108,39 +2748,7 @@
     "id": 0
   },
   {
-    "name": "speaker-music",
-    "id": 0
-  },
-  {
-    "name": "speaker-with-stand",
-    "id": 0
-  },
-  {
-    "name": "speaker",
-    "id": 0
-  },
-  {
-    "name": "spermatozoon",
-    "id": 0
-  },
-  {
-    "name": "spinner",
-    "id": 0
-  },
-  {
-    "name": "sport-car-2",
-    "id": 0
-  },
-  {
-    "name": "sport-car-left-2",
-    "id": 0
-  },
-  {
     "name": "sport-car-left",
-    "id": 0
-  },
-  {
-    "name": "sport-car",
     "id": 0
   },
   {
@@ -11148,87 +2756,7 @@
     "id": 0
   },
   {
-    "name": "spotify",
-    "id": 0
-  },
-  {
-    "name": "square-root-circle",
-    "id": 0
-  },
-  {
-    "name": "square-root-of-x",
-    "id": 0
-  },
-  {
-    "name": "square-root-square",
-    "id": 0
-  },
-  {
     "name": "square-root",
-    "id": 0
-  },
-  {
-    "name": "square",
-    "id": 0
-  },
-  {
-    "name": "squats-2",
-    "id": 0
-  },
-  {
-    "name": "squats",
-    "id": 0
-  },
-  {
-    "name": "stairs-2",
-    "id": 0
-  },
-  {
-    "name": "stairs-3",
-    "id": 0
-  },
-  {
-    "name": "stairs",
-    "id": 0
-  },
-  {
-    "name": "stamp-2",
-    "id": 0
-  },
-  {
-    "name": "stamp-3",
-    "id": 0
-  },
-  {
-    "name": "stamp",
-    "id": 0
-  },
-  {
-    "name": "star-2",
-    "id": 0
-  },
-  {
-    "name": "star-3",
-    "id": 0
-  },
-  {
-    "name": "star",
-    "id": 0
-  },
-  {
-    "name": "statistic-grow",
-    "id": 0
-  },
-  {
-    "name": "statistic-low",
-    "id": 0
-  },
-  {
-    "name": "stats",
-    "id": 0
-  },
-  {
-    "name": "stawberry",
     "id": 0
   },
   {
@@ -11236,31 +2764,11 @@
     "id": 0
   },
   {
-    "name": "steamer",
-    "id": 0
-  },
-  {
-    "name": "steering-wheel",
-    "id": 0
-  },
-  {
-    "name": "stellar",
-    "id": 0
-  },
-  {
     "name": "stethoscope-2",
     "id": 0
   },
   {
-    "name": "stethoscope-left-2",
-    "id": 0
-  },
-  {
-    "name": "stethoscope-left",
-    "id": 0
-  },
-  {
-    "name": "stethoscope",
+    "name": "sticky-notes",
     "id": 0
   },
   {
@@ -11272,19 +2780,7 @@
     "id": 0
   },
   {
-    "name": "sticky-notes-2",
-    "id": 0
-  },
-  {
-    "name": "sticky-notes-3",
-    "id": 0
-  },
-  {
     "name": "sticky-notes-4",
-    "id": 0
-  },
-  {
-    "name": "sticky-notes-5",
     "id": 0
   },
   {
@@ -11292,27 +2788,7 @@
     "id": 0
   },
   {
-    "name": "sticky-notes-7",
-    "id": 0
-  },
-  {
     "name": "sticky-notes-8",
-    "id": 0
-  },
-  {
-    "name": "sticky-notes-9",
-    "id": 0
-  },
-  {
-    "name": "sticky-notes",
-    "id": 0
-  },
-  {
-    "name": "stool-2",
-    "id": 0
-  },
-  {
-    "name": "stool-3",
     "id": 0
   },
   {
@@ -11320,79 +2796,7 @@
     "id": 0
   },
   {
-    "name": "stop-circle-sign",
-    "id": 0
-  },
-  {
-    "name": "stop-circle",
-    "id": 0
-  },
-  {
-    "name": "stop-square-sign",
-    "id": 0
-  },
-  {
-    "name": "stop-square",
-    "id": 0
-  },
-  {
-    "name": "stop",
-    "id": 0
-  },
-  {
-    "name": "stopwatch-3-second",
-    "id": 0
-  },
-  {
-    "name": "stopwatch-5-second",
-    "id": 0
-  },
-  {
     "name": "stopwatch-7-second",
-    "id": 0
-  },
-  {
-    "name": "stopwatch-9-second",
-    "id": 0
-  },
-  {
-    "name": "store",
-    "id": 0
-  },
-  {
-    "name": "storm",
-    "id": 0
-  },
-  {
-    "name": "strawberry-smoothie",
-    "id": 0
-  },
-  {
-    "name": "strawberry",
-    "id": 0
-  },
-  {
-    "name": "strikethrough-2",
-    "id": 0
-  },
-  {
-    "name": "strikethrough-3",
-    "id": 0
-  },
-  {
-    "name": "strikethrough-square-2",
-    "id": 0
-  },
-  {
-    "name": "strikethrough-square",
-    "id": 0
-  },
-  {
-    "name": "strikethrough",
-    "id": 0
-  },
-  {
-    "name": "stylus-pen",
     "id": 0
   },
   {
@@ -11404,27 +2808,7 @@
     "id": 0
   },
   {
-    "name": "submarine-left-2",
-    "id": 0
-  },
-  {
     "name": "submarine-left",
-    "id": 0
-  },
-  {
-    "name": "submarine",
-    "id": 0
-  },
-  {
-    "name": "subway-2",
-    "id": 0
-  },
-  {
-    "name": "subway",
-    "id": 0
-  },
-  {
-    "name": "suit",
     "id": 0
   },
   {
@@ -11436,23 +2820,7 @@
     "id": 0
   },
   {
-    "name": "sun-cloudy",
-    "id": 0
-  },
-  {
-    "name": "sun",
-    "id": 0
-  },
-  {
     "name": "sunlight",
-    "id": 0
-  },
-  {
-    "name": "sunrise-2",
-    "id": 0
-  },
-  {
-    "name": "sunrise",
     "id": 0
   },
   {
@@ -11460,43 +2828,7 @@
     "id": 0
   },
   {
-    "name": "sunset-3",
-    "id": 0
-  },
-  {
     "name": "sunset-4",
-    "id": 0
-  },
-  {
-    "name": "sunset-5",
-    "id": 0
-  },
-  {
-    "name": "sunset-alt",
-    "id": 0
-  },
-  {
-    "name": "sunset",
-    "id": 0
-  },
-  {
-    "name": "surveillance-camera-left",
-    "id": 0
-  },
-  {
-    "name": "surveillance-camera",
-    "id": 0
-  },
-  {
-    "name": "sushi-01-gunkanmaki-ikura",
-    "id": 0
-  },
-  {
-    "name": "sushi-01-gunkanmaki-kappa",
-    "id": 0
-  },
-  {
-    "name": "sushi-01-gunkanmaki-tekka",
     "id": 0
   },
   {
@@ -11504,39 +2836,7 @@
     "id": 0
   },
   {
-    "name": "sushi-01-nigiri-amaebi",
-    "id": 0
-  },
-  {
-    "name": "sushi-01-nigiri-sake",
-    "id": 0
-  },
-  {
-    "name": "sushi-01-nigiri-tamago",
-    "id": 0
-  },
-  {
-    "name": "sushi-02-gunkanmaki-ikura",
-    "id": 0
-  },
-  {
-    "name": "sushi-02-gunkanmaki-uni",
-    "id": 0
-  },
-  {
-    "name": "sushi-02-nigiri-hotate",
-    "id": 0
-  },
-  {
     "name": "sushi-02-nigiri-ika",
-    "id": 0
-  },
-  {
-    "name": "sushi-02-nigiri-sake",
-    "id": 0
-  },
-  {
-    "name": "sushi-02-nigiri-tako",
     "id": 0
   },
   {
@@ -11544,59 +2844,7 @@
     "id": 0
   },
   {
-    "name": "sushi-03-gunkanmaki-ikura",
-    "id": 0
-  },
-  {
-    "name": "sushi-03-gunkanmaki-uni",
-    "id": 0
-  },
-  {
-    "name": "sushi-03-nigiri-ebi",
-    "id": 0
-  },
-  {
-    "name": "sushi-03-nigiri-ika",
-    "id": 0
-  },
-  {
     "name": "sushi-03-nigiri-maguro",
-    "id": 0
-  },
-  {
-    "name": "sushi-03-nigiri-sake",
-    "id": 0
-  },
-  {
-    "name": "sushi-03-nigiri-tai",
-    "id": 0
-  },
-  {
-    "name": "sushi-03-nigiri-tamago",
-    "id": 0
-  },
-  {
-    "name": "sushi-2",
-    "id": 0
-  },
-  {
-    "name": "sushi-3",
-    "id": 0
-  },
-  {
-    "name": "sushi-4",
-    "id": 0
-  },
-  {
-    "name": "sushi",
-    "id": 0
-  },
-  {
-    "name": "suspension-2",
-    "id": 0
-  },
-  {
-    "name": "suspension",
     "id": 0
   },
   {
@@ -11604,103 +2852,7 @@
     "id": 0
   },
   {
-    "name": "swiss-army-knife",
-    "id": 0
-  },
-  {
-    "name": "swiss-franc",
-    "id": 0
-  },
-  {
-    "name": "swiss-france",
-    "id": 0
-  },
-  {
-    "name": "switch-double",
-    "id": 0
-  },
-  {
-    "name": "switch-left",
-    "id": 0
-  },
-  {
-    "name": "switch-right",
-    "id": 0
-  },
-  {
-    "name": "syringe-2",
-    "id": 0
-  },
-  {
-    "name": "syringe-left-2",
-    "id": 0
-  },
-  {
-    "name": "syringe-left",
-    "id": 0
-  },
-  {
-    "name": "syringe-right-2",
-    "id": 0
-  },
-  {
-    "name": "syringe-right",
-    "id": 0
-  },
-  {
-    "name": "syringe",
-    "id": 0
-  },
-  {
-    "name": "table-lamp",
-    "id": 0
-  },
-  {
-    "name": "tablet-device-lanscape-left",
-    "id": 0
-  },
-  {
-    "name": "tablet-device-lanscape-right",
-    "id": 0
-  },
-  {
-    "name": "tablet-device",
-    "id": 0
-  },
-  {
     "name": "tablet-handphone",
-    "id": 0
-  },
-  {
-    "name": "tablet-lanscape-left",
-    "id": 0
-  },
-  {
-    "name": "tablet-lanscape-right",
-    "id": 0
-  },
-  {
-    "name": "tablet-laptop-2",
-    "id": 0
-  },
-  {
-    "name": "tablet-laptop",
-    "id": 0
-  },
-  {
-    "name": "tablet-stylus",
-    "id": 0
-  },
-  {
-    "name": "tablet",
-    "id": 0
-  },
-  {
-    "name": "tack",
-    "id": 0
-  },
-  {
-    "name": "taco-01",
     "id": 0
   },
   {
@@ -11708,43 +2860,7 @@
     "id": 0
   },
   {
-    "name": "taekwondo-2",
-    "id": 0
-  },
-  {
     "name": "taekwondo-3",
-    "id": 0
-  },
-  {
-    "name": "taekwondo-4",
-    "id": 0
-  },
-  {
-    "name": "taekwondo",
-    "id": 0
-  },
-  {
-    "name": "tag-add",
-    "id": 0
-  },
-  {
-    "name": "tag-check",
-    "id": 0
-  },
-  {
-    "name": "tag-close",
-    "id": 0
-  },
-  {
-    "name": "tag-remove",
-    "id": 0
-  },
-  {
-    "name": "tag",
-    "id": 0
-  },
-  {
-    "name": "taiwan-dollar-square",
     "id": 0
   },
   {
@@ -11752,71 +2868,7 @@
     "id": 0
   },
   {
-    "name": "taka-2",
-    "id": 0
-  },
-  {
-    "name": "taka-square-2",
-    "id": 0
-  },
-  {
-    "name": "taka-square",
-    "id": 0
-  },
-  {
-    "name": "taka",
-    "id": 0
-  },
-  {
-    "name": "take-off-left",
-    "id": 0
-  },
-  {
-    "name": "take-off",
-    "id": 0
-  },
-  {
-    "name": "tape",
-    "id": 0
-  },
-  {
     "name": "target-2",
-    "id": 0
-  },
-  {
-    "name": "target",
-    "id": 0
-  },
-  {
-    "name": "tax-left",
-    "id": 0
-  },
-  {
-    "name": "tax",
-    "id": 0
-  },
-  {
-    "name": "taxi-2",
-    "id": 0
-  },
-  {
-    "name": "taxi-left",
-    "id": 0
-  },
-  {
-    "name": "taxi",
-    "id": 0
-  },
-  {
-    "name": "tea-bag-2",
-    "id": 0
-  },
-  {
-    "name": "tea-bag-left-2",
-    "id": 0
-  },
-  {
-    "name": "tea-bag-left",
     "id": 0
   },
   {
@@ -11824,15 +2876,11 @@
     "id": 0
   },
   {
-    "name": "tea-left",
+    "name": "tea-bag-left",
     "id": 0
   },
   {
-    "name": "tea",
-    "id": 0
-  },
-  {
-    "name": "teepee-2",
+    "name": "tea-bag-left-2",
     "id": 0
   },
   {
@@ -11840,11 +2888,7 @@
     "id": 0
   },
   {
-    "name": "telephone",
-    "id": 0
-  },
-  {
-    "name": "telescope-2",
+    "name": "teepee-2",
     "id": 0
   },
   {
@@ -11852,35 +2896,7 @@
     "id": 0
   },
   {
-    "name": "television",
-    "id": 0
-  },
-  {
-    "name": "temperature",
-    "id": 0
-  },
-  {
     "name": "tennis-ball-2",
-    "id": 0
-  },
-  {
-    "name": "tennis-ball",
-    "id": 0
-  },
-  {
-    "name": "tent",
-    "id": 0
-  },
-  {
-    "name": "terminal",
-    "id": 0
-  },
-  {
-    "name": "tether",
-    "id": 0
-  },
-  {
-    "name": "text-bold-2",
     "id": 0
   },
   {
@@ -11888,11 +2904,11 @@
     "id": 0
   },
   {
-    "name": "text-height-2",
+    "name": "text-height",
     "id": 0
   },
   {
-    "name": "text-height",
+    "name": "text-height-2",
     "id": 0
   },
   {
@@ -11904,11 +2920,7 @@
     "id": 0
   },
   {
-    "name": "text-width",
-    "id": 0
-  },
-  {
-    "name": "text",
+    "name": "thermometer",
     "id": 0
   },
   {
@@ -11916,31 +2928,7 @@
     "id": 0
   },
   {
-    "name": "thermometer-3",
-    "id": 0
-  },
-  {
-    "name": "thermometer-4",
-    "id": 0
-  },
-  {
-    "name": "thermometer-5",
-    "id": 0
-  },
-  {
-    "name": "thermometer",
-    "id": 0
-  },
-  {
     "name": "thumbs-down",
-    "id": 0
-  },
-  {
-    "name": "thumbs-up",
-    "id": 0
-  },
-  {
-    "name": "thunder-2",
     "id": 0
   },
   {
@@ -11948,47 +2936,7 @@
     "id": 0
   },
   {
-    "name": "thunder-sign-octagon",
-    "id": 0
-  },
-  {
     "name": "thunder-sign-square",
-    "id": 0
-  },
-  {
-    "name": "thunder-sign",
-    "id": 0
-  },
-  {
-    "name": "thunder",
-    "id": 0
-  },
-  {
-    "name": "ticket",
-    "id": 0
-  },
-  {
-    "name": "tie-2",
-    "id": 0
-  },
-  {
-    "name": "tie",
-    "id": 0
-  },
-  {
-    "name": "tiktok",
-    "id": 0
-  },
-  {
-    "name": "time-alert-2",
-    "id": 0
-  },
-  {
-    "name": "time-alert-square-2",
-    "id": 0
-  },
-  {
-    "name": "time-alert-square",
     "id": 0
   },
   {
@@ -11996,11 +2944,7 @@
     "id": 0
   },
   {
-    "name": "time-clock",
-    "id": 0
-  },
-  {
-    "name": "time-management-time-3-o-clock",
+    "name": "time-alert-square",
     "id": 0
   },
   {
@@ -12012,51 +2956,7 @@
     "id": 0
   },
   {
-    "name": "time-management-time-9-o-clock",
-    "id": 0
-  },
-  {
-    "name": "timer-3-second",
-    "id": 0
-  },
-  {
-    "name": "timer-5-second",
-    "id": 0
-  },
-  {
-    "name": "timer-7-second",
-    "id": 0
-  },
-  {
-    "name": "timer-9-second",
-    "id": 0
-  },
-  {
-    "name": "timer-alert",
-    "id": 0
-  },
-  {
-    "name": "timer-error",
-    "id": 0
-  },
-  {
-    "name": "tinder-circle",
-    "id": 0
-  },
-  {
-    "name": "tinder-square",
-    "id": 0
-  },
-  {
-    "name": "tinder",
-    "id": 0
-  },
-  {
     "name": "toaster-2",
-    "id": 0
-  },
-  {
-    "name": "toaster",
     "id": 0
   },
   {
@@ -12068,31 +2968,7 @@
     "id": 0
   },
   {
-    "name": "toilet-paper-11",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper-12",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper-2",
-    "id": 0
-  },
-  {
     "name": "toilet-paper-3",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper-4",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper-5",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper-6",
     "id": 0
   },
   {
@@ -12100,59 +2976,7 @@
     "id": 0
   },
   {
-    "name": "toilet-paper-8",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper-9",
-    "id": 0
-  },
-  {
-    "name": "toilet-paper",
-    "id": 0
-  },
-  {
-    "name": "toilet",
-    "id": 0
-  },
-  {
-    "name": "tomato",
-    "id": 0
-  },
-  {
-    "name": "tomatoes-cherry",
-    "id": 0
-  },
-  {
-    "name": "tongue",
-    "id": 0
-  },
-  {
     "name": "tooth-2",
-    "id": 0
-  },
-  {
-    "name": "tooth-3",
-    "id": 0
-  },
-  {
-    "name": "tooth",
-    "id": 0
-  },
-  {
-    "name": "top-circle",
-    "id": 0
-  },
-  {
-    "name": "top-left-circle",
-    "id": 0
-  },
-  {
-    "name": "top-left-octagon",
-    "id": 0
-  },
-  {
-    "name": "top-left-square",
     "id": 0
   },
   {
@@ -12164,58 +2988,6 @@
     "id": 0
   },
   {
-    "name": "top-right-square",
-    "id": 0
-  },
-  {
-    "name": "top-square-3",
-    "id": 0
-  },
-  {
-    "name": "torch-bottom-left",
-    "id": 0
-  },
-  {
-    "name": "torch-bottom-right",
-    "id": 0
-  },
-  {
-    "name": "torch-top-left",
-    "id": 0
-  },
-  {
-    "name": "torch-top-right",
-    "id": 0
-  },
-  {
-    "name": "tornado",
-    "id": 0
-  },
-  {
-    "name": "touchid",
-    "id": 0
-  },
-  {
-    "name": "tractor-2",
-    "id": 0
-  },
-  {
-    "name": "tractor-left-2",
-    "id": 0
-  },
-  {
-    "name": "tractor-left",
-    "id": 0
-  },
-  {
-    "name": "tractor",
-    "id": 0
-  },
-  {
-    "name": "traffic-light-2",
-    "id": 0
-  },
-  {
     "name": "traffic-light",
     "id": 0
   },
@@ -12224,31 +2996,7 @@
     "id": 0
   },
   {
-    "name": "trailer",
-    "id": 0
-  },
-  {
-    "name": "train-left",
-    "id": 0
-  },
-  {
-    "name": "train",
-    "id": 0
-  },
-  {
-    "name": "trampoline-2",
-    "id": 0
-  },
-  {
     "name": "trampoline",
-    "id": 0
-  },
-  {
-    "name": "translate",
-    "id": 0
-  },
-  {
-    "name": "trash-2",
     "id": 0
   },
   {
@@ -12256,19 +3004,7 @@
     "id": 0
   },
   {
-    "name": "treadmill-2",
-    "id": 0
-  },
-  {
     "name": "treadmill-3",
-    "id": 0
-  },
-  {
-    "name": "treadmill-4",
-    "id": 0
-  },
-  {
-    "name": "treadmill",
     "id": 0
   },
   {
@@ -12276,23 +3012,11 @@
     "id": 0
   },
   {
-    "name": "tree",
-    "id": 0
-  },
-  {
-    "name": "trekking-2",
+    "name": "trekking",
     "id": 0
   },
   {
     "name": "trekking-pole-2",
-    "id": 0
-  },
-  {
-    "name": "trekking-pole",
-    "id": 0
-  },
-  {
-    "name": "trekking",
     "id": 0
   },
   {
@@ -12305,34 +3029,6 @@
   },
   {
     "name": "trending-up",
-    "id": 0
-  },
-  {
-    "name": "triangle-ruler-pencil",
-    "id": 0
-  },
-  {
-    "name": "triangle",
-    "id": 0
-  },
-  {
-    "name": "triple-down-sign",
-    "id": 0
-  },
-  {
-    "name": "triple-left-sign",
-    "id": 0
-  },
-  {
-    "name": "triple-right-sign",
-    "id": 0
-  },
-  {
-    "name": "triple-up-sign",
-    "id": 0
-  },
-  {
-    "name": "trophy-1st-place-2",
     "id": 0
   },
   {
@@ -12352,99 +3048,7 @@
     "id": 0
   },
   {
-    "name": "trophy-award",
-    "id": 0
-  },
-  {
-    "name": "trophy-star-2",
-    "id": 0
-  },
-  {
-    "name": "trophy-star",
-    "id": 0
-  },
-  {
-    "name": "trophy",
-    "id": 0
-  },
-  {
-    "name": "trowel-2",
-    "id": 0
-  },
-  {
     "name": "trowel-3",
-    "id": 0
-  },
-  {
-    "name": "trowel-4",
-    "id": 0
-  },
-  {
-    "name": "trowel",
-    "id": 0
-  },
-  {
-    "name": "truck-box",
-    "id": 0
-  },
-  {
-    "name": "truck-lift",
-    "id": 0
-  },
-  {
-    "name": "truck-pick-up-2",
-    "id": 0
-  },
-  {
-    "name": "truck-pick-up",
-    "id": 0
-  },
-  {
-    "name": "truck",
-    "id": 0
-  },
-  {
-    "name": "tumblr",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-direction-3",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-3",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-circle-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-octagon-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-left-direction-square-2",
     "id": 0
   },
   {
@@ -12452,11 +3056,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-down-left-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-right-direction-circle-2",
+    "name": "turn-around-down-left-direction-square-2",
     "id": 0
   },
   {
@@ -12464,47 +3064,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-down-right-direction-octagon-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-right-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-down-right-direction-square-2",
-    "id": 0
-  },
-  {
     "name": "turn-around-down-right-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-3",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-circle-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-octagon-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-direction-square-2",
     "id": 0
   },
   {
@@ -12512,19 +3072,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-left-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction-3",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction-circle-2",
+    "name": "turn-around-left-top-direction",
     "id": 0
   },
   {
@@ -12532,39 +3080,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-left-top-direction-octagon-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction-square-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-around-left-top-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-direction-3",
-    "id": 0
-  },
-  {
     "name": "turn-around-right-direction-circle-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-direction-circle",
     "id": 0
   },
   {
@@ -12572,35 +3088,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-right-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-direction-square-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-down-direction-2",
-    "id": 0
-  },
-  {
     "name": "turn-around-right-down-direction-3",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-down-direction-circle-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-down-direction-circle",
     "id": 0
   },
   {
@@ -12608,27 +3096,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-right-down-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-down-direction-square-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-down-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-around-right-down-direction",
-    "id": 0
-  },
-  {
     "name": "turn-around-up-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-direction-3",
     "id": 0
   },
   {
@@ -12636,7 +3104,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-up-direction-circle",
+    "name": "turn-around-up-direction-octagon",
     "id": 0
   },
   {
@@ -12644,47 +3112,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-up-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-direction-square-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-right-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-right-direction-3",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-right-direction-circle-2",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-right-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-right-direction-octagon-2",
-    "id": 0
-  },
-  {
     "name": "turn-around-up-right-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-around-up-right-direction-square-2",
     "id": 0
   },
   {
@@ -12692,11 +3120,7 @@
     "id": 0
   },
   {
-    "name": "turn-around-up-right-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-back-left-sign",
+    "name": "turn-around-up-right-direction-square-2",
     "id": 0
   },
   {
@@ -12704,27 +3128,7 @@
     "id": 0
   },
   {
-    "name": "turn-down-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-down-direction-round-2",
-    "id": 0
-  },
-  {
-    "name": "turn-down-direction-round",
-    "id": 0
-  },
-  {
-    "name": "turn-down-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-down-left-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-down-left-direction-circle",
+    "name": "turn-down-left-direction",
     "id": 0
   },
   {
@@ -12732,15 +3136,7 @@
     "id": 0
   },
   {
-    "name": "turn-down-left-direction-round-2",
-    "id": 0
-  },
-  {
     "name": "turn-down-left-direction-round-3",
-    "id": 0
-  },
-  {
-    "name": "turn-down-left-direction-round",
     "id": 0
   },
   {
@@ -12748,31 +3144,7 @@
     "id": 0
   },
   {
-    "name": "turn-down-left-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-down-right-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-down-right-direction-circle",
-    "id": 0
-  },
-  {
     "name": "turn-down-right-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-down-right-direction-round-2",
-    "id": 0
-  },
-  {
-    "name": "turn-down-right-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-down-right-direction",
     "id": 0
   },
   {
@@ -12780,47 +3152,7 @@
     "id": 0
   },
   {
-    "name": "turn-left-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "turn-left-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-left-direction-round-2",
-    "id": 0
-  },
-  {
-    "name": "turn-left-direction-round",
-    "id": 0
-  },
-  {
-    "name": "turn-left-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-left-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-left-sign",
-    "id": 0
-  },
-  {
     "name": "turn-left-top-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "turn-left-top-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-left-top-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-right-direction-2",
     "id": 0
   },
   {
@@ -12828,59 +3160,11 @@
     "id": 0
   },
   {
-    "name": "turn-right-direction-octagon",
-    "id": 0
-  },
-  {
     "name": "turn-right-direction-round-2",
     "id": 0
   },
   {
-    "name": "turn-right-direction-round",
-    "id": 0
-  },
-  {
-    "name": "turn-right-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-right-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-right-down-direction-2",
-    "id": 0
-  },
-  {
-    "name": "turn-right-down-direction-circle",
-    "id": 0
-  },
-  {
     "name": "turn-right-down-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-right-down-direction-round-2",
-    "id": 0
-  },
-  {
-    "name": "turn-right-down-direction-round",
-    "id": 0
-  },
-  {
-    "name": "turn-right-down-direction-square",
-    "id": 0
-  },
-  {
-    "name": "turn-right-down-direction",
-    "id": 0
-  },
-  {
-    "name": "turn-right-sign",
-    "id": 0
-  },
-  {
-    "name": "turn-rightsign",
     "id": 0
   },
   {
@@ -12892,23 +3176,11 @@
     "id": 0
   },
   {
-    "name": "turn-up-direction-square",
-    "id": 0
-  },
-  {
     "name": "turn-up-left-direction-2",
     "id": 0
   },
   {
-    "name": "turn-up-left-direction-round-2",
-    "id": 0
-  },
-  {
     "name": "turn-up-left-direction-round",
-    "id": 0
-  },
-  {
-    "name": "turn-up-left-direction",
     "id": 0
   },
   {
@@ -12920,59 +3192,7 @@
     "id": 0
   },
   {
-    "name": "turn-up-right-direction-circle",
-    "id": 0
-  },
-  {
-    "name": "turn-up-right-direction-octagon",
-    "id": 0
-  },
-  {
-    "name": "turn-up-right-direction-round-2",
-    "id": 0
-  },
-  {
-    "name": "turn-up-right-direction-round",
-    "id": 0
-  },
-  {
-    "name": "turn-up-right-direction-square",
-    "id": 0
-  },
-  {
-    "name": "tv-stand-2",
-    "id": 0
-  },
-  {
-    "name": "tv-stand",
-    "id": 0
-  },
-  {
-    "name": "tv",
-    "id": 0
-  },
-  {
-    "name": "twitch",
-    "id": 0
-  },
-  {
     "name": "twitter-circle",
-    "id": 0
-  },
-  {
-    "name": "twitter-square",
-    "id": 0
-  },
-  {
-    "name": "twitter",
-    "id": 0
-  },
-  {
-    "name": "type",
-    "id": 0
-  },
-  {
-    "name": "tyre",
     "id": 0
   },
   {
@@ -12980,15 +3200,7 @@
     "id": 0
   },
   {
-    "name": "ufo-3",
-    "id": 0
-  },
-  {
-    "name": "ufo-4",
-    "id": 0
-  },
-  {
-    "name": "ufo",
+    "name": "umbrella",
     "id": 0
   },
   {
@@ -12996,39 +3208,7 @@
     "id": 0
   },
   {
-    "name": "umbrella-3",
-    "id": 0
-  },
-  {
-    "name": "umbrella",
-    "id": 0
-  },
-  {
-    "name": "underline-2",
-    "id": 0
-  },
-  {
     "name": "underline-3",
-    "id": 0
-  },
-  {
-    "name": "underline-4",
-    "id": 0
-  },
-  {
-    "name": "underline-square-2",
-    "id": 0
-  },
-  {
-    "name": "underline-square",
-    "id": 0
-  },
-  {
-    "name": "underline",
-    "id": 0
-  },
-  {
-    "name": "unicycle-2",
     "id": 0
   },
   {
@@ -13040,39 +3220,7 @@
     "id": 0
   },
   {
-    "name": "unicycle",
-    "id": 0
-  },
-  {
-    "name": "unlink-alt-3",
-    "id": 0
-  },
-  {
-    "name": "unlink-alt-4",
-    "id": 0
-  },
-  {
-    "name": "unlink-alt-5",
-    "id": 0
-  },
-  {
     "name": "unlink-alt",
-    "id": 0
-  },
-  {
-    "name": "unlnk-alt-2",
-    "id": 0
-  },
-  {
-    "name": "unlock-1",
-    "id": 0
-  },
-  {
-    "name": "unlock-circle",
-    "id": 0
-  },
-  {
-    "name": "unlock",
     "id": 0
   },
   {
@@ -13084,19 +3232,7 @@
     "id": 0
   },
   {
-    "name": "up-alt",
-    "id": 0
-  },
-  {
     "name": "up-arrow-circle",
-    "id": 0
-  },
-  {
-    "name": "up-arrow-direction-square",
-    "id": 0
-  },
-  {
-    "name": "up-arrow",
     "id": 0
   },
   {
@@ -13104,35 +3240,7 @@
     "id": 0
   },
   {
-    "name": "up-circle",
-    "id": 0
-  },
-  {
-    "name": "up-direction-2",
-    "id": 0
-  },
-  {
-    "name": "up-direction-3",
-    "id": 0
-  },
-  {
-    "name": "up-direction-circle",
-    "id": 0
-  },
-  {
     "name": "up-direction-square",
-    "id": 0
-  },
-  {
-    "name": "up-direction",
-    "id": 0
-  },
-  {
-    "name": "up-double-arrow",
-    "id": 0
-  },
-  {
-    "name": "up-down-arrow-2",
     "id": 0
   },
   {
@@ -13140,55 +3248,7 @@
     "id": 0
   },
   {
-    "name": "up-down-direction",
-    "id": 0
-  },
-  {
-    "name": "up-down-left-right-arrow",
-    "id": 0
-  },
-  {
-    "name": "up-down-right-left-arrow",
-    "id": 0
-  },
-  {
-    "name": "up-down-scroll-bar-2",
-    "id": 0
-  },
-  {
-    "name": "up-down-scroll-bar",
-    "id": 0
-  },
-  {
-    "name": "up-junction-sign",
-    "id": 0
-  },
-  {
     "name": "up-left-arrow-circle",
-    "id": 0
-  },
-  {
-    "name": "up-left-circle",
-    "id": 0
-  },
-  {
-    "name": "up-left-direction-2",
-    "id": 0
-  },
-  {
-    "name": "up-left-down-right-sign",
-    "id": 0
-  },
-  {
-    "name": "up-left-right-direction",
-    "id": 0
-  },
-  {
-    "name": "up-left",
-    "id": 0
-  },
-  {
-    "name": "up-octagon-2",
     "id": 0
   },
   {
@@ -13196,87 +3256,11 @@
     "id": 0
   },
   {
-    "name": "up-right-arrow-circle",
-    "id": 0
-  },
-  {
-    "name": "up-right-circle",
-    "id": 0
-  },
-  {
-    "name": "up-right-direction-2",
-    "id": 0
-  },
-  {
-    "name": "up-right-down-left-sign",
-    "id": 0
-  },
-  {
-    "name": "up-right",
-    "id": 0
-  },
-  {
-    "name": "up-sign",
-    "id": 0
-  },
-  {
-    "name": "up-square-2",
-    "id": 0
-  },
-  {
-    "name": "up-square-3",
-    "id": 0
-  },
-  {
-    "name": "up-square",
-    "id": 0
-  },
-  {
-    "name": "up-trend-left-round",
-    "id": 0
-  },
-  {
-    "name": "up-trend-left",
-    "id": 0
-  },
-  {
     "name": "up-trend-round",
     "id": 0
   },
   {
-    "name": "up-trend",
-    "id": 0
-  },
-  {
-    "name": "up",
-    "id": 0
-  },
-  {
-    "name": "update-alt-2",
-    "id": 0
-  },
-  {
-    "name": "update-alt",
-    "id": 0
-  },
-  {
-    "name": "update",
-    "id": 0
-  },
-  {
     "name": "upload-10",
-    "id": 0
-  },
-  {
-    "name": "upload-11",
-    "id": 0
-  },
-  {
-    "name": "upload-2",
-    "id": 0
-  },
-  {
-    "name": "upload-3",
     "id": 0
   },
   {
@@ -13288,43 +3272,7 @@
     "id": 0
   },
   {
-    "name": "upload-6",
-    "id": 0
-  },
-  {
-    "name": "upload-7",
-    "id": 0
-  },
-  {
-    "name": "upload-8",
-    "id": 0
-  },
-  {
-    "name": "upload-9",
-    "id": 0
-  },
-  {
-    "name": "upload-alt-2",
-    "id": 0
-  },
-  {
-    "name": "upload-alt-3",
-    "id": 0
-  },
-  {
     "name": "upload-alt",
-    "id": 0
-  },
-  {
-    "name": "upload-double-arrow-2",
-    "id": 0
-  },
-  {
-    "name": "upload-double-arrow-3",
-    "id": 0
-  },
-  {
-    "name": "upload-double-arrow-4",
     "id": 0
   },
   {
@@ -13332,59 +3280,11 @@
     "id": 0
   },
   {
-    "name": "upload",
-    "id": 0
-  },
-  {
-    "name": "upper-sign",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-alert-left-2",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-alert-left",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-alert",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-error",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-left",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-plug",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive-right",
-    "id": 0
-  },
-  {
-    "name": "usb-flash-drive",
-    "id": 0
-  },
-  {
     "name": "usb-left",
     "id": 0
   },
   {
-    "name": "usb-plug",
-    "id": 0
-  },
-  {
-    "name": "usb-right",
-    "id": 0
-  },
-  {
-    "name": "usb",
+    "name": "user",
     "id": 0
   },
   {
@@ -13396,31 +3296,7 @@
     "id": 0
   },
   {
-    "name": "user-3",
-    "id": 0
-  },
-  {
-    "name": "user-4",
-    "id": 0
-  },
-  {
-    "name": "user-5",
-    "id": 0
-  },
-  {
-    "name": "user-6",
-    "id": 0
-  },
-  {
-    "name": "user-7",
-    "id": 0
-  },
-  {
-    "name": "user-8",
-    "id": 0
-  },
-  {
-    "name": "user-9",
+    "name": "user-alert",
     "id": 0
   },
   {
@@ -13428,55 +3304,7 @@
     "id": 0
   },
   {
-    "name": "user-alert-3",
-    "id": 0
-  },
-  {
-    "name": "user-alert-left-2",
-    "id": 0
-  },
-  {
-    "name": "user-alert-left-3",
-    "id": 0
-  },
-  {
-    "name": "user-alert-left",
-    "id": 0
-  },
-  {
-    "name": "user-alert",
-    "id": 0
-  },
-  {
-    "name": "user-circle-2",
-    "id": 0
-  },
-  {
-    "name": "user-circle",
-    "id": 0
-  },
-  {
     "name": "user-fill",
-    "id": 0
-  },
-  {
-    "name": "user-square",
-    "id": 0
-  },
-  {
-    "name": "user-warning",
-    "id": 0
-  },
-  {
-    "name": "user",
-    "id": 0
-  },
-  {
-    "name": "users",
-    "id": 0
-  },
-  {
-    "name": "vase-2",
     "id": 0
   },
   {
@@ -13484,27 +3312,7 @@
     "id": 0
   },
   {
-    "name": "vase",
-    "id": 0
-  },
-  {
     "name": "vechain-circle",
-    "id": 0
-  },
-  {
-    "name": "vechain-square",
-    "id": 0
-  },
-  {
-    "name": "vechain",
-    "id": 0
-  },
-  {
-    "name": "verified",
-    "id": 0
-  },
-  {
-    "name": "vest-2",
     "id": 0
   },
   {
@@ -13512,27 +3320,7 @@
     "id": 0
   },
   {
-    "name": "vibrate-2",
-    "id": 0
-  },
-  {
-    "name": "vibrate",
-    "id": 0
-  },
-  {
-    "name": "video-camera",
-    "id": 0
-  },
-  {
-    "name": "video-projector-left",
-    "id": 0
-  },
-  {
-    "name": "video-projector",
-    "id": 0
-  },
-  {
-    "name": "video-recorder-2",
+    "name": "video",
     "id": 0
   },
   {
@@ -13540,23 +3328,7 @@
     "id": 0
   },
   {
-    "name": "video",
-    "id": 0
-  },
-  {
-    "name": "vine-circle",
-    "id": 0
-  },
-  {
-    "name": "vine-square",
-    "id": 0
-  },
-  {
-    "name": "vine",
-    "id": 0
-  },
-  {
-    "name": "virtual-reality",
+    "name": "video-recorder-2",
     "id": 0
   },
   {
@@ -13564,19 +3336,7 @@
     "id": 0
   },
   {
-    "name": "virus",
-    "id": 0
-  },
-  {
     "name": "vision-focus",
-    "id": 0
-  },
-  {
-    "name": "vision",
-    "id": 0
-  },
-  {
-    "name": "voice",
     "id": 0
   },
   {
@@ -13584,27 +3344,7 @@
     "id": 0
   },
   {
-    "name": "volume-2",
-    "id": 0
-  },
-  {
-    "name": "volume-x",
-    "id": 0
-  },
-  {
-    "name": "volume",
-    "id": 0
-  },
-  {
-    "name": "vr-glasses",
-    "id": 0
-  },
-  {
     "name": "vsco",
-    "id": 0
-  },
-  {
-    "name": "walker-2",
     "id": 0
   },
   {
@@ -13612,27 +3352,7 @@
     "id": 0
   },
   {
-    "name": "walker-left-1",
-    "id": 0
-  },
-  {
-    "name": "walker-left-2",
-    "id": 0
-  },
-  {
-    "name": "walker-left",
-    "id": 0
-  },
-  {
-    "name": "walker",
-    "id": 0
-  },
-  {
     "name": "walkie-talkie-left",
-    "id": 0
-  },
-  {
-    "name": "walkie-talkie",
     "id": 0
   },
   {
@@ -13640,27 +3360,7 @@
     "id": 0
   },
   {
-    "name": "wallet-3",
-    "id": 0
-  },
-  {
-    "name": "wallet-4",
-    "id": 0
-  },
-  {
     "name": "wallet-5",
-    "id": 0
-  },
-  {
-    "name": "wallet-6",
-    "id": 0
-  },
-  {
-    "name": "wallet-alt-2",
-    "id": 0
-  },
-  {
-    "name": "wallet-alt",
     "id": 0
   },
   {
@@ -13668,15 +3368,7 @@
     "id": 0
   },
   {
-    "name": "wallet-money-3",
-    "id": 0
-  },
-  {
-    "name": "wallet-money",
-    "id": 0
-  },
-  {
-    "name": "wallet",
+    "name": "wardrobe",
     "id": 0
   },
   {
@@ -13684,27 +3376,7 @@
     "id": 0
   },
   {
-    "name": "wardrobe",
-    "id": 0
-  },
-  {
-    "name": "warning-alt-2",
-    "id": 0
-  },
-  {
-    "name": "warning-alt",
-    "id": 0
-  },
-  {
     "name": "warning",
-    "id": 0
-  },
-  {
-    "name": "wash-basin-2",
-    "id": 0
-  },
-  {
-    "name": "wash-basin-3",
     "id": 0
   },
   {
@@ -13712,19 +3384,11 @@
     "id": 0
   },
   {
+    "name": "wash-basin-3",
+    "id": 0
+  },
+  {
     "name": "washbasin-2",
-    "id": 0
-  },
-  {
-    "name": "washbasin-3",
-    "id": 0
-  },
-  {
-    "name": "washbasin-4",
-    "id": 0
-  },
-  {
-    "name": "washbasin",
     "id": 0
   },
   {
@@ -13736,31 +3400,11 @@
     "id": 0
   },
   {
-    "name": "watch-7-o-clock",
-    "id": 0
-  },
-  {
-    "name": "watch-9-o-clock",
-    "id": 0
-  },
-  {
-    "name": "watch-circle-3-o-clock",
-    "id": 0
-  },
-  {
-    "name": "watch-circle-5-o-clock",
-    "id": 0
-  },
-  {
-    "name": "watch-circle-7-o-clock",
-    "id": 0
-  },
-  {
     "name": "watch-circle-9-o-clock",
     "id": 0
   },
   {
-    "name": "watch",
+    "name": "water",
     "id": 0
   },
   {
@@ -13768,27 +3412,11 @@
     "id": 0
   },
   {
-    "name": "water-can-2",
-    "id": 0
-  },
-  {
     "name": "water-can-3",
     "id": 0
   },
   {
-    "name": "water-can-4",
-    "id": 0
-  },
-  {
-    "name": "water-can",
-    "id": 0
-  },
-  {
     "name": "water-cloud-2",
-    "id": 0
-  },
-  {
-    "name": "water-cloud",
     "id": 0
   },
   {
@@ -13800,35 +3428,11 @@
     "id": 0
   },
   {
-    "name": "water-tap-2",
-    "id": 0
-  },
-  {
-    "name": "water-tap",
-    "id": 0
-  },
-  {
-    "name": "water",
-    "id": 0
-  },
-  {
-    "name": "watermelon-01",
-    "id": 0
-  },
-  {
     "name": "watermelon-02",
     "id": 0
   },
   {
     "name": "watermelon-slice",
-    "id": 0
-  },
-  {
-    "name": "wave",
-    "id": 0
-  },
-  {
-    "name": "waze",
     "id": 0
   },
   {
@@ -13840,19 +3444,7 @@
     "id": 0
   },
   {
-    "name": "webcam-3",
-    "id": 0
-  },
-  {
-    "name": "webcam",
-    "id": 0
-  },
-  {
     "name": "whatsapp-square",
-    "id": 0
-  },
-  {
-    "name": "whatsapp",
     "id": 0
   },
   {
@@ -13860,39 +3452,11 @@
     "id": 0
   },
   {
-    "name": "wheelbarrow",
-    "id": 0
-  },
-  {
-    "name": "wheelchair-2",
-    "id": 0
-  },
-  {
-    "name": "wheelchair-left-2",
-    "id": 0
-  },
-  {
-    "name": "wheelchair-left",
-    "id": 0
-  },
-  {
     "name": "wheelchair",
     "id": 0
   },
   {
-    "name": "white-board",
-    "id": 0
-  },
-  {
-    "name": "wifi",
-    "id": 0
-  },
-  {
-    "name": "wind-alt",
-    "id": 0
-  },
-  {
-    "name": "wind",
+    "name": "window",
     "id": 0
   },
   {
@@ -13904,27 +3468,7 @@
     "id": 0
   },
   {
-    "name": "window-4",
-    "id": 0
-  },
-  {
-    "name": "window-5",
-    "id": 0
-  },
-  {
-    "name": "window-6",
-    "id": 0
-  },
-  {
-    "name": "window-7",
-    "id": 0
-  },
-  {
     "name": "window-8",
-    "id": 0
-  },
-  {
-    "name": "window",
     "id": 0
   },
   {
@@ -13932,7 +3476,7 @@
     "id": 0
   },
   {
-    "name": "windsock-2",
+    "name": "windsock",
     "id": 0
   },
   {
@@ -13940,55 +3484,7 @@
     "id": 0
   },
   {
-    "name": "windsock-4",
-    "id": 0
-  },
-  {
-    "name": "windsock",
-    "id": 0
-  },
-  {
-    "name": "windy-2",
-    "id": 0
-  },
-  {
     "name": "windy",
-    "id": 0
-  },
-  {
-    "name": "wine-glass",
-    "id": 0
-  },
-  {
-    "name": "winner",
-    "id": 0
-  },
-  {
-    "name": "winter-ice",
-    "id": 0
-  },
-  {
-    "name": "winter",
-    "id": 0
-  },
-  {
-    "name": "wiper-2",
-    "id": 0
-  },
-  {
-    "name": "wiper-3",
-    "id": 0
-  },
-  {
-    "name": "wiper-left-2",
-    "id": 0
-  },
-  {
-    "name": "wiper-left-3",
-    "id": 0
-  },
-  {
-    "name": "wiper-left",
     "id": 0
   },
   {
@@ -13996,23 +3492,11 @@
     "id": 0
   },
   {
+    "name": "wiper-2",
+    "id": 0
+  },
+  {
     "name": "wireless-mouse",
-    "id": 0
-  },
-  {
-    "name": "won",
-    "id": 0
-  },
-  {
-    "name": "wood-2",
-    "id": 0
-  },
-  {
-    "name": "wood",
-    "id": 0
-  },
-  {
-    "name": "wordpress",
     "id": 0
   },
   {
@@ -14020,23 +3504,7 @@
     "id": 0
   },
   {
-    "name": "work-agenda",
-    "id": 0
-  },
-  {
-    "name": "work",
-    "id": 0
-  },
-  {
-    "name": "world",
-    "id": 0
-  },
-  {
     "name": "wristwatch",
-    "id": 0
-  },
-  {
-    "name": "x",
     "id": 0
   },
   {
@@ -14048,39 +3516,7 @@
     "id": 0
   },
   {
-    "name": "xray",
-    "id": 0
-  },
-  {
-    "name": "xrp-circle",
-    "id": 0
-  },
-  {
-    "name": "xrp-square",
-    "id": 0
-  },
-  {
-    "name": "xrp",
-    "id": 0
-  },
-  {
-    "name": "yam",
-    "id": 0
-  },
-  {
     "name": "youtube",
-    "id": 0
-  },
-  {
-    "name": "yuan-circle",
-    "id": 0
-  },
-  {
-    "name": "yuan-square",
-    "id": 0
-  },
-  {
-    "name": "yuan",
     "id": 0
   },
   {
@@ -14092,31 +3528,7 @@
     "id": 0
   },
   {
-    "name": "zcash-square",
-    "id": 0
-  },
-  {
-    "name": "zcash",
-    "id": 0
-  },
-  {
-    "name": "zeppelin-2",
-    "id": 0
-  },
-  {
     "name": "zeppelin-left-2",
-    "id": 0
-  },
-  {
-    "name": "zeppelin-left",
-    "id": 0
-  },
-  {
-    "name": "zeppelin",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-down-up-arrow",
     "id": 0
   },
   {
@@ -14124,47 +3536,7 @@
     "id": 0
   },
   {
-    "name": "zig-zag-left-arrow",
-    "id": 0
-  },
-  {
     "name": "zig-zag-left-down-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-left-right-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-left-up-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-right-arrow-2",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-right-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-right-down-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-right-left-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-right-up-arrow",
-    "id": 0
-  },
-  {
-    "name": "zig-zag-up-down-arrow",
-    "id": 0
-  },
-  {
-    "name": "zloty-square",
     "id": 0
   },
   {
@@ -14172,43 +3544,11 @@
     "id": 0
   },
   {
-    "name": "zoom-circle",
-    "id": 0
-  },
-  {
-    "name": "zoom-in-alt-1",
-    "id": 0
-  },
-  {
-    "name": "zoom-in-alt",
-    "id": 0
-  },
-  {
-    "name": "zoom-in",
-    "id": 0
-  },
-  {
     "name": "zoom-out-alt-1",
     "id": 0
   },
   {
-    "name": "zoom-out-alt",
-    "id": 0
-  },
-  {
-    "name": "zoom-out",
-    "id": 0
-  },
-  {
     "name": "zoom-square",
-    "id": 0
-  },
-  {
-    "name": "zoom",
-    "id": 0
-  },
-  {
-    "name": "zucchini",
     "id": 0
   }
 ]

@@ -585,9 +585,10 @@ function EditorPage() {
       <div className="hidden md:flex items-center bg-bg-muted rounded-lg p-1 shrink-0">
         {(['preview', 'split', 'code'] as ViewMode[]).map(m => (
           <button key={m} disabled={!svgCode} onClick={() => setViewMode(m)}
-            className={cn("flex items-center justify-center p-1.5 rounded-md transition-all",
+            className={cn("flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-bold rounded-md transition-all",
               !svgCode ? "opacity-30 cursor-not-allowed" : viewMode === m ? "bg-white shadow-sm text-slate-900" : "text-secondary hover:text-primary")}>
-            {m === 'preview' ? <Eye size={16} /> : m === 'split' ? <SplitSquareHorizontal size={16} /> : <Code2 size={16} />}
+            {m === 'preview' ? <Eye size={14} /> : m === 'split' ? <SplitSquareHorizontal size={14} /> : <Code2 size={14} />}
+            {t(`pages.svgConverter.toolbar.${m}`)}
           </button>
         ))}
       </div>
