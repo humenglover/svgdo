@@ -158,7 +158,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
       {format !== 'svg' && (
         <>
           <div className="space-y-2">
-            <label className="text-xs font-bold text-secondary uppercase">Background</label>
+            <label className="text-xs font-bold text-secondary uppercase">{t('pages.svgConverter.exportPanel.background')}</label>
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => setBg('transparent')}
@@ -169,7 +169,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
                   format === 'jpeg' && "opacity-50 cursor-not-allowed bg-bg-muted"
                 )}
               >
-                Transparent
+                {t('pages.svgConverter.exportPanel.transparent')}
               </button>
               <button
                 onClick={() => setBg('white')}
@@ -178,7 +178,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
                   bg === 'white' ? "bg-blue-500/10 text-blue-500 border-blue-500/50" : "bg-white dark:bg-bg-base border-border text-primary hover:bg-bg-subtle"
                 )}
               >
-                White
+                {t('pages.svgConverter.exportPanel.white')}
               </button>
               <div className={cn(
                 "flex items-center gap-1 border rounded-lg bg-white dark:bg-bg-base overflow-hidden px-1 transition-colors",
@@ -190,13 +190,13 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
                   onChange={e => { setCustomBg(e.target.value); setBg('custom') }}
                   className="w-6 h-6 border-0 p-0 cursor-pointer bg-transparent"
                 />
-                <span className={cn("text-xs font-bold flex-1 text-center", bg === 'custom' ? "text-blue-500" : "text-primary")}>Custom</span>
+                <span className={cn("text-xs font-bold flex-1 text-center", bg === 'custom' ? "text-blue-500" : "text-primary")}>{t('pages.svgConverter.exportPanel.custom')}</span>
               </div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-secondary uppercase">Scale & Size</label>
+            <label className="text-xs font-bold text-secondary uppercase">{t('pages.svgConverter.exportPanel.scaleSize')}</label>
             <div className="grid grid-cols-4 gap-2 mb-2">
               {[1, 2, 4, 8].map(s => (
                 <button
@@ -214,7 +214,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
             
             <div className="flex items-center gap-2">
               <div className="flex flex-col flex-1">
-                <span className="text-[10px] text-tertiary font-medium mb-1">Width (px)</span>
+                <span className="text-[10px] text-tertiary font-medium mb-1">{t('pages.svgConverter.exportPanel.widthPx')}</span>
                 <input 
                   type="number" 
                   value={targetWidth} 
@@ -226,7 +226,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
                 <RefreshCw size={14} className="opacity-50" />
               </div>
               <div className="flex flex-col flex-1">
-                <span className="text-[10px] text-tertiary font-medium mb-1">Height (px)</span>
+                <span className="text-[10px] text-tertiary font-medium mb-1">{t('pages.svgConverter.exportPanel.heightPx')}</span>
                 <input 
                   type="number" 
                   value={targetHeight} 
@@ -244,7 +244,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({ svgCode }) => {
         className="w-full py-3 bg-orange hover:bg-orange/90 text-white font-bold rounded-xl flex justify-center items-center gap-2 shadow-sm transition-colors"
       >
         <Download size={18} />
-        Export {format.toUpperCase()}
+        {t('pages.svgConverter.exportPanel.exportBtn') + t(`pages.svgConverter.exportPanel.format${format.toUpperCase()}`)}
       </button>
     </div>
   )

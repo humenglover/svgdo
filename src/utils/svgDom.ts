@@ -319,7 +319,7 @@ export function removeSvgElement(svgCode: string, elementIndex: number): string 
 
   walk(svgEl)
   if (foundEl && foundEl.parentNode) {
-    foundEl.parentNode.removeChild(foundEl)
+    (foundEl as Element).parentNode!.removeChild(foundEl as Element)
     const serializer = new XMLSerializer()
     return serializer.serializeToString(svgEl).replace(/xmlns="http:\/\/www\.w3\.org\/1999\/xhtml"/g, '')
   }
