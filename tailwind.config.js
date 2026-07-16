@@ -1,0 +1,60 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: ['selector', 'html.dark'],
+  theme: {
+    extend: {
+      colors: {
+        'bg-base': 'var(--color-bg-base)',
+        'bg-surface': 'var(--color-bg-surface)',
+        'bg-raised': 'var(--color-bg-raised)',
+        'bg-subtle': 'var(--color-bg-subtle)',
+        'bg-muted': 'var(--color-bg-muted)',
+        primary: 'var(--color-text-primary)',
+        secondary: 'var(--color-text-secondary)',
+        tertiary: 'var(--color-text-tertiary)',
+        quaternary: 'var(--color-text-quaternary)',
+        'on-accent': 'var(--color-text-on-accent)',
+        border: {
+          DEFAULT: 'var(--color-border)',
+          strong: 'var(--color-border-strong)',
+        },
+        fill: {
+          primary: 'var(--color-fill-primary)',
+          secondary: 'var(--color-fill-secondary)',
+          tertiary: 'var(--color-fill-tertiary)',
+          quaternary: 'var(--color-fill-quaternary)',
+        },
+        blue: 'var(--color-blue)',
+        'blue-hover': 'var(--color-blue-hover)',
+        'blue-muted': 'var(--color-blue-muted)',
+        green: 'var(--color-green)',
+        red: 'var(--color-red)',
+        orange: 'var(--color-orange)',
+        yellow: 'var(--color-yellow)',
+        purple: 'var(--color-purple)',
+        indigo: 'var(--color-indigo)',
+        pink: 'var(--color-pink)',
+        teal: 'var(--color-teal)',
+        gray: {
+          50: 'var(--color-gray-50)', 100: 'var(--color-gray-100)',
+          200: 'var(--color-gray-200)', 300: 'var(--color-gray-300)',
+          400: 'var(--color-gray-400)', 500: 'var(--color-gray-500)',
+          600: 'var(--color-gray-600)', 700: 'var(--color-gray-700)',
+          800: 'var(--color-gray-800)', 900: 'var(--color-gray-900)',
+          950: 'var(--color-gray-950)',
+        },
+      },
+      borderRadius: {
+        xs: 'var(--radius-xs)', sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)', lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)', full: 'var(--radius-full)',
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)', md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)', xl: 'var(--shadow-xl)',
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+}

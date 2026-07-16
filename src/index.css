@@ -1,0 +1,205 @@
+/*
+ * ══════════════════════════════════════════════════════
+ *  SVG Editor — Design Token System
+ * ══════════════════════════════════════════════════════
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── LIGHT MODE ────────────────────────────────────── */
+:root {
+  --color-bg-base: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-bg-raised: #ffffff;
+  --color-bg-subtle: #f2f2f7;
+  --color-bg-muted: #e5e5ea;
+
+  --color-text-primary: #000000;
+  --color-text-secondary: rgba(60, 60, 67, .60);
+  --color-text-tertiary: rgba(60, 60, 67, .30);
+  --color-text-quaternary: rgba(60, 60, 67, .18);
+  --color-text-on-accent: #ffffff;
+
+  --color-border: rgba(60, 60, 67, .18);
+  --color-border-strong: rgba(60, 60, 67, .36);
+
+  --color-fill-primary: rgba(120, 120, 128, .20);
+  --color-fill-secondary: rgba(120, 120, 128, .16);
+  --color-fill-tertiary: rgba(120, 120, 128, .12);
+  --color-fill-quaternary: rgba(120, 120, 128, .08);
+
+  --color-blue: #007AFF;
+  --color-blue-hover: #0066D6;
+  --color-blue-muted: rgba(0, 122, 255, .12);
+  --color-blue-foreground: #ffffff;
+  --color-green: #34C759;
+  --color-green-hover: #28A745;
+  --color-green-muted: rgba(52, 199, 89, .12);
+  --color-green-foreground: #ffffff;
+  --color-red: #FF3B30;
+  --color-red-hover: #D63027;
+  --color-red-muted: rgba(255, 59, 48, .12);
+  --color-red-foreground: #ffffff;
+  --color-orange: #f97316;
+  --color-orange-hover: #ea580c;
+  --color-orange-muted: rgba(249, 115, 22, .12);
+  --color-orange-foreground: #ffffff;
+  --color-yellow: #FFCC00;
+  --color-yellow-hover: #D4A800;
+  --color-yellow-muted: rgba(255, 204, 0, .15);
+  --color-yellow-foreground: #000000;
+  --color-purple: #AF52DE;
+  --color-purple-hover: #8E3DB5;
+  --color-purple-muted: rgba(175, 82, 222, .12);
+  --color-purple-foreground: #ffffff;
+  --color-indigo: #5856D6;
+  --color-indigo-hover: #4240A8;
+  --color-indigo-muted: rgba(88, 86, 214, .12);
+  --color-indigo-foreground: #ffffff;
+  --color-pink: #FF2D55;
+  --color-pink-hover: #CC2444;
+  --color-pink-muted: rgba(255, 45, 85, .12);
+  --color-pink-foreground: #ffffff;
+  --color-teal: #30B0C7;
+  --color-teal-hover: #238CA0;
+  --color-teal-muted: rgba(48, 176, 199, .12);
+  --color-teal-foreground: #ffffff;
+
+  --color-gray-50: #f9f9f9;
+  --color-gray-100: #f2f2f7;
+  --color-gray-200: #e5e5ea;
+  --color-gray-300: #d1d1d6;
+  --color-gray-400: #aeaeb2;
+  --color-gray-500: #8e8e93;
+  --color-gray-600: #636366;
+  --color-gray-700: #48484a;
+  --color-gray-800: #3a3a3c;
+  --color-gray-900: #2c2c2e;
+  --color-gray-950: #1c1c1e;
+
+  --color-primary: var(--color-blue);
+  --color-primary-hover: var(--color-blue-hover);
+  --color-primary-muted: var(--color-blue-muted);
+  --color-primary-foreground: var(--color-blue-foreground);
+  --color-success: var(--color-green);
+  --color-success-muted: var(--color-green-muted);
+  --color-success-foreground: var(--color-green-foreground);
+  --color-warning: var(--color-yellow);
+  --color-warning-muted: var(--color-yellow-muted);
+  --color-warning-foreground: var(--color-yellow-foreground);
+  --color-danger: var(--color-red);
+  --color-danger-muted: var(--color-red-muted);
+  --color-danger-foreground: var(--color-red-foreground);
+  --color-info: var(--color-teal);
+  --color-info-muted: var(--color-teal-muted);
+  --color-info-foreground: var(--color-teal-foreground);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, .10);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, .12);
+
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 350ms;
+  --ease-default: cubic-bezier(.25, .1, .25, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* ── DARK MODE ─────────────────────────────────────── */
+html.dark {
+  --color-bg-base: #000000;
+  --color-bg-surface: #1c1c1e;
+  --color-bg-raised: #2c2c2e;
+  --color-bg-subtle: #1c1c1e;
+  --color-bg-muted: #3a3a3c;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(235, 235, 245, .60);
+  --color-text-tertiary: rgba(235, 235, 245, .30);
+  --color-text-quaternary: rgba(235, 235, 245, .18);
+
+  --color-border: rgba(84, 84, 88, .55);
+  --color-border-strong: rgba(84, 84, 88, .80);
+
+  --color-fill-primary: rgba(120, 120, 128, .36);
+  --color-fill-secondary: rgba(120, 120, 128, .32);
+  --color-fill-tertiary: rgba(120, 120, 128, .24);
+  --color-fill-quaternary: rgba(120, 120, 128, .18);
+
+  --color-blue: #409CFF;
+  --color-blue-hover: #73B9FF;
+  --color-blue-muted: rgba(64, 156, 255, .20);
+  --color-green: #30D158;
+  --color-red: #FF453A;
+  --color-orange: #f97316;
+  --color-yellow: #FFD60A;
+  --color-purple: #BF5AF2;
+  --color-indigo: #5E5CE6;
+  --color-pink: #FF375F;
+  --color-teal: #40CBE0;
+
+  --color-gray-50: #1c1c1e;
+  --color-gray-100: #2c2c2e;
+  --color-gray-200: #3a3a3c;
+  --color-gray-300: #48484a;
+  --color-gray-400: #636366;
+  --color-gray-500: #8e8e93;
+  --color-gray-600: #aeaeb2;
+  --color-gray-700: #d1d1d6;
+  --color-gray-800: #e5e5ea;
+  --color-gray-900: #f2f2f7;
+  --color-gray-950: #f9f9f9;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .40);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, .50);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, .60);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, .70);
+}
+
+/* ── Base ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-gray-300); border-radius: 9999px; }
+
+::-selection {
+  background: var(--color-blue-muted);
+  color: var(--color-blue);
+}
+
+/* Ensure SVG preview fits within container at 100% zoom */
+.svg-preview-container svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
