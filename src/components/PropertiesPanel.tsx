@@ -86,24 +86,24 @@ export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props
         </CollapseSection>
 
         {/* Layer & Actions */}
-        <CollapseSection title={t('common.panel.layerActions', 'Actions & Layer')}>
+        <CollapseSection title={t('common.panel.layerActions')}>
           <div className="grid grid-cols-4 gap-2 mb-2">
-            <button onClick={() => handleLayerMove('front')} title="Bring to Front" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+            <button onClick={() => handleLayerMove('front')} title={t('common.panel.bringToFront')} className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
               <ArrowUpToLine size={14} />
             </button>
-            <button onClick={() => handleLayerMove('forward')} title="Bring Forward" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+            <button onClick={() => handleLayerMove('forward')} title={t('common.panel.bringForward')} className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
               <ArrowUp size={14} />
             </button>
-            <button onClick={() => handleLayerMove('backward')} title="Send Backward" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+            <button onClick={() => handleLayerMove('backward')} title={t('common.panel.sendBackward')} className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
               <ArrowDown size={14} />
             </button>
-            <button onClick={() => handleLayerMove('back')} title="Send to Back" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+            <button onClick={() => handleLayerMove('back')} title={t('common.panel.sendToBack')} className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
               <ArrowDownToLine size={14} />
             </button>
           </div>
           <button onClick={handleDelete} className="w-full flex items-center justify-center gap-2 p-2 mt-2 rounded-lg border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white text-xs font-bold transition-colors">
             <Trash2 size={14} />
-            {t('common.panel.delete', 'Delete Element')}
+            {t('common.panel.delete')}
           </button>
         </CollapseSection>
 
