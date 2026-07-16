@@ -1,13 +1,23 @@
 import DOMPurify from 'dompurify'
 
 export const sanitizeSVG = (svgCode: string): string => {
-  return DOMPurify.sanitize(svgCode, {
+  let code = svgCode;
+  
+  // DOMPurify in svg profile often strips the <svg> root tag if it lacks the proper xmlns namespace.
+  // We inject it automatically if missing to ensure the preview renders.
+  if (code && !code.includes('xmlns=') && code.includes('<svg')) {
+    code = code.replace(/<svg/i, '<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+
+  const clean = DOMPurify.sanitize(code, {
     USE_PROFILES: { svg: true, svgFilters: true },
     ADD_TAGS: ['use', 'symbol', 'defs', 'clipPath', 'mask', 'pattern', 'linearGradient', 'radialGradient'],
-    ADD_ATTR: ['xmlns', 'xmlns:xlink', 'xlink:href', 'viewBox', 'preserveAspectRatio'],
+    ADD_ATTR: ['xmlns', 'xmlns:xlink', 'xlink:href', 'viewBox', 'preserveAspectRatio', 'width', 'height', 'fill', 'stroke'],
     FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'foreignObject'],
     FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
-  })
+  });
+
+  return clean;
 }
 
 export const validateURL = (url: string): { valid: boolean; error?: string } => {
