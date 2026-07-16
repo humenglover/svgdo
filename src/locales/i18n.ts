@@ -1,37 +1,32 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import { LANGUAGES, DEFAULT_LANGUAGE, FALLBACK_LANGUAGE } from './config'
 import zh from './zh'
 import en from './en'
 import ja from './ja'
 
-const SUPPORTED_LANGS = ['zh', 'en', 'ja'] as const
+const resourceMap: Record<string, typeof zh> = { zh, en, ja }
 
 export function getDefaultLanguage(): string {
-  // 1. Saved preference
   const saved = localStorage.getItem('lang')
-  if (saved && SUPPORTED_LANGS.includes(saved as typeof SUPPORTED_LANGS[number])) return saved
+  if (saved && LANGUAGES.some(l => l.code === saved)) return saved
 
-  // 2. Browser language detection
-  const browserLang = navigator.language.toLowerCase()
-  if (browserLang.startsWith('zh')) return 'zh'
-  if (browserLang.startsWith('ja')) return 'ja'
-  if (browserLang.startsWith('en')) return 'en'
-
-  // 3. Default: English (SEO primary)
-  return 'en'
+  const browser = navigator.language.toLowerCase()
+  const match = LANGUAGES.find(l => l.detection.some(p => browser.startsWith(p)))
+  return match?.code || DEFAULT_LANGUAGE
 }
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      zh: { translation: zh },
-      en: { translation: en },
-      ja: { translation: ja },
-    },
-    lng: getDefaultLanguage(),
-    fallbackLng: 'en',
-    interpolation: { escapeValue: false },
-  })
+export function getLanguageByCode(code: string): typeof LANGUAGES[0] | undefined {
+  return LANGUAGES.find(l => l.code === code)
+}
+
+i18n.use(initReactI18next).init({
+  resources: Object.fromEntries(
+    LANGUAGES.filter(l => resourceMap[l.code]).map(l => [l.code, { translation: resourceMap[l.code] }])
+  ),
+  lng: getDefaultLanguage(),
+  fallbackLng: FALLBACK_LANGUAGE,
+  interpolation: { escapeValue: false },
+})
 
 export default i18n

@@ -35,15 +35,12 @@ const FALLBACK_ICONS = [
   'activity', 'align-center', 'align-justify', 'align-left', 'align-right', 'anchor', 'aperture', 'archive', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'at-sign', 'award', 'bar-chart', 'battery', 'bell', 'bluetooth', 'bold', 'book', 'bookmark', 'box', 'briefcase', 'calendar', 'camera', 'cast', 'check', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'chrome', 'circle', 'clipboard', 'clock', 'cloud', 'code', 'coffee', 'command', 'compass', 'copy', 'cpu', 'credit-card', 'crop', 'crosshair', 'database', 'delete', 'disc', 'dollar-sign', 'download', 'droplet', 'eye-off', 'eye', 'facebook', 'feather', 'figma', 'file', 'film', 'filter', 'flag', 'folder', 'framer', 'frown', 'gift', 'github', 'gitlab', 'globe', 'hard-drive', 'hash', 'headphones', 'heart', 'hexagon', 'home', 'image', 'inbox', 'info', 'instagram', 'italic', 'key', 'layers', 'life-buoy', 'link', 'linkedin', 'list', 'loader', 'lock', 'log-in', 'log-out', 'mail', 'map-pin', 'map', 'maximize', 'menu', 'message-circle', 'message-square', 'mic', 'minimize', 'minus', 'monitor', 'moon', 'mouse-pointer', 'move', 'music', 'navigation', 'octagon', 'package', 'paperclip', 'pause', 'percent', 'phone', 'pie-chart', 'play', 'plus', 'pocket', 'power', 'printer', 'radio', 'refresh-ccw', 'refresh-cw', 'repeat', 'rewind', 'save', 'scissors', 'search', 'send', 'server', 'settings', 'share-2', 'share', 'shield', 'shopping-bag', 'shopping-cart', 'shuffle', 'skip-back', 'skip-forward', 'slack', 'slash', 'smartphone', 'smile', 'speaker', 'square', 'star', 'sun', 'tablet', 'tag', 'target', 'terminal', 'thermometer', 'thumbs-down', 'thumbs-up', 'trash-2', 'trash', 'trello', 'trending-down', 'trending-up', 'triangle', 'truck', 'tv', 'twitch', 'twitter', 'type', 'umbrella', 'underline', 'upload', 'user', 'users', 'video', 'voicemail', 'volume-2', 'volume-x', 'volume', 'watch', 'wifi', 'wind', 'x', 'youtube', 'zap', 'zoom-in', 'zoom-out'
 ]
 
-const LANG_OPTIONS = [
-  { code: 'zh', label: '中文', native: '中文' },
-  { code: 'en', label: 'EN', native: 'English' },
-  { code: 'ja', label: '日本語', native: '日本語' },
-]
+import { LANGUAGES } from '@/locales/config'
+import { getLanguageByCode } from '@/locales/i18n'
 
 function LanguageDropdown() {
   const [open, setOpen] = useState(false)
-  const current = LANG_OPTIONS.find(l => l.code === i18n.language) || LANG_OPTIONS[1]
+  const current = getLanguageByCode(i18n.language) || LANGUAGES[0]
 
   return (
     <div className="relative">
@@ -52,14 +49,14 @@ function LanguageDropdown() {
         className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-secondary hover:text-primary hover:bg-bg-subtle transition-colors"
       >
         <Languages size={15} />
-        <span>{current.label}</span>
+        <span>{current.shortLabel}</span>
         <ChevronDown size={12} className={open ? 'rotate-180 transition-transform' : 'transition-transform'} />
       </button>
       {open && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full mt-1 z-20 w-36 bg-bg-raised border border-border rounded-xl shadow-lg py-1 overflow-hidden">
-            {LANG_OPTIONS.map(lang => (
+          <div className="absolute right-0 top-full mt-1 z-20 w-40 bg-bg-raised border border-border rounded-xl shadow-lg py-1 overflow-hidden">
+            {LANGUAGES.map(lang => (
               <button
                 key={lang.code}
                 onClick={() => {
@@ -71,8 +68,8 @@ function LanguageDropdown() {
                   i18n.language === lang.code ? 'text-blue bg-blue/5' : 'text-secondary'
                 }`}
               >
-                <span>{lang.native}</span>
-                <span className="text-[11px] text-tertiary">{lang.label}</span>
+                <span>{lang.nativeLabel}</span>
+                <span className="text-[11px] text-tertiary">{lang.shortLabel}</span>
               </button>
             ))}
           </div>
@@ -86,8 +83,6 @@ function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t } = useTranslation()
   const { theme, toggle: toggleTheme } = useTheme()
-  const isZh = i18n.language === 'zh'
-
   // Editor state
   const [svgCode, setSvgCode] = useState<string>('')
   const [originalSvg, setOriginalSvg] = useState<string>('')
@@ -871,7 +866,7 @@ function EditorPage() {
                 <div className="flex flex-col space-y-1">
                   <span className="px-3 py-1.5 text-[11px] font-semibold text-secondary/70 uppercase tracking-wider">{t('common.language')}</span>
                   <div className="flex gap-1.5 px-3">
-                    {LANG_OPTIONS.map(lang => (
+                    {LANGUAGES.map(lang => (
                       <button
                         key={lang.code}
                         onClick={() => { i18n.changeLanguage(lang.code); localStorage.setItem('lang', lang.code); setIsMenuOpen(false); }}
@@ -881,7 +876,7 @@ function EditorPage() {
                             : 'bg-bg-subtle text-secondary hover:text-primary hover:bg-bg-muted'
                         }`}
                       >
-                        {lang.label}
+                        {lang.shortLabel}
                       </button>
                     ))}
                   </div>
