@@ -71,7 +71,7 @@ export default {
       { title: '4단계. 내보내기', desc: '최적화된 SVG 또는 PNG로 다운로드합니다.' },
     ],
     features: [
-      { title: '단축키가 있나요?', desc: 'Ctrl + 스크롤로 확대/축소, Ctrl +/- 로 조정, Ctrl + 0 으로 초기화할 수 있습니다.' },
+      { title: '키보드 단축키', desc: 'Ctrl+Z: 실행취소 | Ctrl+Y: 다시실행\nCtrl+O: 파일열기 | Ctrl+L: URL로드\nCtrl+I: 아이콘라이브러리 | Ctrl+K: 코드붙여넣기\nCtrl+S: SVG저장 | Ctrl+E: PNG내보내기\nCtrl+C: 코드복사 | Delete: 요소삭제\nCtrl+스크롤: 확대 | Ctrl+0: 초기화\nEscape: 선택해제' },
       { title: '코드와 캔버스가 동기화되나요?', desc: '네. 캔버스에서의 변형 작업이 즉시 코드에 반영됩니다.' },
       { title: '압축률이 왜 이렇게 높나요?', desc: '디자인 도구가 출력하는 SVG에서 빈 태그와 과도한 정밀도의 좌표를 적극적으로 제거하기 때문입니다.' }
     ],

@@ -71,7 +71,7 @@ export default {
       { title: 'Paso 4. Exportar', desc: 'Descarga como SVG optimizado o PNG.' },
     ],
     features: [
-      { title: '¿Hay atajos?', desc: 'Ctrl + Rueda para zoom, Ctrl +/- para escalar, Ctrl 0 para reset.' },
+      { title: 'Atajos de Teclado', desc: 'Ctrl+Z: Deshacer | Ctrl+Y: Rehacer\nCtrl+O: Abrir archivo | Ctrl+L: Cargar URL\nCtrl+I: Biblioteca | Ctrl+K: Pegar código\nCtrl+S: Descargar SVG | Ctrl+E: Exportar PNG\nCtrl+C: Copiar código | Delete: Eliminar\nCtrl+Scroll: Zoom | Ctrl+0: Reset\nEscape: Deseleccionar' },
       { title: '¿Código y lienzo sincronizados?', desc: '¡Sí! Cualquier transformación en el lienzo actualiza el código.' },
       { title: '¿Por qué tanta compresión?', desc: 'Eliminamos agresivamente etiquetas vacías y precisión excesiva de los SVG exportados.' }
     ],

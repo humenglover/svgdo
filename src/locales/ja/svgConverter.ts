@@ -71,7 +71,7 @@ export default {
       { title: 'ステップ4. エクスポート', desc: '最適化されたSVGまたはPNGとしてダウンロードします。' },
     ],
     features: [
-      { title: 'ショートカットはありますか？', desc: 'Ctrl + スクロールでズーム、Ctrl +/- で拡大縮小、Ctrl + 0 でリセットできます。' },
+      { title: 'ショートカット一覧', desc: 'Ctrl+Z: 元に戻す | Ctrl+Y: やり直し\nCtrl+O: ファイルを開く | Ctrl+L: URLから読込\nCtrl+I: アイコンライブラリ | Ctrl+K: コード貼付\nCtrl+S: SVG保存 | Ctrl+E: PNG出力\nCtrl+C: コードコピー | Delete: 要素削除\nCtrl+スクロール: ズーム | Ctrl+0: リセット\nEscape: 選択解除' },
       { title: 'コードとキャンバスは同期されていますか？', desc: 'はい。キャンバス上での変形操作は即座にコードに反映されます。' },
       { title: 'なぜこんなに圧縮率が高いのですか？', desc: 'デザインツールが出力するSVGから、空のタグや過剰な精度の座標を積極的に削除しているためです。' }
     ],
