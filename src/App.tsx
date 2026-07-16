@@ -129,16 +129,22 @@ function EditorPage() {
 
   // Curated quick-start icons — first one is the site logo
   const QUICK_START_ICONS = [
-    'svgdo-logo',   // #1 Site logo SVG
-    'activity', 'archive', 'award', 'bar-chart',
-    'camera', 'clock', 'copy', 'download',
-    'edit', 'file', 'filter', 'globe',
-    'heart', 'image', 'layers', 'link',
-    'lock', 'mail', 'map-pin', 'maximize',
-    'menu', 'mic', 'monitor', 'package',
-    'phone', 'play', 'settings', 'share',
-    'star', 'sun', 'thumbs-up', 'upload',
-    'user', 'video', 'wifi', 'zap',
+    'logo',
+    'activity', 'aperture', 'archive', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'award',
+    'bar-chart', 'battery', 'bell', 'bluetooth', 'bold', 'book', 'bookmark', 'box',
+    'briefcase', 'calendar', 'camera', 'cast', 'check', 'chevron-down', 'chevron-up', 'chrome',
+    'circle', 'clipboard', 'clock', 'cloud', 'code', 'coffee', 'copy', 'cpu',
+    'crop', 'database', 'download', 'eye', 'feather', 'file', 'film', 'filter',
+    'flag', 'folder', 'gift', 'globe', 'hard-drive', 'headphones', 'heart', 'home',
+    'image', 'inbox', 'info', 'key', 'layers', 'link', 'lock', 'mail',
+    'map', 'map-pin', 'maximize', 'menu', 'message-circle', 'mic', 'monitor', 'moon',
+    'mouse-pointer', 'move', 'music', 'navigation', 'package', 'paperclip', 'pause', 'phone',
+    'pie-chart', 'play', 'plus', 'printer', 'radio', 'refresh-cw', 'save', 'scissors',
+    'search', 'send', 'server', 'settings', 'share', 'shield', 'shopping-cart', 'slash',
+    'smartphone', 'smile', 'speaker', 'square', 'star', 'sun', 'tablet', 'tag',
+    'target', 'terminal', 'thumbs-up', 'trash', 'trending-up', 'truck', 'tv', 'umbrella',
+    'upload', 'user', 'users', 'video', 'voicemail', 'watch', 'wifi', 'zap',
+    'zoom-in', 'zoom-out',
   ]
 
   const MAX_HISTORY = 200
@@ -797,7 +803,7 @@ function EditorPage() {
         <div className="w-full bg-white dark:bg-bg-surface rounded-2xl border border-border p-4 shadow-sm">
           <h4 className="text-sm font-bold text-primary mb-3">{t('pages.svgConverter.empty.startFromExample')}</h4>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
-            {QUICK_START_ICONS.filter(n => iconNames.includes(n) || n === 'svgdo-logo').slice(0, 16).map(name => (
+            {QUICK_START_ICONS.filter(n => iconNames.includes(n) || n === 'logo').map(name => (
               <button key={name} onClick={() => handleLoadPreset(name)} className="flex flex-col items-center gap-1.5 p-2 rounded-xl border border-border hover:border-orange hover:text-orange text-primary transition-all shadow-sm hover:shadow-md">
                 <img src={`/icons/svg/${name}.svg`} alt={name} className="w-5 h-5 opacity-70 dark:invert transition-all" />
                 <span className="text-[10px] text-secondary text-center truncate w-full">{name}</span>
