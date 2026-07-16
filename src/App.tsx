@@ -12,6 +12,7 @@ import 'prismjs/themes/prism-tomorrow.css'
 // @ts-ignore
 import svgpath from 'svgpath'
 import { sanitizeSVG, loadRemoteSVG, getSVGDimensions } from '@/utils/svgSecurity'
+import { injectEditorIds, resetIdCounter, describeElement, type ElementInfo } from '@/utils/svgDom'
 import {
   Upload, Link as LinkIcon, Library, Maximize2, SplitSquareHorizontal,
   Code2, Eye, Undo2, Redo2, ZoomIn, ZoomOut, Maximize,
@@ -109,6 +110,12 @@ function EditorPage() {
   const [activePanels, setActivePanels] = useState<string[]>(['transform', 'optimize', 'export'])
   const fileInputRef = useRef<HTMLInputElement>(null)
   const lastPanPos = useRef<{x: number, y: number} | null>(null)
+  const previewRef = useRef<HTMLDivElement>(null)
+
+  // ── SVG Element Selection State ──
+  const [selectedElement, setSelectedElement] = useState<ElementInfo | null>(null)
+  const [allElements, setAllElements] = useState<ElementInfo[]>([])
+  const mouseDownPos = useRef<{x: number, y: number} | null>(null)
 
   // Dynamically load icon list from downloaded index
   const [iconNames, setIconNames] = useState<string[]>(FALLBACK_ICONS)
@@ -186,6 +193,18 @@ function EditorPage() {
   }, [svgCode, zoom])
 
   const sanitizedSVG = useMemo(() => svgCode ? sanitizeSVG(svgCode) : '', [svgCode])
+
+  // 注入 data-editor-id 到 SVG 元素
+  const processedSVG = useMemo(() => {
+    if (!sanitizedSVG) return { html: '', elements: [] as ElementInfo[] }
+    const result = injectEditorIds(sanitizedSVG)
+    setAllElements(result.elements)
+    // 如果之前的选中元素已不存在，取消选择
+    if (selectedElement && !result.elements.find(e => e.id === selectedElement.id)) {
+      setSelectedElement(null)
+    }
+    return result
+  }, [sanitizedSVG])
 
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -448,6 +467,37 @@ function EditorPage() {
 
   const renderSidebar = () => (
     <div className="flex-1 flex flex-col h-full bg-[#FAFAFA] dark:bg-bg-surface">
+      {/* ── Selected Element Info ── */}
+      {selectedElement && (
+        <div className="border-b border-orange/30 bg-orange/5">
+          <div className="p-4 space-y-3">
+            <div className="flex items-center gap-2 text-sm font-bold text-orange">
+              <div className="w-2 h-2 rounded-full bg-orange" />
+              {t('common.properties')}
+            </div>
+            <div className="space-y-1.5 text-xs">
+              <div className="flex justify-between">
+                <span className="text-secondary">{i18n.language === 'zh' ? '类型' : i18n.language === 'ja' ? '種類' : i18n.language === 'ko' ? '유형' : i18n.language === 'es' ? 'Tipo' : 'Type'}</span>
+                <span className="font-mono font-bold text-primary">{selectedElement.tagName}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-secondary">ID</span>
+                <span className="font-mono text-primary">{selectedElement.id}</span>
+              </div>
+              {Object.entries(selectedElement.attributes).filter(([k]) => ['d', 'fill', 'stroke', 'stroke-width', 'cx', 'cy', 'r', 'rx', 'ry', 'x', 'y', 'width', 'height', 'points', 'transform', 'opacity'].includes(k)).slice(0, 6).map(([key, val]) => (
+                <div key={key} className="flex justify-between">
+                  <span className="text-secondary">{key}</span>
+                  <span className="font-mono text-primary truncate max-w-[140px]" title={val}>{val.length > 30 ? val.slice(0, 30) + '...' : val}</span>
+                </div>
+              ))}
+              <div className="flex justify-between pt-1 border-t border-border">
+                <span className="text-secondary">{i18n.language === 'zh' ? '描述' : i18n.language === 'ja' ? '概要' : i18n.language === 'ko' ? '설명' : i18n.language === 'es' ? 'Desc' : 'Desc'}</span>
+                <span className="text-tertiary text-[11px] truncate max-w-[160px]">{describeElement(selectedElement)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {([
         { key: 'transform', icon: Settings, title: t('pages.svgConverter.transform.title') },
         { key: 'optimize', icon: CheckCircle, title: t('pages.svgConverter.optimize.title') },
@@ -654,15 +704,21 @@ function EditorPage() {
                         if (e.deltaY > 0) setZoom(z => Math.max(10, z - 10))
                         else setZoom(z => Math.min(800, z + 10))
                       }}
-                      onMouseDown={(e) => { 
-                        e.preventDefault(); 
-                        setIsDragging(true); 
-                        lastPanPos.current = { x: e.clientX, y: e.clientY }; 
+                      onMouseDown={(e) => {
+                        mouseDownPos.current = { x: e.clientX, y: e.clientY }
+                        lastPanPos.current = { x: e.clientX, y: e.clientY };
                       }}
                       onMouseMove={(e) => {
-                        if (isDragging && lastPanPos.current) {
-                          const dx = e.clientX - lastPanPos.current.x;
-                          const dy = e.clientY - lastPanPos.current.y;
+                        if (!lastPanPos.current) return
+                        const dx = e.clientX - lastPanPos.current.x
+                        const dy = e.clientY - lastPanPos.current.y
+                        // 移动超过 2px 才算拖拽
+                        if (!isDragging && mouseDownPos.current &&
+                            (Math.abs(e.clientX - mouseDownPos.current.x) > 2 ||
+                             Math.abs(e.clientY - mouseDownPos.current.y) > 2)) {
+                          setIsDragging(true)
+                        }
+                        if (isDragging) {
                           setPan(prev => ({ x: prev.x + dx, y: prev.y + dy }));
                           lastPanPos.current = { x: e.clientX, y: e.clientY };
                         }
@@ -686,8 +742,31 @@ function EditorPage() {
                       onTouchEnd={() => { setIsDragging(false); lastPanPos.current = null; }}
                       onTouchCancel={() => { setIsDragging(false); lastPanPos.current = null; }}
                     >
-                      <div className="svg-preview-container flex items-center justify-center origin-center pointer-events-none" style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom / 100})` }}
-                        dangerouslySetInnerHTML={{ __html: sanitizedSVG }} />
+                      <div
+                        ref={previewRef}
+                        className="svg-preview-container flex items-center justify-center origin-center"
+                        style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom / 100})` }}
+                        dangerouslySetInnerHTML={{ __html: processedSVG.html || sanitizedSVG }}
+                        onClick={(e) => {
+                          const target = e.target as HTMLElement
+                          const el = target.closest('[data-editor-id]') as HTMLElement | null
+                          if (el) {
+                            const id = el.getAttribute('data-editor-id')!
+                            const info = allElements.find(e => e.id === id)
+                            if (info) {
+                              // 清除旧选中样式
+                              previewRef.current?.querySelector('.svg-element-selected')?.classList.remove('svg-element-selected')
+                              // 添加新选中样式
+                              el.classList.add('svg-element-selected')
+                              setSelectedElement(info)
+                            }
+                          } else {
+                            // 点击空白区域取消选择
+                            previewRef.current?.querySelector('.svg-element-selected')?.classList.remove('svg-element-selected')
+                            setSelectedElement(null)
+                          }
+                        }}
+                      />
                     </div>
                   )}
                 </div>
