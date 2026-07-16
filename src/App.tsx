@@ -1,10 +1,12 @@
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect, useMemo, lazy, Suspense } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import PrivacyPolicy from './pages/PrivacyPolicy'
-import Resources from './pages/Resources'
-import ArticlePage from './pages/ArticlePage'
 import AboutPage from './pages/AboutPage'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
+
+const Resources = lazy(() => import('./pages/Resources'))
+const ArticlePage = lazy(() => import('./pages/ArticlePage'))
 import { ExportPanel } from '@/components/ExportPanel'
 import { useDropzone } from 'react-dropzone'
 import Editor from 'react-simple-code-editor'
@@ -27,7 +29,7 @@ import i18n from '@/locales/i18n'
 import PageSEO from '@/components/PageSEO'
 import { Languages } from 'lucide-react'
 import { ToolArticleBody } from '@/components/ToolArticleDialog'
-import { SvgdoLogo } from '@/components/SvgdoLogo'
+import { FullLogo } from '@/components/FullLogo'
 import PropertiesPanel from '@/components/PropertiesPanel'
 
 type MobileTab = 'canvas' | 'transform' | 'export' | 'properties'
@@ -711,7 +713,7 @@ function EditorPage() {
       </div>
 
       <div className="mt-auto pt-12 pb-6 flex justify-center opacity-40 pointer-events-none select-none">
-        <SvgdoLogo className="h-[20px] w-auto grayscale" />
+        <FullLogo iconClassName="h-[18px] w-auto grayscale" textClassName="h-[20px] w-auto grayscale" />
       </div>
     </div>
   )
@@ -774,18 +776,7 @@ function EditorPage() {
       <div className="h-[100dvh] overflow-hidden flex flex-col bg-bg-base text-primary transition-colors">
         {/* Header */}
         <header className="h-12 md:h-14 flex items-center justify-between px-3 md:px-5 border-b border-border shrink-0 bg-bg-surface">
-          <div className="flex items-center gap-2.5">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" className="w-7 h-7 md:w-8 md:h-8 drop-shadow-sm text-slate-800 dark:text-slate-200 transition-colors">
-              <path d="M 22 58 C 45 90, 65 15, 95 35" fill="none" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
-              <rect x="42" y="65" width="12" height="12" rx="2" fill="#f97316" stroke="currentColor" strokeWidth="3" />
-              <circle cx="22" cy="58" r="6" fill="#818cf8" stroke="currentColor" strokeWidth="3" />
-              <circle cx="95" cy="35" r="6" fill="#818cf8" stroke="currentColor" strokeWidth="3" />
-              <g transform="translate(68, 48) scale(2.4) rotate(-8)">
-                <path d="M 0,0 L 0,14 L 3.5,10.5 L 6.5,17 L 9,15.5 L 6,9 L 10.5,9 Z" fill="#2dd4bf" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-              </g>
-            </svg>
-            <SvgdoLogo className="h-[30px] md:h-[34px] w-auto text-primary dark:text-white" />
-          </div>
+          <FullLogo iconClassName="w-7 h-7 md:w-8 md:h-8" textClassName="h-[30px] md:h-[34px]" />
           <div className="flex items-center gap-2 md:gap-4">
             <div className="hidden md:flex items-center gap-6">
               <Link to="/about" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.about')}</Link>
@@ -1409,7 +1400,7 @@ function EditorPage() {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
           <div className="relative flex flex-col w-64 max-w-[80%] h-full bg-bg-surface shadow-2xl animate-in slide-in-from-left duration-300">
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <SvgdoLogo className="h-[22px] w-auto text-primary dark:text-white" />
+              <FullLogo iconClassName="h-[20px] w-auto" textClassName="h-[22px] w-auto" />
               <button onClick={() => setIsMenuOpen(false)} className="p-1 text-secondary hover:text-primary rounded-lg transition-colors"><X size={18} /></button>
             </div>
             <div className="flex flex-col p-2 overflow-visible">
@@ -1443,14 +1434,40 @@ function EditorPage() {
   )
 }
 
+const PageLoader = () => (
+  <div className="flex-1 flex items-center justify-center min-h-[50vh]">
+    <div className="w-6 h-6 rounded-full border-2 border-orange/20 border-t-orange animate-spin" />
+  </div>
+)
+
+function NotFound() {
+  const { t } = useTranslation()
+  return (
+    <div className="flex-1 flex items-center justify-center bg-bg-base">
+      <div className="text-center space-y-4">
+        <p className="text-6xl font-black text-tertiary">404</p>
+        <p className="text-secondary">{t('common.resources.notFound')}</p>
+        <Link to="/" className="inline-block px-5 py-2.5 bg-orange text-white font-bold rounded-xl hover:opacity-90 transition-colors">
+          {t('common.nav.backToHome')}
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<EditorPage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="/resources" element={<Resources />} />
-      <Route path="/resources/:slug" element={<ArticlePage />} />
-    </Routes>
+    <ErrorBoundary>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<EditorPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/:slug" element={<ArticlePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   )
 }
