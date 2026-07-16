@@ -10,7 +10,7 @@ import PageSEO from '@/components/PageSEO'
 
 export default function ArticlePage() {
   const { t, i18n } = useTranslation()
-  const lang = (i18n.language?.startsWith('zh') ? 'zh' : 'en') as 'zh' | 'en'
+  const lang = i18n.language || 'en'
   const { slug } = useParams<{ slug: string }>()
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)

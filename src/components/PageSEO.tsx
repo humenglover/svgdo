@@ -21,8 +21,8 @@ export default function PageSEO({ seoKey }: Props) {
     keywords = ['SVG', 'tutorial', 'guide', 'editor', 'vector']
   } else if (seoKey && articles.find(a => a.slug === seoKey)) {
     const article = articles.find(a => a.slug === seoKey)!
-    title = article.title[i18n.language as keyof typeof article.title] || article.title.en
-    description = article.excerpt[i18n.language as keyof typeof article.excerpt] || article.excerpt.en
+    title = article.title[i18n.language] || article.title.en
+    description = article.excerpt[i18n.language] || article.excerpt.en
     keywords = article.tags
   } else {
     title = t('seo.home.title')

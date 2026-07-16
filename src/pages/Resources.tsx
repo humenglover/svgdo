@@ -9,7 +9,7 @@ type SortMode = 'date-desc' | 'date-asc' | 'title'
 
 export default function Resources() {
   const { t, i18n } = useTranslation()
-  const lang = (i18n.language?.startsWith('zh') ? 'zh' : 'en') as 'zh' | 'en'
+  const lang = i18n.language || 'en'
   const [search, setSearch] = useState('')
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<SortMode>('date-desc')

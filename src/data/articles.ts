@@ -1,27 +1,28 @@
 export interface Article {
   slug: string
-  title: { zh: string; en: string; ja: string }
+  title: Record<string, string>   // lang code → title
   date: string
-  excerpt: { zh: string; en: string; ja: string }
+  excerpt: Record<string, string> // lang code → excerpt
   tags: string[]
 }
 
-export const tagLabels: Record<string, { zh: string; en: string }> = {
-  'SVG':        { zh: 'SVG',         en: 'SVG' },
-  'vector':     { zh: '矢量',        en: 'Vector' },
-  'design':     { zh: '设计',        en: 'Design' },
-  'guide':      { zh: '指南',        en: 'Guide' },
-  'tutorial':   { zh: '教程',        en: 'Tutorial' },
-  'formats':    { zh: '格式',        en: 'Formats' },
-  'optimization': { zh: '优化',      en: 'Optimization' },
-  'web-dev':    { zh: '前端开发',    en: 'Web Dev' },
-  'animation':  { zh: '动画',        en: 'Animation' },
-  'tips':       { zh: '技巧',        en: 'Tips' },
-  'beginner':   { zh: '入门',        en: 'Beginner' },
+export const tagLabels: Record<string, Record<string, string>> = {
+  'SVG':        { zh: 'SVG',         en: 'SVG',         ja: 'SVG' },
+  'vector':     { zh: '矢量',        en: 'Vector',      ja: 'ベクター' },
+  'design':     { zh: '设计',        en: 'Design',      ja: 'デザイン' },
+  'guide':      { zh: '指南',        en: 'Guide',       ja: 'ガイド' },
+  'tutorial':   { zh: '教程',        en: 'Tutorial',    ja: 'チュートリアル' },
+  'formats':    { zh: '格式',        en: 'Formats',     ja: 'フォーマット' },
+  'optimization': { zh: '优化',      en: 'Optimization', ja: '最適化' },
+  'web-dev':    { zh: '前端开发',    en: 'Web Dev',     ja: 'ウェブ開発' },
+  'animation':  { zh: '动画',        en: 'Animation',   ja: 'アニメーション' },
+  'tips':       { zh: '技巧',        en: 'Tips',        ja: 'ヒント' },
+  'beginner':   { zh: '入门',        en: 'Beginner',    ja: '初心者' },
+  'comparison': { zh: '对比',        en: 'Comparison',  ja: '比較' },
 }
 
-export function getTagLabel(tag: string, lang: 'zh' | 'en'): string {
-  return tagLabels[tag]?.[lang] ?? tag
+export function getTagLabel(tag: string, lang: string): string {
+  return tagLabels[tag]?.[lang] ?? tagLabels[tag]?.en ?? tag
 }
 
 export const articles: Article[] = [
