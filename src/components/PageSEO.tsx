@@ -11,7 +11,7 @@ interface Props {
 
 export default function PageSEO({ seoKey }: Props) {
   const { t, i18n } = useTranslation()
-  const lang = i18n.language === 'zh' ? 'zh' : 'en'
+  const lang = (['zh', 'en', 'ja'].includes(i18n.language) ? i18n.language : 'en') as 'zh' | 'en' | 'ja'
   const isZh = lang === 'zh'
 
   // Determine page title/description based on seoKey
@@ -57,7 +57,7 @@ export default function PageSEO({ seoKey }: Props) {
 
   return (
     <Helmet>
-      <html lang={isZh ? 'zh' : 'en'} />
+      <html lang={lang} />
       <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
@@ -68,7 +68,7 @@ export default function PageSEO({ seoKey }: Props) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
-      <meta property="og:locale" content={isZh ? 'zh_CN' : 'en_US'} />
+      <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : lang === 'ja' ? 'ja_JP' : 'en_US'} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={canonicalUrl} />

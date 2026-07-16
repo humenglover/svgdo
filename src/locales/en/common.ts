@@ -7,6 +7,8 @@ export default {
   light: 'Light',
   langZh: '中文',
   langEn: 'EN',
+  langJa: '日本語',
+  langLabel: 'EN',
   undo: 'Undo',
   redo: 'Redo',
   delete: 'Delete',

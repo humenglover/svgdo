@@ -356,7 +356,8 @@ function EditorPage() {
   }
 
   const toggleLang = () => {
-    const next = i18n.language === 'zh' ? 'en' : 'zh'
+    const cycle: Record<string, string> = { zh: 'en', en: 'ja', ja: 'zh' }
+    const next = cycle[i18n.language] || 'en'
     i18n.changeLanguage(next); localStorage.setItem('lang', next)
   }
 
@@ -828,7 +829,7 @@ function EditorPage() {
               <div className="flex flex-col mb-2 pb-2 border-b border-border space-y-1">
                 <button onClick={() => { toggleLang(); setIsMenuOpen(false); }} className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors w-full text-left">
                   <span>{t('common.language')}</span>
-                  <span className="px-2.5 py-1 bg-bg-subtle border border-border rounded-full text-xs font-bold text-primary">{isZh ? t('common.langZh') : t('common.langEn')}</span>
+                  <span className="px-2.5 py-1 bg-bg-subtle border border-border rounded-full text-xs font-bold text-primary">{t('common.langLabel')}</span>
                 </button>
                 <button onClick={() => { toggleTheme(); setIsMenuOpen(false); }} className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors w-full text-left">
                   <span>{t('common.theme')}</span>

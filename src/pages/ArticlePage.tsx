@@ -20,7 +20,8 @@ export default function ArticlePage() {
   useEffect(() => {
     if (!slug) return
     setLoading(true); setError(false)
-    fetch(`/content/${slug}${lang === 'zh' ? '.zh' : ''}.md`)
+    const suffix = lang === 'en' ? '' : `.${lang}`
+    fetch(`/content/${slug}${suffix}.md`)
       .then(r => { if (!r.ok) throw new Error(''); return r.text() })
       .then(setContent)
       .catch(() => setError(true))
