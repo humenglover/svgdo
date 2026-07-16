@@ -297,11 +297,17 @@ function EditorPage() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore shortcuts when typing in inputs
+      // Ignore shortcuts when typing in inputs or code editor
       const tag = (e.target as HTMLElement).tagName
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return
+      const isEditing = tag === 'INPUT' || tag === 'TEXTAREA' || (e.target as HTMLElement).closest('.npm__react-simple-code-editor__textarea')
 
       const ctrl = e.ctrlKey || e.metaKey
+
+      // Undo/Redo — always work
+      if (ctrl && e.key === 'z' && !e.shiftKey) { e.preventDefault(); handleUndo() }
+      else if (ctrl && (e.key === 'y' || (e.key === 'z' && e.shiftKey))) { e.preventDefault(); handleRedo() }
+
+      if (isEditing) return
 
       // Zoom
       if (ctrl && (e.key === '+' || e.key === '=')) { e.preventDefault(); handleZoomIn() }
@@ -312,7 +318,6 @@ function EditorPage() {
       else if (ctrl && e.key === 'o') { e.preventDefault(); fileInputRef.current?.click() }
       else if (ctrl && e.key === 'l') { e.preventDefault(); setShowUrlPrompt(true) }
       else if (ctrl && e.key === 'i') { e.preventDefault(); setShowLibrary(true) }
-      else if (ctrl && e.key === 'k') { e.preventDefault(); setShowCodePrompt(true) }
 
       if (!svgCode) return
 

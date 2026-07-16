@@ -36,7 +36,7 @@ export default {
       { title: 'Step 4. Export', desc: 'Download as minified SVG or PNG.' },
     ],
     features: [
-      { title: 'Any shortcuts?', desc: 'Ctrl + Scroll to zoom, Ctrl +/- to scale, Ctrl 0 to reset.' },
+      { title: 'Keyboard Shortcuts', desc: 'Ctrl+Z: Undo | Ctrl+Y: Redo\nCtrl+O: Open file | Ctrl+L: Load from URL\nCtrl+I: Icon library | Ctrl+K: Paste code\nCtrl+S: Download SVG | Ctrl+E: Export PNG\nCtrl+C: Copy code | Delete: Remove element\nCtrl+Scroll: Zoom | Ctrl+0: Reset\nEscape: Deselect' },
       { title: 'Are code and canvas synced?', desc: 'Yes! Any transform on the canvas instantly updates the code.' },
       { title: 'Why is compression so high?', desc: 'We aggressively remove empty tags and excessive precision from exported SVGs.' }
     ],
