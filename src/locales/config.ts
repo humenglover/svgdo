@@ -36,6 +36,14 @@ export const LANGUAGES: Language[] = [
     ogLocale: 'ja_JP',
     htmlLang: 'ja',
   },
+  {
+    code: 'ko',
+    nativeLabel: '한국어',
+    shortLabel: '한국어',
+    detection: ['ko'],
+    ogLocale: 'ko_KR',
+    htmlLang: 'ko',
+  },
 ]
 
 export const DEFAULT_LANGUAGE = 'en'

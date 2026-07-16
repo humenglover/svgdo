@@ -4,8 +4,9 @@ import { LANGUAGES, DEFAULT_LANGUAGE, FALLBACK_LANGUAGE } from './config'
 import zh from './zh'
 import en from './en'
 import ja from './ja'
+import ko from './ko'
 
-const resourceMap: Record<string, typeof zh> = { zh, en, ja }
+const resourceMap: Record<string, typeof zh> = { zh, en, ja, ko }
 
 export function getDefaultLanguage(): string {
   const saved = localStorage.getItem('lang')
