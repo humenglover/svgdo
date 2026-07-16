@@ -12,12 +12,12 @@ import 'prismjs/themes/prism-tomorrow.css'
 // @ts-ignore
 import svgpath from 'svgpath'
 import { sanitizeSVG, loadRemoteSVG, getSVGDimensions } from '@/utils/svgSecurity'
-import { injectEditorIds, resetIdCounter, describeElement, type ElementInfo } from '@/utils/svgDom'
+import { injectEditorIds, resetIdCounter, describeElement, parseTransform, buildTransform, updateElementAttribute, type ElementInfo } from '@/utils/svgDom'
 import {
   Upload, Link as LinkIcon, Library, Maximize2, SplitSquareHorizontal,
   Code2, Eye, Undo2, Redo2, ZoomIn, ZoomOut, Maximize,
   Grid, Sun, Moon, Settings, RotateCw, FlipHorizontal, FlipVertical,
-  CheckCircle, X, Search, ChevronDown, ChevronUp, Menu
+  CheckCircle, X, Search, ChevronDown, ChevronUp, Menu, MousePointer2
 } from 'lucide-react'
 import { cn } from '@/utils'
 import toast, { Toaster } from 'react-hot-toast'
@@ -66,9 +66,8 @@ function LanguageDropdown() {
                   localStorage.setItem('lang', lang.code)
                   setOpen(false)
                 }}
-                className={`w-full flex items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors hover:bg-bg-subtle ${
-                  i18n.language === lang.code ? 'text-blue bg-blue/5' : 'text-secondary'
-                }`}
+                className={`w-full flex items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors hover:bg-bg-subtle ${i18n.language === lang.code ? 'text-blue bg-blue/5' : 'text-secondary'
+                  }`}
               >
                 <span>{lang.nativeLabel}</span>
                 <span className="text-[11px] text-tertiary">{lang.shortLabel}</span>
@@ -81,6 +80,43 @@ function LanguageDropdown() {
   )
 }
 
+function getSvgScaleRatio(svgEl: SVGSVGElement) {
+  const rect = svgEl.getBoundingClientRect();
+  const viewBox = svgEl.getAttribute('viewBox');
+  
+  let vbW = 0;
+  let vbH = 0;
+  
+  if (viewBox) {
+    const parts = viewBox.trim().split(/[ ,]+/);
+    if (parts.length >= 4) {
+      vbW = parseFloat(parts[2]);
+      vbH = parseFloat(parts[3]);
+    }
+  }
+  
+  // 如果没有 viewBox，内部坐标系就是它的 width/height
+  if (!vbW || !vbH) {
+    vbW = parseFloat(svgEl.getAttribute('width') || '0');
+    vbH = parseFloat(svgEl.getAttribute('height') || '0');
+  }
+  
+  if (!vbW) vbW = rect.width;
+  if (!vbH) vbH = rect.height;
+  
+  return {
+    ratioX: vbW ? rect.width / vbW : 1,
+    ratioY: vbH ? rect.height / vbH : 1
+  };
+}
+
+function getMousePositionInSVG(clientX: number, clientY: number, svgEl: SVGSVGElement, ctm: DOMMatrix) {
+  const pt = svgEl.createSVGPoint()
+  pt.x = clientX
+  pt.y = clientY
+  return pt.matrixTransform(ctm.inverse())
+}
+
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t } = useTranslation()
@@ -88,7 +124,7 @@ function EditorPage() {
   // Editor state
   const [svgCode, setSvgCode] = useState<string>('')
   const [originalSvg, setOriginalSvg] = useState<string>('')
-  const [viewMode, setViewMode] = useState<ViewMode>('split')
+  const [viewMode, setViewMode] = useState<ViewMode>('preview')
   const [zoom, setZoom] = useState<number>(100)
   const [pan, setPan] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
@@ -110,13 +146,28 @@ function EditorPage() {
   const [mobileTab, setMobileTab] = useState<MobileTab>('canvas')
   const [activePanels, setActivePanels] = useState<string[]>(['transform', 'optimize', 'export'])
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const lastPanPos = useRef<{x: number, y: number} | null>(null)
+  const lastPanPos = useRef<{ x: number, y: number } | null>(null)
+  const elementDragState = useRef<{
+    id: string;
+    el: HTMLElement;
+    svgEl: SVGSVGElement;
+    ctm: DOMMatrix;
+    startXInSVG: number;
+    startYInSVG: number;
+    lastDx: number;
+    lastDy: number;
+    originalTransform: string;
+    paddingX: number;
+    paddingY: number;
+  } | null>(null)
   const previewRef = useRef<HTMLDivElement>(null)
+  const workspaceRef = useRef<HTMLDivElement>(null)
+  const [selectionBox, setSelectionBox] = useState<{ x: number, y: number, w: number, h: number } | null>(null)
 
   // ── SVG Element Selection State ──
   const [selectedElement, setSelectedElement] = useState<ElementInfo | null>(null)
   const [allElements, setAllElements] = useState<ElementInfo[]>([])
-  const mouseDownPos = useRef<{x: number, y: number} | null>(null)
+  const mouseDownPos = useRef<{ x: number, y: number } | null>(null)
 
   // Dynamically load icon list from downloaded index
   const [iconNames, setIconNames] = useState<string[]>(FALLBACK_ICONS)
@@ -178,7 +229,7 @@ function EditorPage() {
 
   const handleZoomIn = () => { if (svgCode) setZoom(Math.min(500, zoom + 20)) }
   const handleZoomOut = () => { if (svgCode) setZoom(Math.max(10, zoom - 20)) }
-  const handleZoomReset = () => { if (svgCode) { setZoom(100); setPan({x: 0, y: 0}); } }
+  const handleZoomReset = () => { if (svgCode) { setZoom(100); setPan({ x: 0, y: 0 }); } }
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -213,6 +264,58 @@ function EditorPage() {
     }
     return result
   }, [sanitizedSVG])
+
+  // Dynamically calculate the bounding box for the selection indicator
+  useEffect(() => {
+    if (!selectedElement || !workspaceRef.current || viewMode === 'code') {
+      setSelectionBox(null)
+      return
+    }
+
+    const updateBox = () => {
+      setTimeout(() => {
+        if (!workspaceRef.current) return
+        const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as SVGElement | null
+        if (!el) {
+          setSelectionBox(null)
+          return
+        }
+        const rect = el.getBoundingClientRect()
+        const workspaceRect = workspaceRef.current.getBoundingClientRect()
+
+        let w = rect.width
+        let h = rect.height
+        let x = rect.left - workspaceRect.left
+        let y = rect.top - workspaceRect.top
+        
+        // 补偿描边宽度带来的视觉溢出
+        const svgEl = el.ownerSVGElement
+        if (svgEl) {
+          const ratio = getSvgScaleRatio(svgEl)
+          const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0
+          if (strokeW > 0) {
+            // 描边是中心对齐的，向外扩张一半线宽，然后乘以视图比例
+            const paddingX = (strokeW * ratio.ratioX) / 2 || 0
+            const paddingY = (strokeW * ratio.ratioY) / 2 || 0
+            if (!isNaN(paddingX) && !isNaN(paddingY)) {
+              x -= paddingX; y -= paddingY;
+              w += paddingX * 2; h += paddingY * 2;
+            }
+          }
+        }
+        
+        // 确保不会因为太小（如极小线段）而无法看见
+        if (w < 12) { x -= (12 - w) / 2; w = 12; }
+        if (h < 12) { y -= (12 - h) / 2; h = 12; }
+
+        setSelectionBox({ x, y, w, h })
+      }, 0)
+    }
+
+    updateBox()
+    window.addEventListener('resize', updateBox)
+    return () => window.removeEventListener('resize', updateBox)
+  }, [selectedElement, processedSVG, pan, zoom, viewMode])
 
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -444,10 +547,9 @@ function EditorPage() {
       <div className="hidden md:flex items-center bg-bg-muted rounded-lg p-1 shrink-0">
         {(['preview', 'split', 'code'] as ViewMode[]).map(m => (
           <button key={m} disabled={!svgCode} onClick={() => setViewMode(m)}
-            className={cn("flex items-center justify-center p-1.5 md:px-3 md:py-1 rounded-md text-xs font-bold transition-all",
+            className={cn("flex items-center justify-center p-1.5 rounded-md transition-all",
               !svgCode ? "opacity-30 cursor-not-allowed" : viewMode === m ? "bg-white shadow-sm text-slate-900" : "text-secondary hover:text-primary")}>
-            {m === 'preview' ? <Eye size={14} /> : m === 'split' ? <SplitSquareHorizontal size={14} /> : <Code2 size={14} />}
-            <span className="hidden md:inline ml-1.5">{t(`pages.svgConverter.toolbar.${m}`)}</span>
+            {m === 'preview' ? <Eye size={16} /> : m === 'split' ? <SplitSquareHorizontal size={16} /> : <Code2 size={16} />}
           </button>
         ))}
       </div>
@@ -475,20 +577,6 @@ function EditorPage() {
 
   const renderSidebar = () => (
     <div className="flex-1 flex flex-col h-full bg-[#FAFAFA] dark:bg-bg-surface">
-      {/* ── Properties Panel (Desktop only) ── */}
-      {selectedElement ? (
-        <PropertiesPanel
-          element={selectedElement}
-          svgCode={svgCode}
-          onUpdateSvg={handleUpdateSvg}
-        />
-      ) : (
-        <div className="flex flex-col items-center justify-center h-40 px-4 text-center">
-          <div className="text-2xl mb-2 opacity-30">🎯</div>
-          <p className="text-xs font-semibold text-secondary">{t('common.panel.noSelection')}</p>
-          <p className="text-[10px] text-tertiary mt-1">{t('common.panel.noSelectionHint')}</p>
-        </div>
-      )}
       {([
         { key: 'transform', icon: Settings, title: t('pages.svgConverter.transform.title') },
         { key: 'optimize', icon: CheckCircle, title: t('pages.svgConverter.optimize.title') },
@@ -660,7 +748,7 @@ function EditorPage() {
 
         <div className="flex-1 flex flex-row overflow-hidden relative">
           {/* Desktop sidebar (Left) */}
-          <div className="hidden md:flex flex-col w-[260px] lg:w-[320px] shrink-0 bg-white dark:bg-bg-surface border-r border-border z-10">
+          <div className="hidden md:flex flex-col w-[220px] lg:w-[260px] shrink-0 bg-white dark:bg-bg-surface border-r border-border z-10">
             <div className="flex-1 overflow-y-auto">{renderSidebar()}</div>
           </div>
 
@@ -689,7 +777,7 @@ function EditorPage() {
                     </div>
                   )}
                   {(viewMode === 'split' || viewMode === 'preview') && (
-                    <div className={cn("flex-1 flex flex-col items-center justify-center overflow-hidden relative p-4", bgMode === 'light' ? "bg-white" : bgMode === 'dark' ? "bg-black" : "", isDragging ? "cursor-grabbing" : "cursor-grab")}
+                    <div ref={workspaceRef} className={cn("flex-1 flex flex-col items-center justify-center overflow-hidden relative p-4", bgMode === 'light' ? "bg-white" : bgMode === 'dark' ? "bg-black" : "", isDragging ? "cursor-grabbing" : "cursor-grab")}
                       style={{ touchAction: 'none', ...(bgMode === 'grid' ? { backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23000' fill-opacity='0.05' d='M0 0h16v16H0z'/%3E%3Cpath fill='%23000' fill-opacity='0.1' d='M0 0h1v16H0zm0 0h16v1H0z'/%3E%3C/svg%3E")` } : {}) }}
                       onWheel={(e) => {
                         if (e.deltaY > 0) setZoom(z => Math.max(10, z - 10))
@@ -697,16 +785,105 @@ function EditorPage() {
                       }}
                       onMouseDown={(e) => {
                         mouseDownPos.current = { x: e.clientX, y: e.clientY }
+
+                        // 拦截: 如果点击的是图形内部，禁止拖动画布
+                        const target = e.target as HTMLElement
+                        const el = target.closest('[data-editor-id]') as HTMLElement | null
+                        if (el) {
+                          lastPanPos.current = null;
+
+                          // 如果点中的是新图形，顺便帮用户选中它
+                          const id = el.getAttribute('data-editor-id')!
+                          if (!selectedElement || selectedElement.id !== id) {
+                            const info = allElements.find(e => e.id === id)
+                            if (info) setSelectedElement(info)
+                          }
+
+                          const svgEl = el.ownerSVGElement
+                          if (!svgEl) return;
+
+                          let parentCTM = svgEl.getScreenCTM()
+                          const parent = el.parentNode as SVGGraphicsElement
+                          if (parent && parent.getScreenCTM) {
+                            parentCTM = parent.getScreenCTM()
+                          }
+
+                          if (parentCTM) {
+                            const pt = getMousePositionInSVG(e.clientX, e.clientY, svgEl, parentCTM)
+                            
+                            let paddingX = 0; let paddingY = 0;
+                            const ratio = getSvgScaleRatio(svgEl)
+                            const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0
+                            if (strokeW > 0) {
+                              paddingX = (strokeW * ratio.ratioX) / 2 || 0
+                              paddingY = (strokeW * ratio.ratioY) / 2 || 0
+                            }
+
+                            elementDragState.current = {
+                              id, el, svgEl, ctm: parentCTM,
+                              startXInSVG: pt.x,
+                              startYInSVG: pt.y,
+                              lastDx: 0, lastDy: 0,
+                              originalTransform: el.getAttribute('transform') || '',
+                              paddingX, paddingY
+                            }
+                          }
+                          return;
+                        }
+
                         lastPanPos.current = { x: e.clientX, y: e.clientY };
                       }}
                       onMouseMove={(e) => {
+                        // 处理图形拖拽
+                        if (elementDragState.current) {
+                          const state = elementDragState.current;
+                          const currentPt = getMousePositionInSVG(e.clientX, e.clientY, state.svgEl, state.ctm)
+                          const dx = currentPt.x - state.startXInSVG;
+                          const dy = currentPt.y - state.startYInSVG;
+
+                          state.lastDx = dx;
+                          state.lastDy = dy;
+
+                          // 在 DOM 级别临时修改属性，获得极致 60fps 体验，不触发 React 渲染
+                          const t = parseTransform(state.originalTransform)
+                          t.tx += dx;
+                          t.ty += dy;
+                          state.el.setAttribute('transform', buildTransform(t))
+                          
+                          // 同步移动标注框
+                          const boxEl = document.getElementById('selection-box-overlay')
+                          if (boxEl && workspaceRef.current) {
+                            const rect = state.el.getBoundingClientRect()
+                            const workspaceRect = workspaceRef.current.getBoundingClientRect()
+                            
+                            let w = rect.width
+                            let h = rect.height
+                            let x = rect.left - workspaceRect.left
+                            let y = rect.top - workspaceRect.top
+                            
+                            if (!isNaN(state.paddingX) && !isNaN(state.paddingY)) {
+                               x -= state.paddingX; y -= state.paddingY;
+                               w += state.paddingX * 2; h += state.paddingY * 2;
+                            }
+                            if (w < 12) { x -= (12 - w) / 2; w = 12; }
+                            if (h < 12) { y -= (12 - h) / 2; h = 12; }
+
+                            boxEl.style.left = `${x}px`
+                            boxEl.style.top = `${y}px`
+                            boxEl.style.width = `${w}px`
+                            boxEl.style.height = `${h}px`
+                          }
+                          return;
+                        }
+
+                        // 正常的画布拖拽 (Pan)
                         if (!lastPanPos.current) return
                         const dx = e.clientX - lastPanPos.current.x
                         const dy = e.clientY - lastPanPos.current.y
-                        // 移动超过 2px 才算拖拽
+                        // 移动超过 10px 才算拖拽
                         if (!isDragging && mouseDownPos.current &&
-                            (Math.abs(e.clientX - mouseDownPos.current.x) > 2 ||
-                             Math.abs(e.clientY - mouseDownPos.current.y) > 2)) {
+                          (Math.abs(e.clientX - mouseDownPos.current.x) > 10 ||
+                            Math.abs(e.clientY - mouseDownPos.current.y) > 10)) {
                           setIsDragging(true)
                         }
                         if (isDragging) {
@@ -714,15 +891,91 @@ function EditorPage() {
                           lastPanPos.current = { x: e.clientX, y: e.clientY };
                         }
                       }}
-                      onMouseUp={() => { setIsDragging(false); lastPanPos.current = null; }}
-                      onMouseLeave={() => { setIsDragging(false); lastPanPos.current = null; }}
+                      onMouseUp={() => {
+                        if (elementDragState.current) {
+                          const state = elementDragState.current;
+                          // 允许极小的误差，防止被识别为拖拽
+                          if (Math.abs(state.lastDx) > 0.1 || Math.abs(state.lastDy) > 0.1) {
+                            const t = parseTransform(state.originalTransform)
+                            t.tx += state.lastDx;
+                            t.ty += state.lastDy;
+                            const finalTransform = buildTransform(t)
+
+                            // 查找元素的 index
+                            const index = allElements.find(e => e.id === state.id)?.index;
+                            if (index !== undefined) {
+                              // 把累积的位移写入到 SVG 并存入撤销栈
+                              const newCode = updateElementAttribute(svgCode, index, 'transform', finalTransform)
+                              handleUpdateSvg(newCode)
+                            }
+                          }
+                          elementDragState.current = null;
+                        }
+
+                        setIsDragging(false); lastPanPos.current = null;
+                      }}
+                      onMouseLeave={() => { setIsDragging(false); lastPanPos.current = null; elementDragState.current = null; }}
                       onTouchStart={(e) => {
+                        const target = e.target as HTMLElement
+                        const el = target.closest('[data-editor-id]') as HTMLElement | null
+                        if (el) {
+                          lastPanPos.current = null;
+                          const id = el.getAttribute('data-editor-id')!
+                          if (!selectedElement || selectedElement.id !== id) {
+                            const info = allElements.find(e => e.id === id)
+                            if (info) setSelectedElement(info)
+                          }
+
+                          const svgEl = el.ownerSVGElement
+                          if (!svgEl) return;
+
+                          let parentCTM = svgEl.getScreenCTM()
+                          const parent = el.parentNode as SVGGraphicsElement
+                          if (parent && parent.getScreenCTM) {
+                            parentCTM = parent.getScreenCTM()
+                          }
+
+                          if (parentCTM) {
+                            const pt = getMousePositionInSVG(e.touches[0].clientX, e.touches[0].clientY, svgEl, parentCTM)
+                            elementDragState.current = {
+                              id, el, svgEl, ctm: parentCTM,
+                              startXInSVG: pt.x,
+                              startYInSVG: pt.y,
+                              lastDx: 0, lastDy: 0,
+                              originalTransform: el.getAttribute('transform') || ''
+                            }
+                          }
+                          return;
+                        }
+
                         if (e.touches.length === 1) {
                           setIsDragging(true);
                           lastPanPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
                         }
                       }}
                       onTouchMove={(e) => {
+                        if (elementDragState.current && e.touches.length === 1) {
+                          const state = elementDragState.current;
+                          const currentPt = getMousePositionInSVG(e.touches[0].clientX, e.touches[0].clientY, state.svgEl, state.ctm)
+                          const dx = currentPt.x - state.startXInSVG;
+                          const dy = currentPt.y - state.startYInSVG;
+                          state.lastDx = dx; state.lastDy = dy;
+                          const t = parseTransform(state.originalTransform)
+                          t.tx += dx; t.ty += dy;
+                          state.el.setAttribute('transform', buildTransform(t))
+                          
+                          const boxEl = document.getElementById('selection-box-overlay')
+                          if (boxEl && workspaceRef.current) {
+                            const rect = state.el.getBoundingClientRect()
+                            const workspaceRect = workspaceRef.current.getBoundingClientRect()
+                            boxEl.style.left = `${rect.left - workspaceRect.left}px`
+                            boxEl.style.top = `${rect.top - workspaceRect.top}px`
+                            boxEl.style.width = `${rect.width}px`
+                            boxEl.style.height = `${rect.height}px`
+                          }
+                          return;
+                        }
+
                         if (isDragging && lastPanPos.current && e.touches.length === 1) {
                           const dx = e.touches[0].clientX - lastPanPos.current.x;
                           const dy = e.touches[0].clientY - lastPanPos.current.y;
@@ -730,39 +983,144 @@ function EditorPage() {
                           lastPanPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
                         }
                       }}
-                      onTouchEnd={() => { setIsDragging(false); lastPanPos.current = null; }}
-                      onTouchCancel={() => { setIsDragging(false); lastPanPos.current = null; }}
+                      onTouchEnd={() => {
+                        if (elementDragState.current) {
+                          const state = elementDragState.current;
+                          if (Math.abs(state.lastDx) > 0.1 || Math.abs(state.lastDy) > 0.1) {
+                            const t = parseTransform(state.originalTransform)
+                            t.tx += state.lastDx; t.ty += state.lastDy;
+                            const index = allElements.find(e => e.id === state.id)?.index;
+                            if (index !== undefined) {
+                              handleUpdateSvg(updateElementAttribute(svgCode, index, 'transform', buildTransform(t)))
+                            }
+                          }
+                          elementDragState.current = null;
+                        }
+                        setIsDragging(false); lastPanPos.current = null;
+                      }}
+                      onTouchCancel={() => { setIsDragging(false); lastPanPos.current = null; elementDragState.current = null; }}
+                      onClick={(e) => {
+                        // 防止真正的拖拽结束后误触 onClick 导致取消选择
+                        if (mouseDownPos.current && (
+                          Math.abs(e.clientX - mouseDownPos.current.x) > 10 ||
+                          Math.abs(e.clientY - mouseDownPos.current.y) > 10
+                        )) {
+                          return;
+                        }
+
+                        const target = e.target as HTMLElement
+                        const el = target.closest('[data-editor-id]') as HTMLElement | null
+                        if (el) {
+                          const id = el.getAttribute('data-editor-id')!
+                          const info = allElements.find(e => e.id === id)
+                          if (info) setSelectedElement(info)
+                        } else {
+                          const x = e.clientX;
+                          const y = e.clientY;
+                          const elements = Array.from(document.querySelectorAll('[data-editor-id]')).reverse();
+                          const found = elements.find(node => {
+                            const rect = node.getBoundingClientRect();
+                            return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+                          });
+                          
+                          if (found) {
+                            const id = found.getAttribute('data-editor-id')!
+                            const info = allElements.find(e => e.id === id)
+                            if (info) setSelectedElement(info)
+                            return;
+                          }
+                          
+                          setSelectedElement(null)
+                        }
+                      }}
                     >
                       <div
                         ref={previewRef}
                         className="svg-preview-container flex items-center justify-center origin-center"
                         style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom / 100})` }}
                         dangerouslySetInnerHTML={{ __html: processedSVG.html || sanitizedSVG }}
-                        onClick={(e) => {
-                          const target = e.target as HTMLElement
-                          const el = target.closest('[data-editor-id]') as HTMLElement | null
-                          if (el) {
-                            const id = el.getAttribute('data-editor-id')!
-                            const info = allElements.find(e => e.id === id)
-                            if (info) {
-                              // 清除旧选中样式
-                              previewRef.current?.querySelector('.svg-element-selected')?.classList.remove('svg-element-selected')
-                              // 添加新选中样式
-                              el.classList.add('svg-element-selected')
-                              setSelectedElement(info)
-                            }
-                          } else {
-                            // 点击空白区域取消选择
-                            previewRef.current?.querySelector('.svg-element-selected')?.classList.remove('svg-element-selected')
-                            setSelectedElement(null)
-                          }
-                        }}
                       />
+
+                      {selectionBox && (
+                        <div
+                          id="selection-box-overlay"
+                          className="absolute pointer-events-none border-[1.5px] border-[#007AFF] z-40"
+                          style={{
+                            left: selectionBox.x,
+                            top: selectionBox.y,
+                            width: selectionBox.w,
+                            height: selectionBox.h,
+                          }}
+                        >
+                          <div className="absolute inset-0 pointer-events-none" />
+                          
+                          {/* 四条边拉伸控制柄 (边缘吸附区) */}
+                          {['n', 's', 'w', 'e'].map(dir => (
+                            <div key={dir}
+                              title={t('common.panel.resizeHint', 'Use Transform panel to resize')}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toast(t('common.panel.resizeToast', 'Pro tip: Use the "Transform" panel on the right for pixel-perfect resizing! Drag-to-resize is coming in the next update. ✨'), { icon: '💡' });
+                              }}
+                              className={cn(
+                                "absolute pointer-events-auto hover:bg-[#007AFF]/20 transition-colors z-[41]",
+                                ['n', 's'].includes(dir) ? "h-[7px] w-full left-0 opacity-0 hover:opacity-100" : "w-[7px] h-full top-0 opacity-0 hover:opacity-100",
+                                dir === 'n' ? '-top-[4px] cursor-n-resize' : '',
+                                dir === 's' ? '-bottom-[4px] cursor-s-resize' : '',
+                                dir === 'w' ? '-left-[4px] cursor-w-resize' : '',
+                                dir === 'e' ? '-right-[4px] cursor-e-resize' : ''
+                              )}
+                            />
+                          ))}
+
+                          {/* 四个角缩放控制柄 (高亮显示) */}
+                          {['nw', 'ne', 'sw', 'se'].map(dir => (
+                            <div key={dir}
+                              title={t('common.panel.resizeHint', 'Use Transform panel to resize')}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toast(t('common.panel.resizeToast', 'Pro tip: Use the "Transform" panel on the right for pixel-perfect resizing! Drag-to-resize is coming in the next update. ✨'), { icon: '💡' });
+                              }}
+                              className={cn(
+                                "absolute w-[7px] h-[7px] bg-white border-[1.5px] border-[#007AFF] pointer-events-auto hover:bg-[#007AFF] transition-colors z-[42]",
+                                dir.includes('n') ? '-top-[4px]' : '-bottom-[4px]',
+                                dir.includes('w') ? '-left-[4px]' : '-right-[4px]',
+                                `cursor-${dir}-resize`
+                              )}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
               ) : renderEmptyState()}
             </div>
+          </div>
+
+          {/* Desktop Right Sidebar — Properties Panel */}
+          <div className="hidden md:flex flex-col w-[240px] lg:w-[280px] shrink-0 bg-white dark:bg-bg-surface border-l border-border z-10">
+            {selectedElement ? (
+              <PropertiesPanel
+                element={selectedElement}
+                svgCode={svgCode}
+                onUpdateSvg={handleUpdateSvg}
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full p-5 bg-bg-base/30">
+                <div className="w-full h-full border-[1.5px] border-dashed border-border/80 rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-sm bg-white/30 dark:bg-black/10">
+                  <div className="w-12 h-12 mb-4 rounded-full bg-bg-subtle flex items-center justify-center text-secondary/40 shadow-inner">
+                    <MousePointer2 size={22} />
+                  </div>
+                  <h3 className="text-xs font-bold text-primary mb-2 uppercase tracking-widest">
+                    {t('common.panel.noSelection', 'No element selected')}
+                  </h3>
+                  <p className="text-[11px] text-secondary/70 leading-relaxed max-w-[160px]">
+                    {t('common.panel.noSelectionHint', 'Click an element in the SVG preview')}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -827,7 +1185,7 @@ function EditorPage() {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <label className="text-xs font-bold text-secondary uppercase shrink-0">{t('pages.svgConverter.optimize.mode')}</label>
                       <div className="flex-1 flex gap-2">
@@ -940,11 +1298,10 @@ function EditorPage() {
                       <button
                         key={lang.code}
                         onClick={() => { i18n.changeLanguage(lang.code); localStorage.setItem('lang', lang.code); setIsMenuOpen(false); }}
-                        className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
-                          i18n.language === lang.code
-                            ? 'bg-blue text-white'
-                            : 'bg-bg-subtle text-secondary hover:text-primary hover:bg-bg-muted'
-                        }`}
+                        className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${i18n.language === lang.code
+                          ? 'bg-blue text-white'
+                          : 'bg-bg-subtle text-secondary hover:text-primary hover:bg-bg-muted'
+                          }`}
                       >
                         {lang.shortLabel}
                       </button>

@@ -202,18 +202,28 @@ body {
   max-height: 100%;
   width: auto;
   height: auto;
+  overflow: visible !important;
 }
 
 /* ── SVG Element Selection ─────────────────────────── */
 .svg-preview-container [data-editor-id] {
   cursor: pointer;
-  transition: outline 0.15s ease;
+  transition: filter 0.15s ease;
 }
 .svg-preview-container [data-editor-id]:hover {
-  outline: 1.5px dashed rgba(249, 115, 22, 0.5);
-  outline-offset: 1px;
+  cursor: pointer;
 }
-.svg-element-selected {
-  outline: 2px solid #f97316 !important;
-  outline-offset: 2px !important;
+
+/* ── Checkerboard for transparent backgrounds ─────────────────────────── */
+.bg-checkerboard {
+  background-image: 
+    linear-gradient(45deg, #e5e5e5 25%, transparent 25%, transparent 75%, #e5e5e5 75%, #e5e5e5),
+    linear-gradient(45deg, #e5e5e5 25%, transparent 25%, transparent 75%, #e5e5e5 75%, #e5e5e5);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+.dark .bg-checkerboard {
+  background-image: 
+    linear-gradient(45deg, #2a2a2a 25%, transparent 25%, transparent 75%, #2a2a2a 75%, #2a2a2a),
+    linear-gradient(45deg, #2a2a2a 25%, transparent 25%, transparent 75%, #2a2a2a 75%, #2a2a2a);
 }
