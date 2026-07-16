@@ -76,5 +76,11 @@ export default {
       { title: '为什么能压掉这么多体积？', desc: 'Figma 或者 AI 导出的 SVG 里面总喜欢塞一堆没用的标签。我们的压缩引擎不仅会把这些垃圾删干净，还会把那些长得离谱的小数点砍短，效果立竿见影。' }
     ],
   },
-  mobile: { canvas: '预览', transform: '变换', optimize: '优化', export: '导出' }
+  mobile: { canvas: '预览', transform: '变换', optimize: '优化', export: '导出' },
+  exportPanel: {
+    title: '导出', format: '格式', background: '背景',
+    transparent: '透明', white: '白色', custom: '自定义',
+    scaleSize: '尺寸与缩放', widthPx: '宽度 (px)', heightPx: '高度 (px)',
+    exportBtn: '导出 ', formatSVG: 'SVG', formatPNG: 'PNG', formatWEBP: 'WebP', formatJPEG: 'JPEG',
+  },
 }

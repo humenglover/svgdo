@@ -76,5 +76,11 @@ export default {
       { title: '¿Por qué tanta compresión?', desc: 'Eliminamos agresivamente etiquetas vacías y precisión excesiva de los SVG exportados.' }
     ],
   },
-  mobile: { canvas: 'Lienzo', transform: 'Transformar', optimize: 'Optimizar', export: 'Exportar' }
+  mobile: { canvas: 'Lienzo', transform: 'Transformar', optimize: 'Optimizar', export: 'Exportar' },
+  exportPanel: {
+    title: 'Exportar', format: 'Formato', background: 'Fondo',
+    transparent: 'Transparente', white: 'Blanco', custom: 'Personalizado',
+    scaleSize: 'Escala y Tamaño', widthPx: 'Ancho (px)', heightPx: 'Alto (px)',
+    exportBtn: 'Exportar ', formatSVG: 'SVG', formatPNG: 'PNG', formatWEBP: 'WebP', formatJPEG: 'JPEG',
+  },
 }

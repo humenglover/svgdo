@@ -76,5 +76,11 @@ export default {
       { title: '압축률이 왜 이렇게 높나요?', desc: '디자인 도구가 출력하는 SVG에서 빈 태그와 과도한 정밀도의 좌표를 적극적으로 제거하기 때문입니다.' }
     ],
   },
-  mobile: { canvas: '캔버스', transform: '변형', optimize: '최적화', export: '내보내기' }
+  mobile: { canvas: '캔버스', transform: '변형', optimize: '최적화', export: '내보내기' },
+  exportPanel: {
+    title: '내보내기', format: '포맷', background: '배경',
+    transparent: '투명', white: '흰색', custom: '사용자 정의',
+    scaleSize: '크기 및 배율', widthPx: '너비 (px)', heightPx: '높이 (px)',
+    exportBtn: '내보내기 ', formatSVG: 'SVG', formatPNG: 'PNG', formatWEBP: 'WebP', formatJPEG: 'JPEG',
+  },
 }

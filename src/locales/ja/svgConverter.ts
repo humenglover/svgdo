@@ -76,5 +76,11 @@ export default {
       { title: 'なぜこんなに圧縮率が高いのですか？', desc: 'デザインツールが出力するSVGから、空のタグや過剰な精度の座標を積極的に削除しているためです。' }
     ],
   },
-  mobile: { canvas: 'キャンバス', transform: '変形', optimize: '最適化', export: 'エクスポート' }
+  mobile: { canvas: 'キャンバス', transform: '変形', optimize: '最適化', export: 'エクスポート' },
+  exportPanel: {
+    title: 'エクスポート', format: 'フォーマット', background: '背景',
+    transparent: '透明', white: '白', custom: 'カスタム',
+    scaleSize: 'サイズと倍率', widthPx: '幅 (px)', heightPx: '高さ (px)',
+    exportBtn: 'エクスポート ', formatSVG: 'SVG', formatPNG: 'PNG', formatWEBP: 'WebP', formatJPEG: 'JPEG',
+  },
 }
