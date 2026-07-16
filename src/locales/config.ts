@@ -37,6 +37,14 @@ export const LANGUAGES: Language[] = [
     htmlLang: 'ja',
   },
   {
+    code: 'es',
+    nativeLabel: 'Español',
+    shortLabel: 'ES',
+    detection: ['es'],
+    ogLocale: 'es_ES',
+    htmlLang: 'es',
+  },
+  {
     code: 'ko',
     nativeLabel: '한국어',
     shortLabel: '한국어',

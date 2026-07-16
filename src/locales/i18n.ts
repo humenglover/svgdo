@@ -5,8 +5,9 @@ import zh from './zh'
 import en from './en'
 import ja from './ja'
 import ko from './ko'
+import es from './es'
 
-const resourceMap: Record<string, typeof zh> = { zh, en, ja, ko }
+const resourceMap: Record<string, typeof zh> = { zh, en, ja, ko, es }
 
 export function getDefaultLanguage(): string {
   const saved = localStorage.getItem('lang')
