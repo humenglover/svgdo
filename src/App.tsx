@@ -803,7 +803,7 @@ function EditorPage() {
         <div className="w-full bg-white dark:bg-bg-surface rounded-2xl border border-border p-4 shadow-sm">
           <h4 className="text-sm font-bold text-primary mb-3">{t('pages.svgConverter.empty.startFromExample')}</h4>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
-            {QUICK_START_ICONS.filter(n => iconNames.includes(n) || n === 'logo').map(name => (
+            {QUICK_START_ICONS.filter(n => iconNames.includes(n) || n === 'logo').slice(0, 8).map(name => (
               <button key={name} onClick={() => handleLoadPreset(name)} className="flex flex-col items-center gap-1.5 p-2 rounded-xl border border-border hover:border-orange hover:text-orange text-primary transition-all shadow-sm hover:shadow-md">
                 <img src={`/icons/svg/${name}.svg`} alt={name} className="w-5 h-5 opacity-70 dark:invert transition-all" />
                 <span className="text-[10px] text-secondary text-center truncate w-full">{name}</span>
