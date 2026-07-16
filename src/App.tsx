@@ -11,8 +11,6 @@ import Editor from 'react-simple-code-editor'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-markup'
 import 'prismjs/themes/prism-tomorrow.css'
-// @ts-ignore
-import svgpath from 'svgpath'
 import { sanitizeSVG, loadRemoteSVG, getSVGDimensions } from '@/utils/svgSecurity'
 import { injectEditorIds, resetIdCounter, describeElement, parseTransform, buildTransform, updateElementAttribute, getSvgScaleRatio, getMousePositionInSVG, type ElementInfo } from '@/utils/svgDom'
 import { optimizeSVG } from '@/utils/svgOptimize'
@@ -20,7 +18,7 @@ import {
   Upload, Link as LinkIcon, Library, Maximize2, SplitSquareHorizontal,
   Code2, Eye, Undo2, Redo2, ZoomIn, ZoomOut, Maximize,
   Grid, Sun, Moon, Settings, RotateCw, FlipHorizontal, FlipVertical,
-  CheckCircle, X, Search, ChevronDown, ChevronUp, Menu, MousePointer2, Sliders, AlertTriangle
+  CheckCircle, X, Search, ChevronDown, ChevronUp, Menu, MousePointer2, Sliders, AlertTriangle, Download
 } from 'lucide-react'
 import { cn } from '@/utils'
 import toast, { Toaster } from 'react-hot-toast'
@@ -213,7 +211,7 @@ function EditorPage() {
     e.stopPropagation();
     if (!selectedElement) return;
 
-    const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as SVGElement;
+    const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as SVGElement | null;
     const svgEl = el?.ownerSVGElement;
     if (!el || !svgEl) return;
 
@@ -498,7 +496,9 @@ function EditorPage() {
   const handleDownloadSVG = () => {
     if (!svgCode) return
     const blob = new Blob([svgCode], { type: 'image/svg+xml' })
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'icon.svg'; a.click()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a'); a.href = url; a.download = 'icon.svg'; a.click()
+    setTimeout(() => URL.revokeObjectURL(url), 100)
     toast.success(t('pages.svgConverter.export.downloading'))
   }
 
@@ -592,18 +592,24 @@ function EditorPage() {
           <button onClick={handleUndo} disabled={historyIndex <= 0} className={cn("p-1 md:p-1.5 rounded-md", historyIndex <= 0 ? "opacity-30" : "hover:bg-bg-subtle")}><Undo2 size={14} /></button>
           <button onClick={handleRedo} disabled={historyIndex >= history.length - 1} className={cn("p-1 md:p-1.5 rounded-md", historyIndex >= history.length - 1 ? "opacity-30" : "hover:bg-bg-subtle")}><Redo2 size={14} /></button>
         </div>
-        <div className="flex items-center gap-0.5 shrink-0">
-          <button disabled={!svgCode} onClick={handleZoomOut} className={cn("p-1 md:p-1.5 rounded-md", !svgCode && "opacity-30")}><ZoomOut size={14} /></button>
-          <span className={cn("text-[10px] md:text-xs font-medium w-8 md:w-10 text-center", !svgCode && "opacity-30")}>{zoom}%</span>
-          <button disabled={!svgCode} onClick={handleZoomIn} className={cn("p-1 md:p-1.5 rounded-md", !svgCode && "opacity-30")}><ZoomIn size={14} /></button>
-          <button disabled={!svgCode} onClick={handleZoomReset} className={cn("p-1 md:p-1.5 rounded-md", !svgCode ? "opacity-30" : "hover:bg-bg-subtle")}><Maximize size={14} /></button>
-        </div>
-        <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
-          {(['grid', 'light', 'dark'] as const).map(m => (
-            <button key={m} disabled={!svgCode} onClick={() => setBgMode(m)} className={cn("p-1 md:p-1.5 rounded-md", !svgCode && "opacity-30", bgMode === m ? "text-orange bg-orange/10" : "hover:bg-bg-subtle")}>
-              {m === 'grid' ? <Grid size={14} /> : m === 'light' ? <Sun size={14} /> : <Moon size={14} />}
+        <div className="flex items-center gap-2 md:gap-4 ml-auto">
+          <div className="flex items-center gap-0.5 shrink-0">
+            <button disabled={!svgCode} onClick={handleZoomOut} className={cn("p-1 md:p-1.5 rounded-md", !svgCode && "opacity-30")}><ZoomOut size={14} /></button>
+            <span className={cn("text-[10px] md:text-xs font-medium w-8 md:w-10 text-center", !svgCode && "opacity-30")}>{zoom}%</span>
+            <button disabled={!svgCode} onClick={handleZoomIn} className={cn("p-1 md:p-1.5 rounded-md", !svgCode && "opacity-30")}><ZoomIn size={14} /></button>
+            <button disabled={!svgCode} onClick={handleZoomReset} className={cn("p-1 md:p-1.5 rounded-md", !svgCode ? "opacity-30" : "hover:bg-bg-subtle")}><Maximize size={14} /></button>
+          </div>
+          <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
+            {(['grid', 'light', 'dark'] as const).map(m => (
+              <button key={m} disabled={!svgCode} onClick={() => setBgMode(m)} className={cn("p-1 md:p-1.5 rounded-md", !svgCode && "opacity-30", bgMode === m ? "text-orange bg-orange/10" : "hover:bg-bg-subtle")}>
+                {m === 'grid' ? <Grid size={14} /> : m === 'light' ? <Sun size={14} /> : <Moon size={14} />}
+              </button>
+            ))}
+            <div className="w-px h-4 bg-border mx-1"></div>
+            <button disabled={!svgCode} onClick={handleDownloadSVG} title="Download SVG" className={cn("p-1 md:p-1.5 rounded-md text-secondary hover:text-orange hover:bg-orange/10 transition-colors", !svgCode && "opacity-30")}>
+              <Download size={14} />
             </button>
-          ))}
+          </div>
         </div>
       </div>
     </div>
@@ -702,6 +708,10 @@ function EditorPage() {
         {activePanels.includes('export') && (
           <ExportPanel svgCode={svgCode} />
         )}
+      </div>
+
+      <div className="mt-auto pt-12 pb-6 flex justify-center opacity-40 pointer-events-none select-none">
+        <SvgdoLogo className="h-[20px] w-auto grayscale" />
       </div>
     </div>
   )

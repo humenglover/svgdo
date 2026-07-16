@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Shield, Zap, Palette, Code2, ServerOff, ArrowLeft } from "lucide-react"
 import ParticleBackground from "@/components/ParticleBackground"
 import TechConstellation from "@/components/TechConstellation"
+import { SvgdoLogo } from "@/components/SvgdoLogo"
 import { cn } from "@/utils"
 
 // A simple reveal component to handle scroll animations
@@ -62,10 +63,13 @@ export default function AboutPage() {
       {/* ------------------------------
           HEADER (Back Button)
       ------------------------------ */}
-      <header className="h-14 flex items-center px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-50">
-        <Link to="/" className="flex items-center gap-2 text-secondary hover:text-primary transition-colors">
-          <ArrowLeft size={20} />
-          <span className="font-bold text-sm">{t('common.nav.backToHome')}</span>
+      <header className="h-14 flex items-center justify-between px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-50">
+        <div className="flex items-center gap-3">
+          <SvgdoLogo className="h-[24px] md:h-[28px] w-auto text-primary dark:text-white" />
+        </div>
+        <Link to="/" className="flex items-center gap-2 text-secondary hover:text-primary transition-colors bg-bg-subtle/50 px-3 py-1.5 rounded-lg border border-border/50">
+          <ArrowLeft size={16} />
+          <span className="font-bold text-sm">{t('common.nav.backToHome', '返回主页')}</span>
         </Link>
       </header>
 
