@@ -121,16 +121,25 @@ function EditorPage() {
     fetch('/icons/_index.json')
       .then(r => r.ok ? r.json() : Promise.reject())
       .then((data: { name: string }[]) => {
-        // Shuffle and deduplicate so sample icons show variety
-        const names = [...new Set(data.map(i => i.name))]
-        for (let i = names.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1))
-            ;[names[i], names[j]] = [names[j], names[i]]
-        }
+        const names = [...new Set(data.map(i => i.name))].sort()
         if (names.length > 0) setIconNames(names)
       })
       .catch(() => { /* use fallback */ })
   }, [])
+
+  // Curated quick-start icons — first one is the site logo
+  const QUICK_START_ICONS = [
+    'svgdo-logo',   // #1 Site logo SVG
+    'activity', 'archive', 'award', 'bar-chart',
+    'camera', 'clock', 'copy', 'download',
+    'edit', 'file', 'filter', 'globe',
+    'heart', 'image', 'layers', 'link',
+    'lock', 'mail', 'map-pin', 'maximize',
+    'menu', 'mic', 'monitor', 'package',
+    'phone', 'play', 'settings', 'share',
+    'star', 'sun', 'thumbs-up', 'upload',
+    'user', 'video', 'wifi', 'zap',
+  ]
 
   const MAX_HISTORY = 200
 
@@ -788,7 +797,7 @@ function EditorPage() {
         <div className="w-full bg-white dark:bg-bg-surface rounded-2xl border border-border p-4 shadow-sm">
           <h4 className="text-sm font-bold text-primary mb-3">{t('pages.svgConverter.empty.startFromExample')}</h4>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
-            {iconNames.slice(0, 16).map(name => (
+            {QUICK_START_ICONS.filter(n => iconNames.includes(n) || n === 'svgdo-logo').slice(0, 16).map(name => (
               <button key={name} onClick={() => handleLoadPreset(name)} className="flex flex-col items-center gap-1.5 p-2 rounded-xl border border-border hover:border-orange hover:text-orange text-primary transition-all shadow-sm hover:shadow-md">
                 <img src={`/icons/svg/${name}.svg`} alt={name} className="w-5 h-5 opacity-70 dark:invert transition-all" />
                 <span className="text-[10px] text-secondary text-center truncate w-full">{name}</span>
