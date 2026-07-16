@@ -2,10 +2,14 @@ export default {
   title: 'SVGエディタ',
   upload: 'アップロード',
   url: 'URL',
+  pasteCode: 'コード貼付',
+  pasteCodeTitle: 'SVGコードを貼付',
+  syntaxError: 'SVG構文エラー',
   library: 'アイコンライブラリ',
   empty: {
     welcome: 'SVGエディタへようこそ',
     desc: 'SVGファイルをドラッグ＆ドロップ、または「アップロード/アイコンライブラリ」をクリック、Ctrl/Cmd+Vでコードを貼り付け',
+    pastePlaceholder: 'SVGコードをここに貼り付け...',
     startFromExample: 'サンプルから始める',
     startFromExampleDesc: '下のアイコンをクリックするか、自分のSVGをアップロードしてください。',
     keyboardHint: 'ショートカット: Ctrl + スクロール | Ctrl+± | Ctrl+0 リセット'

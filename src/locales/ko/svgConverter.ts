@@ -2,10 +2,14 @@ export default {
   title: 'SVG 에디터',
   upload: '업로드',
   url: 'URL',
+  pasteCode: '코드 붙여넣기',
+  pasteCodeTitle: 'SVG 코드 붙여넣기',
+  syntaxError: 'SVG 구문 오류',
   library: '아이콘 라이브러리',
   empty: {
     welcome: 'SVG 에디터에 오신 것을 환영합니다',
     desc: 'SVG 파일을 드래그 앤 드롭하거나 "업로드/아이콘 라이브러리"를 클릭, Ctrl/Cmd+V로 코드 붙여넣기',
+    pastePlaceholder: 'SVG 코드를 여기에 붙여넣으세요...',
     startFromExample: '예제로 시작하기',
     startFromExampleDesc: '아래 아이콘을 클릭하거나 직접 SVG를 업로드하세요.',
     keyboardHint: '단축키: Ctrl + 스크롤 | Ctrl+± 확대/축소 | Ctrl+0 리셋'

@@ -2,10 +2,14 @@ export default {
   title: 'Editor SVG',
   upload: 'Subir',
   url: 'URL',
+  pasteCode: 'Pegar Código',
+  pasteCodeTitle: 'Pegar Código SVG',
+  syntaxError: 'Error de Sintaxis SVG',
   library: 'Biblioteca',
   empty: {
     welcome: 'Bienvenido al Editor SVG',
     desc: 'Arrastra un archivo SVG, haz clic en "Subir/Biblioteca", o pega código con Ctrl/Cmd+V',
+    pastePlaceholder: 'Pega el código SVG aquí...',
     startFromExample: 'Empezar con ejemplos',
     startFromExampleDesc: 'Haz clic en un icono o sube tu propio SVG.',
     keyboardHint: 'Atajos: Ctrl + Rueda | Ctrl+± | Ctrl+0 Reset'

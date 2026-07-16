@@ -1,13 +1,21 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { ChevronDown, ChevronRight, Trash2, ArrowUp, ArrowDown, ArrowUpToLine, ArrowDownToLine } from 'lucide-react'
 import { cn } from '@/utils'
-import { updateElementAttribute, getElementAttribute, parseTransform, buildTransform, type ElementInfo } from '@/utils/svgDom'
+import { 
+  updateElementAttribute, 
+  getElementAttribute, 
+  parseTransform, 
+  buildTransform, 
+  removeSvgElement,
+  moveSvgElementLayer,
+  type ElementInfo 
+} from '@/utils/svgDom'
 
 interface Props {
   element: ElementInfo
   svgCode: string
-  onUpdateSvg: (newCode: string) => void
+  onUpdateSvg: (newCode: string, nextIndex?: number) => void
 }
 
 export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props) {
@@ -28,17 +36,27 @@ export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props
     handleChange('transform', buildTransform(t))
   }
 
+  const handleDelete = () => {
+    const newCode = removeSvgElement(svgCode, element.index)
+    if (newCode !== svgCode) onUpdateSvg(newCode)
+  }
+
+  const handleLayerMove = (action: 'forward' | 'backward' | 'front' | 'back') => {
+    const result = moveSvgElementLayer(svgCode, element.index, action)
+    if (result.svgCode !== svgCode) onUpdateSvg(result.svgCode, result.newIndex)
+  }
+
   return (
     <div className="flex flex-col h-full bg-bg-surface">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-border bg-bg-subtle/50">
-        <div className="flex items-center gap-2">
+      <div className="px-4 py-3 border-b border-border bg-bg-subtle/50 flex items-center justify-between gap-2 overflow-hidden">
+        <div className="flex items-center gap-2 shrink-0">
           <div className="w-2 h-2 rounded-full bg-orange" />
-          <span className="text-sm font-bold text-primary">{t('common.panel.selectedElement')}</span>
+          <span className="text-[13px] font-bold text-primary">{t('common.panel.selectedElement')}</span>
         </div>
-        <div className="mt-1.5 flex items-center gap-2 text-xs">
-          <span className="px-2 py-0.5 rounded-md bg-orange/10 text-orange font-bold uppercase">{element.tagName}</span>
-          <span className="text-tertiary font-mono text-[11px]">{element.id}</span>
+        <div className="flex items-center gap-2 text-xs min-w-0">
+          <span className="px-2 py-0.5 rounded-md bg-orange/10 text-orange font-bold uppercase shrink-0">{element.tagName}</span>
+          <span className="text-tertiary font-mono text-[11px] truncate">{element.id}</span>
         </div>
       </div>
 
@@ -67,12 +85,28 @@ export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props
             onChange={v => handleTransformChange('scale', v)} min={0.1} max={10} step={0.1} />
         </CollapseSection>
 
-
-        {/* Advanced */}
-        <CollapseSection title={t('common.panel.advanced')}>
-          <ReadOnlyField label={t('common.panel.elementId')} value={element.id} mono />
-          <ReadOnlyField label={t('common.panel.class')} value={getAttr('class') || '—'} mono />
+        {/* Layer & Actions */}
+        <CollapseSection title={t('common.panel.layerActions', 'Actions & Layer')}>
+          <div className="grid grid-cols-4 gap-2 mb-2">
+            <button onClick={() => handleLayerMove('front')} title="Bring to Front" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+              <ArrowUpToLine size={14} />
+            </button>
+            <button onClick={() => handleLayerMove('forward')} title="Bring Forward" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+              <ArrowUp size={14} />
+            </button>
+            <button onClick={() => handleLayerMove('backward')} title="Send Backward" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+              <ArrowDown size={14} />
+            </button>
+            <button onClick={() => handleLayerMove('back')} title="Send to Back" className="flex items-center justify-center p-2 rounded-lg bg-bg-muted hover:bg-orange hover:text-white text-secondary transition-colors">
+              <ArrowDownToLine size={14} />
+            </button>
+          </div>
+          <button onClick={handleDelete} className="w-full flex items-center justify-center gap-2 p-2 mt-2 rounded-lg border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white text-xs font-bold transition-colors">
+            <Trash2 size={14} />
+            {t('common.panel.delete', 'Delete Element')}
+          </button>
         </CollapseSection>
+
       </div>
     </div>
   )
@@ -96,9 +130,24 @@ function CollapseSection({ title, children, defaultOpen }: {
   )
 }
 
+function parseColorToHex(color: string): string {
+  if (!color || color === 'none' || color === 'transparent') return '#000000'
+  if (color.startsWith('#')) {
+    if (color.length === 4) return '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3]
+    return color.substring(0, 7)
+  }
+  if (color.startsWith('rgb')) {
+    const match = color.match(/\d+/g)
+    if (match && match.length >= 3) {
+      return '#' + [match[0], match[1], match[2]].map(x => parseInt(x).toString(16).padStart(2, '0')).join('')
+    }
+  }
+  return '#000000'
+}
+
 function ColorField({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   const isNone = value === 'none' || value === 'transparent' || !value
-  const hexValue = (value && value.startsWith('#')) ? value : '#000000'
+  const hexValue = parseColorToHex(value)
 
   return (
     <div className="space-y-1">
@@ -106,7 +155,7 @@ function ColorField({ label, value, onChange }: { label: string; value: string; 
       <div className="flex items-center gap-2">
         <div className="relative w-7 h-7 rounded-md border border-border bg-checkerboard shrink-0 overflow-hidden cursor-pointer">
           {!isNone && (
-            <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: hexValue }} />
+            <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: value }} />
           )}
           <input type="color" value={hexValue}
             onChange={e => onChange(e.target.value)}
@@ -116,8 +165,8 @@ function ColorField({ label, value, onChange }: { label: string; value: string; 
         <input type="text" value={value || ''} placeholder="none"
           onChange={e => onChange(e.target.value)}
           className="flex-1 w-0 px-2 py-1.5 text-[11px] font-mono rounded-md border border-border bg-bg-muted text-primary focus:outline-none focus:ring-1 focus:ring-orange/30" />
-          
-        <button 
+
+        <button
           title="Clear color (transparent)"
           onClick={() => onChange('none')}
           className="w-[22px] h-[22px] rounded border border-border bg-checkerboard shrink-0 hover:border-orange transition-colors shadow-sm" />

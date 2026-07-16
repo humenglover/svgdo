@@ -2,10 +2,18 @@ export default {
   title: 'SVG Editor',
   upload: 'Upload',
   url: 'URL',
+  pasteCode: 'Paste Code',
+  pasteCodeTitle: 'Paste SVG Code',
+  syntaxError: 'SVG Syntax Error',
   library: 'Icon Library',
+  pasteCode: 'Paste Code',
+  pasteCodeTitle: 'Paste SVG Code',
+  syntaxError: 'SVG Syntax Error',
   empty: {
     welcome: 'Welcome to SVG Editor',
     desc: 'Drag & drop SVG file here, or click "Upload/Icon Library", or paste code with Ctrl/Cmd+V',
+    pastePlaceholder: 'Paste raw SVG code here...',
+    pastePlaceholder: 'Paste raw SVG code here...',
     startFromExample: 'Start from examples',
     startFromExampleDesc: 'Click on any icon below, or upload your own SVG.',
     keyboardHint: 'Shortcuts: Ctrl + Scroll | Ctrl+± | Ctrl+0 Reset'
@@ -72,5 +80,11 @@ export default {
       { title: 'Why is compression so high?', desc: 'We aggressively remove empty tags and excessive precision from exported SVGs.' }
     ],
   },
-  mobile: { canvas: 'Canvas', transform: 'Transform', optimize: 'Optimize', export: 'Export' }
+  mobile: { canvas: 'Canvas', transform: 'Transform', optimize: 'Optimize', export: 'Export' },
+  exportPanel: {
+    title: 'Export', format: 'Format', background: 'Background',
+    transparent: 'Transparent', white: 'White', custom: 'Custom',
+    scaleSize: 'Scale & Size', widthPx: 'Width (px)', heightPx: 'Height (px)',
+    exportBtn: 'Export ', formatSVG: 'SVG', formatPNG: 'PNG', formatWEBP: 'WebP', formatJPEG: 'JPEG',
+  },
 }

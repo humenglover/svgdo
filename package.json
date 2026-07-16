@@ -13,6 +13,7 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "dompurify": "^3.4.12",
+    "echarts": "^6.1.0",
     "i18next": "^26.3.6",
     "lucide-react": "^1.24.0",
     "prismjs": "^1.30.0",

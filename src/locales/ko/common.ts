@@ -11,6 +11,10 @@ export default {
   langLabel: '한국어',
   undo: '실행 취소',
   redo: '다시 실행',
+  loading: '로딩 중...',
+  warning: '경고',
+  confirm: '확인',
+  confirmOverwrite: '현재 작업 내용을 덮어씁니다. 계속하시겠습니까?',
   delete: '삭제',
   export: '내보내기',
   exportSvg: 'SVG 내보내기',
@@ -63,6 +67,7 @@ export default {
   nav: {
     help: '도움말',
     resources: '리소스',
+    about: '소개',
     privacy: '개인정보 처리방침',
     backToHome: '홈으로',
     backToEditor: '에디터로',
@@ -72,6 +77,7 @@ export default {
     loadSvgFailed: 'SVG 로드 실패',
     copyFailed: '복사 실패',
     exportFailed: '내보내기 실패',
+    invalidSvg: '유효하지 않은 SVG 코드',
     exportTimeout: '내보내기 시간 초과',
   },
   resources: {

@@ -11,6 +11,10 @@ export default {
   langLabel: 'ES',
   undo: 'Deshacer',
   redo: 'Rehacer',
+  loading: 'Cargando...',
+  warning: 'Aviso',
+  confirm: 'Confirmar',
+  confirmOverwrite: 'El espacio de trabajo actual tiene contenido. ¿Sobrescribir?',
   delete: 'Eliminar',
   export: 'Exportar',
   exportSvg: 'Exportar SVG',
@@ -63,6 +67,7 @@ export default {
   nav: {
     help: 'Ayuda',
     resources: 'Recursos',
+    about: 'Acerca de',
     privacy: 'Privacidad',
     backToHome: 'Inicio',
     backToEditor: 'Editor',
@@ -72,6 +77,7 @@ export default {
     loadSvgFailed: 'Error al cargar SVG',
     copyFailed: 'Error al copiar',
     exportFailed: 'Error al exportar',
+    invalidSvg: 'Código SVG no válido',
     exportTimeout: 'Tiempo de exportación agotado',
   },
   resources: {

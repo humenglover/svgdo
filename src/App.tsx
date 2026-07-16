@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Resources from './pages/Resources'
 import ArticlePage from './pages/ArticlePage'
+import AboutPage from './pages/AboutPage'
+import { ExportPanel } from '@/components/ExportPanel'
 import { useDropzone } from 'react-dropzone'
 import Editor from 'react-simple-code-editor'
 import Prism from 'prismjs'
@@ -12,12 +14,13 @@ import 'prismjs/themes/prism-tomorrow.css'
 // @ts-ignore
 import svgpath from 'svgpath'
 import { sanitizeSVG, loadRemoteSVG, getSVGDimensions } from '@/utils/svgSecurity'
-import { injectEditorIds, resetIdCounter, describeElement, parseTransform, buildTransform, updateElementAttribute, type ElementInfo } from '@/utils/svgDom'
+import { injectEditorIds, resetIdCounter, describeElement, parseTransform, buildTransform, updateElementAttribute, getSvgScaleRatio, getMousePositionInSVG, type ElementInfo } from '@/utils/svgDom'
+import { optimizeSVG } from '@/utils/svgOptimize'
 import {
   Upload, Link as LinkIcon, Library, Maximize2, SplitSquareHorizontal,
   Code2, Eye, Undo2, Redo2, ZoomIn, ZoomOut, Maximize,
   Grid, Sun, Moon, Settings, RotateCw, FlipHorizontal, FlipVertical,
-  CheckCircle, X, Search, ChevronDown, ChevronUp, Menu, MousePointer2
+  CheckCircle, X, Search, ChevronDown, ChevronUp, Menu, MousePointer2, Sliders, AlertTriangle
 } from 'lucide-react'
 import { cn } from '@/utils'
 import toast, { Toaster } from 'react-hot-toast'
@@ -29,93 +32,18 @@ import { ToolArticleBody } from '@/components/ToolArticleDialog'
 import { SvgdoLogo } from '@/components/SvgdoLogo'
 import PropertiesPanel from '@/components/PropertiesPanel'
 
-type MobileTab = 'canvas' | 'transform' | 'export'
+type MobileTab = 'canvas' | 'transform' | 'export' | 'properties'
 type ViewMode = 'split' | 'preview' | 'code'
 
-// Fallback icons in case index file is not yet downloaded
-const FALLBACK_ICONS = [
-  'activity', 'align-center', 'align-justify', 'align-left', 'align-right', 'anchor', 'aperture', 'archive', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'at-sign', 'award', 'bar-chart', 'battery', 'bell', 'bluetooth', 'bold', 'book', 'bookmark', 'box', 'briefcase', 'calendar', 'camera', 'cast', 'check', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'chrome', 'circle', 'clipboard', 'clock', 'cloud', 'code', 'coffee', 'command', 'compass', 'copy', 'cpu', 'credit-card', 'crop', 'crosshair', 'database', 'delete', 'disc', 'dollar-sign', 'download', 'droplet', 'eye-off', 'eye', 'facebook', 'feather', 'figma', 'file', 'film', 'filter', 'flag', 'folder', 'framer', 'frown', 'gift', 'github', 'gitlab', 'globe', 'hard-drive', 'hash', 'headphones', 'heart', 'hexagon', 'home', 'image', 'inbox', 'info', 'instagram', 'italic', 'key', 'layers', 'life-buoy', 'link', 'linkedin', 'list', 'loader', 'lock', 'log-in', 'log-out', 'mail', 'map-pin', 'map', 'maximize', 'menu', 'message-circle', 'message-square', 'mic', 'minimize', 'minus', 'monitor', 'moon', 'mouse-pointer', 'move', 'music', 'navigation', 'octagon', 'package', 'paperclip', 'pause', 'percent', 'phone', 'pie-chart', 'play', 'plus', 'pocket', 'power', 'printer', 'radio', 'refresh-ccw', 'refresh-cw', 'repeat', 'rewind', 'save', 'scissors', 'search', 'send', 'server', 'settings', 'share-2', 'share', 'shield', 'shopping-bag', 'shopping-cart', 'shuffle', 'skip-back', 'skip-forward', 'slack', 'slash', 'smartphone', 'smile', 'speaker', 'square', 'star', 'sun', 'tablet', 'tag', 'target', 'terminal', 'thermometer', 'thumbs-down', 'thumbs-up', 'trash-2', 'trash', 'trello', 'trending-down', 'trending-up', 'triangle', 'truck', 'tv', 'twitch', 'twitter', 'type', 'umbrella', 'underline', 'upload', 'user', 'users', 'video', 'voicemail', 'volume-2', 'volume-x', 'volume', 'watch', 'wifi', 'wind', 'x', 'youtube', 'zap', 'zoom-in', 'zoom-out'
-]
-
-import { LANGUAGES } from '@/locales/config'
+import { FALLBACK_ICONS } from '@/constants/icons'
+import { LanguageDropdown } from '@/components/LanguageDropdown'
 import { getLanguageByCode } from '@/locales/i18n'
 
-function LanguageDropdown() {
-  const [open, setOpen] = useState(false)
-  const current = getLanguageByCode(i18n.language) || LANGUAGES[0]
+const LANGUAGES = [
+  { code: 'zh', name: '简体中文', shortLabel: '简' },
+  { code: 'en', name: 'English', shortLabel: 'EN' }
+]
 
-  return (
-    <div className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-secondary hover:text-primary hover:bg-bg-subtle transition-colors"
-      >
-        <Languages size={15} />
-        <span>{current.shortLabel}</span>
-        <ChevronDown size={12} className={open ? 'rotate-180 transition-transform' : 'transition-transform'} />
-      </button>
-      {open && (
-        <>
-          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full mt-1 z-20 w-40 bg-bg-raised border border-border rounded-xl shadow-lg py-1 overflow-hidden">
-            {LANGUAGES.map(lang => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  i18n.changeLanguage(lang.code)
-                  localStorage.setItem('lang', lang.code)
-                  setOpen(false)
-                }}
-                className={`w-full flex items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors hover:bg-bg-subtle ${i18n.language === lang.code ? 'text-blue bg-blue/5' : 'text-secondary'
-                  }`}
-              >
-                <span>{lang.nativeLabel}</span>
-                <span className="text-[11px] text-tertiary">{lang.shortLabel}</span>
-              </button>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  )
-}
-
-function getSvgScaleRatio(svgEl: SVGSVGElement) {
-  const rect = svgEl.getBoundingClientRect();
-  const viewBox = svgEl.getAttribute('viewBox');
-  
-  let vbW = 0;
-  let vbH = 0;
-  
-  if (viewBox) {
-    const parts = viewBox.trim().split(/[ ,]+/);
-    if (parts.length >= 4) {
-      vbW = parseFloat(parts[2]);
-      vbH = parseFloat(parts[3]);
-    }
-  }
-  
-  // 如果没有 viewBox，内部坐标系就是它的 width/height
-  if (!vbW || !vbH) {
-    vbW = parseFloat(svgEl.getAttribute('width') || '0');
-    vbH = parseFloat(svgEl.getAttribute('height') || '0');
-  }
-  
-  if (!vbW) vbW = rect.width;
-  if (!vbH) vbH = rect.height;
-  
-  return {
-    ratioX: vbW ? rect.width / vbW : 1,
-    ratioY: vbH ? rect.height / vbH : 1
-  };
-}
-
-function getMousePositionInSVG(clientX: number, clientY: number, svgEl: SVGSVGElement, ctm: DOMMatrix) {
-  const pt = svgEl.createSVGPoint()
-  pt.x = clientX
-  pt.y = clientY
-  return pt.matrixTransform(ctm.inverse())
-}
 
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -143,8 +71,13 @@ function EditorPage() {
   const [libraryLimit, setLibraryLimit] = useState(30)
   const [showUrlPrompt, setShowUrlPrompt] = useState(false)
   const [urlInput, setUrlInput] = useState('')
+  const [showCodePrompt, setShowCodePrompt] = useState(false)
+  const [codeInput, setCodeInput] = useState('')
+  const [showOverwritePrompt, setShowOverwritePrompt] = useState(false)
+  const [pendingSvgCode, setPendingSvgCode] = useState<string | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('canvas')
   const [activePanels, setActivePanels] = useState<string[]>(['transform', 'optimize', 'export'])
+  const [nextSelectedIndex, setNextSelectedIndex] = useState<number | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const lastPanPos = useRef<{ x: number, y: number } | null>(null)
   const elementDragState = useRef<{
@@ -164,6 +97,8 @@ function EditorPage() {
     startDist?: number;
     cx?: number;
     cy?: number;
+    anchorX?: number;
+    anchorY?: number;
     startScaleX?: number;
     startScaleY?: number;
     startTx?: number;
@@ -179,6 +114,9 @@ function EditorPage() {
   const [selectedElement, setSelectedElement] = useState<ElementInfo | null>(null)
   const [allElements, setAllElements] = useState<ElementInfo[]>([])
   const mouseDownPos = useRef<{ x: number, y: number } | null>(null)
+  const isPinching = useRef(false)
+  const initialPinchDist = useRef<number | null>(null)
+  const initialZoom = useRef<number | null>(null)
 
   // Dynamically load icon list from downloaded index
   const [iconNames, setIconNames] = useState<string[]>(FALLBACK_ICONS)
@@ -209,12 +147,56 @@ function EditorPage() {
   }
 
   const handleLoadNewSvg = (code: string) => {
+    if (svgCode && svgCode.trim() !== '' && code !== svgCode) {
+      setPendingSvgCode(code)
+      setShowOverwritePrompt(true)
+      return
+    }
+    executeLoadNewSvg(code)
+  }
+
+  const confirmLoadNewSvg = () => {
+    if (pendingSvgCode) {
+      executeLoadNewSvg(pendingSvgCode)
+    }
+    setShowOverwritePrompt(false)
+    setPendingSvgCode(null)
+  }
+
+  const executeLoadNewSvg = (code: string) => {
     const cleanCode = sanitizeSVG(code)
     setSvgCode(cleanCode)
     setOriginalSvg(cleanCode)
     setOptimizedCode('')
     setOptimizeMode(null)
     pushToHistory(cleanCode)
+    
+    // Auto scale to fit comfortably
+    try {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(cleanCode, 'image/svg+xml')
+      const svgEl = doc.querySelector('svg')
+      if (svgEl) {
+        let w = parseFloat(svgEl.getAttribute('width') || '0')
+        let h = parseFloat(svgEl.getAttribute('height') || '0')
+        if ((!w || !h) && svgEl.getAttribute('viewBox')) {
+          const vb = svgEl.getAttribute('viewBox')?.trim().split(/[\s,]+/)
+          if (vb && vb.length >= 4) { w = parseFloat(vb[2]); h = parseFloat(vb[3]) }
+        }
+        const maxDim = Math.max(w || 100, h || 100)
+        let optimalZoom = 100
+        if (maxDim <= 24) optimalZoom = 1200
+        else if (maxDim <= 32) optimalZoom = 800
+        else if (maxDim <= 64) optimalZoom = 400
+        else if (maxDim <= 128) optimalZoom = 200
+        else if (maxDim > 800) optimalZoom = Math.max(10, Math.round((600 / maxDim) * 100))
+        setZoom(optimalZoom)
+        setPan({ x: 0, y: 0 })
+      }
+    } catch(e) {
+      setZoom(100)
+      setPan({ x: 0, y: 0 })
+    }
   }
 
   useEffect(() => {
@@ -225,13 +207,14 @@ function EditorPage() {
   }, [svgCode])
 
   // 属性面板更新 SVG → 进历史
-  const handleUpdateSvg = (newCode: string) => {
+  const handleUpdateSvg = (newCode: string, nextIndex?: number) => {
     setSvgCode(newCode)
     setOptimizedCode('')
     pushToHistory(newCode)
+    if (nextIndex !== undefined) setNextSelectedIndex(nextIndex)
   }
 
-  const handleResizeStart = (e: React.MouseEvent, dir: string) => {
+  const handleResizeStart = (e: React.MouseEvent | React.PointerEvent, dir: string) => {
     e.stopPropagation();
     if (!selectedElement) return;
 
@@ -249,8 +232,17 @@ function EditorPage() {
     const ptCenter = getMousePositionInSVG(cx_screen, cy_screen, svgEl, ctm);
     const ptMouse = getMousePositionInSVG(e.clientX, e.clientY, svgEl, ctm);
 
+    let anchor_screen_x = cx_screen;
+    let anchor_screen_y = cy_screen;
+    if (dir.includes('e')) anchor_screen_x = rect.left;
+    else if (dir.includes('w')) anchor_screen_x = rect.right;
+    if (dir.includes('s')) anchor_screen_y = rect.top;
+    else if (dir.includes('n')) anchor_screen_y = rect.bottom;
+    
+    const ptAnchor = getMousePositionInSVG(anchor_screen_x, anchor_screen_y, svgEl, ctm);
+
     const startDist = Math.sqrt(
-      Math.pow(ptMouse.x - ptCenter.x, 2) + Math.pow(ptMouse.y - ptCenter.y, 2)
+      Math.pow(ptMouse.x - ptAnchor.x, 2) + Math.pow(ptMouse.y - ptAnchor.y, 2)
     );
 
     const originalTransform = el.getAttribute('transform') || '';
@@ -267,12 +259,14 @@ function EditorPage() {
     elementDragState.current = {
       id: selectedElement.id,
       el, svgEl, ctm,
-      startXInSVG: 0, startYInSVG: 0, lastDx: 0, lastDy: 0,
+      startXInSVG: ptMouse.x, startYInSVG: ptMouse.y, lastDx: 0, lastDy: 0,
       isResizing: true,
       resizeDir: dir,
       startDist,
       cx: ptCenter.x,
       cy: ptCenter.y,
+      anchorX: ptAnchor.x,
+      anchorY: ptAnchor.y,
       startScaleX: t.scaleX || 1,
       startScaleY: t.scaleY || 1,
       startTx: t.tx || 0,
@@ -291,14 +285,14 @@ function EditorPage() {
     if (historyIndex < history.length - 1) { setHistoryIndex(historyIndex + 1); setSvgCode(history[historyIndex + 1]) }
   }
 
-  const handleZoomIn = () => { if (svgCode) setZoom(Math.min(500, zoom + 20)) }
-  const handleZoomOut = () => { if (svgCode) setZoom(Math.max(10, zoom - 20)) }
+  const handleZoomIn = () => { if (svgCode) setZoom(zoom => Math.min(5000, zoom + (zoom < 200 ? 20 : 50))) }
+  const handleZoomOut = () => { if (svgCode) setZoom(zoom => Math.max(10, zoom - (zoom < 200 ? 20 : 50))) }
   const handleZoomReset = () => { if (svgCode) { setZoom(100); setPan({ x: 0, y: 0 }); } }
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (!svgCode) return
-      if (e.ctrlKey || e.metaKey) { e.preventDefault(); setZoom(prev => Math.max(10, Math.min(500, prev + (e.deltaY > 0 ? -20 : 20)))) }
+      if (e.ctrlKey || e.metaKey) { e.preventDefault(); setZoom(prev => Math.max(10, Math.min(5000, prev + (e.deltaY > 0 ? -20 : 20)))) }
     }
     window.addEventListener('wheel', handleWheel, { passive: false })
     return () => window.removeEventListener('wheel', handleWheel)
@@ -315,6 +309,21 @@ function EditorPage() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [svgCode, zoom])
 
+  const syntaxError = useMemo(() => {
+    if (!svgCode) return null
+    try {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(svgCode, 'image/svg+xml')
+      const errorNode = doc.querySelector('parsererror')
+      if (errorNode) {
+        return errorNode.querySelector('div')?.textContent || errorNode.textContent || 'Syntax Error'
+      }
+    } catch (e) {
+      return 'Syntax Error'
+    }
+    return null
+  }, [svgCode])
+
   const sanitizedSVG = useMemo(() => svgCode ? sanitizeSVG(svgCode) : '', [svgCode])
 
   // 注入 data-editor-id 到 SVG 元素
@@ -322,12 +331,20 @@ function EditorPage() {
     if (!sanitizedSVG) return { html: '', elements: [] as ElementInfo[] }
     const result = injectEditorIds(sanitizedSVG)
     setAllElements(result.elements)
-    // 如果之前的选中元素已不存在，取消选择
-    if (selectedElement && !result.elements.find(e => e.id === selectedElement.id)) {
+    // 如果之前的选中元素已不存在，并且没有等待选中的特定 index，则取消选择
+    if (selectedElement && !result.elements.find(e => e.id === selectedElement.id) && nextSelectedIndex === null) {
       setSelectedElement(null)
     }
     return result
   }, [sanitizedSVG])
+
+  useEffect(() => {
+    if (nextSelectedIndex !== null && allElements.length > 0) {
+      const el = allElements.find(e => e.index === nextSelectedIndex)
+      if (el) setSelectedElement(el)
+      setNextSelectedIndex(null)
+    }
+  }, [allElements, nextSelectedIndex])
 
   // Dynamically calculate the bounding box for the selection indicator
   useEffect(() => {
@@ -351,7 +368,7 @@ function EditorPage() {
         let h = rect.height
         let x = rect.left - workspaceRect.left
         let y = rect.top - workspaceRect.top
-        
+
         // 补偿描边宽度带来的视觉溢出
         const svgEl = el.ownerSVGElement
         if (svgEl) {
@@ -367,7 +384,7 @@ function EditorPage() {
             }
           }
         }
-        
+
         // 确保不会因为太小（如极小线段）而无法看见
         if (w < 12) { x -= (12 - w) / 2; w = 12; }
         if (h < 12) { y -= (12 - h) / 2; h = 12; }
@@ -420,50 +437,19 @@ function EditorPage() {
     finally { setIsLoading(false) }
   }
 
-  const optimizeSVG = (code: string, mode: 'safe' | 'aggressive'): string => {
-    try {
-      const parser = new DOMParser()
-      const doc = parser.parseFromString(code, 'image/svg+xml')
-      const svgEl = doc.querySelector('svg')
-      if (!svgEl) return code
-
-      const removeComments = (node: Node) => {
-        const walker = document.createTreeWalker(node, NodeFilter.SHOW_COMMENT)
-        const comments: Node[] = []; let c
-        while (c = walker.nextNode()) comments.push(c)
-        comments.forEach(c => c.parentNode?.removeChild(c))
-      }
-      removeComments(doc)
-
-      const optimizePath = (d: string): string => d.replace(/\s+/g, ' ').replace(/(\d)\s*-/g, '$1-').replace(/\s*,\s*/g, ',').replace(/([A-Za-z])\s*/g, '$1').replace(/\s+([A-Za-z])/g, '$1').trim()
-
-      const processElement = (el: Element) => {
-        if (mode === 'aggressive') { el.removeAttribute('id'); el.removeAttribute('data-name') }
-        if (el.tagName.toLowerCase() === 'path') { const d = el.getAttribute('d'); if (d) el.setAttribute('d', optimizePath(d)) }
-        Array.from(el.children).forEach(child => processElement(child))
-      }
-      processElement(svgEl)
-
-      if (mode === 'aggressive') {
-        const emptyGs = Array.from(doc.querySelectorAll('g')).filter(g => !g.hasAttributes() && g.children.length === 0)
-        emptyGs.forEach(g => g.parentNode?.removeChild(g))
-      }
-
-      const serializer = new XMLSerializer()
-      let optimized = serializer.serializeToString(doc)
-
-      // Clean up XML serializer artifacts and self-close empty elements
-      optimized = optimized.replace(/xmlns="http:\/\/www\.w3\.org\/1999\/xhtml"\s?/g, '')
-      optimized = optimized.replace(/<([^>\s]+)([^>]*)>\s*<\/\1>/g, '<$1$2/>')
-
-      if (mode === 'aggressive') {
-        // Strip excessive float precision (keep max 3 decimals)
-        optimized = optimized.replace(/(\.\d{3})\d+/g, '$1')
-        optimized = optimized.replace(/>\s+</g, '><').replace(/\s+/g, ' ').trim()
-      }
-      return optimized
-    } catch (e) { console.error('SVG optimization failed:', e); return code }
+  const handleLoadFromCode = () => {
+    if (!codeInput) return
+    if (!codeInput.includes('<svg')) {
+      toast.error('Not a valid SVG code')
+      return
+    }
+    handleLoadNewSvg(codeInput)
+    setShowCodePrompt(false)
+    setCodeInput('')
+    toast.success(t('pages.svgConverter.urlModal.loadSuccess'))
   }
+
+
 
   const handleOptimize = (mode?: 'safe' | 'aggressive') => {
     if (!svgCode) return
@@ -597,17 +583,6 @@ function EditorPage() {
 
   const renderToolbar = () => (
     <div className="flex flex-wrap items-center justify-between p-2 border-b border-border bg-white dark:bg-bg-surface shrink-0 gap-2">
-      <div className="hidden md:flex items-center gap-1 shrink-0">
-        <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center p-2 md:px-3 md:py-1.5 bg-orange hover:opacity-90 text-white text-xs md:text-sm font-bold rounded-lg transition-all shadow-sm">
-          <Upload size={14} /> <span className="hidden sm:inline ml-1">{t('pages.svgConverter.upload')}</span>
-        </button>
-        <button onClick={() => setShowUrlPrompt(true)} disabled={isLoading} className={cn("flex items-center justify-center p-2 md:px-3 md:py-1.5 bg-white dark:bg-bg-surface border border-border text-primary text-xs md:text-sm font-medium rounded-lg transition-colors shadow-sm", isLoading && "opacity-50 cursor-not-allowed")}>
-          <LinkIcon size={14} /> <span className="hidden sm:inline ml-1">{isLoading ? '...' : 'URL'}</span>
-        </button>
-        <button onClick={() => setShowLibrary(true)} className="flex items-center justify-center p-2 md:px-3 md:py-1.5 bg-white dark:bg-bg-surface border border-border hover:bg-bg-subtle text-primary text-xs md:text-sm font-medium rounded-lg transition-colors shadow-sm">
-          <Library size={14} /> <span className="hidden sm:inline ml-1">{t('pages.svgConverter.library')}</span>
-        </button>
-      </div>
       <div className="hidden md:flex items-center bg-bg-muted rounded-lg p-1 shrink-0">
         {(['preview', 'split', 'code'] as ViewMode[]).map(m => (
           <button key={m} disabled={!svgCode} onClick={() => setViewMode(m)}
@@ -641,6 +616,22 @@ function EditorPage() {
 
   const renderSidebar = () => (
     <div className="flex-1 flex flex-col h-full bg-[#FAFAFA] dark:bg-bg-surface">
+      {/* 导入操作四宫格 */}
+      <div className="p-4 grid grid-cols-2 gap-2 border-b border-border bg-white dark:bg-bg-surface shrink-0">
+        <button onClick={() => fileInputRef.current?.click()} className="py-2.5 px-2 bg-orange/10 text-orange hover:bg-orange hover:text-white font-bold rounded-xl border border-orange/20 transition-colors shadow-sm text-xs truncate">
+          {t('pages.svgConverter.upload')}
+        </button>
+        <button onClick={() => setShowCodePrompt(true)} className="py-2.5 px-2 bg-white dark:bg-bg-surface text-primary hover:text-orange hover:border-orange font-bold rounded-xl border border-border transition-colors shadow-sm text-xs truncate">
+          {t('pages.svgConverter.pasteCode')}
+        </button>
+        <button onClick={() => setShowUrlPrompt(true)} disabled={isLoading} className={cn("py-2.5 px-2 bg-white dark:bg-bg-surface text-primary hover:text-orange hover:border-orange font-bold rounded-xl border border-border transition-colors shadow-sm text-xs truncate", isLoading && "opacity-50 cursor-not-allowed")}>
+          {isLoading ? '...' : 'URL'}
+        </button>
+        <button onClick={() => setShowLibrary(true)} className="py-2.5 px-2 bg-white dark:bg-bg-surface text-primary hover:text-orange hover:border-orange font-bold rounded-xl border border-border transition-colors shadow-sm text-xs truncate">
+          {t('pages.svgConverter.library')}
+        </button>
+      </div>
+
       {([
         { key: 'transform', icon: Settings, title: t('pages.svgConverter.transform.title') },
         { key: 'optimize', icon: CheckCircle, title: t('pages.svgConverter.optimize.title') },
@@ -672,12 +663,12 @@ function EditorPage() {
           {activePanels.includes(panel.key) && panel.key === 'optimize' && (
             <div className="px-4 pb-4 space-y-4">
               <div className="flex items-center justify-between bg-bg-subtle p-2.5 rounded-lg border border-border">
-                <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-2">
                   <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.original')}</span>
                   <span className="text-xs font-mono text-primary font-medium">{originalSvg.length || svgCode.length} B</span>
                 </div>
-                <div className="h-6 w-px bg-border"></div>
-                <div className="flex flex-col gap-0.5 items-end">
+                <div className="h-4 w-px bg-border"></div>
+                <div className="flex items-center gap-2">
                   <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.current')}</span>
                   <span className={cn("text-xs font-mono font-bold", optimizedCode && originalSvg && optimizedCode.length < originalSvg.length ? "text-green-500" : "text-primary")}>
                     {svgCode.length} B
@@ -708,65 +699,75 @@ function EditorPage() {
         </div>
       ))}
       {/* Export panel */}
-      <div className="border-b border-border">
+      <div className="border-b border-border pb-4">
         <button onClick={() => togglePanel('export')} className="flex items-center justify-between w-full p-4 hover:bg-bg-subtle transition-colors">
           <div className="flex items-center gap-2 text-sm font-bold text-primary"><Upload size={16} className="rotate-180" /> {t('pages.svgConverter.export.title')}</div>
           {activePanels.includes('export') ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
         {activePanels.includes('export') && (
-          <div className="px-4 pb-4 space-y-4">
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-secondary">{t('pages.svgConverter.export.exportPng')}</label>
-              <div className="flex gap-2">
-                <select value={exportScale} onChange={e => setExportScale(+e.target.value)} className="flex-1 text-xs p-2 bg-white dark:bg-bg-base border border-border rounded-lg outline-none">
-                  <option value={1}>1x</option><option value={2}>2x</option><option value={4}>4x</option>
-                </select>
-                <select value={exportBg} onChange={e => setExportBg(e.target.value)} className="flex-1 text-xs p-2 bg-white dark:bg-bg-base border border-border rounded-lg outline-none">
-                  <option value="transparent">{t('pages.svgConverter.export.bgTransparent')}</option>
-                  <option value="white">{t('pages.svgConverter.export.bgWhite')}</option>
-                  <option value="black">{t('pages.svgConverter.export.bgBlack')}</option>
-                </select>
-              </div>
-              <button onClick={handleExportPNG} disabled={!svgCode || isExporting} className={cn("w-full py-2 border rounded-lg text-sm font-medium flex justify-center items-center gap-2", !svgCode || isExporting ? "bg-bg-muted cursor-not-allowed" : "bg-white dark:bg-bg-base hover:border-orange hover:text-orange")}>
-                <Upload size={14} className="rotate-180" /> {isExporting ? 'Exporting...' : t('pages.svgConverter.export.btnExportPng')}
-              </button>
-            </div>
-          </div>
+          <ExportPanel svgCode={svgCode} />
         )}
-      </div>
-      <div className="p-4 mt-auto">
-        <button disabled={!svgCode} onClick={handleDownloadSVG} className="w-full py-3 bg-orange hover:opacity-90 disabled:bg-bg-muted disabled:text-secondary text-white font-bold rounded-xl shadow-lg flex items-center justify-center gap-2">
-          <Upload size={16} className="rotate-180" /> {t('pages.svgConverter.export.downloadSvg')}
-        </button>
       </div>
     </div>
   )
 
   const renderEmptyState = () => (
     <div className="flex-1 overflow-y-auto flex flex-col items-center bg-transparent">
-      <div className="w-full max-w-3xl px-4 pt-12 pb-16 mx-auto flex flex-col items-center">
-        <div onClick={() => fileInputRef.current?.click()} className="w-full border-2 border-dashed border-border hover:border-orange/50 rounded-3xl flex flex-col items-center justify-center py-16 px-8 cursor-pointer bg-white dark:bg-bg-surface shadow-sm hover:shadow-md mb-12 transition-all">
-          <Code2 size={32} className="text-orange mb-4" />
-          <h3 className="text-xl font-bold text-primary mb-2">{t('pages.svgConverter.upload')} / URL / {t('pages.svgConverter.library')}</h3>
-          <p className="text-sm text-tertiary text-center mb-6">{t('pages.svgConverter.empty.desc')}</p>
-          <div className="flex items-center gap-4">
-            <button onClick={e => { e.stopPropagation(); setShowUrlPrompt(true) }} className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-bg-base border border-border rounded-xl shadow-sm hover:border-orange text-sm font-bold text-primary"><LinkIcon size={16} /> URL</button>
-            <button onClick={e => { e.stopPropagation(); setShowLibrary(true) }} className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-bg-base border border-border rounded-xl shadow-sm hover:border-orange text-sm font-bold text-primary"><Library size={16} /> {t('pages.svgConverter.library')}</button>
-          </div>
+      <div className="w-full max-w-3xl px-4 pt-6 pb-12 mx-auto flex flex-col items-center gap-5">
+        {/* Upload Dropzone */}
+        <div onClick={() => fileInputRef.current?.click()} className="w-full border-2 border-dashed border-border hover:border-orange/50 rounded-2xl flex flex-col items-center justify-center py-6 px-4 cursor-pointer bg-white dark:bg-bg-surface shadow-sm hover:shadow-md transition-all group">
+          <h3 className="text-lg font-bold text-primary mb-1">{t('pages.svgConverter.upload')} SVG</h3>
+          <p className="text-xs text-tertiary text-center max-w-[280px]">
+            {t('pages.svgConverter.empty.desc')}
+          </p>
         </div>
-        <div className="w-full bg-white dark:bg-bg-surface rounded-2xl border border-border p-6 shadow-sm">
-          <h4 className="text-sm font-bold text-primary mb-4">{t('pages.svgConverter.empty.startFromExample')}</h4>
+
+        {/* Separator */}
+        <div className="flex items-center w-full max-w-md gap-4 text-tertiary">
+          <div className="h-px bg-border flex-1"></div>
+          <span className="text-[10px] font-bold uppercase tracking-widest">OR</span>
+          <div className="h-px bg-border flex-1"></div>
+        </div>
+
+        {/* Actions Area */}
+        <div className="w-full grid grid-cols-3 gap-3">
+          <div className="col-span-3 relative">
+            <textarea 
+              placeholder={t('pages.svgConverter.empty.pastePlaceholder')}
+              className="w-full h-20 p-4 bg-white dark:bg-bg-surface border border-border rounded-2xl text-xs font-mono focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none resize-none transition-all shadow-sm placeholder:text-tertiary"
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val.trim().toLowerCase().startsWith('<svg')) {
+                  handleLoadNewSvg(val);
+                } else if (val.trim() !== '') {
+                  toast.error(t('common.error.invalidSvg'));
+                }
+              }}
+            />
+          </div>
+          <button onClick={() => setShowCodePrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
+            <Code2 size={16} /> <span className="truncate">{t('pages.svgConverter.pasteCode')}</span>
+          </button>
+          <button onClick={() => setShowUrlPrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
+            <LinkIcon size={16} /> URL
+          </button>
+          <button onClick={() => setShowLibrary(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
+            <Library size={16} /> {t('pages.svgConverter.library')}
+          </button>
+        </div>
+        <div className="w-full bg-white dark:bg-bg-surface rounded-2xl border border-border p-4 shadow-sm">
+          <h4 className="text-sm font-bold text-primary mb-3">{t('pages.svgConverter.empty.startFromExample')}</h4>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
             {iconNames.slice(0, 16).map(name => (
-              <button key={name} onClick={() => handleLoadPreset(name)} className="flex flex-col items-center gap-2 p-3 rounded-xl border border-border hover:border-orange hover:text-orange text-primary transition-all shadow-sm hover:shadow-md">
-                <img src={`/icons/svg/${name}.svg`} alt={name} className="w-6 h-6 opacity-70 dark:invert transition-all" />
+              <button key={name} onClick={() => handleLoadPreset(name)} className="flex flex-col items-center gap-1.5 p-2 rounded-xl border border-border hover:border-orange hover:text-orange text-primary transition-all shadow-sm hover:shadow-md">
+                <img src={`/icons/svg/${name}.svg`} alt={name} className="w-5 h-5 opacity-70 dark:invert transition-all" />
                 <span className="text-[10px] text-secondary text-center truncate w-full">{name}</span>
               </button>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 w-full">
+        <div className="mt-8 w-full">
           <ToolArticleBody toolKey="svgConverter" />
         </div>
       </div>
@@ -796,6 +797,7 @@ function EditorPage() {
           </div>
           <div className="flex items-center gap-2 md:gap-4">
             <div className="hidden md:flex items-center gap-6">
+              <Link to="/about" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.about')}</Link>
               <Link to="/resources" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.help')}</Link>
               <Link to="/privacy" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.privacy')}</Link>
             </div>
@@ -818,6 +820,16 @@ function EditorPage() {
 
           <div {...getRootProps()} className={cn("flex-1 flex flex-col relative bg-white dark:bg-bg-surface overflow-hidden outline-none", isDragActive && "ring-4 ring-orange/500 ring-opacity-50")}>
             {renderToolbar()}
+
+            {syntaxError && (
+              <div className="absolute top-12 left-0 right-0 z-50 mx-auto max-w-2xl bg-red-500/95 text-white px-4 py-2.5 rounded-b-xl flex items-start gap-2 shadow-lg backdrop-blur-sm animate-in slide-in-from-top-4 duration-300 pointer-events-none">
+                <AlertTriangle size={16} className="shrink-0 mt-0.5" />
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold uppercase tracking-wider">{t('pages.svgConverter.syntaxError')}</span>
+                  <span className="text-[11px] opacity-90 break-all leading-tight mt-0.5 font-mono">{syntaxError}</span>
+                </div>
+              </div>
+            )}
 
             <div className="flex-1 flex overflow-hidden relative">
               {svgCode ? (
@@ -845,9 +857,44 @@ function EditorPage() {
                       style={{ touchAction: 'none', ...(bgMode === 'grid' ? { backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23000' fill-opacity='0.05' d='M0 0h16v16H0z'/%3E%3Cpath fill='%23000' fill-opacity='0.1' d='M0 0h1v16H0zm0 0h16v1H0z'/%3E%3C/svg%3E")` } : {}) }}
                       onWheel={(e) => {
                         if (e.deltaY > 0) setZoom(z => Math.max(10, z - 10))
-                        else setZoom(z => Math.min(800, z + 10))
+                        else setZoom(z => Math.min(5000, z + 10))
                       }}
-                      onMouseDown={(e) => {
+                      onTouchStart={(e) => {
+                        if (e.touches.length >= 2) {
+                          isPinching.current = true;
+                          mouseDownPos.current = null;
+                          elementDragState.current = null;
+                          lastPanPos.current = null;
+                          setSelectionBox(null);
+                          
+                          const dist = Math.hypot(
+                            e.touches[0].clientX - e.touches[1].clientX,
+                            e.touches[0].clientY - e.touches[1].clientY
+                          );
+                          initialPinchDist.current = dist;
+                          initialZoom.current = zoom;
+                        }
+                      }}
+                      onTouchMove={(e) => {
+                        if (e.touches.length === 2 && initialPinchDist.current !== null && initialZoom.current !== null) {
+                          const dist = Math.hypot(
+                            e.touches[0].clientX - e.touches[1].clientX,
+                            e.touches[0].clientY - e.touches[1].clientY
+                          );
+                          const scale = dist / initialPinchDist.current;
+                          const newZoom = Math.min(5000, Math.max(10, initialZoom.current * scale));
+                          setZoom(Math.round(newZoom));
+                        }
+                      }}
+                      onTouchEnd={(e) => {
+                        if (e.touches.length < 2) {
+                          initialPinchDist.current = null;
+                          initialZoom.current = null;
+                          setTimeout(() => { isPinching.current = false; }, 100);
+                        }
+                      }}
+                      onPointerDown={(e) => {
+                        if (isPinching.current) return;
                         mouseDownPos.current = { x: e.clientX, y: e.clientY }
 
                         // 拦截: 如果点击的是图形内部，禁止拖动画布
@@ -874,7 +921,7 @@ function EditorPage() {
 
                           if (parentCTM) {
                             const pt = getMousePositionInSVG(e.clientX, e.clientY, svgEl, parentCTM)
-                            
+
                             let paddingX = 0; let paddingY = 0;
                             const ratio = getSvgScaleRatio(svgEl)
                             const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0
@@ -897,38 +944,43 @@ function EditorPage() {
 
                         lastPanPos.current = { x: e.clientX, y: e.clientY };
                       }}
-                      onMouseMove={(e) => {
+                      onPointerMove={(e) => {
+                        if (isPinching.current) return;
                         // 处理图形拖拽
                         if (elementDragState.current) {
                           const state = elementDragState.current;
                           const currentPt = getMousePositionInSVG(e.clientX, e.clientY, state.svgEl, state.ctm)
-                          
+
                           if (state.isResizing) {
-                            const currentDist = Math.sqrt(
-                              Math.pow(currentPt.x - state.cx!, 2) + Math.pow(currentPt.y - state.cy!, 2)
-                            );
-                            let k = currentDist / state.startDist!;
-                            if (isNaN(k) || k <= 0.05) k = 1;
-                            
                             let kX = 1; let kY = 1;
+
                             if (state.resizeDir === 'e' || state.resizeDir === 'w') {
-                                kX = k; kY = 1;
+                              let raw = (currentPt.x - state.anchorX!) / (state.startXInSVG - state.anchorX!);
+                              kX = isNaN(raw) || Math.abs(raw) < 0.05 ? (raw < 0 ? -0.05 : 0.05) : raw;
+                              kY = 1;
                             } else if (state.resizeDir === 'n' || state.resizeDir === 's') {
-                                kX = 1; kY = k;
+                              let raw = (currentPt.y - state.anchorY!) / (state.startYInSVG - state.anchorY!);
+                              kY = isNaN(raw) || Math.abs(raw) < 0.05 ? (raw < 0 ? -0.05 : 0.05) : raw;
+                              kX = 1;
                             } else {
-                                kX = k; kY = k;
+                              const currentDist = Math.sqrt(
+                                Math.pow(currentPt.x - state.anchorX!, 2) + Math.pow(currentPt.y - state.anchorY!, 2)
+                              );
+                              let k = currentDist / state.startDist!;
+                              if (isNaN(k) || k <= 0.05) k = 1;
+                              kX = k; kY = k;
                             }
-                            
+
                             const newScaleX = state.startScaleX! * kX;
                             const newScaleY = state.startScaleY! * kY;
-                            const newTx = state.cx! - (state.cx! - state.startTx!) * kX;
-                            const newTy = state.cy! - (state.cy! - state.startTy!) * kY;
-                            
+                            const newTx = state.anchorX! - (state.anchorX! - state.startTx!) * kX;
+                            const newTy = state.anchorY! - (state.anchorY! - state.startTy!) * kY;
+
                             state.lastScaleX = newScaleX;
                             state.lastScaleY = newScaleY;
                             state.lastTx = newTx;
                             state.lastTy = newTy;
-                            
+
                             const t = parseTransform(state.originalTransform);
                             t.scaleX = newScaleX;
                             t.scaleY = newScaleY;
@@ -945,21 +997,21 @@ function EditorPage() {
                             t.ty += dy;
                             state.el.setAttribute('transform', buildTransform(t))
                           }
-                          
+
                           // 同步移动标注框
                           const boxEl = document.getElementById('selection-box-overlay')
                           if (boxEl && workspaceRef.current) {
                             const rect = state.el.getBoundingClientRect()
                             const workspaceRect = workspaceRef.current.getBoundingClientRect()
-                            
+
                             let w = rect.width
                             let h = rect.height
                             let x = rect.left - workspaceRect.left
                             let y = rect.top - workspaceRect.top
-                            
+
                             if (!isNaN(state.paddingX) && !isNaN(state.paddingY)) {
-                               x -= state.paddingX; y -= state.paddingY;
-                               w += state.paddingX * 2; h += state.paddingY * 2;
+                              x -= state.paddingX; y -= state.paddingY;
+                              w += state.paddingX * 2; h += state.paddingY * 2;
                             }
                             if (w < 12) { x -= (12 - w) / 2; w = 12; }
                             if (h < 12) { y -= (12 - h) / 2; h = 12; }
@@ -987,7 +1039,8 @@ function EditorPage() {
                           lastPanPos.current = { x: e.clientX, y: e.clientY };
                         }
                       }}
-                      onMouseUp={() => {
+                      onPointerUp={() => {
+                        if (isPinching.current) return;
                         if (elementDragState.current) {
                           const state = elementDragState.current;
                           // 允许极小的误差，防止被识别为拖拽
@@ -1022,91 +1075,8 @@ function EditorPage() {
 
                         setIsDragging(false); lastPanPos.current = null;
                       }}
-                      onMouseLeave={() => { setIsDragging(false); lastPanPos.current = null; elementDragState.current = null; }}
-                      onTouchStart={(e) => {
-                        const target = e.target as HTMLElement
-                        const el = target.closest('[data-editor-id]') as HTMLElement | null
-                        if (el) {
-                          lastPanPos.current = null;
-                          const id = el.getAttribute('data-editor-id')!
-                          if (!selectedElement || selectedElement.id !== id) {
-                            const info = allElements.find(e => e.id === id)
-                            if (info) setSelectedElement(info)
-                          }
+                      onPointerLeave={() => { setIsDragging(false); lastPanPos.current = null; elementDragState.current = null; }}
 
-                          const svgEl = el.ownerSVGElement
-                          if (!svgEl) return;
-
-                          let parentCTM = svgEl.getScreenCTM()
-                          const parent = el.parentNode as SVGGraphicsElement
-                          if (parent && parent.getScreenCTM) {
-                            parentCTM = parent.getScreenCTM()
-                          }
-
-                          if (parentCTM) {
-                            const pt = getMousePositionInSVG(e.touches[0].clientX, e.touches[0].clientY, svgEl, parentCTM)
-                            elementDragState.current = {
-                              id, el, svgEl, ctm: parentCTM,
-                              startXInSVG: pt.x,
-                              startYInSVG: pt.y,
-                              lastDx: 0, lastDy: 0,
-                              originalTransform: el.getAttribute('transform') || ''
-                            }
-                          }
-                          return;
-                        }
-
-                        if (e.touches.length === 1) {
-                          setIsDragging(true);
-                          lastPanPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-                        }
-                      }}
-                      onTouchMove={(e) => {
-                        if (elementDragState.current && e.touches.length === 1) {
-                          const state = elementDragState.current;
-                          const currentPt = getMousePositionInSVG(e.touches[0].clientX, e.touches[0].clientY, state.svgEl, state.ctm)
-                          const dx = currentPt.x - state.startXInSVG;
-                          const dy = currentPt.y - state.startYInSVG;
-                          state.lastDx = dx; state.lastDy = dy;
-                          const t = parseTransform(state.originalTransform)
-                          t.tx += dx; t.ty += dy;
-                          state.el.setAttribute('transform', buildTransform(t))
-                          
-                          const boxEl = document.getElementById('selection-box-overlay')
-                          if (boxEl && workspaceRef.current) {
-                            const rect = state.el.getBoundingClientRect()
-                            const workspaceRect = workspaceRef.current.getBoundingClientRect()
-                            boxEl.style.left = `${rect.left - workspaceRect.left}px`
-                            boxEl.style.top = `${rect.top - workspaceRect.top}px`
-                            boxEl.style.width = `${rect.width}px`
-                            boxEl.style.height = `${rect.height}px`
-                          }
-                          return;
-                        }
-
-                        if (isDragging && lastPanPos.current && e.touches.length === 1) {
-                          const dx = e.touches[0].clientX - lastPanPos.current.x;
-                          const dy = e.touches[0].clientY - lastPanPos.current.y;
-                          setPan(prev => ({ x: prev.x + dx, y: prev.y + dy }));
-                          lastPanPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-                        }
-                      }}
-                      onTouchEnd={() => {
-                        if (elementDragState.current) {
-                          const state = elementDragState.current;
-                          if (Math.abs(state.lastDx) > 0.1 || Math.abs(state.lastDy) > 0.1) {
-                            const t = parseTransform(state.originalTransform)
-                            t.tx += state.lastDx; t.ty += state.lastDy;
-                            const index = allElements.find(e => e.id === state.id)?.index;
-                            if (index !== undefined) {
-                              handleUpdateSvg(updateElementAttribute(svgCode, index, 'transform', buildTransform(t)))
-                            }
-                          }
-                          elementDragState.current = null;
-                        }
-                        setIsDragging(false); lastPanPos.current = null;
-                      }}
-                      onTouchCancel={() => { setIsDragging(false); lastPanPos.current = null; elementDragState.current = null; }}
                       onClick={(e) => {
                         // 防止真正的拖拽结束后误触 onClick 导致取消选择
                         if (mouseDownPos.current && (
@@ -1117,6 +1087,8 @@ function EditorPage() {
                         }
 
                         const target = e.target as HTMLElement
+                        if (target.closest('#selection-box-overlay')) return;
+                        
                         const el = target.closest('[data-editor-id]') as HTMLElement | null
                         if (el) {
                           const id = el.getAttribute('data-editor-id')!
@@ -1130,14 +1102,14 @@ function EditorPage() {
                             const rect = node.getBoundingClientRect();
                             return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
                           });
-                          
+
                           if (found) {
                             const id = found.getAttribute('data-editor-id')!
                             const info = allElements.find(e => e.id === id)
                             if (info) setSelectedElement(info)
                             return;
                           }
-                          
+
                           setSelectedElement(null)
                         }
                       }}
@@ -1161,18 +1133,18 @@ function EditorPage() {
                           }}
                         >
                           <div className="absolute inset-0 pointer-events-none" />
-                          
+
                           {/* 四条边拉伸控制柄 (边缘吸附区) */}
                           {['n', 's', 'w', 'e'].map(dir => (
                             <div key={dir}
-                              onMouseDown={(e) => handleResizeStart(e, dir)}
+                              onPointerDown={(e) => { e.stopPropagation(); handleResizeStart(e, dir); }}
                               className={cn(
-                                "absolute pointer-events-auto hover:bg-[#007AFF]/20 transition-colors z-[41]",
-                                ['n', 's'].includes(dir) ? "h-[7px] w-full left-0 opacity-0 hover:opacity-100" : "w-[7px] h-full top-0 opacity-0 hover:opacity-100",
-                                dir === 'n' ? '-top-[4px]' : '',
-                                dir === 's' ? '-bottom-[4px]' : '',
-                                dir === 'w' ? '-left-[4px]' : '',
-                                dir === 'e' ? '-right-[4px]' : ''
+                                "absolute pointer-events-auto hover:bg-[#007AFF]/20 transition-colors z-[41] touch-none",
+                                ['n', 's'].includes(dir) ? "h-[20px] w-[calc(100%-20px)] left-[10px] opacity-0 hover:opacity-100" : "w-[20px] h-[calc(100%-20px)] top-[10px] opacity-0 hover:opacity-100",
+                                dir === 'n' ? '-top-[10px]' : '',
+                                dir === 's' ? '-bottom-[10px]' : '',
+                                dir === 'w' ? '-left-[10px]' : '',
+                                dir === 'e' ? '-right-[10px]' : ''
                               )}
                               style={{ cursor: `${dir}-resize` }}
                             />
@@ -1181,11 +1153,12 @@ function EditorPage() {
                           {/* 四个角缩放控制柄 (高亮显示) */}
                           {['nw', 'ne', 'sw', 'se'].map(dir => (
                             <div key={dir}
-                              onMouseDown={(e) => handleResizeStart(e, dir)}
+                              onPointerDown={(e) => { e.stopPropagation(); handleResizeStart(e, dir); }}
                               className={cn(
-                                "absolute w-[7px] h-[7px] bg-white border-[1.5px] border-[#007AFF] pointer-events-auto hover:bg-[#007AFF] transition-colors z-[42]",
-                                dir.includes('n') ? '-top-[4px]' : '-bottom-[4px]',
-                                dir.includes('w') ? '-left-[4px]' : '-right-[4px]'
+                                "absolute w-[10px] h-[10px] bg-white border-[1.5px] border-[#007AFF] pointer-events-auto hover:bg-[#007AFF] transition-colors z-[42] touch-none",
+                                "after:absolute after:content-[''] after:-inset-[12px]", // 角的隐形大热区
+                                dir.includes('n') ? '-top-[5px]' : '-bottom-[5px]',
+                                dir.includes('w') ? '-left-[5px]' : '-right-[5px]'
                               )}
                               style={{ cursor: `${dir}-resize` }}
                             />
@@ -1214,10 +1187,10 @@ function EditorPage() {
                     <MousePointer2 size={22} />
                   </div>
                   <h3 className="text-xs font-bold text-primary mb-2 uppercase tracking-widest">
-                    {t('common.panel.noSelection', 'No element selected')}
+                    {t('common.panel.noSelection')}
                   </h3>
                   <p className="text-[11px] text-secondary/70 leading-relaxed max-w-[160px]">
-                    {t('common.panel.noSelectionHint', 'Click an element in the SVG preview')}
+                    {t('common.panel.noSelectionHint')}
                   </p>
                 </div>
               </div>
@@ -1232,7 +1205,8 @@ function EditorPage() {
               {mobileTab === 'canvas' && (
                 <div className="p-4 space-y-5">
                   <div className="grid grid-cols-2 gap-2">
-                    <button onClick={() => fileInputRef.current?.click()} className="col-span-2 flex items-center justify-center gap-2 p-3 bg-orange/10 text-orange font-bold rounded-xl border border-orange/20"><Upload size={18} /> <span className="text-sm">{t('pages.svgConverter.upload')}</span></button>
+                    <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-2 p-3 bg-orange/10 text-orange font-bold rounded-xl border border-orange/20"><Upload size={18} /> <span className="text-sm">{t('pages.svgConverter.upload')}</span></button>
+                    <button onClick={() => setShowCodePrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><Code2 size={18} /> <span className="text-sm">{t('pages.svgConverter.pasteCode')}</span></button>
                     <button onClick={() => setShowUrlPrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><LinkIcon size={18} /> <span className="text-sm">URL</span></button>
                     <button onClick={() => setShowLibrary(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><Library size={18} /> <span className="text-sm">{t('pages.svgConverter.library')}</span></button>
                   </div>
@@ -1262,6 +1236,22 @@ function EditorPage() {
                   </div>
                 </div>
               )}
+              {mobileTab === 'properties' && (
+                <div className="h-full w-full">
+                  {selectedElement ? (
+                    <PropertiesPanel
+                      element={selectedElement}
+                      svgCode={svgCode}
+                      onUpdateSvg={handleUpdateSvg}
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full min-h-[200px] p-5 text-secondary/70">
+                      <MousePointer2 size={24} className="mb-2 opacity-50" />
+                      <p className="text-xs font-medium">{t('common.panel.noSelection')}</p>
+                    </div>
+                  )}
+                </div>
+              )}
               {mobileTab === 'transform' && (
                 <div className="p-4 space-y-5">
                   <div className="grid grid-cols-3 gap-2">
@@ -1273,12 +1263,12 @@ function EditorPage() {
                   </div>
                   <div className="space-y-4 pt-3 border-t border-border">
                     <div className="flex items-center justify-between bg-bg-subtle p-3 rounded-xl border border-border">
-                      <div className="flex flex-col gap-0.5">
+                      <div className="flex items-center gap-2">
                         <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.original')}</span>
                         <span className="text-sm font-mono text-primary font-bold">{originalSvg.length || svgCode.length} B</span>
                       </div>
-                      <div className="h-8 w-px bg-border"></div>
-                      <div className="flex flex-col gap-0.5 items-end">
+                      <div className="h-4 w-px bg-border"></div>
+                      <div className="flex items-center gap-2">
                         <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.current')}</span>
                         <span className={cn("text-sm font-mono font-bold", optimizedCode && originalSvg && optimizedCode.length < originalSvg.length ? "text-green-500" : "text-primary")}>
                           {svgCode.length} B
@@ -1301,19 +1291,13 @@ function EditorPage() {
                 </div>
               )}
               {mobileTab === 'export' && (
-                <div className="p-4 space-y-4">
-                  <div className="flex gap-2">
-                    <select value={exportScale} onChange={e => setExportScale(+e.target.value)} className="flex-1 text-xs p-2 border rounded-lg"><option value={1}>1x</option><option value={2}>2x</option><option value={4}>4x</option></select>
-                    <select value={exportBg} onChange={e => setExportBg(e.target.value)} className="flex-1 text-xs p-2 border rounded-lg"><option value="transparent">{t('pages.svgConverter.export.bgTransparent')}</option><option value="white">{t('pages.svgConverter.export.bgWhite')}</option><option value="black">{t('pages.svgConverter.export.bgBlack')}</option></select>
-                  </div>
-                  <button onClick={handleExportPNG} className="w-full py-2 border rounded-lg text-sm font-medium">{t('pages.svgConverter.export.btnExportPng')}</button>
-                  <button onClick={handleDownloadSVG} className="w-full py-3 bg-orange text-white font-bold rounded-xl">{t('pages.svgConverter.export.downloadSvg')}</button>
-                </div>
+                <ExportPanel svgCode={svgCode} />
               )}
             </div>
             <div className="flex items-center p-1 border-t border-border bg-bg-subtle shrink-0" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
               {[
                 { id: 'canvas' as const, icon: Maximize2 },
+                { id: 'properties' as const, icon: Sliders },
                 { id: 'transform' as const, icon: Settings },
                 { id: 'export' as const, icon: Upload },
               ].map(tab => (
@@ -1373,8 +1357,55 @@ function EditorPage() {
                 className="w-full px-4 py-3 bg-bg-subtle border border-border rounded-xl text-sm outline-none focus:border-orange" />
               <div className="flex justify-end gap-2 pt-2">
                 <button onClick={() => setShowUrlPrompt(false)} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">{t('pages.svgConverter.urlModal.cancel')}</button>
-                <button onClick={handleLoadFromURL} disabled={!urlInput || isLoading} className={cn("px-5 py-2 text-sm font-bold rounded-xl shadow-sm", !urlInput || isLoading ? "bg-orange/50 text-white cursor-not-allowed" : "bg-orange hover:opacity-90 text-white")}>
-                  {isLoading ? 'Loading...' : t('pages.svgConverter.urlModal.load')}
+                <button onClick={handleLoadFromURL} disabled={!urlInput || isLoading} className={cn("px-5 py-2 text-sm font-bold rounded-xl shadow-sm transition-all", !urlInput || isLoading ? "bg-bg-muted text-tertiary cursor-not-allowed" : "bg-orange hover:opacity-90 text-white")}>
+                  {isLoading ? t('common.loading') : t('pages.svgConverter.urlModal.load')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Code Prompt Modal */}
+      {showCodePrompt && (
+        <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4">
+          <div className="w-full max-w-lg bg-white dark:bg-bg-surface rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <div className="flex items-center gap-2 text-primary font-bold"><Code2 size={18} /> {t('pages.svgConverter.pasteCodeTitle')}</div>
+              <button onClick={() => setShowCodePrompt(false)} className="p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-bg-subtle"><X size={18} /></button>
+            </div>
+            <div className="p-6 space-y-4">
+              <textarea autoFocus placeholder="<svg>...</svg>" value={codeInput} onChange={e => setCodeInput(e.target.value)} rows={8}
+                className="w-full px-4 py-3 bg-bg-subtle border border-border rounded-xl text-sm outline-none focus:border-orange font-mono resize-none" />
+              <div className="flex justify-end gap-2 pt-2">
+                <button onClick={() => setShowCodePrompt(false)} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">{t('pages.svgConverter.urlModal.cancel')}</button>
+                <button onClick={handleLoadFromCode} disabled={!codeInput} className={cn("px-5 py-2 text-sm font-bold rounded-xl shadow-sm transition-all", !codeInput ? "bg-bg-muted text-tertiary cursor-not-allowed" : "bg-orange hover:opacity-90 text-white")}>
+                  {t('pages.svgConverter.urlModal.load')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Overwrite Confirmation Modal */}
+      {showOverwritePrompt && (
+        <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4">
+          <div className="w-full max-w-sm bg-white dark:bg-bg-surface rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+            <div className="flex items-center gap-2 p-4 border-b border-border text-primary font-bold">
+              <AlertTriangle size={18} className="text-orange" />
+              {t('common.warning')}
+            </div>
+            <div className="p-6 space-y-6">
+              <p className="text-sm text-secondary font-medium">
+                {t('common.confirmOverwrite')}
+              </p>
+              <div className="flex justify-end gap-2">
+                <button onClick={() => { setShowOverwritePrompt(false); setPendingSvgCode(null) }} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">
+                  {t('pages.svgConverter.urlModal.cancel')}
+                </button>
+                <button onClick={confirmLoadNewSvg} className="px-5 py-2 text-sm font-bold bg-orange hover:opacity-90 text-white rounded-xl shadow-sm transition-all">
+                  {t('common.confirm')}
                 </button>
               </div>
             </div>
@@ -1390,24 +1421,11 @@ function EditorPage() {
               <SvgdoLogo className="h-[22px] w-auto text-primary dark:text-white" />
               <button onClick={() => setIsMenuOpen(false)} className="p-1 text-secondary hover:text-primary rounded-lg transition-colors"><X size={18} /></button>
             </div>
-            <div className="flex flex-col p-2 overflow-y-auto">
+            <div className="flex flex-col p-2 overflow-visible">
               <div className="flex flex-col mb-2 pb-2 border-b border-border space-y-1">
-                <div className="flex flex-col space-y-1">
-                  <span className="px-3 py-1.5 text-[11px] font-semibold text-secondary/70 uppercase tracking-wider">{t('common.language')}</span>
-                  <div className="flex gap-1.5 px-3">
-                    {LANGUAGES.map(lang => (
-                      <button
-                        key={lang.code}
-                        onClick={() => { i18n.changeLanguage(lang.code); localStorage.setItem('lang', lang.code); setIsMenuOpen(false); }}
-                        className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${i18n.language === lang.code
-                          ? 'bg-blue text-white'
-                          : 'bg-bg-subtle text-secondary hover:text-primary hover:bg-bg-muted'
-                          }`}
-                      >
-                        {lang.shortLabel}
-                      </button>
-                    ))}
-                  </div>
+                <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium text-secondary">
+                  <span>{t('common.language')}</span>
+                  <LanguageDropdown />
                 </div>
                 <button onClick={() => { toggleTheme(); setIsMenuOpen(false); }} className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors w-full text-left">
                   <span>{t('common.theme')}</span>
@@ -1415,12 +1433,15 @@ function EditorPage() {
                 </button>
               </div>
 
-              <div className="flex flex-col space-y-1">
+              <div className="p-2 flex flex-col gap-1 border-t border-border">
+                <Link to="/about" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                  {t('common.nav.about')}
+                </Link>
                 <Link to="/resources" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   {t('common.nav.resources')}
                 </Link>
                 <Link to="/privacy" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
-                  {t('pages.privacy.title', 'Privacy Policy')}
+                  {t('pages.privacy.title')}
                 </Link>
               </div>
             </div>
@@ -1435,6 +1456,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<EditorPage />} />
+      <Route path="/about" element={<AboutPage />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/resources" element={<Resources />} />
       <Route path="/resources/:slug" element={<ArticlePage />} />

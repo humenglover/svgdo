@@ -28,12 +28,19 @@ export function resetIdCounter(): void {
  * 给 SVG 内部元素注入唯一 data-editor-id
  * 返回处理后的 SVG 字符串 + 元素信息列表
  */
-export function injectEditorIds(svgCode: string): { html: string; elements: ElementInfo[] } {
+export function injectEditorIds(svgCode: string): { html: string; elements: ElementInfo[]; error?: string } {
   resetIdCounter()
   const parser = new DOMParser()
   const doc = parser.parseFromString(svgCode, 'image/svg+xml')
+  
+  const parserError = doc.querySelector('parsererror')
+  if (parserError) {
+    const errorText = parserError.querySelector('div')?.textContent || parserError.textContent || 'Syntax Error'
+    return { html: svgCode, elements: [], error: errorText.trim() }
+  }
+
   const svgEl = doc.querySelector('svg')
-  if (!svgEl) return { html: svgCode, elements: [] }
+  if (!svgEl) return { html: svgCode, elements: [], error: 'Missing <svg> element' }
 
   const elements: ElementInfo[] = []
   let elementIndex = 0
@@ -248,4 +255,138 @@ export function buildTransform(t: { tx: number, ty: number, rotate: number, scal
     }
   }
   return parts.join(' ')
+}
+
+export function getSvgScaleRatio(svgEl: SVGSVGElement) {
+  const rect = svgEl.getBoundingClientRect();
+  const viewBox = svgEl.getAttribute('viewBox');
+  
+  let vbW = 0;
+  let vbH = 0;
+  
+  if (viewBox) {
+    const parts = viewBox.trim().split(/[ ,]+/);
+    if (parts.length >= 4) {
+      vbW = parseFloat(parts[2]);
+      vbH = parseFloat(parts[3]);
+    }
+  }
+  
+  if (!vbW || !vbH) {
+    vbW = parseFloat(svgEl.getAttribute('width') || '0');
+    vbH = parseFloat(svgEl.getAttribute('height') || '0');
+  }
+  
+  if (!vbW) vbW = rect.width;
+  if (!vbH) vbH = rect.height;
+  
+  return {
+    ratioX: vbW ? rect.width / vbW : 1,
+    ratioY: vbH ? rect.height / vbH : 1
+  };
+}
+
+export function getMousePositionInSVG(clientX: number, clientY: number, svgEl: SVGSVGElement, ctm: DOMMatrix) {
+  const pt = svgEl.createSVGPoint()
+  pt.x = clientX
+  pt.y = clientY
+  return pt.matrixTransform(ctm.inverse())
+}
+
+/**
+ * 移除指定的 SVG 元素
+ */
+export function removeSvgElement(svgCode: string, elementIndex: number): string {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = svgCode.trim()
+  const svgEl = wrapper.querySelector('svg')
+  if (!svgEl) return svgCode
+
+  let currentIndex = 0
+  let foundEl: Element | null = null
+
+  const walk = (el: Element) => {
+    if (foundEl) return
+    if (SUPPORTED_TAGS.has(el.tagName.toLowerCase())) {
+      if (currentIndex === elementIndex) {
+        foundEl = el
+        return
+      }
+      currentIndex++
+    }
+    for (const child of Array.from(el.children)) walk(child)
+  }
+
+  walk(svgEl)
+  if (foundEl && foundEl.parentNode) {
+    foundEl.parentNode.removeChild(foundEl)
+    const serializer = new XMLSerializer()
+    return serializer.serializeToString(svgEl).replace(/xmlns="http:\/\/www\.w3\.org\/1999\/xhtml"/g, '')
+  }
+  return svgCode
+}
+
+/**
+ * 移动指定的 SVG 元素（调整 Z-Index 顺序）
+ * 'forward': 移到下一个兄弟节点之后
+ * 'backward': 移到上一个兄弟节点之前
+ * 'front': 移到父节点最后（最上层）
+ * 'back': 移到父节点最前（最底层）
+ */
+export function moveSvgElementLayer(svgCode: string, elementIndex: number, action: 'forward' | 'backward' | 'front' | 'back'): { svgCode: string, newIndex: number } {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = svgCode.trim()
+  const svgEl = wrapper.querySelector('svg')
+  if (!svgEl) return { svgCode, newIndex: elementIndex }
+
+  let currentIndex = 0
+  let foundEl: Element | null = null
+
+  const walk = (el: Element) => {
+    if (foundEl) return
+    if (SUPPORTED_TAGS.has(el.tagName.toLowerCase())) {
+      if (currentIndex === elementIndex) {
+        foundEl = el
+        return
+      }
+      currentIndex++
+    }
+    for (const child of Array.from(el.children)) walk(child)
+  }
+
+  walk(svgEl)
+  if (foundEl && foundEl.parentNode) {
+    const parent = foundEl.parentNode
+    
+    if (action === 'forward') {
+      const next = foundEl.nextElementSibling
+      if (next) parent.insertBefore(next, foundEl)
+    } else if (action === 'backward') {
+      const prev = foundEl.previousElementSibling
+      if (prev) parent.insertBefore(foundEl, prev)
+    } else if (action === 'front') {
+      parent.appendChild(foundEl)
+    } else if (action === 'back') {
+      parent.insertBefore(foundEl, parent.firstElementChild)
+    }
+    
+    // Re-walk to find new index
+    let newIndex = 0
+    let tempIndex = 0
+    const walkAgain = (el: Element) => {
+      if (SUPPORTED_TAGS.has(el.tagName.toLowerCase())) {
+        if (el === foundEl) newIndex = tempIndex
+        tempIndex++
+      }
+      for (const child of Array.from(el.children)) walkAgain(child)
+    }
+    walkAgain(svgEl)
+    
+    const serializer = new XMLSerializer()
+    return {
+      svgCode: serializer.serializeToString(svgEl).replace(/xmlns="http:\/\/www\.w3\.org\/1999\/xhtml"/g, ''),
+      newIndex
+    }
+  }
+  return { svgCode, newIndex: elementIndex }
 }

@@ -11,6 +11,10 @@ export default {
   langLabel: '日本語',
   undo: '元に戻す',
   redo: 'やり直し',
+  loading: '読み込み中...',
+  warning: '警告',
+  confirm: '確認',
+  confirmOverwrite: '現在の作業内容は上書きされます。続行しますか？',
   delete: '削除',
   export: 'エクスポート',
   exportSvg: 'SVGをエクスポート',
@@ -63,6 +67,7 @@ export default {
   nav: {
     help: 'ヘルプセンター',
     resources: 'リソース',
+    about: '概要',
     privacy: 'プライバシーポリシー',
     backToHome: 'ホームに戻る',
     backToEditor: 'エディタに戻る',
@@ -72,6 +77,7 @@ export default {
     loadSvgFailed: 'SVGの読み込みに失敗しました',
     copyFailed: 'コピーに失敗しました',
     exportFailed: 'エクスポートに失敗しました',
+    invalidSvg: '無効なSVGコード',
     exportTimeout: 'エクスポートがタイムアウトしました',
   },
   resources: {

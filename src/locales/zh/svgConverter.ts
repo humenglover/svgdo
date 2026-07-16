@@ -2,10 +2,14 @@ export default {
   title: 'SVG 编辑器',
   upload: '上传',
   url: 'URL',
+  pasteCode: '粘贴代码',
+  pasteCodeTitle: '粘贴 SVG 代码',
+  syntaxError: 'SVG 语法错误',
   library: '图标库',
   empty: {
     welcome: '欢迎使用 SVG 编辑器',
     desc: '拖拽 SVG 文件到页面，或点击"上传/图标库"，也可 Ctrl/Cmd+V 粘贴代码',
+    pastePlaceholder: '在此粘贴原始 SVG 代码...',
     startFromExample: '先从示例图标开始',
     startFromExampleDesc: '可先点击下方图标，也可以上传你自己的 SVG。',
     keyboardHint: '快捷键: Ctrl + 滚轮缩放 | Ctrl+± 放大缩小 | Ctrl+0 重置'
