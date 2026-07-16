@@ -4,9 +4,18 @@ export const sanitizeSVG = (svgCode: string): string => {
   let code = svgCode;
   
   // DOMPurify in svg profile often strips the <svg> root tag if it lacks the proper xmlns namespace.
-  // We inject it automatically if missing to ensure the preview renders.
   if (code && !code.includes('xmlns=') && code.includes('<svg')) {
     code = code.replace(/<svg/i, '<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+
+  // Flexbox size collapse prevention: If SVG only has viewBox but no width/height, extract them and inject.
+  if (code && !code.match(/width=["']/i) && !code.match(/height=["']/i)) {
+    const viewBoxMatch = code.match(/viewBox=["'][\d\.\s-]+[\d\.\s-]+([\d\.]+)\s+([\d\.]+)["']/i);
+    if (viewBoxMatch && viewBoxMatch[1] && viewBoxMatch[2]) {
+      const w = viewBoxMatch[1];
+      const h = viewBoxMatch[2];
+      code = code.replace(/<svg/i, `<svg width="${w}" height="${h}"`);
+    }
   }
 
   const clean = DOMPurify.sanitize(code, {

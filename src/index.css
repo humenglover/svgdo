@@ -196,7 +196,7 @@ body {
   color: var(--color-blue);
 }
 
-/* Ensure SVG preview fits within container at 100% zoom */
+/* Ensure SVG preview fits within container at 100% zoom and doesn't collapse */
 .svg-preview-container svg {
   max-width: 100%;
   max-height: 100%;

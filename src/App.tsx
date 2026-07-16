@@ -297,14 +297,43 @@ function EditorPage() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore shortcuts when typing in inputs
+      const tag = (e.target as HTMLElement).tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return
+
+      const ctrl = e.ctrlKey || e.metaKey
+
+      // Zoom
+      if (ctrl && (e.key === '+' || e.key === '=')) { e.preventDefault(); handleZoomIn() }
+      else if (ctrl && e.key === '-') { e.preventDefault(); handleZoomOut() }
+      else if (ctrl && e.key === '0') { e.preventDefault(); handleZoomReset() }
+
+      // File operations (work even without SVG loaded)
+      else if (ctrl && e.key === 'o') { e.preventDefault(); fileInputRef.current?.click() }
+      else if (ctrl && e.key === 'l') { e.preventDefault(); setShowUrlPrompt(true) }
+      else if (ctrl && e.key === 'i') { e.preventDefault(); setShowLibrary(true) }
+      else if (ctrl && e.key === 'k') { e.preventDefault(); setShowCodePrompt(true) }
+
       if (!svgCode) return
-      if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) { e.preventDefault(); handleZoomIn() }
-      else if ((e.ctrlKey || e.metaKey) && e.key === '-') { e.preventDefault(); handleZoomOut() }
-      else if ((e.ctrlKey || e.metaKey) && e.key === '0') { e.preventDefault(); handleZoomReset() }
+
+      // Export & copy
+      if (ctrl && e.key === 's') { e.preventDefault(); handleDownloadSVG() }
+      else if (ctrl && e.key === 'e') { e.preventDefault(); handleExportPNG() }
+      else if (ctrl && e.key === 'c') { e.preventDefault(); handleCopySVG() }
+
+      // Edit
+      else if (e.key === 'Delete' || e.key === 'Backspace') {
+        if (selectedElement) { e.preventDefault(); /* handled by element Drag/Delete */ }
+      }
+      else if (e.key === 'Escape') {
+        setSelectedElement(null)
+        const sel = previewRef.current?.querySelector('.svg-element-selected')
+        sel?.classList.remove('svg-element-selected')
+      }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [svgCode, zoom])
+  }, [svgCode, zoom, selectedElement])
 
   const syntaxError = useMemo(() => {
     if (!svgCode) return null
