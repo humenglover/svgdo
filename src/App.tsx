@@ -159,6 +159,17 @@ function EditorPage() {
     originalTransform: string;
     paddingX: number;
     paddingY: number;
+    isResizing?: boolean;
+    resizeDir?: string;
+    startDist?: number;
+    cx?: number;
+    cy?: number;
+    startScaleX?: number;
+    startScaleY?: number;
+    startTx?: number;
+    startTy?: number;
+    lastScaleX?: number;
+    lastScaleY?: number;
   } | null>(null)
   const previewRef = useRef<HTMLDivElement>(null)
   const workspaceRef = useRef<HTMLDivElement>(null)
@@ -218,6 +229,59 @@ function EditorPage() {
     setSvgCode(newCode)
     setOptimizedCode('')
     pushToHistory(newCode)
+  }
+
+  const handleResizeStart = (e: React.MouseEvent, dir: string) => {
+    e.stopPropagation();
+    if (!selectedElement) return;
+
+    const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as SVGElement;
+    const svgEl = el?.ownerSVGElement;
+    if (!el || !svgEl) return;
+
+    const rect = el.getBoundingClientRect();
+    const cx_screen = rect.left + rect.width / 2;
+    const cy_screen = rect.top + rect.height / 2;
+
+    const ctm = el.parentNode ? (el.parentNode as SVGGraphicsElement).getScreenCTM() : svgEl.getScreenCTM();
+    if (!ctm) return;
+
+    const ptCenter = getMousePositionInSVG(cx_screen, cy_screen, svgEl, ctm);
+    const ptMouse = getMousePositionInSVG(e.clientX, e.clientY, svgEl, ctm);
+
+    const startDist = Math.sqrt(
+      Math.pow(ptMouse.x - ptCenter.x, 2) + Math.pow(ptMouse.y - ptCenter.y, 2)
+    );
+
+    const originalTransform = el.getAttribute('transform') || '';
+    const t = parseTransform(originalTransform);
+
+    let paddingX = 0; let paddingY = 0;
+    const ratio = getSvgScaleRatio(svgEl)
+    const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0
+    if (strokeW > 0) {
+      paddingX = (strokeW * ratio.ratioX) / 2 || 0
+      paddingY = (strokeW * ratio.ratioY) / 2 || 0
+    }
+
+    elementDragState.current = {
+      id: selectedElement.id,
+      el, svgEl, ctm,
+      startXInSVG: 0, startYInSVG: 0, lastDx: 0, lastDy: 0,
+      isResizing: true,
+      resizeDir: dir,
+      startDist,
+      cx: ptCenter.x,
+      cy: ptCenter.y,
+      startScaleX: t.scaleX || 1,
+      startScaleY: t.scaleY || 1,
+      startTx: t.tx || 0,
+      startTy: t.ty || 0,
+      lastScaleX: t.scaleX || 1,
+      lastScaleY: t.scaleY || 1,
+      originalTransform,
+      paddingX, paddingY
+    };
   }
 
   const handleUndo = () => {
@@ -777,7 +841,7 @@ function EditorPage() {
                     </div>
                   )}
                   {(viewMode === 'split' || viewMode === 'preview') && (
-                    <div ref={workspaceRef} className={cn("flex-1 flex flex-col items-center justify-center overflow-hidden relative p-4", bgMode === 'light' ? "bg-white" : bgMode === 'dark' ? "bg-black" : "", isDragging ? "cursor-grabbing" : "cursor-grab")}
+                    <div ref={workspaceRef} className={cn("flex-1 flex flex-col items-center justify-center overflow-hidden relative p-4", bgMode === 'light' ? "bg-white" : bgMode === 'dark' ? "bg-black" : "", isDragging ? "cursor-grabbing" : "cursor-default")}
                       style={{ touchAction: 'none', ...(bgMode === 'grid' ? { backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23000' fill-opacity='0.05' d='M0 0h16v16H0z'/%3E%3Cpath fill='%23000' fill-opacity='0.1' d='M0 0h1v16H0zm0 0h16v1H0z'/%3E%3C/svg%3E")` } : {}) }}
                       onWheel={(e) => {
                         if (e.deltaY > 0) setZoom(z => Math.max(10, z - 10))
@@ -838,17 +902,49 @@ function EditorPage() {
                         if (elementDragState.current) {
                           const state = elementDragState.current;
                           const currentPt = getMousePositionInSVG(e.clientX, e.clientY, state.svgEl, state.ctm)
-                          const dx = currentPt.x - state.startXInSVG;
-                          const dy = currentPt.y - state.startYInSVG;
-
-                          state.lastDx = dx;
-                          state.lastDy = dy;
-
-                          // 在 DOM 级别临时修改属性，获得极致 60fps 体验，不触发 React 渲染
-                          const t = parseTransform(state.originalTransform)
-                          t.tx += dx;
-                          t.ty += dy;
-                          state.el.setAttribute('transform', buildTransform(t))
+                          
+                          if (state.isResizing) {
+                            const currentDist = Math.sqrt(
+                              Math.pow(currentPt.x - state.cx!, 2) + Math.pow(currentPt.y - state.cy!, 2)
+                            );
+                            let k = currentDist / state.startDist!;
+                            if (isNaN(k) || k <= 0.05) k = 1;
+                            
+                            let kX = 1; let kY = 1;
+                            if (state.resizeDir === 'e' || state.resizeDir === 'w') {
+                                kX = k; kY = 1;
+                            } else if (state.resizeDir === 'n' || state.resizeDir === 's') {
+                                kX = 1; kY = k;
+                            } else {
+                                kX = k; kY = k;
+                            }
+                            
+                            const newScaleX = state.startScaleX! * kX;
+                            const newScaleY = state.startScaleY! * kY;
+                            const newTx = state.cx! - (state.cx! - state.startTx!) * kX;
+                            const newTy = state.cy! - (state.cy! - state.startTy!) * kY;
+                            
+                            state.lastScaleX = newScaleX;
+                            state.lastScaleY = newScaleY;
+                            state.lastTx = newTx;
+                            state.lastTy = newTy;
+                            
+                            const t = parseTransform(state.originalTransform);
+                            t.scaleX = newScaleX;
+                            t.scaleY = newScaleY;
+                            t.tx = newTx;
+                            t.ty = newTy;
+                            state.el.setAttribute('transform', buildTransform(t));
+                          } else {
+                            const dx = currentPt.x - state.startXInSVG;
+                            const dy = currentPt.y - state.startYInSVG;
+                            state.lastDx = dx;
+                            state.lastDy = dy;
+                            const t = parseTransform(state.originalTransform)
+                            t.tx += dx;
+                            t.ty += dy;
+                            state.el.setAttribute('transform', buildTransform(t))
+                          }
                           
                           // 同步移动标注框
                           const boxEl = document.getElementById('selection-box-overlay')
@@ -895,7 +991,19 @@ function EditorPage() {
                         if (elementDragState.current) {
                           const state = elementDragState.current;
                           // 允许极小的误差，防止被识别为拖拽
-                          if (Math.abs(state.lastDx) > 0.1 || Math.abs(state.lastDy) > 0.1) {
+                          if (state.isResizing) {
+                            if (state.lastScaleX !== undefined) {
+                              const t = parseTransform(state.originalTransform);
+                              t.scaleX = state.lastScaleX;
+                              t.scaleY = state.lastScaleY!;
+                              t.tx = state.lastTx!;
+                              t.ty = state.lastTy!;
+                              const index = allElements.find(e => e.id === state.id)?.index;
+                              if (index !== undefined) {
+                                handleUpdateSvg(updateElementAttribute(svgCode, index, 'transform', buildTransform(t)))
+                              }
+                            }
+                          } else if (Math.abs(state.lastDx) > 0.1 || Math.abs(state.lastDy) > 0.1) {
                             const t = parseTransform(state.originalTransform)
                             t.tx += state.lastDx;
                             t.ty += state.lastDy;
@@ -1057,36 +1165,29 @@ function EditorPage() {
                           {/* 四条边拉伸控制柄 (边缘吸附区) */}
                           {['n', 's', 'w', 'e'].map(dir => (
                             <div key={dir}
-                              title={t('common.panel.resizeHint', 'Use Transform panel to resize')}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                toast(t('common.panel.resizeToast', 'Pro tip: Use the "Transform" panel on the right for pixel-perfect resizing! Drag-to-resize is coming in the next update. ✨'), { icon: '💡' });
-                              }}
+                              onMouseDown={(e) => handleResizeStart(e, dir)}
                               className={cn(
                                 "absolute pointer-events-auto hover:bg-[#007AFF]/20 transition-colors z-[41]",
                                 ['n', 's'].includes(dir) ? "h-[7px] w-full left-0 opacity-0 hover:opacity-100" : "w-[7px] h-full top-0 opacity-0 hover:opacity-100",
-                                dir === 'n' ? '-top-[4px] cursor-n-resize' : '',
-                                dir === 's' ? '-bottom-[4px] cursor-s-resize' : '',
-                                dir === 'w' ? '-left-[4px] cursor-w-resize' : '',
-                                dir === 'e' ? '-right-[4px] cursor-e-resize' : ''
+                                dir === 'n' ? '-top-[4px]' : '',
+                                dir === 's' ? '-bottom-[4px]' : '',
+                                dir === 'w' ? '-left-[4px]' : '',
+                                dir === 'e' ? '-right-[4px]' : ''
                               )}
+                              style={{ cursor: `${dir}-resize` }}
                             />
                           ))}
 
                           {/* 四个角缩放控制柄 (高亮显示) */}
                           {['nw', 'ne', 'sw', 'se'].map(dir => (
                             <div key={dir}
-                              title={t('common.panel.resizeHint', 'Use Transform panel to resize')}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                toast(t('common.panel.resizeToast', 'Pro tip: Use the "Transform" panel on the right for pixel-perfect resizing! Drag-to-resize is coming in the next update. ✨'), { icon: '💡' });
-                              }}
+                              onMouseDown={(e) => handleResizeStart(e, dir)}
                               className={cn(
                                 "absolute w-[7px] h-[7px] bg-white border-[1.5px] border-[#007AFF] pointer-events-auto hover:bg-[#007AFF] transition-colors z-[42]",
                                 dir.includes('n') ? '-top-[4px]' : '-bottom-[4px]',
-                                dir.includes('w') ? '-left-[4px]' : '-right-[4px]',
-                                `cursor-${dir}-resize`
+                                dir.includes('w') ? '-left-[4px]' : '-right-[4px]'
                               )}
+                              style={{ cursor: `${dir}-resize` }}
                             />
                           ))}
                         </div>

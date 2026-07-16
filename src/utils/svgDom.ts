@@ -216,21 +216,36 @@ export function getElementAttribute(svgCode: string, elementIndex: number, attrN
 }
 
 export function parseTransform(str: string) {
-  const res = { tx: 0, ty: 0, rotate: 0, scale: 1 }
+  const res = { tx: 0, ty: 0, rotate: 0, scale: 1, scaleX: 1, scaleY: 1 }
   if (!str) return res
   const translateMatch = str.match(/translate\(([^,)]+)[, ]?([^)]*)\)/)
   if (translateMatch) { res.tx = parseFloat(translateMatch[1]) || 0; res.ty = parseFloat(translateMatch[2]) || 0 }
   const rotateMatch = str.match(/rotate\(([^)]+)\)/)
   if (rotateMatch) res.rotate = parseFloat(rotateMatch[1]) || 0
   const scaleMatch = str.match(/scale\(([^)]+)\)/)
-  if (scaleMatch) res.scale = parseFloat(scaleMatch[1]) || 1
+  if (scaleMatch) {
+    const parts = scaleMatch[1].trim().split(/[, ]+/)
+    res.scaleX = parseFloat(parts[0]) || 1
+    res.scaleY = parts.length > 1 ? parseFloat(parts[1]) || res.scaleX : res.scaleX
+    res.scale = res.scaleX // for compatibility with PropertiesPanel
+  }
   return res
 }
 
-export function buildTransform(t: { tx: number, ty: number, rotate: number, scale: number }) {
+export function buildTransform(t: { tx: number, ty: number, rotate: number, scale?: number, scaleX?: number, scaleY?: number }) {
   const parts = []
   if (t.tx !== 0 || t.ty !== 0) parts.push(`translate(${t.tx}, ${t.ty})`)
   if (t.rotate !== 0) parts.push(`rotate(${t.rotate})`)
-  if (t.scale !== 1) parts.push(`scale(${t.scale})`)
+  
+  const sx = t.scaleX !== undefined ? t.scaleX : (t.scale !== undefined ? t.scale : 1)
+  const sy = t.scaleY !== undefined ? t.scaleY : (t.scale !== undefined ? t.scale : 1)
+  
+  if (sx !== 1 || sy !== 1) {
+    if (sx === sy) {
+      parts.push(`scale(${sx})`)
+    } else {
+      parts.push(`scale(${sx}, ${sy})`)
+    }
+  }
   return parts.join(' ')
 }

@@ -49,9 +49,9 @@ export default {
     stroke: '描边',
     strokeWidth: '描边宽度',
     opacity: '不透明度',
-    transform: '变换',
+    transform: '尺寸与变换',
     rotate: '旋转',
-    scale: '缩放',
+    scale: '缩放比例',
     size: '尺寸',
     width: '宽度',
     height: '高度',
@@ -59,6 +59,8 @@ export default {
     class: '类名',
     noSelection: '未选中元素',
     noSelectionHint: '点击 SVG 预览中的元素',
+    resizeHint: '在右侧面板输入精确尺寸',
+    resizeToast: '提示：请使用右侧的「尺寸与变换」面板进行绝对精确的数值缩放哦！拖拽自由变形引擎即将上线 ✨',
   },
   // Navigation
   nav: {

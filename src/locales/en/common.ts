@@ -49,7 +49,7 @@ export default {
     stroke: 'Stroke',
     strokeWidth: 'Stroke Width',
     opacity: 'Opacity',
-    transform: 'Transform',
+    transform: 'Size & Transform',
     rotate: 'Rotate',
     scale: 'Scale',
     size: 'Size',
@@ -59,6 +59,8 @@ export default {
     class: 'Class',
     noSelection: 'No element selected',
     noSelectionHint: 'Click an element in the SVG preview',
+    resizeHint: 'Use Transform panel to resize',
+    resizeToast: 'Pro tip: Use the "Size & Transform" panel on the right for pixel-perfect resizing! Drag-to-resize is coming in the next update ✨',
   },
   // Navigation
   nav: {

@@ -67,11 +67,6 @@ export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props
             onChange={v => handleTransformChange('scale', v)} min={0.1} max={10} step={0.1} />
         </CollapseSection>
 
-        {/* Size */}
-        <CollapseSection title={t('common.panel.size')}>
-          <ReadOnlyField label={t('common.panel.width')} value={getAttr('width') || '—'} />
-          <ReadOnlyField label={t('common.panel.height')} value={getAttr('height') || '—'} />
-        </CollapseSection>
 
         {/* Advanced */}
         <CollapseSection title={t('common.panel.advanced')}>
