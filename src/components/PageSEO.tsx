@@ -6,6 +6,7 @@ import { LANGUAGES } from '@/locales/config'
 import { getLanguageByCode } from '@/locales/i18n'
 
 const SITE_URL = typeof window !== 'undefined' ? window.location.origin : 'https://svgdo.com'
+const OG_IMAGE = `${SITE_URL}/og-image.png`
 
 interface Props { seoKey?: string }
 
@@ -18,7 +19,7 @@ export default function PageSEO({ seoKey }: Props) {
   if (seoKey === 'resources') {
     title = t('common.resources.seoTitle')
     description = t('common.resources.desc')
-    keywords = ['SVG', 'tutorial', 'guide', 'editor', 'vector']
+    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
   } else if (seoKey && articles.find(a => a.slug === seoKey)) {
     const article = articles.find(a => a.slug === seoKey)!
     title = article.title[i18n.language] || article.title.en
@@ -55,15 +56,32 @@ export default function PageSEO({ seoKey }: Props) {
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(', ')} />
       <link rel="canonical" href={canonicalUrl} />
+
+      {/* Hreflang alternates for all supported languages */}
+      {LANGUAGES.map(l => (
+        <link key={l.code} rel="alternate" hrefLang={l.code} href={`${SITE_URL}/`} />
+      ))}
+      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />
+
+      {/* Open Graph */}
       <meta property="og:type" content={seoKey && seoKey !== 'resources' ? 'article' : 'website'} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+      <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={lang.ogLocale} />
       <meta property="og:site_name" content={SITE_NAME} />
+
+      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={OG_IMAGE} />
+
+      {/* JSON-LD Structured Data */}
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>
   )
