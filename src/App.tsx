@@ -39,11 +39,6 @@ import { FALLBACK_ICONS } from '@/constants/icons'
 import { LanguageDropdown } from '@/components/LanguageDropdown'
 import { getLanguageByCode } from '@/locales/i18n'
 
-const LANGUAGES = [
-  { code: 'zh', name: '简体中文', shortLabel: '简' },
-  { code: 'en', name: 'English', shortLabel: 'EN' }
-]
-
 
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
