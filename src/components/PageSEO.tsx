@@ -16,7 +16,7 @@ export default function PageSEO({ seoKey }: Props) {
   let title: string, description: string, keywords: string[]
 
   if (seoKey === 'resources') {
-    title = t('common.resources.hero') + (i18n.language === 'zh' ? ' - SVG 编辑器教程与指南' : i18n.language === 'ja' ? ' - SVGエディタチュートリアル' : ' - SVG Editor Tutorials & Guides')
+    title = t('common.resources.seoTitle')
     description = t('common.resources.desc')
     keywords = ['SVG', 'tutorial', 'guide', 'editor', 'vector']
   } else if (seoKey && articles.find(a => a.slug === seoKey)) {

@@ -39,6 +39,27 @@ export default {
   zoom: 'Zoom',
   grid: 'Grid',
   viewMode: 'View Mode',
+  elementType: 'Type',
+  elementId: 'ID',
+  elementDesc: 'Desc',
+  panel: {
+    selectedElement: 'Selected Element',
+    appearance: 'Appearance',
+    fill: 'Fill',
+    stroke: 'Stroke',
+    strokeWidth: 'Stroke Width',
+    opacity: 'Opacity',
+    transform: 'Transform',
+    rotate: 'Rotate',
+    scale: 'Scale',
+    size: 'Size',
+    width: 'Width',
+    height: 'Height',
+    advanced: 'Advanced',
+    class: 'Class',
+    noSelection: 'No element selected',
+    noSelectionHint: 'Click an element in the SVG preview',
+  },
   // Navigation
   nav: {
     help: 'Help Center',
@@ -58,6 +79,7 @@ export default {
   // Resources page
   resources: {
     hero: 'Help Center',
+    seoTitle: 'Help Center - SVG Editor Tutorials & Guides',
     desc: 'Learn SVG editing, optimization, animation, and best practices. Everything you need to master vector graphics.',
     search: 'Search articles...',
     read: 'Read more',

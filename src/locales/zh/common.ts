@@ -39,6 +39,27 @@ export default {
   zoom: '缩放',
   grid: '网格',
   viewMode: '视图模式',
+  elementType: '类型',
+  elementId: 'ID',
+  elementDesc: '描述',
+  panel: {
+    selectedElement: '选中元素',
+    appearance: '外观',
+    fill: '填充',
+    stroke: '描边',
+    strokeWidth: '描边宽度',
+    opacity: '不透明度',
+    transform: '变换',
+    rotate: '旋转',
+    scale: '缩放',
+    size: '尺寸',
+    width: '宽度',
+    height: '高度',
+    advanced: '高级',
+    class: '类名',
+    noSelection: '未选中元素',
+    noSelectionHint: '点击 SVG 预览中的元素',
+  },
   // Navigation
   nav: {
     help: '帮助中心',
@@ -58,6 +79,7 @@ export default {
   // Resources page
   resources: {
     hero: '帮助中心',
+    seoTitle: '帮助中心 - SVG 编辑器教程与指南',
     desc: '学习 SVG 编辑、优化、动画和最佳实践。掌握矢量图形所需的一切知识。',
     search: '搜索文章...',
     read: '阅读文章',

@@ -27,6 +27,7 @@ import PageSEO from '@/components/PageSEO'
 import { Languages } from 'lucide-react'
 import { ToolArticleBody } from '@/components/ToolArticleDialog'
 import { SvgdoLogo } from '@/components/SvgdoLogo'
+import PropertiesPanel from '@/components/PropertiesPanel'
 
 type MobileTab = 'canvas' | 'transform' | 'export'
 type ViewMode = 'split' | 'preview' | 'code'
@@ -160,6 +161,13 @@ function EditorPage() {
       return () => clearTimeout(timer)
     }
   }, [svgCode])
+
+  // 属性面板更新 SVG → 进历史
+  const handleUpdateSvg = (newCode: string) => {
+    setSvgCode(newCode)
+    setOptimizedCode('')
+    pushToHistory(newCode)
+  }
 
   const handleUndo = () => {
     if (historyIndex > 0) { setHistoryIndex(historyIndex - 1); setSvgCode(history[historyIndex - 1]) }
@@ -467,35 +475,18 @@ function EditorPage() {
 
   const renderSidebar = () => (
     <div className="flex-1 flex flex-col h-full bg-[#FAFAFA] dark:bg-bg-surface">
-      {/* ── Selected Element Info ── */}
-      {selectedElement && (
-        <div className="border-b border-orange/30 bg-orange/5">
-          <div className="p-4 space-y-3">
-            <div className="flex items-center gap-2 text-sm font-bold text-orange">
-              <div className="w-2 h-2 rounded-full bg-orange" />
-              {t('common.properties')}
-            </div>
-            <div className="space-y-1.5 text-xs">
-              <div className="flex justify-between">
-                <span className="text-secondary">{i18n.language === 'zh' ? '类型' : i18n.language === 'ja' ? '種類' : i18n.language === 'ko' ? '유형' : i18n.language === 'es' ? 'Tipo' : 'Type'}</span>
-                <span className="font-mono font-bold text-primary">{selectedElement.tagName}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-secondary">ID</span>
-                <span className="font-mono text-primary">{selectedElement.id}</span>
-              </div>
-              {Object.entries(selectedElement.attributes).filter(([k]) => ['d', 'fill', 'stroke', 'stroke-width', 'cx', 'cy', 'r', 'rx', 'ry', 'x', 'y', 'width', 'height', 'points', 'transform', 'opacity'].includes(k)).slice(0, 6).map(([key, val]) => (
-                <div key={key} className="flex justify-between">
-                  <span className="text-secondary">{key}</span>
-                  <span className="font-mono text-primary truncate max-w-[140px]" title={val}>{val.length > 30 ? val.slice(0, 30) + '...' : val}</span>
-                </div>
-              ))}
-              <div className="flex justify-between pt-1 border-t border-border">
-                <span className="text-secondary">{i18n.language === 'zh' ? '描述' : i18n.language === 'ja' ? '概要' : i18n.language === 'ko' ? '설명' : i18n.language === 'es' ? 'Desc' : 'Desc'}</span>
-                <span className="text-tertiary text-[11px] truncate max-w-[160px]">{describeElement(selectedElement)}</span>
-              </div>
-            </div>
-          </div>
+      {/* ── Properties Panel (Desktop only) ── */}
+      {selectedElement ? (
+        <PropertiesPanel
+          element={selectedElement}
+          svgCode={svgCode}
+          onUpdateSvg={handleUpdateSvg}
+        />
+      ) : (
+        <div className="flex flex-col items-center justify-center h-40 px-4 text-center">
+          <div className="text-2xl mb-2 opacity-30">🎯</div>
+          <p className="text-xs font-semibold text-secondary">{t('common.panel.noSelection')}</p>
+          <p className="text-[10px] text-tertiary mt-1">{t('common.panel.noSelectionHint')}</p>
         </div>
       )}
       {([

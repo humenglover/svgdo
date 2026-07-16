@@ -82,3 +82,38 @@ export function describeElement(info: ElementInfo): string {
 
   return parts.join(' ')
 }
+
+/**
+ * 更新 SVG 代码中指定元素的属性
+ * @returns 修改后的完整 SVG 代码
+ */
+export function updateElementAttribute(
+  svgCode: string,
+  editorId: string,
+  attrName: string,
+  attrValue: string
+): string {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(svgCode, 'image/svg+xml')
+  const el = doc.querySelector(`[data-editor-id="${editorId}"]`)
+  if (!el) return svgCode
+
+  if (attrValue === '' || attrValue === null || attrValue === undefined) {
+    el.removeAttribute(attrName)
+  } else {
+    el.setAttribute(attrName, attrValue)
+  }
+
+  const serializer = new XMLSerializer()
+  return serializer.serializeToString(doc.querySelector('svg') || doc.documentElement)
+}
+
+/**
+ * 从 SVG 代码中读取指定元素的单个属性值
+ */
+export function getElementAttribute(svgCode: string, editorId: string, attrName: string): string {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(svgCode, 'image/svg+xml')
+  const el = doc.querySelector(`[data-editor-id="${editorId}"]`)
+  return el?.getAttribute(attrName) || ''
+}
