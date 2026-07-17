@@ -7,6 +7,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 const Resources = lazy(() => import('./pages/Resources'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 import { ExportPanel } from '@/components/ExportPanel'
 import { useDropzone } from 'react-dropzone'
 import Editor from 'react-simple-code-editor'
@@ -1492,20 +1493,6 @@ const PageLoader = () => (
   </div>
 )
 
-function NotFound() {
-  const { t } = useTranslation()
-  return (
-    <div className="flex-1 flex items-center justify-center bg-bg-base">
-      <div className="text-center space-y-4">
-        <p className="text-6xl font-black text-tertiary">404</p>
-        <p className="text-secondary">{t('common.resources.notFound')}</p>
-        <Link to="/" className="inline-block px-5 py-2.5 bg-orange text-white font-bold rounded-xl hover:opacity-90 transition-colors">
-          {t('common.nav.backToHome')}
-        </Link>
-      </div>
-    </div>
-  )
-}
 
 export default function App() {
   return (

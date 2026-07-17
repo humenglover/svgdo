@@ -3,6 +3,8 @@ export default {
   darkMode: 'ダークモード切替', language: '言語切替', theme: 'テーマ', dark: 'ダーク', light: 'ライト',
   langZh: '中国語', langEn: 'EN', langJa: '日本語', langLabel: '日本語',
   undo: '元に戻す', redo: 'やり直し',
+  pageNotFound: '申し訳ありません、ページが見つかりません',
+  pageNotFoundDesc: 'アクセスしたリンクが無効になっているか、ページが削除された可能性があります。URLが正しいか確認してください。',
   loading: '読み込み中...', warning: '警告', confirm: '確認',
   confirmOverwrite: '現在の作業内容は上書きされます。続行しますか？',
   delete: '削除',

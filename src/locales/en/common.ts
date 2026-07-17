@@ -7,6 +7,8 @@ export default {
   light: 'Light',
   langZh: '中文', langEn: 'EN', langJa: '日本語', langLabel: 'EN',
   undo: 'Undo', redo: 'Redo',
+  pageNotFound: 'Sorry, page not found',
+  pageNotFoundDesc: 'The link you visited might be invalid, or the page has been removed. Please check if the URL is correct.',
   loading: 'Loading...', warning: 'Warning', confirm: 'Confirm',
   confirmOverwrite: 'Current workspace has content. Importing a new SVG will overwrite it. Continue?',
   delete: 'Delete',

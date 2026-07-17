@@ -3,6 +3,8 @@ export default {
   darkMode: '切换暗色模式', language: '切换语言', theme: '外观主题', dark: '暗色', light: '亮色',
   langZh: '中文', langEn: 'EN', langJa: '日本語', langLabel: '中文',
   undo: '撤销', redo: '重做',
+  pageNotFound: '抱歉，页面找不到了',
+  pageNotFoundDesc: '你访问的链接可能已经失效，或者该页面已被移除。请检查网址是否输入正确。',
   loading: '加载中...', warning: '警告', confirm: '确认',
   confirmOverwrite: '当前工作区已有内容，导入新 SVG 将覆盖。继续吗？',
   delete: '删除',

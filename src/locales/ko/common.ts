@@ -3,6 +3,8 @@ export default {
   darkMode: '다크 모드', language: '언어 변경', theme: '테마', dark: '다크', light: '라이트',
   langZh: '중국어', langEn: 'EN', langJa: '日本語', langLabel: '한국어',
   undo: '실행 취소', redo: '다시 실행',
+  pageNotFound: '죄송합니다, 페이지를 찾을 수 없습니다',
+  pageNotFoundDesc: '방문하신 링크가 유효하지 않거나 페이지가 삭제되었을 수 있습니다. URL이 올바른지 확인해 주세요.',
   loading: '로딩 중...', warning: '경고', confirm: '확인',
   confirmOverwrite: '현재 작업 내용을 덮어씁니다. 계속하시겠습니까?',
   delete: '삭제',

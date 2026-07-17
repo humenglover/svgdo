@@ -3,6 +3,8 @@ export default {
   darkMode: 'Modo oscuro', language: 'Idioma', theme: 'Tema', dark: 'Oscuro', light: 'Claro',
   langZh: '中文', langEn: 'EN', langJa: '日本語', langLabel: 'ES',
   undo: 'Deshacer', redo: 'Rehacer',
+  pageNotFound: 'Lo sentimos, página no encontrada',
+  pageNotFoundDesc: 'El enlace que visitaste puede ser inválido o la página ha sido eliminada. Por favor verifica si la URL es correcta.',
   loading: 'Cargando...', warning: 'Aviso', confirm: 'Confirmar',
   confirmOverwrite: 'El espacio de trabajo actual tiene contenido. ¿Sobrescribir?',
   delete: 'Eliminar',
