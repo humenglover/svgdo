@@ -1563,7 +1563,7 @@ function EditorPage() {
                 <button onClick={() => blocker.reset?.()} className="px-5 py-2.5 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl transition-colors">
                   {t('common.cancel')}
                 </button>
-                <button onClick={() => blocker.proceed?.()} className="px-5 py-2.5 text-sm font-bold bg-red-500 hover:bg-red-600 text-white rounded-xl shadow-sm transition-colors">
+                <button onClick={() => blocker.proceed?.()} className="px-5 py-2.5 text-sm font-bold bg-red hover:opacity-90 text-white rounded-xl shadow-sm transition-opacity">
                   {t('common.leave')}
                 </button>
               </div>
