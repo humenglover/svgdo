@@ -2,6 +2,8 @@
 
 ## SVGはただの画像じゃない
 
+![Article Illustration](https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80)
+
 多くの人がSVGをimgタグに入れて終わりにしている。しかしimgの中のSVGは死んでいる。中の要素にアクセスできず、pathにクリックイベントを付けることもできない。SVGを生かすにはHTMLにインラインで埋め込む必要がある。
 
 インラインにすれば、SVGの各要素は本物のDOMノードになる。querySelectorで取得し、addEventListenerでイベントを付け、setAttributeで属性を変更できる。これがすべての土台だ。

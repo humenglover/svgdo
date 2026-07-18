@@ -1,57 +1,49 @@
 export default {
-  title: 'Política de Privacidad',
-  back: 'Inicio',
-  intro: 'Gracias por confiarnos tus SVG e información personal. Proteger tus datos es una gran responsabilidad y queremos que sepas cómo los manejamos.',
-  sections: [
+  "title": "Política de Privacidad",
+  "back": "Volver a Inicio",
+  "lastUpdated": "Última actualización: Julio 2026",
+  "intro": "En SVGDO, su privacidad y seguridad de datos son nuestra máxima prioridad. Debido a que nuestras herramientas se ejecutan localmente en su navegador, recopilamos mucha menos información que las plataformas en la nube tradicionales.",
+  "sections": [
     {
-      title: 'Qué información recopilamos y por qué',
-      subsections: [
+      "title": "1. Procesamiento Local y Seguridad",
+      "subsections": [
         {
-          title: 'Información del navegador',
-          paragraphs: [
-            'Si solo navegas por el sitio, recopilamos la misma información básica que la mayoría de los sitios web. Utilizamos tecnologías comunes como cookies y logs de servidor.',
-            'La información que recopilamos incluye tipo de navegador, idioma, sitio de referencia, páginas solicitadas y fecha/hora de cada solicitud. También podemos recopilar direcciones IP.'
-          ]
-        },
-        {
-          title: '¿Por qué la recopilamos?',
-          paragraphs: [
-            'Para entender mejor cómo los visitantes usan nuestra herramienta y para monitorear y proteger la seguridad del sitio.'
+          "title": "Cero Almacenamiento en la Nube",
+          "paragraphs": [
+            "Todo el proceso de carga, edición y optimización ocurre dentro de la RAM de su computadora. Sus archivos SVG nunca se transmiten ni se almacenan en nuestros servidores."
           ]
         }
       ]
     },
     {
-      title: 'Qué información NO recopilamos',
-      subsections: [
+      "title": "2. Información que Recopilamos",
+      "subsections": [
         {
-          title: '',
-          paragraphs: [
-            'No recopilamos intencionalmente información sensible como datos de salud o religión. Además, nuestra herramienta se ejecuta localmente en tu navegador, por lo que no recopilamos activamente el contenido de tus archivos SVG.',
-            'Si usas la función de URL remota, asegúrate de no incluir información privada o sensible.'
+          "title": "Análisis Anónimo",
+          "paragraphs": [
+            "Recopilamos datos de uso anónimos (tipo de navegador, eventos de interacción) para mejorar nuestra herramienta y corregir errores."
           ]
         }
       ]
     },
     {
-      title: 'Uso de cookies',
-      subsections: [
+      "title": "3. Cookies y Publicidad (Google AdSense)",
+      "subsections": [
         {
-          title: 'Cookies',
-          paragraphs: [
-            'Usamos cookies para que la interacción con nuestro servicio sea fácil y significativa. Utilizamos cookies (y tecnologías similares como localStorage) para guardar tus preferencias.'
+          "title": "Cookie de DoubleClick",
+          "paragraphs": [
+            "Utilizamos Google AdSense para mostrar anuncios. Google utiliza cookies de DoubleClick para mostrar anuncios relevantes basados en sus visitas a nuestro sitio y otros sitios en Internet. Puede optar por no participar en la personalización de anuncios en la configuración de Google."
           ]
         }
       ]
     },
     {
-      title: 'Cómo protegemos tu información',
-      subsections: [
+      "title": "4. Contáctenos",
+      "subsections": [
         {
-          title: '',
-          paragraphs: [
-            'Tomamos todas las medidas razonablemente necesarias para proteger la información del usuario contra acceso no autorizado, alteración o destrucción.',
-            'Ningún método de transmisión por Internet es 100% seguro, por lo que no podemos garantizar una seguridad absoluta.'
+          "title": "",
+          "paragraphs": [
+            "Si tiene alguna pregunta sobre esta Política de Privacidad, contáctenos en: shengqiangwang666@gmail.com"
           ]
         }
       ]

@@ -2,6 +2,8 @@
 
 ## SVGは静止画だけじゃない
 
+![Article Illustration](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80)
+
 ほとんどの人はSVGを「ぼやけないPNG」だと思っています。しかしSVGは動かせます。
 
 CSSアニメーションで、アイコンを回転させたり、色を変えたり、バウンドさせたり、変形させたり — GIFも動画も不要です。数行のCSSだけで実現できます。

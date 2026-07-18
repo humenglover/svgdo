@@ -2,6 +2,8 @@
 
 ## SVG를 PNG로 변환해야 하는 이유
 
+![Article Illustration](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80)
+
 SVG는 훌륭하지만 모든 상황에 적합한 것은 아닙니다:
 
 - **이메일 서명**: 대부분의 이메일 클라이언트는 SVG 미지원

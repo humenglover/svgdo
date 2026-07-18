@@ -2,6 +2,8 @@
 
 ## 为什么要关注 SVG 的嵌入方式？
 
+![Article Illustration](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80)
+
 同样的 SVG 图标，你用不同的方式放进网页里，效果可能完全不同。
 
 用 `<img>` 标签是最简单的，但你没法改颜色。用 inline SVG 你可以随意操控它，但 HTML 会变臃肿。每种方式都有 trade-off。

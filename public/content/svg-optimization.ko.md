@@ -2,6 +2,8 @@
 
 ## SVG가 너무 큰 이유
 
+![Article Illustration](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80)
+
 Figma나 Illustrator에서 내보낸 단순한 아이콘이 수십 KB, 때로는 수백 KB가 되는 경험을 해본 적이 있나요?
 
 문제는 디자인이 아니라 **디자인 도구가 내보내는 SVG에 포함된 불필요한 코드**입니다. Figma는 컴포넌트 ID와 에디터 메타데이터를 추가합니다. Illustrator는 각 패스에 초고정밀 부동소수점(소수점 6자리 이상)을 기록합니다. 이것들은 불필요하지만 브라우저는 모두 로드해야 합니다.

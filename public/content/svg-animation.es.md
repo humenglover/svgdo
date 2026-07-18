@@ -2,6 +2,8 @@
 
 ## SVG no es solo estático
 
+![Article Illustration](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80)
+
 La mayoría piensa en SVG como "un PNG que no se pixela". Pero SVG puede moverse.
 
 Con animación CSS, puedes hacer que un icono gire, cambie de color, rebote o se transforme — sin GIF ni video.

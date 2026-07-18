@@ -2,6 +2,8 @@
 
 ## ¿Qué es SVG?
 
+![Article Illustration](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80)
+
 SVG significa **Scalable Vector Graphics** (Gráficos Vectoriales Escalables).
 
 A diferencia de PNG y JPEG — que son cuadrículas de píxeles — SVG describe imágenes matemáticamente: un círculo es "centro en (100,100), radio 50". Una línea es "desde el punto A al punto B".

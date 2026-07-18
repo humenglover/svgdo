@@ -2,6 +2,8 @@
 
 ## SVGとは？
 
+![Article Illustration](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80)
+
 SVGは **Scalable Vector Graphics**（スケーラブル・ベクター・グラフィックス）の略です。
 
 PNGやJPEGのようなピクセルの集まりとは異なり、SVGは数式で画像を記述します。円は「中心(100,100)、半径50」、線は「点Aから点Bへ」というように。

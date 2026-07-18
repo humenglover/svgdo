@@ -5,6 +5,7 @@ import { Shield, Zap, Palette, Code2, ServerOff, ArrowLeft } from "lucide-react"
 import ParticleBackground from "@/components/ParticleBackground"
 import TechConstellation from "@/components/TechConstellation"
 import { cn } from "@/utils"
+import { DEFAULT_LANGUAGE } from '@/locales/config'
 
 // A simple reveal component to handle scroll animations
 export function RevealSection({
@@ -53,17 +54,20 @@ export function RevealSection({
   )
 }
 
+import PageSEO from "@/components/PageSEO"
+
 export default function AboutPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="flex flex-col h-[100dvh] bg-bg-base transition-colors duration-300 selection:bg-orange/30 overflow-hidden">
+      <PageSEO seoKey="about" />
 
       {/* ------------------------------
           HEADER (Back Button)
       ------------------------------ */}
       <header className="h-14 flex items-center px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-50">
-        <Link to="/" className="flex items-center gap-2 text-secondary hover:text-primary transition-colors bg-bg-subtle/50 px-3 py-1.5 rounded-lg border border-border/50">
+        <Link to={i18n.language === DEFAULT_LANGUAGE ? '/' : `/${i18n.language}/`} className="flex items-center gap-2 text-secondary hover:text-primary transition-colors bg-bg-subtle/50 px-3 py-1.5 rounded-lg border border-border/50">
           <ArrowLeft size={16} />
           <span className="font-bold text-sm">{t('common.nav.backToHome', '返回主页')}</span>
         </Link>
@@ -158,6 +162,21 @@ export default function AboutPage() {
           {/* Tech Stack Spotlight Bento Grid */}
           <RevealSection delay={300} className="mt-16">
             <TechConstellation />
+          </RevealSection>
+
+          {/* ------------------------------
+            PHASE 4: CONTACT
+        ------------------------------ */}
+          <RevealSection delay={400} className="mt-16 mb-20 bg-orange/5 dark:bg-orange/10 border border-orange/20 rounded-[32px] p-6 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-4 tracking-tight">
+              {t('pages.about.contact.title')}
+            </h2>
+            <p className="text-secondary text-base md:text-lg mb-6 max-w-xl mx-auto">
+              {t('pages.about.contact.desc')}
+            </p>
+            <a href="mailto:shengqiangwang666@gmail.com" className="inline-flex w-full sm:w-auto items-center justify-center bg-orange text-white px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-[15px] sm:text-lg overflow-hidden hover:opacity-90 transition-opacity shadow-lg shadow-orange/20">
+              <span className="truncate">shengqiangwang666@gmail.com</span>
+            </a>
           </RevealSection>
         </section>
 

@@ -2,6 +2,8 @@
 
 ## 为什么要把 SVG 转成 PNG？
 
+![Article Illustration](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80)
+
 SVG 很好，但不是所有场景都适合 SVG。以下情况你需要 PNG：
 
 - **邮件签名**：多数邮件客户端不支持 SVG

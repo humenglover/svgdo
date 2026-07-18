@@ -21,4 +21,5 @@ export default {
     design: 'Pureza Pixel-Perfect',
     designDesc: 'Diseños de panel minimalistas, modo oscuro totalmente personalizable — incluso ajustamos las sombras al nivel de píxel para la mejor experiencia visual.',
   },
+  contact: { title: 'Contáctenos', desc: 'Agradecemos sus valiosos comentarios y sugerencias. Si tiene alguna pregunta, consultas comerciales o necesita soporte técnico, no dude en contactarnos a través del siguiente correo electrónico.' }
 }

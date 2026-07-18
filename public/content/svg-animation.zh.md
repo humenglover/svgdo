@@ -2,6 +2,8 @@
 
 ## SVG 不只是静态图
 
+![Article Illustration](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80)
+
 大多数人以为 SVG 就是"不会模糊的 PNG"。但实际上，SVG 是可以动起来的。
 
 通过 CSS animation，你可以让一个图标旋转、变色、弹跳、变形——所有这些都不需要 GIF 或视频，几行 CSS 就搞定。

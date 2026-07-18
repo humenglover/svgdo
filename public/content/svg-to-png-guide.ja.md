@@ -2,6 +2,8 @@
 
 ## なぜSVGをPNGに変換するのか？
 
+![Article Illustration](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80)
+
 SVGは優れていますが、すべてのシーンに適しているわけではありません。PNGが必要な場合：
 
 - **メール署名**：ほとんどのメールクライアントはSVG非対応

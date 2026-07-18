@@ -2,6 +2,8 @@
 
 ## SVG 不是图片
 
+![Article Illustration](https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80)
+
 很多人习惯把 SVG 当图片用，丢进 img 标签就完事了。但 img 里的 SVG 是死的——你拿不到里面的元素，更别说给 path 绑 click 事件。要让 SVG 活起来，必须把它内联到 HTML 里。
 
 内联之后，SVG 里的每个元素就是一个真实的 DOM 节点。你可以 querySelector 拿到它，可以 addEventListener 给它绑事件，可以 setAttribute 改它的属性。这就是交互的基础。

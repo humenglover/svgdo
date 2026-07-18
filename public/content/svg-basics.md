@@ -2,6 +2,8 @@
 
 ## What Is SVG?
 
+![Article Illustration](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80)
+
 SVG stands for **Scalable Vector Graphics**.
 
 Unlike PNGs and JPEGs — which are grids of colored pixels — SVG describes images mathematically: a circle is defined as "center at (100, 100), radius 50." A line is "from point A to point B."

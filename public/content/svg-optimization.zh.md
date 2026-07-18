@@ -2,6 +2,8 @@
 
 ## 你的 SVG 为什么那么大？
 
+![Article Illustration](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80)
+
 你有没有遇到过这种情况：一个简简单单的图标，从 Figma 或 Illustrator 导出来，竟然是几十 KB 甚至上百 KB？
 
 问题不在你的设计，而在于**设计工具导出的 SVG 里塞满了垃圾代码**。Figma 会附加组件 ID、编辑器元数据、冗余的样式声明。Illustrator 会在每个路径上写入超精确浮点数（小数点后 6 位以上）。这些你不需要，但浏览器得全部加载。

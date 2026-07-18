@@ -2,6 +2,8 @@
 
 ## SVG란?
 
+![Article Illustration](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80)
+
 SVG는 **Scalable Vector Graphics**의 약자입니다.
 
 PNG나 JPEG과 같은 픽셀의 집합과 달리, SVG는 수식으로 이미지를 기술합니다. 원은 "중심(100,100), 반지름 50", 선은 "점 A에서 점 B로"와 같이 말이죠.

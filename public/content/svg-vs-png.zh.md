@@ -2,6 +2,8 @@
 
 ## 矢量 vs 位图：这场争论早该结束了
 
+![Article Illustration](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80)
+
 "该用 SVG 还是 PNG？" — 这是每个设计师和前端开发者都会遇到的问题。
 
 答案不是非黑即白。两种格式各有最适合的场景。这篇文章会从实际使用角度帮你做选择。

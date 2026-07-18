@@ -35,23 +35,41 @@ const PAGES = [
 ]
 
 function generate() {
-  const urls = PAGES.map(p => {
-    const alternates = LANGS.map(l =>
-      `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${SITE_URL}${p.path}"/>`
-    ).join('\n')
-    return `  <url>
-    <loc>${SITE_URL}${p.path}</loc>
+  const allUrls = []
+  
+  PAGES.forEach(p => {
+    LANGS.forEach(lang => {
+      // The actual path for this language variant
+      const localizedPath = lang.code === DEFAULT_LANG 
+        ? p.path 
+        : (p.path === '/' ? `/${lang.code}/` : `/${lang.code}${p.path}`)
+      
+      const locUrl = `${SITE_URL}${localizedPath}`
+
+      // Generate alternates for this URL block (must include self)
+      const alternates = LANGS.map(l => {
+        const altPath = l.code === DEFAULT_LANG 
+          ? p.path 
+          : (p.path === '/' ? `/${l.code}/` : `/${l.code}${p.path}`)
+        return `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${SITE_URL}${altPath}"/>`
+      }).join('\n')
+
+      const urlBlock = `  <url>
+    <loc>${locUrl}</loc>
 ${alternates}
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
     <lastmod>${TODAY}</lastmod>
   </url>`
-  }).join('\n')
+      
+      allUrls.push(urlBlock)
+    })
+  })
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${urls}
+${allUrls.join('\n')}
 </urlset>
 `
 
@@ -61,7 +79,7 @@ ${urls}
     fs.writeFileSync(outPath, sitemap, 'utf-8')
     console.log(`✓ sitemap.xml → ${outPath}`)
   }
-  console.log(`  ${PAGES.length} URLs generated`)
+  console.log(`  ${allUrls.length} URLs generated`)
 }
 
 generate()

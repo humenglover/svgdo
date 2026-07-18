@@ -2,6 +2,8 @@
 
 ## 欢迎使用在线 SVG 编辑器
 
+![Article Illustration](https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80)
+
 这是一份完整的在线 SVG 编辑器使用指南。不管你是设计师、前端开发者，还是刚接触 SVG 的新手，这篇文章会带你从零开始掌握编辑器的全部功能。
 
 ---

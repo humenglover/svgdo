@@ -2,6 +2,8 @@
 
 ## ¿Por qué convertir SVG a PNG?
 
+![Article Illustration](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80)
+
 SVG es genial, pero no para todos los casos:
 
 - **Firmas de correo**: La mayoría de clientes no soportan SVG

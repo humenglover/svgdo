@@ -2,6 +2,8 @@
 
 ## SVG는 그냥 이미지가 아니다
 
+![Article Illustration](https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80)
+
 많은 사람들이 SVG를 img 태그에 넣고 끝낸다. 그러나 img 안의 SVG는 죽어 있다. 내부 요소에 접근할 수도 없고, path에 클릭 이벤트를 달 수도 없다. SVG를 살리려면 HTML에 인라인으로 넣어야 한다.
 
 인라인으로 넣으면 SVG의 모든 요소는 진짜 DOM 노드가 된다. querySelector로 가져오고, addEventListener로 이벤트를 달고, setAttribute로 속성을 바꿀 수 있다. 이것이 모든 것의 기반이다.

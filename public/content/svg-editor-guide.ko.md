@@ -2,6 +2,8 @@
 
 ## 온라인 SVG 에디터에 오신 것을 환영합니다
 
+![Article Illustration](https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80)
+
 디자이너, 프론트엔드 개발자, SVG 초보자 상관없이 이 글에서 에디터의 모든 기능을 마스터할 수 있습니다.
 
 ---

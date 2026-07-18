@@ -2,6 +2,8 @@
 
 ## Welcome to the Online SVG Editor
 
+![Article Illustration](https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80)
+
 This is a complete guide to the online SVG editor. Whether you're a designer, frontend developer, or SVG beginner, this article will walk you through every feature from scratch.
 
 ---

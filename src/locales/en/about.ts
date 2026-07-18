@@ -21,4 +21,5 @@ export default {
     design: 'Pixel-Perfect Purity',
     designDesc: 'Minimalist panel layouts, fully customizable dark mode — we even fine-tune drop shadows to the pixel level, all for the best visual experience.',
   },
+  contact: { title: 'Contact Us', desc: 'We welcome your feedback and suggestions. If you have any questions, business inquiries, or need technical support, please feel free to contact us via the email below.' }
 }

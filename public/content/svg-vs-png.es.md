@@ -2,6 +2,8 @@
 
 ## Vector vs Raster: Cuándo usar cada uno
 
+![Article Illustration](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80)
+
 "¿Debería usar SVG o PNG?" — una pregunta que todo diseñador se hace.
 
 La respuesta no es blanco o negro. Cada formato tiene su caso de uso ideal.

@@ -2,6 +2,8 @@
 
 ## Why Good Icon Design Matters
 
+![Article Illustration](https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80)
+
 Icons are the "silent language" of user interfaces. A well-designed icon set makes a product feel professional, consistent, and trustworthy.
 
 SVG is the natural format for icons — but designing a great icon set is more than "drawing simple shapes." This article shares the core methods of professional icon design.

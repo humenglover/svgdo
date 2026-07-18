@@ -6,15 +6,20 @@ import './locales/i18n'
 import './index.css'
 import App from './App'
 
-import { BrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <App />
+  }
+])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
       <ThemeProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </ThemeProvider>
     </HelmetProvider>
   </StrictMode>,

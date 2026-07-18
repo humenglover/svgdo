@@ -1,7 +1,7 @@
 export default {
   home: {
-    title: 'SVGDO - Online SVG Editor | Edit, Optimize, Export',
-    description: 'Free online SVG editor with code editing, live preview, SVG compression, and PNG export. 100% browser-based, privacy protected.',
-    keywords: ['SVGDO', 'SVG editor', 'SVG optimizer', 'SVG to PNG', 'online SVG tool', 'icon library'],
+    title: 'SVGDO - Free Online SVG Editor | Fast, Secure & No Upload',
+    description: 'The ultimate free online SVG editor. Experience lightning-fast, 100% local browser-based SVG editing, compression, and PNG export. Zero cloud uploads. Secure and private.',
+    keywords: ['SVG editor', 'free SVG editor', 'online SVG editor', 'fast SVG optimizer', 'SVG to PNG converter', 'secure vector editor', 'browser-based SVG tool', 'SVG compression'],
   },
 }

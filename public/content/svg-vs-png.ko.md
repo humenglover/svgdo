@@ -2,6 +2,8 @@
 
 ## 벡터 vs 래스터: 이 논쟁은 끝내야 합니다
 
+![Article Illustration](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80)
+
 "SVG를 써야 할까요, PNG를 써야 할까요?" — 디자이너와 개발자 모두가 직면하는 질문입니다.
 
 대답은 흑백이 아닙니다. 각 형식마다 최적의 사용 사례가 있습니다.

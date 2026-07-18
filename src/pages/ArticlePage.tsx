@@ -7,6 +7,8 @@ import remarkGfm from 'remark-gfm'
 import { articles, getTagLabel } from '@/data/articles'
 import { cn } from '@/utils'
 import PageSEO from '@/components/PageSEO'
+import { AdSenseUnit } from '@/components/AdSenseUnit'
+import { DEFAULT_LANGUAGE } from '@/locales/config'
 
 export default function ArticlePage() {
   const { t, i18n } = useTranslation()
@@ -33,7 +35,7 @@ export default function ArticlePage() {
       <div className="text-center">
         <p className="text-xl font-bold text-primary mb-2">404</p>
         <p className="text-secondary">{t('common.resources.notFound')}</p>
-        <Link to="/resources" className="text-orange text-sm mt-4 inline-block hover:underline"><ArrowLeft size={14} className="inline mr-1" />{t('common.resources.back')}</Link>
+        <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} className="text-orange text-sm mt-4 inline-block hover:underline"><ArrowLeft size={14} className="inline mr-1" />{t('common.resources.back')}</Link>
       </div>
     </div>
   )
@@ -57,7 +59,7 @@ export default function ArticlePage() {
     <div className="flex-1 flex items-center justify-center bg-bg-base">
       <div className="text-center">
         <p className="text-xl font-bold text-primary mb-2">{t('common.resources.loadFail')}</p>
-        <Link to="/resources" className="text-orange text-sm hover:underline">�?{t('common.resources.back')}</Link>
+        <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} className="text-orange text-sm hover:underline"><ArrowLeft size={14} className="inline mr-1" />{t('common.resources.back')}</Link>
       </div>
     </div>
   )
@@ -67,7 +69,7 @@ export default function ArticlePage() {
       <PageSEO seoKey={article.slug} />
       <div className="flex flex-col h-[100dvh] bg-bg-base overflow-hidden">
         <header className="h-14 flex items-center px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-10">
-          <Link to="/resources" className="flex items-center gap-2 text-secondary hover:text-primary transition-colors">
+          <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} className="flex items-center gap-2 text-secondary hover:text-primary transition-colors">
             <ArrowLeft size={20} />
             <span className="font-bold text-sm">{t('common.resources.back')}</span>
           </Link>
@@ -104,7 +106,10 @@ export default function ArticlePage() {
           </article>
 
           <div className="mt-12 pt-8 border-t border-border">
-            <Link to="/resources" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-bold text-sm hover:opacity-90 transition-all shadow-sm">
+            <div className="mb-8">
+              <AdSenseUnit adSlot="2586065619" />
+            </div>
+            <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-bold text-sm hover:opacity-90 transition-all shadow-sm">
               <ArrowLeft size={16} />{t('common.resources.browse')}
             </Link>
           </div>

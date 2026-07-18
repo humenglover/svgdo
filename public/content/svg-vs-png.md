@@ -2,6 +2,8 @@
 
 ## Vector vs Raster: This Debate Shouldn't Exist
 
+![Article Illustration](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80)
+
 "Should I use SVG or PNG?" — a question every designer and developer asks.
 
 The answer isn't black and white. Each format has its ideal use case. This article helps you decide from a practical standpoint.

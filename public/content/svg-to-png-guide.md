@@ -2,6 +2,8 @@
 
 ## Why Convert SVG to PNG?
 
+![Article Illustration](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80)
+
 SVG is great, but it's not the right format for every scenario. Here's when you need PNG:
 
 - **Email signatures**: Most email clients don't support SVG

@@ -2,6 +2,8 @@
 
 ## Why Embedding Method Matters
 
+![Article Illustration](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80)
+
 The same SVG icon can behave completely differently depending on how you embed it.
 
 Use an `<img>` tag and it's simple, but you can't change its color. Use inline SVG and you have full control, but your HTML gets bloated. Every approach has trade-offs.

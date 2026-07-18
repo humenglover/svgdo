@@ -2,8 +2,9 @@ import { SITE_NAME } from '@/constants/site'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { articles } from '@/data/articles'
-import { LANGUAGES } from '@/locales/config'
+import { LANGUAGES, DEFAULT_LANGUAGE } from '@/locales/config'
 import { getLanguageByCode } from '@/locales/i18n'
+import { useLocation } from 'react-router-dom'
 
 const SITE_URL = typeof window !== 'undefined' ? window.location.origin : 'https://svgdo.com'
 const OG_IMAGE = `${SITE_URL}/og-image.png`
@@ -13,12 +14,25 @@ interface Props { seoKey?: string }
 export default function PageSEO({ seoKey }: Props) {
   const { t, i18n } = useTranslation()
   const lang = getLanguageByCode(i18n.language) || LANGUAGES[0]
+  const location = useLocation()
 
   let title: string, description: string, keywords: string[]
 
   if (seoKey === 'resources') {
     title = t('common.resources.seoTitle')
     description = t('common.resources.desc')
+    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+  } else if (seoKey === 'about') {
+    title = t('pages.about.title', 'About') + ' - SVGDO'
+    description = t('pages.about.subtitle', 'About SVGDO')
+    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+  } else if (seoKey === 'privacy') {
+    title = t('pages.privacy.title', 'Privacy Policy') + ' - SVGDO'
+    description = t('pages.privacy.lastUpdated', 'Privacy Policy')
+    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+  } else if (seoKey === 'terms') {
+    title = t('pages.terms.title', 'Terms of Service') + ' - SVGDO'
+    description = t('pages.terms.lastUpdated', 'Terms of Service')
     keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
   } else if (seoKey && articles.find(a => a.slug === seoKey)) {
     const article = articles.find(a => a.slug === seoKey)!
@@ -31,7 +45,13 @@ export default function PageSEO({ seoKey }: Props) {
     keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
   }
 
-  const canonicalUrl = seoKey ? `${SITE_URL}/resources/${seoKey}` : `${SITE_URL}/`
+  const parts = location.pathname.split('/').filter(Boolean)
+  const hasLangPrefix = LANGUAGES.some(l => l.code === parts[0])
+  const pathWithoutLang = hasLangPrefix ? '/' + parts.slice(1).join('/') : location.pathname
+  // Normalize trailing slash
+  const cleanPath = pathWithoutLang === '/' ? '' : (pathWithoutLang.endsWith('/') ? pathWithoutLang.slice(0, -1) : pathWithoutLang)
+
+  const canonicalUrl = `${SITE_URL}${i18n.language === DEFAULT_LANGUAGE ? cleanPath : `/${i18n.language}${cleanPath}`}`
 
   const jsonLd = seoKey && seoKey !== 'resources' ? {
     '@context': 'https://schema.org',
@@ -59,9 +79,9 @@ export default function PageSEO({ seoKey }: Props) {
 
       {/* Hreflang alternates for all supported languages */}
       {LANGUAGES.map(l => (
-        <link key={l.code} rel="alternate" hrefLang={l.code} href={`${SITE_URL}/`} />
+        <link key={l.code} rel="alternate" hrefLang={l.code} href={`${SITE_URL}${l.code === DEFAULT_LANGUAGE ? cleanPath : `/${l.code}${cleanPath}`}`} />
       ))}
-      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />
+      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}${cleanPath}`} />
 
       {/* Open Graph */}
       <meta property="og:type" content={seoKey && seoKey !== 'resources' ? 'article' : 'website'} />

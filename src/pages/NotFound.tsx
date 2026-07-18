@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ArrowLeft, FileQuestion } from 'lucide-react'
+import { DEFAULT_LANGUAGE } from '@/locales/config'
 
 export default function NotFound() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center p-8 text-center min-h-[60vh] bg-bg-base">
@@ -20,7 +21,7 @@ export default function NotFound() {
       </p>
 
       <Link
-        to="/"
+        to={i18n.language === DEFAULT_LANGUAGE ? '/' : `/${i18n.language}/`}
         className="flex items-center gap-2 px-6 py-3 bg-orange hover:bg-orange/90 text-white font-bold rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
       >
         <ArrowLeft size={18} />

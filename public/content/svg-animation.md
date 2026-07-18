@@ -2,6 +2,8 @@
 
 ## SVG Is Not Just Static
 
+![Article Illustration](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80)
+
 Most people think of SVG as "a PNG that doesn't blur." But SVG can move.
 
 With CSS animation, you can make an icon spin, change color, bounce, or morph — no GIF or video required. Just a few lines of CSS.

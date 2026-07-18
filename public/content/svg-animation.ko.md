@@ -2,6 +2,8 @@
 
 ## SVG는 정적 이미지가 아닙니다
 
+![Article Illustration](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80)
+
 대부분의 사람들은 SVG를 "깨지지 않는 PNG"라고 생각합니다. 하지만 SVG는 움직일 수 있습니다.
 
 CSS 애니메이션으로 아이콘을 회전시키고, 색을 바꾸고, 바운스시키고, 변형시킬 수 있습니다 — GIF나 비디오 없이 몇 줄의 CSS만으로 가능합니다.

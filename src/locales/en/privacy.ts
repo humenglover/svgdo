@@ -1,58 +1,84 @@
 export default {
-  title: 'Privacy Policy',
-  back: 'Back to Home',
-  intro: "Thank you for entrusting SVGViewer with your SVGs and your personal information. Holding onto your private information is a serious responsibility, and we want you to know how we're handling it.",
-  sections: [
+  "title": "Privacy Policy",
+  "back": "Back to Home",
+  "lastUpdated": "Last Updated: July 2026",
+  "intro": "At SVGDO, your privacy and data security are our highest priorities. Because our tools are designed to run entirely within your local web browser, we naturally collect far less information than traditional cloud-based platforms. This Privacy Policy outlines what minimal information is collected, how it is used, and your rights.",
+  "sections": [
     {
-      title: 'What information SVGViewer collects and why',
-      subsections: [
+      "title": "1. Local Processing & File Security",
+      "subsections": [
         {
-          title: 'Information from website browsers',
-          paragraphs: [
-            "If you're just browsing the website, we collect the same basic information that most websites collect. We use common internet technologies, such as cookies and web server logs.",
-            "The information we collect about all visitors to our website includes the visitor’s browser type, language preference, referring site, additional websites requested, and the date and time of each visitor request. We also collect potentially personally-identifying information like Internet Protocol (IP) addresses."
+          "title": "Zero Cloud Storage",
+          "paragraphs": [
+            "When you upload, edit, or compress an SVG file on our website, the entire process happens within your computer's RAM using your browser's native capabilities. Your files are never transmitted to, uploaded to, or stored on any remote SVGDO servers."
           ]
         },
         {
-          title: 'Why do we collect this?',
-          paragraphs: [
-            "We collect this information to better understand how our website visitors use SVGViewer, and to monitor and protect the security of the website."
+          "title": "Confidentiality of Designs",
+          "paragraphs": [
+            "Because we cannot access your files, you can safely use our tool for proprietary, confidential, or sensitive commercial assets without fear of data breaches or leaks from our end."
           ]
         }
       ]
     },
     {
-      title: 'What information SVGViewer does not collect',
-      subsections: [
+      "title": "2. Information We Do Collect",
+      "subsections": [
         {
-          title: '',
-          paragraphs: [
-            "We do not intentionally collect sensitive personal information, such as social security numbers, genetic data, health information, or religious information. Although SVGViewer does not request or intentionally collect any sensitive personal information, we realize that you might store this kind of information in your account, such as in a SVG. If you store any sensitive personal information on our servers, you are consenting to our storage of that information on our servers, which are in the United States.",
-            "We do not intentionally collect information that is stored in your SVGs or other free-form content inputs. Information in your SVGs belongs to you, and you are responsible for it, as well as for making sure that your content complies with our Terms of Service.",
-            "If your SVG is public, anyone (including us) may view its contents. If you have included private or sensitive information in your public SVG, such as email addresses, that information may be indexed by search engines or used by third parties. In addition, while we do not generally search for content in your SVGs, we may scan our servers for certain tokens or security signatures."
+          "title": "Analytics and Telemetry",
+          "paragraphs": [
+            "To understand how our tool is used and to improve its functionality, we collect anonymous, aggregated usage data. This may include metrics such as browser type, device type, general geographic region, and interaction events (e.g., clicking \"Optimize\" or \"Export PNG\")."
+          ]
+        },
+        {
+          "title": "Error Logging",
+          "paragraphs": [
+            "If the application crashes or encounters a syntax error, we may automatically log anonymous error reports to help our developers fix bugs. These logs do not contain your SVG data."
           ]
         }
       ]
     },
     {
-      title: 'Our use of cookies and tracking',
-      subsections: [
+      "title": "3. Cookies and Advertising (Google AdSense)",
+      "subsections": [
         {
-          title: 'Cookies',
-          paragraphs: [
-            "SVGViewer uses cookies to make interactions with our service easy and meaningful. We use cookies (and similar technologies, like HTML5 localStorage) to keep you logged in, remember your preferences, and provide information for future development of SVGViewer."
+          "title": "Advertising Providers",
+          "paragraphs": [
+            "We use third-party advertising companies, including Google AdSense, to serve ads when you visit our website. These companies may use information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you."
+          ]
+        },
+        {
+          "title": "DoubleClick Cookie",
+          "paragraphs": [
+            "Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DoubleClick cookie enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet."
+          ]
+        },
+        {
+          "title": "Opt-out",
+          "paragraphs": [
+            "Users may opt out of the use of the DoubleClick cookie for interest-based advertising by visiting the Google Ads Settings page or the aboutads.info opt-out page."
           ]
         }
       ]
     },
     {
-      title: 'How SVGViewer secures your information',
-      subsections: [
+      "title": "4. GDPR and CCPA Compliance",
+      "subsections": [
         {
-          title: '',
-          paragraphs: [
-            "SVGViewer takes all measures reasonably necessary to protect user information from unauthorized access, alteration, or destruction; maintain data accuracy; and help ensure the appropriate use of user information. We follow generally accepted industry standards to protect the personal information submitted to us, both during transmission and once we receive it.",
-            "No method of transmission, or method of electronic storage, is 100% secure. Therefore, we cannot guarantee its absolute security."
+          "title": "Data Subject Rights",
+          "paragraphs": [
+            "If you are a resident of the EEA or California, you have the right to access, correct, or delete any personal data we hold. Since we only hold anonymous analytics data and cookies, you can manage your preferences directly through your browser's cookie settings or via the Consent Management Platform (CMP) banner presented upon your first visit."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. Contact Us",
+      "subsections": [
+        {
+          "title": "",
+          "paragraphs": [
+            "If you have any questions or concerns about this Privacy Policy, please contact our Data Protection Officer at: shengqiangwang666@gmail.com"
           ]
         }
       ]

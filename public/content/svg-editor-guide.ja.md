@@ -2,6 +2,8 @@
 
 ## オンラインSVGエディタへようこそ
 
+![Article Illustration](https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80)
+
 デザイナー、フロントエンド開発者、SVG初心者を問わず、この記事でエディタの全機能をゼロからマスターできます。
 
 ---

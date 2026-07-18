@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Search, ArrowRight, Calendar, Tag, ArrowUpDown, Check, FileText, ArrowLeft } from 'lucide-react'
 import { articles, getTagLabel } from '@/data/articles'
 import PageSEO from '@/components/PageSEO'
+import { DEFAULT_LANGUAGE } from '@/locales/config'
 
 type SortMode = 'date-desc' | 'date-asc' | 'title'
 
@@ -52,7 +53,7 @@ export default function Resources() {
       <PageSEO seoKey="resources" />
       <div className="flex flex-col h-[100dvh] bg-bg-base overflow-hidden">
         <header className="h-14 flex items-center px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-10">
-          <Link to="/" className="flex items-center gap-2 text-secondary hover:text-primary transition-colors">
+          <Link to={i18n.language === DEFAULT_LANGUAGE ? '/' : `/${i18n.language}/`} className="flex items-center gap-2 text-secondary hover:text-primary transition-colors">
             <ArrowLeft size={20} />
             <span className="font-bold text-sm">{t('common.nav.backToHome')}</span>
           </Link>
@@ -130,7 +131,7 @@ export default function Resources() {
             {filtered.map((article, i) => (
               <Link
                 key={article.slug}
-                to={`/resources/${article.slug}`}
+                to={i18n.language === DEFAULT_LANGUAGE ? `/resources/${article.slug}` : `/${i18n.language}/resources/${article.slug}`}
                 className="group flex flex-col p-5 sm:p-6 rounded-[20px] transition-all duration-500 bg-white dark:bg-bg-surface border border-border hover:-translate-y-1.5 hover:shadow-[0_16px_32px_rgba(0,0,0,0.06)] hover:border-orange/30"
                 style={{ animationDelay: `${i * 60}ms`, animation: 'fadeInUp 0.4s ease-out both' }}
               >

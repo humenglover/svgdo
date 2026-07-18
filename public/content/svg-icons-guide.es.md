@@ -2,6 +2,8 @@
 
 ## Por qué importa un buen diseño de iconos
 
+![Article Illustration](https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80)
+
 Los iconos son el "lenguaje silencioso" de las interfaces. Un buen conjunto de iconos hace que un producto se vea profesional y confiable.
 
 ---

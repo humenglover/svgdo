@@ -2,6 +2,8 @@
 
 ## SVG Is Not an Image
 
+![Article Illustration](https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80)
+
 Too many people treat SVG as an image, dropping it into an img tag and calling it a day. But an SVG inside an img is dead. You can't access its elements, let alone attach a click handler to a path. To bring an SVG to life, you need it inline in the HTML.
 
 Once inline, every SVG element is a real DOM node. You can querySelector it, addEventListener on it, setAttribute on it. That's your foundation for interaction.

@@ -1,12 +1,42 @@
 import { useState } from 'react'
 import { Globe, ChevronDown } from 'lucide-react'
 import i18n from '@/locales/i18n'
-import { LANGUAGES } from '@/locales/config'
+import { LANGUAGES, DEFAULT_LANGUAGE } from '@/locales/config'
 import { getLanguageByCode } from '@/locales/i18n'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export function LanguageDropdown() {
   const [open, setOpen] = useState(false)
   const current = getLanguageByCode(i18n.language) || LANGUAGES[0]
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const switchLanguage = (langCode: string) => {
+    i18n.changeLanguage(langCode)
+    localStorage.setItem('lang', langCode)
+    
+    const parts = location.pathname.split('/').filter(Boolean)
+    const firstPart = parts[0]
+    const hasLangPrefix = LANGUAGES.some(l => l.code === firstPart)
+    
+    let newPathname = ''
+    if (hasLangPrefix) {
+      if (langCode === DEFAULT_LANGUAGE) {
+        newPathname = '/' + parts.slice(1).join('/')
+      } else {
+        newPathname = '/' + [langCode, ...parts.slice(1)].join('/')
+      }
+    } else {
+      if (langCode === DEFAULT_LANGUAGE) {
+        newPathname = location.pathname
+      } else {
+        newPathname = '/' + [langCode, ...parts].join('/')
+      }
+    }
+    
+    navigate(newPathname + location.search + location.hash)
+    setOpen(false)
+  }
 
   return (
     <div className="relative">
@@ -25,11 +55,7 @@ export function LanguageDropdown() {
             {LANGUAGES.map(lang => (
               <button
                 key={lang.code}
-                onClick={() => {
-                  i18n.changeLanguage(lang.code)
-                  localStorage.setItem('lang', lang.code)
-                  setOpen(false)
-                }}
+                onClick={() => switchLanguage(lang.code)}
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors hover:bg-bg-subtle ${i18n.language === lang.code ? 'text-blue bg-blue/5' : 'text-secondary'
                   }`}
               >

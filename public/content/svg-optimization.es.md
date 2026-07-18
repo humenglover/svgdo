@@ -2,6 +2,8 @@
 
 ## ¿Por qué tu SVG es tan grande?
 
+![Article Illustration](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80)
+
 ¿Alguna vez exportaste un icono simple de Figma o Illustrator y terminaste con un archivo de decenas de KB?
 
 El problema no es tu diseño — es **la hinchazón que las herramientas de diseño inyectan en los SVG exportados**. Figma añade IDs de componente y metadatos. Illustrator escribe números de punto flotante ultra-precisos (6+ decimales) en cada trazado.

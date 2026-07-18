@@ -2,6 +2,8 @@
 
 ## 임베딩 방법이 중요한 이유
 
+![Article Illustration](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80)
+
 동일한 SVG 아이콘이라도 웹페이지에 임베딩하는 방법에 따라 완전히 다르게 동작합니다.
 
 ---

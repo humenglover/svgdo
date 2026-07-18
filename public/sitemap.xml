@@ -4,133 +4,661 @@
   <url>
     <loc>https://svgdo.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/about</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/about"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/privacy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/privacy"/>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/privacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/privacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/privacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/privacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-basics</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-basics"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-basics"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-basics"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-basics"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-basics"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-basics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-basics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-basics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-basics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-basics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-basics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-basics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-basics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-basics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-vs-png</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-vs-png"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-vs-png"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-vs-png"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-vs-png"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-vs-png"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-vs-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-vs-png"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-vs-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-vs-png"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-vs-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-vs-png"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-vs-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-vs-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-vs-png"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-optimization</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-optimization"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-optimization"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-optimization"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-optimization"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-optimization"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-optimization</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-optimization"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-optimization</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-optimization"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-optimization</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-optimization"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-optimization</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-optimization"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-optimization"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-animation</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-animation"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-animation"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-animation"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-animation"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-animation"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-animation</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-animation"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-animation</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-animation"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-animation</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-animation"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-animation</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-animation"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-animation"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-icons-guide</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-icons-guide"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-icons-guide"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-icons-guide"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-icons-guide"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-icons-guide"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-icons-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-icons-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-icons-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-icons-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-icons-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-icons-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-icons-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-icons-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-icons-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-in-web</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-in-web"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-in-web"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-in-web"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-in-web"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-in-web"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-in-web</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-in-web"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-in-web</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-in-web"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-in-web</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-in-web"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-in-web</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-in-web"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-in-web"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-editor-guide</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-editor-guide"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-editor-guide"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-editor-guide"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-editor-guide"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-editor-guide"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-editor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-editor-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-editor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-editor-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-editor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-editor-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-editor-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-editor-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-editor-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
   <url>
     <loc>https://svgdo.com/resources/svg-to-png-guide</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-to-png-guide"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/resources/svg-to-png-guide"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/resources/svg-to-png-guide"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/resources/svg-to-png-guide"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-to-png-guide"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/zh/resources/svg-to-png-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-to-png-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ja/resources/svg-to-png-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-to-png-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/ko/resources/svg-to-png-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-to-png-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://svgdo.com/es/resources/svg-to-png-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svgdo.com/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://svgdo.com/zh/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://svgdo.com/ja/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://svgdo.com/ko/resources/svg-to-png-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://svgdo.com/es/resources/svg-to-png-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-18</lastmod>
   </url>
 </urlset>

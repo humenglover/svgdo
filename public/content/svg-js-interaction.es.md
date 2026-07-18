@@ -2,6 +2,8 @@
 
 ## SVG no es una imagen
 
+![Article Illustration](https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80)
+
 Mucha gente trata el SVG como una imagen, lo mete en una etiqueta img y se olvida. Pero un SVG dentro de un img está muerto. No puedes acceder a sus elementos internos, y menos aún asignar un evento de clic a un path. Para darle vida, necesitas incluirlo en línea en el HTML.
 
 Una vez en línea, cada elemento SVG es un nodo DOM real. Puedes seleccionarlo con querySelector, agregarle eventos con addEventListener y modificar sus atributos con setAttribute. Esa es la base.

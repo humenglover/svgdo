@@ -2,6 +2,8 @@
 
 ## 什么是 SVG？
 
+![Article Illustration](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80)
+
 SVG 全称是 **Scalable Vector Graphics**，中文叫"可缩放矢量图形"。
 
 和 PNG、JPEG 这些"位图"不同，SVG 不是用像素拼出来的画面。它是用数学公式描述图形的——一个圆是"圆心在 (100, 100)，半径 50"，一条线是"从 A 点画到 B 点"。

@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect, useMemo, lazy, Suspense } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, Outlet, useParams, useLocation, useNavigate, useBlocker } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import AboutPage from './pages/AboutPage'
+import TermsOfService from './pages/TermsOfService'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 const Resources = lazy(() => import('./pages/Resources'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+import { CookieConsent } from '@/components/CookieConsent'
 import { ExportPanel } from '@/components/ExportPanel'
 import { useDropzone } from 'react-dropzone'
 import Editor from 'react-simple-code-editor'
@@ -38,9 +40,42 @@ type ViewMode = 'split' | 'preview' | 'code'
 
 import { FALLBACK_ICONS } from '@/constants/icons'
 import { LanguageDropdown } from '@/components/LanguageDropdown'
-import { getLanguageByCode } from '@/locales/i18n'
+import { getLanguageByCode, getDefaultLanguage } from '@/locales/i18n'
+import { LANGUAGES, DEFAULT_LANGUAGE } from '@/locales/config'
 
+let hasCheckedDefaultLanguage = false;
 
+function LanguageSync() {
+  const { lang } = useParams<{ lang: string }>()
+  const navigate = useNavigate()
+  const location = useLocation()
+  
+  useEffect(() => {
+    if (lang && LANGUAGES.some(l => l.code === lang)) {
+      if (i18n.language !== lang) {
+        i18n.changeLanguage(lang)
+        localStorage.setItem('lang', lang)
+      }
+    } else if (!lang) {
+      if (!hasCheckedDefaultLanguage) {
+        hasCheckedDefaultLanguage = true;
+        const preferred = getDefaultLanguage()
+        if (preferred !== DEFAULT_LANGUAGE) {
+          // Redirect to the language-prefixed version on first load only
+          const newPath = `/${preferred}${location.pathname === '/' ? '' : location.pathname}`
+          navigate(newPath + location.search + location.hash, { replace: true })
+          return;
+        }
+      }
+      
+      if (i18n.language !== DEFAULT_LANGUAGE) {
+        i18n.changeLanguage(DEFAULT_LANGUAGE)
+      }
+    }
+  }, [lang, location.pathname, navigate])
+  
+  return <Outlet />
+}
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t } = useTranslation()
@@ -127,6 +162,26 @@ function EditorPage() {
       })
       .catch(() => { /* use fallback */ })
   }, [])
+
+  // Prevent accidental exit if there is unsaved work in the workspace (Browser reload/close)
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (svgCode && svgCode.trim().length > 0) {
+        e.preventDefault();
+        e.returnValue = ''; // Required for most browsers to show the prompt
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [svgCode])
+
+  // Prevent accidental client-side navigation (React Router links/back button)
+  const blocker = useBlocker(
+    ({ currentLocation, nextLocation }) =>
+      svgCode !== undefined && svgCode.trim().length > 0 &&
+      currentLocation.pathname !== nextLocation.pathname
+  );
 
   // Curated quick-start icons — first one is the site logo
   const QUICK_START_ICONS = [
@@ -832,9 +887,10 @@ function EditorPage() {
           <FullLogo iconClassName="w-7 h-7 md:w-8 md:h-8" textClassName="h-[30px] md:h-[34px]" />
           <div className="flex items-center gap-2 md:gap-4">
             <div className="hidden md:flex items-center gap-6">
-              <Link to="/about" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.about')}</Link>
-              <Link to="/resources" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.help')}</Link>
-              <Link to="/privacy" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.privacy')}</Link>
+              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/about' : `/${i18n.language}/about`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.about')}</Link>
+              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.help')}</Link>
+              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/privacy' : `/${i18n.language}/privacy`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.privacy')}</Link>
+              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/terms' : `/${i18n.language}/terms`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.terms')}</Link>
             </div>
             <div className="hidden md:block w-px h-4 bg-border mx-2"></div>
             <div className="hidden md:flex items-center gap-1">
@@ -934,7 +990,13 @@ function EditorPage() {
 
                         // 拦截: 如果点击的是图形内部，禁止拖动画布
                         const target = e.target as HTMLElement
-                        const el = target.closest('[data-editor-id]') as HTMLElement | null
+                        
+                        // 优先选择包裹的 group，避免把 icon 的碎片拆散
+                        let el = target.closest('g[data-editor-id]') as HTMLElement | null
+                        if (!el) {
+                          el = target.closest('[data-editor-id]') as HTMLElement | null
+                        }
+                        
                         if (el) {
                           lastPanPos.current = null;
 
@@ -1124,27 +1186,18 @@ function EditorPage() {
                         const target = e.target as HTMLElement
                         if (target.closest('#selection-box-overlay')) return;
 
-                        const el = target.closest('[data-editor-id]') as HTMLElement | null
+                        // 优先选择包裹的 group，避免选中极小的碎片
+                        let el = target.closest('g[data-editor-id]') as HTMLElement | null
+                        if (!el) {
+                          el = target.closest('[data-editor-id]') as HTMLElement | null
+                        }
+
                         if (el) {
                           const id = el.getAttribute('data-editor-id')!
                           const info = allElements.find(e => e.id === id)
                           if (info) setSelectedElement(info)
                         } else {
-                          const x = e.clientX;
-                          const y = e.clientY;
-                          const elements = Array.from(document.querySelectorAll('[data-editor-id]')).reverse();
-                          const found = elements.find(node => {
-                            const rect = node.getBoundingClientRect();
-                            return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
-                          });
-
-                          if (found) {
-                            const id = found.getAttribute('data-editor-id')!
-                            const info = allElements.find(e => e.id === id)
-                            if (info) setSelectedElement(info)
-                            return;
-                          }
-
+                          // 点击到空白区域，取消选择
                           setSelectedElement(null)
                         }
                       }}
@@ -1167,7 +1220,51 @@ function EditorPage() {
                             height: selectionBox.h,
                           }}
                         >
-                          <div className="absolute inset-0 pointer-events-none" />
+                          <div 
+                            className="absolute inset-0 pointer-events-auto" 
+                            style={{ cursor: 'move' }}
+                            onPointerDown={(e) => {
+                              e.stopPropagation();
+                              if (isPinching.current) return;
+                              mouseDownPos.current = { x: e.clientX, y: e.clientY };
+                              
+                              if (selectedElement) {
+                                const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as HTMLElement | null;
+                                if (el) {
+                                  lastPanPos.current = null;
+                                  
+                                  const svgEl = (el as any).ownerSVGElement as SVGSVGElement | undefined;
+                                  if (!svgEl) return;
+
+                                  let parentCTM = svgEl.getScreenCTM();
+                                  const parent = el.parentNode as SVGGraphicsElement;
+                                  if (parent && parent.getScreenCTM) {
+                                    parentCTM = parent.getScreenCTM();
+                                  }
+
+                                  if (parentCTM) {
+                                    const pt = getMousePositionInSVG(e.clientX, e.clientY, svgEl, parentCTM);
+                                    let paddingX = 0; let paddingY = 0;
+                                    const ratio = getSvgScaleRatio(svgEl);
+                                    const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0;
+                                    if (strokeW > 0) {
+                                      paddingX = (strokeW * ratio.ratioX) / 2 || 0;
+                                      paddingY = (strokeW * ratio.ratioY) / 2 || 0;
+                                    }
+
+                                    elementDragState.current = {
+                                      id: selectedElement.id, el, svgEl, ctm: parentCTM,
+                                      startXInSVG: pt.x,
+                                      startYInSVG: pt.y,
+                                      lastDx: 0, lastDy: 0,
+                                      originalTransform: el.getAttribute('transform') || '',
+                                      paddingX, paddingY
+                                    };
+                                  }
+                                }
+                              }
+                            }}
+                          />
 
                           {/* 四条边拉伸控制柄 (边缘吸附区) */}
                           {['n', 's', 'w', 'e'].map(dir => (
@@ -1447,6 +1544,30 @@ function EditorPage() {
           </div>
         </div>
       )}
+      {/* SPA Navigation Blocker Modal */}
+      {blocker.state === 'blocked' && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-bg-surface border border-border shadow-2xl rounded-2xl max-w-sm w-full overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-primary mb-2">
+                {t('common.leaveWarningTitle')}
+              </h3>
+              <p className="text-secondary text-sm leading-relaxed mb-6">
+                {t('common.leaveWarningDesc')}
+              </p>
+              <div className="flex justify-end gap-3">
+                <button onClick={() => blocker.reset?.()} className="px-5 py-2.5 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl transition-colors">
+                  {t('common.cancel')}
+                </button>
+                <button onClick={() => blocker.proceed?.()} className="px-5 py-2.5 text-sm font-bold bg-red-500 hover:bg-red-600 text-white rounded-xl shadow-sm transition-colors">
+                  {t('common.leave')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Mobile Drawer */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 flex md:hidden">
@@ -1469,14 +1590,17 @@ function EditorPage() {
               </div>
 
               <div className="p-2 flex flex-col gap-1 border-t border-border">
-                <Link to="/about" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/about' : `/${i18n.language}/about`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   {t('common.nav.about')}
                 </Link>
-                <Link to="/resources" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   {t('common.nav.resources')}
                 </Link>
-                <Link to="/privacy" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/privacy' : `/${i18n.language}/privacy`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   {t('pages.privacy.title')}
+                </Link>
+                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/terms' : `/${i18n.language}/terms`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                  {t('common.nav.terms')}
                 </Link>
               </div>
             </div>
@@ -1499,13 +1623,27 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/" element={<EditorPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/resources/:slug" element={<ArticlePage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<LanguageSync />}>
+            <Route index element={<EditorPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="privacy" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<TermsOfService />} />
+            <Route path="resources" element={<Resources />} />
+            <Route path="resources/:slug" element={<ArticlePage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          
+          <Route path="/:lang" element={<LanguageSync />}>
+            <Route index element={<EditorPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="privacy" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<TermsOfService />} />
+            <Route path="resources" element={<Resources />} />
+            <Route path="resources/:slug" element={<ArticlePage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
+        <CookieConsent />
       </Suspense>
     </ErrorBoundary>
   )

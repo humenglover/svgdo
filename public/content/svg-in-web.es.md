@@ -2,6 +2,8 @@
 
 ## Por qué importa el método de incrustación
 
+![Article Illustration](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80)
+
 El mismo icono SVG puede comportarse de manera completamente diferente según cómo lo incrustes.
 
 ---
