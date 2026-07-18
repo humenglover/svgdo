@@ -204,7 +204,7 @@ function EditorPage() {
   ]
 
   const HOME_ICONS = [
-    'logo', 'smile', 'edit', 'monitor', 'database', 'flag', 'user', 'zap'
+    'logo', 'smile', 'edit', 'envelope', 'database', 'film', 'user', 'zap'
   ]
 
   const MAX_HISTORY = 200
