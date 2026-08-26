@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Search, ArrowRight, Calendar, Tag, ArrowUpDown, Check, FileText, ArrowLeft } from 'lucide-react'
 import { articles, getTagLabel } from '@/data/articles'
 import PageSEO from '@/components/PageSEO'
+import Navbar from '@/components/Navbar'
 import { DEFAULT_LANGUAGE } from '@/locales/config'
 
 type SortMode = 'date-desc' | 'date-asc' | 'title'
@@ -15,6 +16,8 @@ export default function Resources() {
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<SortMode>('date-desc')
   const [sortOpen, setSortOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const ITEMS_PER_PAGE = 9
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>()
@@ -42,6 +45,18 @@ export default function Resources() {
     return result
   }, [search, activeTag, sortBy, lang])
 
+  // Reset page when filters change
+  useMemo(() => {
+    setCurrentPage(1)
+  }, [search, activeTag, sortBy])
+
+  const paginated = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE
+    return filtered.slice(start, start + ITEMS_PER_PAGE)
+  }, [filtered, currentPage])
+  
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE)
+
   const sortOptions: { value: SortMode; label: string }[] = [
     { value: 'date-desc', label: t('common.resources.sortDateDesc') },
     { value: 'date-asc', label: t('common.resources.sortDateAsc') },
@@ -51,14 +66,9 @@ export default function Resources() {
   return (
     <>
       <PageSEO seoKey="resources" />
-      <div className="flex flex-col h-[100dvh] bg-bg-base overflow-hidden">
-        <header className="h-14 flex items-center px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-10">
-          <Link to={i18n.language === DEFAULT_LANGUAGE ? '/' : `/${i18n.language}/`} className="flex items-center gap-2 text-secondary hover:text-primary transition-colors">
-            <ArrowLeft size={20} />
-            <span className="font-bold text-sm">{t('common.nav.backToHome')}</span>
-          </Link>
-        </header>
-        <div className="flex-1 min-h-0 overflow-y-auto">
+      <div className="flex flex-col min-h-[100dvh] bg-bg-base">
+        <Navbar />
+        <div className="flex-1">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
           {/* Hero */}
           <div className="text-center mb-6 sm:mb-8">
@@ -128,7 +138,7 @@ export default function Resources() {
 
           {/* Article cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-            {filtered.map((article, i) => (
+            {paginated.map((article, i) => (
               <Link
                 key={article.slug}
                 to={i18n.language === DEFAULT_LANGUAGE ? `/resources/${article.slug}` : `/${i18n.language}/resources/${article.slug}`}
@@ -152,6 +162,41 @@ export default function Resources() {
               </Link>
             ))}
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-12 mb-8">
+              <button
+                disabled={currentPage === 1}
+                onClick={() => { setCurrentPage(p => p - 1); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                className="p-2 rounded-lg border border-border bg-white dark:bg-bg-surface text-secondary hover:text-primary hover:border-orange/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <ArrowLeft size={18} />
+              </button>
+              <div className="flex items-center gap-1.5 mx-2">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setCurrentPage(i + 1); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                    className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-bold transition-colors ${
+                      currentPage === i + 1 
+                        ? 'bg-orange text-white shadow-sm' 
+                        : 'bg-white dark:bg-bg-surface border border-border text-secondary hover:text-primary hover:border-orange/50'
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => { setCurrentPage(p => p + 1); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                className="p-2 rounded-lg border border-border bg-white dark:bg-bg-surface text-secondary hover:text-primary hover:border-orange/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <ArrowRight size={18} />
+              </button>
+            </div>
+          )}
 
           {filtered.length === 0 && (
             <div className="text-center py-16 text-secondary">

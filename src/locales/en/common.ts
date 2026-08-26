@@ -38,6 +38,6 @@ export default {
     desc: 'Learn SVG editing, optimization, animation, and best practices.',
     search: 'Search articles...', read: 'Read more', empty: 'No articles found', all: 'All',
     sortLabel: 'Sort', sortDateDesc: 'Newest first', sortDateAsc: 'Oldest first', sortTitle: 'Title A–Z',
-    back: 'Back to Help Center', browse: 'Browse more articles', notFound: 'Article not found', loadFail: 'Failed to load', approxRead: '~5 min read',
+    back: 'Back to Help Center', browse: 'Browse more articles', notFound: 'Article not found', loadFail: 'Failed to load', approxRead: '~5 min read', backToTop: 'Back to Top',
   },
 }

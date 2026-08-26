@@ -55,6 +55,7 @@ export function RevealSection({
 }
 
 import PageSEO from "@/components/PageSEO"
+import Navbar from "@/components/Navbar"
 
 export default function AboutPage() {
   const { t, i18n } = useTranslation()
@@ -63,15 +64,7 @@ export default function AboutPage() {
     <div className="flex flex-col h-[100dvh] bg-bg-base transition-colors duration-300 selection:bg-orange/30 overflow-hidden">
       <PageSEO seoKey="about" />
 
-      {/* ------------------------------
-          HEADER (Back Button)
-      ------------------------------ */}
-      <header className="h-14 flex items-center px-4 md:px-8 border-b border-border bg-bg-surface shrink-0 z-50">
-        <Link to={i18n.language === DEFAULT_LANGUAGE ? '/' : `/${i18n.language}/`} className="flex items-center gap-2 text-secondary hover:text-primary transition-colors bg-bg-subtle/50 px-3 py-1.5 rounded-lg border border-border/50">
-          <ArrowLeft size={16} />
-          <span className="font-bold text-sm">{t('common.nav.backToHome', '返回主页')}</span>
-        </Link>
-      </header>
+      <Navbar />
 
       {/* Scrollable Container */}
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden relative">

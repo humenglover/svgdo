@@ -34,6 +34,6 @@ export default {
     desc: 'SVG 편집, 최적화, 애니메이션 및 모범 사례를 배우세요.',
     search: '글 검색...', read: '더 읽기', empty: '글이 없습니다', all: '전체',
     sortLabel: '정렬', sortDateDesc: '최신순', sortDateAsc: '오래된순', sortTitle: '제목 A–Z',
-    back: '도움말 센터로', browse: '더 보기', notFound: '글을 찾을 수 없습니다', loadFail: '로드 실패', approxRead: '약 5분 소요',
+    back: '도움말 센터로', browse: '더 보기', notFound: '글을 찾을 수 없습니다', loadFail: '로드 실패', approxRead: '약 5분 소요', backToTop: '맨 위로',
   },
 }

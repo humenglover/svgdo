@@ -1,87 +1,121 @@
 export default {
   "title": "Privacy Policy",
   "back": "Back to Home",
-  "lastUpdated": "Last Updated: July 2026",
-  "intro": "At SVGDO, your privacy and data security are our highest priorities. Because our tools are designed to run entirely within your local web browser, we naturally collect far less information than traditional cloud-based platforms. This Privacy Policy outlines what minimal information is collected, how it is used, and your rights.",
+  "lastUpdated": "Last Updated: July 23, 2026",
+  "intro": "Welcome to SVGDO (\"the Service\", \"we\", \"our\", or \"us\"). At SVGDO, user privacy and data security are our top priorities. Because our tools operate using a pure client-side architecture, all image editing, processing, and exporting occur entirely within your local browser memory. This Privacy Policy details how we protect your privacy, what minimal anonymous information we collect, our third-party advertising (Google AdSense) mechanisms, and your legal rights.",
   "sections": [
     {
-      "title": "1. Local Processing & File Security",
+      "title": "1. Client-Side Local Processing & File Security",
       "subsections": [
         {
-          "title": "Zero Cloud Storage",
+          "title": "Zero Cloud Upload & Zero Server Retention",
           "paragraphs": [
-            "When you upload, edit, or compress an SVG file on our website, the entire process happens within your computer's RAM using your browser's native capabilities. Your files are never transmitted to, uploaded to, or stored on any remote SVGDO servers."
+            "When you load, edit, convert, or export SVG images and code on our site, the entire operation relies natively on your browser's JavaScript and WebGL/Canvas capabilities in your device's memory. Your SVG files and image assets are never transmitted, uploaded, analyzed, or stored on any external remote servers."
           ]
         },
         {
-          "title": "Confidentiality of Designs",
+          "title": "Commercial & Proprietary Asset Protection",
           "paragraphs": [
-            "Because we cannot access your files, you can safely use our tool for proprietary, confidential, or sensitive commercial assets without fear of data breaches or leaks from our end."
+            "Because our service is technically incapable of accessing or reading your image data, you can safely process proprietary vector graphics, unreleased design drafts, and trade secrets without concern for server data leaks or unauthorized AI model training."
           ]
         }
       ]
     },
     {
-      "title": "2. Information We Do Collect",
+      "title": "2. Information Collection & Usage",
       "subsections": [
         {
-          "title": "Analytics and Telemetry",
+          "title": "Non-Personally Identifiable Information (Non-PII)",
           "paragraphs": [
-            "To understand how our tool is used and to improve its functionality, we collect anonymous, aggregated usage data. This may include metrics such as browser type, device type, general geographic region, and interaction events (e.g., clicking \"Optimize\" or \"Export PNG\")."
+            "To ensure application stability and optimize user experience, we may collect minimal anonymous telemetry data. This may include browser type, device category, language preferences, access timestamps, and aggregated feature usage metrics (such as 'Optimize Export' button clicks). This data cannot identify you personally."
           ]
         },
         {
-          "title": "Error Logging",
+          "title": "Error Logs & Crash Analytics",
           "paragraphs": [
-            "If the application crashes or encounters a syntax error, we may automatically log anonymous error reports to help our developers fix bugs. These logs do not contain your SVG data."
+            "If the application encounters a runtime crash or script exception, your browser may automatically send an anonymous error diagnostic report. These reports contain only execution stack trace information and never contain your SVG content or personal identity data."
           ]
         }
       ]
     },
     {
-      "title": "3. Cookies and Advertising (Google AdSense)",
+      "title": "3. Cookies & Google AdSense Advertising Disclosures",
       "subsections": [
         {
-          "title": "Advertising Providers",
+          "title": "Third-Party Advertising Partners",
           "paragraphs": [
-            "We use third-party advertising companies, including Google AdSense, to serve ads when you visit our website. These companies may use information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you."
+            "To support free access and ongoing maintenance of our service, we partner with third-party advertising vendors (including Google AdSense). These vendors may use non-personally identifiable information during your visits to this and other websites to serve advertisements for goods and services of interest to you."
           ]
         },
         {
-          "title": "DoubleClick Cookie",
+          "title": "Google DoubleClick / DART Cookie Mechanism",
           "paragraphs": [
-            "Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DoubleClick cookie enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet."
+            "Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of DoubleClick or DART cookies enables it and its partners to serve personalized ads to users based on their historical visits to our site and/or other sites across the Internet."
           ]
         },
         {
-          "title": "Opt-out",
+          "title": "Personalized Ads Opt-out Pathways",
           "paragraphs": [
-            "Users may opt out of the use of the DoubleClick cookie for interest-based advertising by visiting the Google Ads Settings page or the aboutads.info opt-out page."
+            "Users may opt out of personalized advertising at any time by visiting Google's official Ads Settings page (https://adssettings.google.com/). You may also opt out of third-party vendor cookies for interest-based advertising by visiting aboutads.info (https://www.aboutads.info) or Your Online Choices (https://www.youronlinechoices.com/)."
           ]
         }
       ]
     },
     {
-      "title": "4. GDPR and CCPA Compliance",
+      "title": "4. Global Privacy Regulations & Data Subject Rights",
       "subsections": [
         {
-          "title": "Data Subject Rights",
+          "title": "EU GDPR & UK GDPR Privacy Rights",
           "paragraphs": [
-            "If you are a resident of the EEA or California, you have the right to access, correct, or delete any personal data we hold. Since we only hold anonymous analytics data and cookies, you can manage your preferences directly through your browser's cookie settings or via the Consent Management Platform (CMP) banner presented upon your first visit."
+            "If you reside in the European Economic Area (EEA) or the UK, under the GDPR you have rights to access, rectify, export, or request deletion of your personal data. Because we do not collect or store your personal identity data or image files, data modification requests naturally do not apply. You can manage cookie preferences via the Consent Management Platform (CMP) or browser settings."
+          ]
+        },
+        {
+          "title": "US California CCPA / CPRA Disclosures",
+          "paragraphs": [
+            "If you are a California resident, under the CCPA/CPRA you have the right to know what categories of data are collected and to opt out of the 'sale or sharing' of personal information. We explicitly declare: We never sell or rent any user personal information."
           ]
         }
       ]
     },
     {
-      "title": "5. Contact Us",
+      "title": "5. Children's Privacy & Data Retention",
       "subsections": [
         {
-          "title": "",
+          "title": "Protection of Minors",
           "paragraphs": [
-            "If you have any questions or concerns about this Privacy Policy, please contact our Data Protection Officer at: shengqiangwang666@gmail.com"
+            "Our service is not directed to minors or children under the age of 13 under applicable law. We do not knowingly collect personal data from children. If we discover inadvertent collection of children's data, we will delete it immediately."
+          ]
+        },
+        {
+          "title": "Data Retention Period",
+          "paragraphs": [
+            "Because your SVG files reside exclusively in your browser's temporary RAM, closing or refreshing your browser tab immediately purges the associated image memory. No server-side data retention exists."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. Changes to This Privacy Policy",
+      "subsections": [
+        {
+          "title": "Policy Revision Mechanism",
+          "paragraphs": [
+            "We may revise this Privacy Policy periodically to reflect technological updates, legal requirements, or operational changes. Any material revisions will be published on this page with an updated 'Last Updated' timestamp. We encourage you to review this page regularly."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "7. Contact Us",
+      "subsections": [
+        {
+          "title": "Data Protection & Privacy Contact",
+          "paragraphs": [
+            "If you have any questions, comments, or complaints regarding this Privacy Policy, cookie management, or data protection, please contact us via our sole official support email: shengqiangwang666@gmail.com"
           ]
         }
       ]
     }
   ]
-}
+};

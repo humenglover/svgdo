@@ -34,6 +34,7 @@ import { Languages } from 'lucide-react'
 import { ToolArticleBody } from '@/components/ToolArticleDialog'
 import { FullLogo } from '@/components/FullLogo'
 import PropertiesPanel from '@/components/PropertiesPanel'
+import Navbar from '@/components/Navbar'
 
 type MobileTab = 'canvas' | 'transform' | 'export' | 'properties'
 type ViewMode = 'split' | 'preview' | 'code'
@@ -74,7 +75,20 @@ function LanguageSync() {
     }
   }, [lang, location.pathname, navigate])
   
-  return <Outlet />
+  const isResourcesPage = location.pathname.match(/^\/([a-z]{2}\/)?resources\/?$/) !== null;
+  
+  return (
+    <>
+      <div style={{ display: isResourcesPage ? 'block' : 'none' }}>
+        <Suspense fallback={<PageLoader />}>
+          <Resources />
+        </Suspense>
+      </div>
+      <div style={{ display: isResourcesPage ? 'none' : 'block', height: '100%' }}>
+        <Outlet />
+      </div>
+    </>
+  )
 }
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -478,22 +492,23 @@ function EditorPage() {
         // 补偿描边宽度带来的视觉溢出
         const svgEl = el.ownerSVGElement
         if (svgEl) {
-          const ratio = getSvgScaleRatio(svgEl)
           const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0
           if (strokeW > 0) {
-            // 描边是中心对齐的，向外扩张一半线宽，然后乘以视图比例
-            const paddingX = (strokeW * ratio.ratioX) / 2 || 0
-            const paddingY = (strokeW * ratio.ratioY) / 2 || 0
-            if (!isNaN(paddingX) && !isNaN(paddingY)) {
-              x -= paddingX; y -= paddingY;
-              w += paddingX * 2; h += paddingY * 2;
+            const ctm = (el as SVGGraphicsElement).getScreenCTM()
+            if (ctm) {
+              const scaleX = Math.sqrt(ctm.a * ctm.a + ctm.b * ctm.b)
+              const scaleY = Math.sqrt(ctm.c * ctm.c + ctm.d * ctm.d)
+              const px = (strokeW * scaleX) / 2
+              const py = (strokeW * scaleY) / 2
+              x -= px; y -= py;
+              w += px * 2; h += py * 2;
             }
           }
         }
 
-        // 确保不会因为太小（如极小线段）而无法看见
-        if (w < 12) { x -= (12 - w) / 2; w = 12; }
-        if (h < 12) { y -= (12 - h) / 2; h = 12; }
+        // 确保不会因为太小（如极小线段）而无法看见，设定最小 24 像素避免四周拖拉热区互相重叠覆盖中心
+        if (w < 24) { x -= (24 - w) / 2; w = 24; }
+        if (h < 24) { y -= (24 - h) / 2; h = 24; }
 
         setSelectionBox({ x, y, w, h })
       }, 0)
@@ -886,26 +901,8 @@ function EditorPage() {
       <input type="file" ref={fileInputRef} onChange={e => { if (e.target.files) onDrop(Array.from(e.target.files)) }} accept=".svg" className="hidden" />
 
       <div className="h-[100dvh] overflow-hidden flex flex-col bg-bg-base text-primary transition-colors">
-        {/* Header */}
-        <header className="h-12 md:h-14 flex items-center justify-between px-3 md:px-5 border-b border-border shrink-0 bg-bg-surface">
-          <FullLogo iconClassName="w-7 h-7 md:w-8 md:h-8" textClassName="h-[30px] md:h-[34px]" />
-          <div className="flex items-center gap-2 md:gap-4">
-            <div className="hidden md:flex items-center gap-6">
-              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/about' : `/${i18n.language}/about`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.about')}</Link>
-              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.help')}</Link>
-              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/privacy' : `/${i18n.language}/privacy`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.privacy')}</Link>
-              <Link to={i18n.language === DEFAULT_LANGUAGE ? '/terms' : `/${i18n.language}/terms`} className="text-sm font-semibold text-secondary hover:text-primary transition-colors">{t('common.nav.terms')}</Link>
-            </div>
-            <div className="hidden md:block w-px h-4 bg-border mx-2"></div>
-            <div className="hidden md:flex items-center gap-1">
-              <LanguageDropdown />
-              <button onClick={toggleTheme} className="p-2 rounded-lg text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</button>
-            </div>
-            <button onClick={() => setIsMenuOpen(true)} className="md:hidden p-1.5 -mr-1 text-secondary hover:text-primary hover:bg-bg-subtle rounded-lg transition-colors">
-              <Menu size={18} />
-            </button>
-          </div>
-        </header>
+        <Navbar />
+
 
         <div className="flex-1 flex flex-row overflow-hidden relative">
           {/* Desktop sidebar (Left) */}
@@ -995,10 +992,17 @@ function EditorPage() {
                         // 拦截: 如果点击的是图形内部，禁止拖动画布
                         const target = e.target as HTMLElement
                         
-                        // 优先选择包裹的 group，避免把 icon 的碎片拆散
-                        let el = target.closest('g[data-editor-id]') as HTMLElement | null
-                        if (!el) {
-                          el = target.closest('[data-editor-id]') as HTMLElement | null
+                        const leafEl = target.closest('[data-editor-id]') as HTMLElement | null;
+                        const groupEl = target.closest('g[data-editor-id]') as HTMLElement | null;
+                        
+                        let el = groupEl || leafEl;
+                        if (leafEl && groupEl && selectedElement) {
+                          const groupId = groupEl.getAttribute('data-editor-id');
+                          const isGroupSelected = selectedElement.id === groupId;
+                          const isSiblingSelected = groupEl.querySelector(`[data-editor-id="${selectedElement.id}"]`) !== null;
+                          if (isGroupSelected || isSiblingSelected) {
+                            el = leafEl;
+                          }
                         }
                         
                         if (el) {
@@ -1110,12 +1114,20 @@ function EditorPage() {
                             let x = rect.left - workspaceRect.left
                             let y = rect.top - workspaceRect.top
 
-                            if (!isNaN(state.paddingX) && !isNaN(state.paddingY)) {
-                              x -= state.paddingX; y -= state.paddingY;
-                              w += state.paddingX * 2; h += state.paddingY * 2;
+                            const strokeW = parseFloat(getComputedStyle(state.el).strokeWidth) || 0
+                            if (strokeW > 0) {
+                              const ctm = (state.el as unknown as SVGGraphicsElement).getScreenCTM()
+                              if (ctm) {
+                                const scaleX = Math.sqrt(ctm.a * ctm.a + ctm.b * ctm.b)
+                                const scaleY = Math.sqrt(ctm.c * ctm.c + ctm.d * ctm.d)
+                                const px = (strokeW * scaleX) / 2
+                                const py = (strokeW * scaleY) / 2
+                                x -= px; y -= py;
+                                w += px * 2; h += py * 2;
+                              }
                             }
-                            if (w < 12) { x -= (12 - w) / 2; w = 12; }
-                            if (h < 12) { y -= (12 - h) / 2; h = 12; }
+                            if (w < 24) { x -= (24 - w) / 2; w = 24; }
+                            if (h < 24) { y -= (24 - h) / 2; h = 24; }
 
                             boxEl.style.left = `${x}px`
                             boxEl.style.top = `${y}px`
@@ -1190,10 +1202,17 @@ function EditorPage() {
                         const target = e.target as HTMLElement
                         if (target.closest('#selection-box-overlay')) return;
 
-                        // 优先选择包裹的 group，避免选中极小的碎片
-                        let el = target.closest('g[data-editor-id]') as HTMLElement | null
-                        if (!el) {
-                          el = target.closest('[data-editor-id]') as HTMLElement | null
+                        const leafEl = target.closest('[data-editor-id]') as HTMLElement | null;
+                        const groupEl = target.closest('g[data-editor-id]') as HTMLElement | null;
+                        
+                        let el = groupEl || leafEl;
+                        if (leafEl && groupEl && selectedElement) {
+                          const groupId = groupEl.getAttribute('data-editor-id');
+                          const isGroupSelected = selectedElement.id === groupId;
+                          const isSiblingSelected = groupEl.querySelector(`[data-editor-id="${selectedElement.id}"]`) !== null;
+                          if (isGroupSelected || isSiblingSelected) {
+                            el = leafEl;
+                          }
                         }
 
                         if (el) {
@@ -1224,54 +1243,10 @@ function EditorPage() {
                             height: selectionBox.h,
                           }}
                         >
-                          <div 
-                            className="absolute inset-0 pointer-events-auto" 
-                            style={{ cursor: 'move' }}
-                            onPointerDown={(e) => {
-                              e.stopPropagation();
-                              if (isPinching.current) return;
-                              mouseDownPos.current = { x: e.clientX, y: e.clientY };
-                              
-                              if (selectedElement) {
-                                const el = document.querySelector(`[data-editor-id="${selectedElement.id}"]`) as HTMLElement | null;
-                                if (el) {
-                                  lastPanPos.current = null;
-                                  
-                                  const svgEl = (el as any).ownerSVGElement as SVGSVGElement | undefined;
-                                  if (!svgEl) return;
 
-                                  let parentCTM = svgEl.getScreenCTM();
-                                  const parent = el.parentNode as SVGGraphicsElement;
-                                  if (parent && parent.getScreenCTM) {
-                                    parentCTM = parent.getScreenCTM();
-                                  }
-
-                                  if (parentCTM) {
-                                    const pt = getMousePositionInSVG(e.clientX, e.clientY, svgEl, parentCTM);
-                                    let paddingX = 0; let paddingY = 0;
-                                    const ratio = getSvgScaleRatio(svgEl);
-                                    const strokeW = parseFloat(getComputedStyle(el).strokeWidth) || 0;
-                                    if (strokeW > 0) {
-                                      paddingX = (strokeW * ratio.ratioX) / 2 || 0;
-                                      paddingY = (strokeW * ratio.ratioY) / 2 || 0;
-                                    }
-
-                                    elementDragState.current = {
-                                      id: selectedElement.id, el, svgEl, ctm: parentCTM,
-                                      startXInSVG: pt.x,
-                                      startYInSVG: pt.y,
-                                      lastDx: 0, lastDy: 0,
-                                      originalTransform: el.getAttribute('transform') || '',
-                                      paddingX, paddingY
-                                    };
-                                  }
-                                }
-                              }
-                            }}
-                          />
 
                           {/* 四条边拉伸控制柄 (边缘吸附区) */}
-                          {['n', 's', 'w', 'e'].map(dir => (
+                          {selectionBox.w > 30 && selectionBox.h > 30 && ['n', 's', 'w', 'e'].map(dir => (
                             <div key={dir}
                               onPointerDown={(e) => { e.stopPropagation(); handleResizeStart(e, dir); }}
                               className={cn(
@@ -1292,7 +1267,8 @@ function EditorPage() {
                               onPointerDown={(e) => { e.stopPropagation(); handleResizeStart(e, dir); }}
                               className={cn(
                                 "absolute w-[10px] h-[10px] bg-white border-[1.5px] border-[#007AFF] pointer-events-auto hover:bg-[#007AFF] transition-colors z-[42] touch-none",
-                                "after:absolute after:content-[''] after:-inset-[12px]", // 角的隐形大热区
+                                selectionBox.w > 30 && selectionBox.h > 30 ? "after:absolute after:content-[''] after:-inset-[12px]" : "", // 只有图形足够大时才添加大热区，避免遮挡微小元素的中心拖拽区
+
                                 dir.includes('n') ? '-top-[5px]' : '-bottom-[5px]',
                                 dir.includes('w') ? '-left-[5px]' : '-right-[5px]'
                               )}
@@ -1572,45 +1548,7 @@ function EditorPage() {
         </div>
       )}
 
-      {/* Mobile Drawer */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 flex md:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
-          <div className="relative flex flex-col w-64 max-w-[80%] h-full bg-bg-surface shadow-2xl animate-in slide-in-from-left duration-300">
-            <div className="flex items-center justify-between p-4 border-b border-border">
-              <FullLogo iconClassName="h-[20px] w-auto" textClassName="h-[22px] w-auto" />
-              <button onClick={() => setIsMenuOpen(false)} className="p-1 text-secondary hover:text-primary rounded-lg transition-colors"><X size={18} /></button>
-            </div>
-            <div className="flex flex-col p-2 overflow-visible">
-              <div className="flex flex-col mb-2 pb-2 border-b border-border space-y-1">
-                <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium text-secondary">
-                  <span>{t('common.language')}</span>
-                  <LanguageDropdown />
-                </div>
-                <button onClick={() => { toggleTheme(); setIsMenuOpen(false); }} className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors w-full text-left">
-                  <span>{t('common.theme')}</span>
-                  <span className="px-2.5 py-1 bg-bg-subtle border border-border rounded-full text-xs font-bold text-primary capitalize">{theme === 'dark' ? t('common.dark') : t('common.light')}</span>
-                </button>
-              </div>
 
-              <div className="p-2 flex flex-col gap-1 border-t border-border">
-                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/about' : `/${i18n.language}/about`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
-                  {t('common.nav.about')}
-                </Link>
-                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/resources' : `/${i18n.language}/resources`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
-                  {t('common.nav.resources')}
-                </Link>
-                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/privacy' : `/${i18n.language}/privacy`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
-                  {t('pages.privacy.title')}
-                </Link>
-                <Link to={i18n.language === DEFAULT_LANGUAGE ? '/terms' : `/${i18n.language}/terms`} onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
-                  {t('common.nav.terms')}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }

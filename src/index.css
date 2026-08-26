@@ -205,7 +205,6 @@ body {
   overflow: visible !important;
 }
 
-/* ── SVG Element Selection ─────────────────────────── */
 .svg-preview-container [data-editor-id] {
   cursor: pointer;
   transition: filter 0.15s ease;

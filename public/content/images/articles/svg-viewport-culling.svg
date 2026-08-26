@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="vcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#02040a"/>
+      <stop offset="50%" stop-color="#0a121e"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <linearGradient id="vcGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="vcCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="vcGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <pattern id="vcGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    <pattern id="vcDots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="rgba(239,68,68,0.5)"/>
+    </pattern>
+    <style>
+      @keyframes vcBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+      .blink { animation: vcBlink 1.6s ease-in-out infinite; }
+      @keyframes vcScan { 0% { transform: translateX(-120px); } 100% { transform: translateX(120px); } }
+      .scan { animation: vcScan 2.4s ease-in-out infinite alternate; }
+    </style>
+  </defs>
+  <rect width="1200" height="620" fill="url(#vcBg)"/>
+  <rect width="1200" height="620" fill="url(#vcGrid)"/>
+
+  <g transform="translate(40, 28)">
+    <rect width="1120" height="50" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+    <circle cx="25" cy="25" r="6" fill="#10b981" filter="url(#vcGlow)"/>
+    <text x="42" y="31" fill="#e2e8f0" font-family="'JetBrains Mono',monospace" font-size="16" font-weight="700" letter-spacing="1">
+      VIEWPORT CULLING + LOD // 10 万个节点，一次只喂给浏览器 2 千个
+    </text>
+  </g>
+
+  <!-- 左侧：完整画布 -->
+  <g transform="translate(60, 115)">
+    <rect width="400" height="330" rx="12" fill="rgba(15,23,42,0.85)" stroke="rgba(148,163,184,0.35)" stroke-width="1.5"/>
+    <text x="200" y="28" fill="#94a3b8" font-family="sans-serif" font-size="13" text-anchor="middle" font-weight="600">整个文档：100,000+ 节点</text>
+    <rect x="40" y="48" width="320" height="230" rx="6" fill="url(#vcDots)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+    <text x="200" y="296" fill="#fca5a5" font-family="sans-serif" font-size="12" text-anchor="middle">99% 根本不在视口里</text>
+    <text x="200" y="318" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle">全部渲染 = 每次交互都重算 10 万个节点</text>
+  </g>
+
+  <!-- 中间：视口 -->
+  <g transform="translate(500, 115)">
+    <rect width="280" height="330" rx="12" fill="rgba(15,23,42,0.85)" stroke="rgba(16,185,129,0.5)" stroke-width="1.5"/>
+    <text x="140" y="28" fill="#94a3b8" font-family="sans-serif" font-size="13" text-anchor="middle" font-weight="600">视口窗口（viewport）</text>
+    <rect x="40" y="48" width="200" height="140" rx="6" fill="url(#vcDots)" opacity="0.25"/>
+    <rect x="40" y="48" width="200" height="140" rx="6" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="2" class="blink"/>
+    <rect x="70" y="80" width="120" height="70" rx="4" fill="rgba(16,185,129,0.35)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="130" y="110" fill="#a7f3d0" font-family="'JetBrains Mono',monospace" font-size="12" text-anchor="middle">~2,000 节点</text>
+    <text x="130" y="132" fill="#a7f3d0" font-family="'JetBrains Mono',monospace" font-size="12" text-anchor="middle">此刻可见</text>
+    <text x="140" y="222" fill="#6ee7b7" font-family="sans-serif" font-size="12" text-anchor="middle">只渲染视口内的节点</text>
+    <text x="140" y="244" fill="#94a3b8" font-family="sans-serif" font-size="11" text-anchor="middle">平移/缩放时按需进出场</text>
+    <rect x="40" y="266" width="200" height="44" rx="6" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.4)" stroke-width="1"/>
+    <text x="140" y="285" fill="#93c5fd" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="middle">四叉树空间索引</text>
+    <text x="140" y="302" fill="#64748b" font-family="sans-serif" font-size="10" text-anchor="middle">O(log n) 查出视口内节点</text>
+  </g>
+
+  <!-- 右侧：LOD -->
+  <g transform="translate(820, 115)">
+    <rect width="320" height="330" rx="12" fill="rgba(15,23,42,0.85)" stroke="rgba(148,163,184,0.35)" stroke-width="1.5"/>
+    <text x="160" y="28" fill="#94a3b8" font-family="sans-serif" font-size="13" text-anchor="middle" font-weight="600">LOD：按缩放级别换细节</text>
+    <g transform="translate(30, 52)">
+      <rect x="0" y="0" width="260" height="62" rx="8" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+      <text x="14" y="24" fill="#fca5a5" font-family="'JetBrains Mono',monospace" font-size="12">缩得很小 · 简化轮廓</text>
+      <text x="14" y="46" fill="#94a3b8" font-family="sans-serif" font-size="11">path 用 svgpath 简化，节点数 -80%</text>
+      <rect x="0" y="72" width="260" height="62" rx="8" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+      <text x="14" y="96" fill="#fcd34d" font-family="'JetBrains Mono',monospace" font-size="12">中等缩放 · 适中细节</text>
+      <text x="14" y="118" fill="#94a3b8" font-family="sans-serif" font-size="11">合并小元素，保留主干结构</text>
+      <rect x="0" y="144" width="260" height="62" rx="8" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+      <text x="14" y="168" fill="#6ee7b7" font-family="'JetBrains Mono',monospace" font-size="12">放大 · 完整细节</text>
+      <text x="14" y="190" fill="#94a3b8" font-family="sans-serif" font-size="11">只在这时才加载全分辨率 path</text>
+      <line x1="0" y1="228" x2="260" y2="228" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+      <text x="0" y="254" fill="#e2e8f0" font-family="sans-serif" font-size="12">浏览器原生助攻：</text>
+      <text x="0" y="278" fill="#67e8f9" font-family="'JetBrains Mono',monospace" font-size="12">content-visibility: auto</text>
+      <text x="0" y="296" fill="#94a3b8" font-family="sans-serif" font-size="11">跳过屏幕外子树的 style/layout/paint</text>
+    </g>
+  </g>
+
+  <!-- 底部总结条 -->
+  <g transform="translate(60, 470)">
+    <rect width="1080" height="120" rx="12" fill="rgba(15,23,42,0.6)" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+    <text x="30" y="34" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="600">实测：只渲染看得见的，能快多少？</text>
+    <text x="30" y="64" fill="#94a3b8" font-family="sans-serif" font-size="12">1. web.dev 用 content-visibility 实测：渲染时间 232ms → 30ms，约 7 倍提速（来源：web.dev/articles/content-visibility）。</text>
+    <text x="30" y="88" fill="#94a3b8" font-family="sans-serif" font-size="12">2. 视口裁剪 + LOD 组合拳：DOM 里的节点少一个数量级，style/layout/paint 全部跟着便宜一个数量级。</text>
+    <text x="30" y="112" fill="#fca5a5" font-family="'JetBrains Mono',monospace" font-size="12" class="blink">原则：浏览器只该为"用户此刻看得见的东西"付钱。</text>
+  </g>
+</svg>

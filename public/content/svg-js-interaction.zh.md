@@ -1,59 +1,110 @@
 ---
 
-## SVG 不是图片
+# SVG + JS 交互：实现可点击、拖拽、高亮的矢量图形
 
-![Article Illustration](https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80)
+当你接手一个需要做“可交互图形”的需求时，比如一个机房拓扑图、一个剧院选座系统、或者一个简单的在线海报编辑器，你的第一反应是什么？
 
-很多人习惯把 SVG 当图片用，丢进 img 标签就完事了。但 img 里的 SVG 是死的——你拿不到里面的元素，更别说给 path 绑 click 事件。要让 SVG 活起来，必须把它内联到 HTML 里。
+很多人的第一反应是：上 Canvas，或者干脆引入一堆庞大的第三方图形库（比如 Fabric.js、Konva 等等）。
 
-内联之后，SVG 里的每个元素就是一个真实的 DOM 节点。你可以 querySelector 拿到它，可以 addEventListener 给它绑事件，可以 setAttribute 改它的属性。这就是交互的基础。
+但实际上，如果你只是想要实现<strong>元素的点击、拖拽和高亮</strong>，原生的 SVG 配合纯纯的 JavaScript 简直是一把极其锋利的快刀。没有沉重的依赖，没有复杂的渲染上下文，因为 SVG 的本质就是 DOM。
 
-## 第一步：给元素一个身份证
+今天，咱们就聊聊怎么纯手工撸一个能交互的 SVG 引擎。别慌，逻辑其实特别清晰。
 
-从网上下载的 SVG、或者设计师从 Figma 导出给你的文件，里面的元素大概率没有 id，有 id 也是 "图层 1 拷贝 3" 这种重名货。真要做交互，第一步就是给每个元素一个唯一标识。
+---
 
-做法是拿到 SVG 之后先走一遍 DOM 树，给每个能交互的元素（path、rect、circle、ellipse、polygon、line 这些）注入一个 data-editor-id。同时顺手把每个元素的属性（fill、stroke、d 之类的）存到一个数组里，后面做属性面板要用。
+## 打破认知：SVG 根本不是图片
 
-注意：defs、clipPath、mask 里面的元素不要碰，那些是渲染用的定义，不是用户能操作的图形。g 元素（group）需要算进去，因为很多 SVG 的 transform 是挂在 g 上的，拖拽的时候会用到。
+我们太习惯于把 SVG 当作图片用了：`<img src="logo.svg" />`。如果你这么干，那这个 SVG 就是死的。浏览器把它当成了一个封闭的像素块，你拿不到里面的任何东西，更别说给某条线绑定一个鼠标点击事件了。
 
-## 第二步：点击选中，说起来容易
+要让 SVG 活起来，第一法则就是：<strong>必须把它内联（Inline）到 HTML 里</strong>。
 
-内联 SVG 的元素本来就支持 click 事件，直接绑就行。但坑在于事件冒泡。
+```html
+<div id="editor">
+  <svg viewBox="0 0 800 600">
+    <circle cx="100" cy="100" r="50" fill="red" />
+    <path d="M..." fill="blue" />
+  </svg>
+</div>
+```
 
-你点击一条 path，click 事件会先在这条 path 上触发，然后冒泡到它的父级 g，再到更外层的 svg 元素。如果你给 svg 也绑了 click（比如用来取消选择），那用户点中一个元素之后，事件冒泡到 svg 又会触发取消选择，结果就是刚选中立刻被取消。
+一旦你把代码直接嵌到 DOM 树里，魔法就发生了。那个 `<circle>` 和 `<path>` 就和普通的 `<div>` 或 `<button>` 没有任何区别。你可以用 `document.querySelector('circle')` 抓到它，可以用 `addEventListener` 监听它，甚至可以用 CSS 去 hover 它。
 
-解决办法是在元素的事件处理函数里调 stopPropagation。别在 svg 层面处理选中逻辑，让每个元素自己决定要不要被选中。
+这就是我们做交互的唯一基石。
 
-还有一个容易被忽略的问题：stroke 很细的 path（比如线宽 1px）很难点中。解决方案是给选中的元素加一个透明的大热区作为缓冲区，鼠标靠近 10px 以内就算命中。
+---
 
-## 第三步：拖拽，坐标才是爹
+## 建立身份系统：给元素发“身份证”
 
-拖拽本身不复杂：pointerdown 记录起点，pointermove 算 delta，pointerup 提交结果。复杂的是坐标。
+假设你拿到了一份设计师从 Figma 导出的极其复杂的 SVG 文件，几百个路径缠绕在一起。这些元素大概率是没有 `id` 的，就算有，也是像 `Rectangle_12_copy` 这种让人脑溢血的名字。
 
-你鼠标在屏幕上的位置是屏幕坐标，但 SVG 元素活在 SVG 坐标系里。这两个坐标系之间的关系取决于 viewBox、当前的缩放比例、父级 group 的 transform。直接把屏幕坐标的 delta 当 SVG 坐标的 delta 用，元素会乱飞。
+如果我们要做一个编辑器，用户点击了某个元素，你的代码怎么知道他点的是哪一个？
 
-正确的做法：每次 pointermove 的时候，用 getScreenCTM 拿到当前变换矩阵，把鼠标的屏幕坐标转成 SVG 内部的坐标，再算 delta。
+在把 SVG 丢进容器渲染之前，我们需要写一段简单的遍历脚本，给所有真正可视化的标签（比如 `path`, `rect`, `circle`, `ellipse`, `polygon`, `line`）打上一个独一无二的标记，比如 `data-editor-id`。
 
-这里还有一个调了很久的地方：嵌套 group。一个 path 可能被套在三四层 g 里面，每层 g 都可能有自己的 transform。用哪个层级的 CTM 做转换？答案是元素直接父级的 CTM。如果元素在某个 g 里面，拿那个 g 的 getScreenCTM，而不是 svg 的。
+![给 SVG 元素自动打上 data-editor-id 标记](/content/images/interaction-code.png)
 
-## 第四步：高亮的三种玩法
+> <strong>踩坑提示：</strong> 千万别去碰 `<defs>`, `<clipPath>`, `<mask>` 里面的元素。这些是 SVG 的渲染定义层，不是给用户在画布上直接拖拽的实体。另外，`<g>` (Group) 标签必须要小心处理，很多复杂的变形（transform）是挂在组上的，我们拖拽的时候往往是连着整个组一起拖。
 
-**最简单的是改颜色。** 选中一个元素，把它的 stroke 改成蓝色，加个发光，视觉上立刻有反馈。但问题是你取消选择之后改不回来，因为不知道原来的颜色。
+---
 
-**更好的是 CSS filter。** 用 filter: drop-shadow 给选中的元素加一圈光晕，不改原始属性，取消选中把 filter 去掉就行。
+## 点击选中：那些烦人的冒泡和隐形区域
 
-**最好的是 overlay 模式。** 在 SVG 上面盖一层绝对定位的 div，选中元素之后在这个 div 里画出虚线矩形框。这层 overlay 不和 SVG 在同一个坐标系里，所以不受缩放影响。需要实时监听 getBoundingClientRect 更新框的位置。
+因为 SVG 元素就是 DOM 节点，给它们绑定点击事件看起来简单得就像喝水：
 
-## 第五步：改属性，注意 style 的优先级
+```javascript
+element.addEventListener('pointerdown', (e) => {
+  console.log('我被选中了！', e.target);
+});
+```
 
-选中元素之后用户要改 fill 或者 stroke，你直接 setAttribute 就行了。但 Figma 导出的 SVG 样式多数写在 style 属性里，而 style 的优先级高于 attribute。
+但实操的时候，你会立刻踩到两个坑。
 
-所以改之前先检查 style 里有没有同名属性，有的话从 style 里删掉，再 setAttribute。这样改完的属性在 attribute 层面是干净的，下次打开不会有优先级冲突。
+<strong>第一个坑是事件冒泡。</strong> 
+当你点击一条路径，事件会先在这个 `<path>` 上触发，然后向上传递给它的父级 `<g>`，最后冒泡到最外层的 `<svg>`。通常我们会给 `<svg>` 绑定一个点击事件用来“取消选中”（点空白处取消）。如果不阻止冒泡（`e.stopPropagation()`），用户刚点中元素，事件冒泡到顶层，瞬间又触发了取消选中。你看着屏幕，感觉自己点了个寂寞。
 
-## 第六步：做个交互式流程图
+<strong>第二个坑是“细线点不中”。</strong> 
+如果有一根 `stroke-width="1"` 的极细的线，用户必须具备狙击手般的鼠标精度才能点到它。在 SVG 里，有一个极其优雅的解决办法：叠加一个完全透明（`stroke="transparent"`）但是极粗（比如 `stroke-width="20"`）的“幽灵路径”，专门用来捕捉鼠标事件。
 
-有了上面的能力，做交互式流程图就是加业务逻辑。节点是 rect 或 circle，连线是 path。节点拖拽已解决。连线需要跟着节点走，做法是维护一个节点-连线映射表，拖拽结束时重新算 path 的 d 属性。
+![SVG 交互机制演示](/content/images/svg-interaction.png)
 
-连线还有个点击问题：stroke-width 1px 的 path 基本点不到。解法是两层 path——一层透明的粗线负责点击，一层可见的细线负责显示。
+---
 
-收尾：这些堆在一起就是一个能用的 SVG 编辑器。svgdo.com 上面的编辑器就是这个思路实现的，开源在 GitHub，拿去直接改就行。
+## 拖拽的核心法则：坐标才是亲爹
+
+拖拽的逻辑大家都背得滚瓜烂熟：`pointerdown` 记录起点，`pointermove` 计算偏移量差值（delta），`pointerup` 结束动作。
+
+但是在 SVG 里，如果你直接把鼠标在屏幕上移动的像素差（Screen Coordinate），强行塞给 SVG 元素的 `x` 和 `y` 属性，你会发现元素直接<strong>飞出太阳系</strong>。
+
+为什么？因为屏幕坐标系和 SVG 内部的坐标系是两码事。SVG 有自己的 `viewBox`，你的网页可能被缩放了，而且元素本身可能还嵌套在好几层带有 `transform: scale(0.5)` 的 `<g>` 分组里。
+
+<strong>唯一的正解是使用 `getScreenCTM()`。</strong> 
+
+这是 SVG 提供的原生方法，全称是 Current Transform Matrix。通过拿到元素与其父级之间的坐标变换矩阵，你可以将鼠标的“屏幕移动量”完美映射成“SVG 内部坐标的移动量”。
+
+```javascript
+// 获取当前元素的变换矩阵
+const ctm = element.getScreenCTM();
+// 将屏幕移动量转换为 SVG 坐标系的真实移动量
+const svgDx = screenDx / ctm.a;
+const svgDy = screenDy / ctm.d;
+```
+
+这就是我们在开发 [SVG do.](/zh) 时最核心的拖拽引擎逻辑。只要矩阵算得对，不管你怎么嵌套，怎么缩放画布，元素都会死死粘着你的鼠标走。
+
+---
+
+## 高亮状态的优雅实现
+
+当用户选中一个元素时，视觉上总得给点反馈吧？
+
+![SVG 选中与高亮机制演示](/content/images/clean-highlight-demo.png)
+
+最粗暴的做法是直接把它的 `stroke`（描边）改成亮蓝色。但这会破坏设计师原本的颜色，而且你还得费劲去记住它原来的颜色以便恢复。
+
+<strong>更优雅的做法是：绘制包围盒（Bounding Box）。</strong>
+
+SVG 提供了一个极其强大的 API：`getBoundingClientRect()`。当你选中元素后，动态生成一个没有任何填充色、只有亮蓝色描边的 `<rect>` 元素，盖在原有元素的最顶层即可。你甚至可以在这个包围盒的四个角画上四个小圆点，这就成了最经典的缩放控制柄。
+
+## 结语
+
+看到了吗？所有的交互其实都没有脱离最基础的 DOM API 和数学矩阵。抛弃那些沉重的第三方库，深入理解 SVG 的底层逻辑，你甚至可以一个人在浏览器里手搓出一个迷你的 Figma。去试试吧，你一定会惊叹于原生技术的强大。

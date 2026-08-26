@@ -34,6 +34,6 @@ export default {
     desc: 'SVG編集、最適化、アニメーション、ベストプラクティスを学びます。',
     search: '記事を検索...', read: '続きを読む', empty: '記事が見つかりません', all: 'すべて',
     sortLabel: '並べ替え', sortDateDesc: '最新順', sortDateAsc: '古い順', sortTitle: 'タイトル A–Z',
-    back: 'ヘルプセンターに戻る', browse: 'もっと見る', notFound: '記事が見つかりません', loadFail: '読み込みに失敗', approxRead: '約5分で読めます',
+    back: 'ヘルプセンターに戻る', browse: 'もっと見る', notFound: '記事が見つかりません', loadFail: '読み込みに失敗', approxRead: '約5分で読めます', backToTop: 'トップに戻る',
   },
 }

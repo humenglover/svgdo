@@ -34,6 +34,6 @@ export default {
     desc: 'Aprende edición SVG, optimización, animación y mejores prácticas.',
     search: 'Buscar artículos...', read: 'Leer más', empty: 'Sin resultados', all: 'Todo',
     sortLabel: 'Ordenar', sortDateDesc: 'Más recientes', sortDateAsc: 'Más antiguos', sortTitle: 'Título A–Z',
-    back: 'Volver a Ayuda', browse: 'Ver más', notFound: 'Artículo no encontrado', loadFail: 'Error de carga', approxRead: '~5 min de lectura',
+    back: 'Volver a Ayuda', browse: 'Ver más', notFound: 'Artículo no encontrado', loadFail: 'Error de carga', approxRead: '~5 min de lectura', backToTop: 'Volver arriba',
   },
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronRight, Trash2, ArrowUp, ArrowDown, ArrowUpToLine, ArrowDownToLine } from 'lucide-react'
 import { cn } from '@/utils'
@@ -21,7 +21,38 @@ interface Props {
 export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props) {
   const { t } = useTranslation()
 
+  const [computedStyle, setComputedStyle] = useState<{fill: string, stroke: string, strokeWidth: string} | null>(null)
+
+  useEffect(() => {
+    // We wrap in a small timeout to allow the DOM to update after SVG code changes
+    const timer = setTimeout(() => {
+      const el = document.querySelector(`[data-editor-id="${element.id}"]`) as SVGElement
+      if (el) {
+        const style = window.getComputedStyle(el)
+        setComputedStyle({
+          fill: style.fill,
+          stroke: style.stroke,
+          strokeWidth: style.strokeWidth
+        })
+      } else {
+        setComputedStyle(null)
+      }
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [element, svgCode])
+
   const getAttr = (name: string) => getElementAttribute(svgCode, element.index, name)
+
+  const getDisplayValue = (name: 'fill' | 'stroke' | 'stroke-width') => {
+    const raw = getAttr(name)
+    if (raw) return raw
+    if (computedStyle) {
+      if (name === 'fill') return computedStyle.fill === 'none' ? 'none' : computedStyle.fill
+      if (name === 'stroke') return computedStyle.stroke === 'none' ? 'none' : computedStyle.stroke
+      if (name === 'stroke-width') return computedStyle.strokeWidth && parseFloat(computedStyle.strokeWidth) > 0 ? parseFloat(computedStyle.strokeWidth).toString() : ''
+    }
+    return ''
+  }
 
   const handleChange = (attr: string, value: string) => {
     const newCode = updateElementAttribute(svgCode, element.index, attr, value)
@@ -63,11 +94,11 @@ export default function PropertiesPanel({ element, svgCode, onUpdateSvg }: Props
       <div className="flex-1 overflow-y-auto">
         {/* Appearance */}
         <CollapseSection title={t('common.panel.appearance')} defaultOpen>
-          <ColorField label={t('common.panel.fill')} value={getAttr('fill')}
+          <ColorField label={t('common.panel.fill')} value={getDisplayValue('fill')}
             onChange={v => handleChange('fill', v)} />
-          <ColorField label={t('common.panel.stroke')} value={getAttr('stroke')}
+          <ColorField label={t('common.panel.stroke')} value={getDisplayValue('stroke')}
             onChange={v => handleChange('stroke', v)} />
-          <NumberField label={t('common.panel.strokeWidth')} value={getAttr('stroke-width')}
+          <NumberField label={t('common.panel.strokeWidth')} value={getDisplayValue('stroke-width')}
             onChange={v => handleChange('stroke-width', v)} min={0} max={50} step={0.5} />
           <SliderField label={t('common.panel.opacity')} value={getAttr('opacity')}
             onChange={v => handleChange('opacity', v)} />

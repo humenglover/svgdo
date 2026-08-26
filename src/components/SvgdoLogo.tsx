@@ -1,4 +1,14 @@
+import { useId } from 'react'
+
 export function SvgdoLogo({ className }: { className?: string }) {
+  const uniqueId = useId().replace(/:/g, '')
+  const gradientId = `do-grad-${uniqueId}`
+
+  // Use absolute URL for SVG gradient to prevent breaking when page has a hash anchor (#)
+  const isBrowser = typeof window !== 'undefined'
+  const currentUrl = isBrowser ? window.location.pathname + window.location.search : ''
+  const gradientUrl = `url(${currentUrl}#${gradientId})`
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" className={className}>
       <defs>
@@ -19,7 +29,7 @@ export function SvgdoLogo({ className }: { className?: string }) {
             }
           `}
         </style>
-        <linearGradient id="do-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#f97316" />
           <stop offset="100%" stopColor="#fbbf24" />
         </linearGradient>
@@ -31,7 +41,7 @@ export function SvgdoLogo({ className }: { className?: string }) {
       </text>
       
       {/* do 中等字重+活力渐变色，形成强烈视觉对比 */}
-      <text x="76" y="38" className="logo-font text-do" fill="url(#do-grad)">
+      <text x="76" y="38" className="logo-font text-do" fill={gradientUrl}>
         do
       </text>
 
@@ -42,7 +52,7 @@ export function SvgdoLogo({ className }: { className?: string }) {
       <path 
         d="M 4,45 Q 60,40 128,45" 
         fill="none" 
-        stroke="url(#do-grad)" 
+        stroke={gradientUrl} 
         strokeWidth="3.5" 
         strokeLinecap="round" 
       />

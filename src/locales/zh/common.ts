@@ -34,6 +34,6 @@ export default {
     desc: '学习 SVG 编辑、优化、动画和最佳实践。',
     search: '搜索文章...', read: '阅读文章', empty: '没有找到匹配的文章', all: '全部',
     sortLabel: '排序', sortDateDesc: '最新优先', sortDateAsc: '最早优先', sortTitle: '标题 A–Z',
-    back: '返回帮助中心', browse: '浏览更多', notFound: '文章未找到', loadFail: '加载失败', approxRead: '约 5 分钟阅读',
+    back: '返回帮助中心', browse: '浏览更多', notFound: '文章未找到', loadFail: '加载失败', approxRead: '约 5 分钟阅读', backToTop: '回到顶部',
   },
 }

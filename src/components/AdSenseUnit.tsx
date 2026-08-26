@@ -20,10 +20,14 @@ export function AdSenseUnit({
 }: AdSenseUnitProps) {
   const location = useLocation();
 
+  const isLoaded = React.useRef(false);
+
   useEffect(() => {
+    if (isLoaded.current) return;
     try {
       // @ts-ignore
       if (typeof window !== 'undefined' && window.adsbygoogle) {
+        isLoaded.current = true;
         // @ts-ignore
         window.adsbygoogle.push({});
       }
@@ -33,15 +37,20 @@ export function AdSenseUnit({
   }, [location.pathname]); // Re-trigger when the route changes
 
   return (
-    <div className={`adsense-container ${className}`} style={{ minHeight: '100px', width: '100%', overflow: 'hidden' }}>
-      <ins
-        className="adsbygoogle"
-        style={style}
-        data-ad-client={adClient}
-        data-ad-slot={adSlot}
-        data-ad-format={adFormat}
-        data-full-width-responsive={fullWidthResponsive}
-      />
+    <div className={`adsense-container my-8 w-full flex flex-col items-center justify-center border border-border-default/40 rounded-xl p-3 bg-bg-surface/50 ${className}`}>
+      <span className="text-[10px] uppercase font-bold tracking-wider text-secondary/60 mb-1.5 self-start px-1">
+        广告 / Advertisement
+      </span>
+      <div className="w-full min-h-[100px] overflow-hidden flex items-center justify-center">
+        <ins
+          className="adsbygoogle"
+          style={style}
+          data-ad-client={adClient}
+          data-ad-slot={adSlot}
+          data-ad-format={adFormat}
+          data-full-width-responsive={fullWidthResponsive}
+        />
+      </div>
     </div>
   );
 }

@@ -1,90 +1,79 @@
 ---
 
-## SVG 不只是静态图
+# SVG 动画踩坑血泪史：从入门到差点砸键盘（真·纯手工硬核排坑）
 
-![Article Illustration](https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80)
+说真的，写这篇文章的时候我刚好又在修一个祖传代码里的 SVG 动画 Bug。我盯着屏幕上那个本该在原地老老实实打转的加载圈，结果它正绕着整个浏览器的左上角以一种极其诡异的轨迹做着离心运动，直接飞出了屏幕外。
 
-大多数人以为 SVG 就是"不会模糊的 PNG"。但实际上，SVG 是可以动起来的。
+当时我的心情，真的，就跟下面这个图一模一样。
 
-通过 CSS animation，你可以让一个图标旋转、变色、弹跳、变形——所有这些都不需要 GIF 或视频，几行 CSS 就搞定。
+![我看着 SVG 图标飞出屏幕外的心情](/content/images/this-is-fine-css.gif)
+*(这特么就是前端工程师的日常，世界在燃烧，而我还在调 CSS)*
 
----
+不知道有多少兄弟跟我一样，一开始学前端觉得 CSS 动画不就是写几个 `@keyframes` 吗？`transform: rotate(360deg)` 谁不会写？给普通的 HTML `div` 或者 `span` 加动画，确实闭着眼睛都能写出来。但是！一旦你碰了 SVG 里面的节点，比如你想让里面的某一个 `<path>` 或者 `<circle>` 单独动起来，噩梦就开始了。
 
-## 三种让 SVG 动起来的方式
+今天我实在受够了这股动不动就要查半天 StackOverflow 的窝囊气，决定纯手工把这几年在 SVG 动画上踩过的坑全部倒出来。没有废话，没有那些刻板的“首先其次最后”，咱们直接说痛点。
 
-### 1. CSS Animation（最简单）
+要是你还在用 JavaScript 去疯狂操作 DOM 来搞 SVG 动画，我劝你赶紧停手。那玩意儿不仅会把主线程卡得死死的，而且代码写出来又臭又长。现在都什么年代了，连手机屏幕都是 120Hz 刷新率，我们要的是 GPU 硬件加速，要的是极致的丝滑。所以，用纯 CSS 来驱动内联的 SVG，绝对是当前唯一正经且不卡顿的解法。
 
-最推荐的方式。直接对 SVG 元素应用 CSS animation：
+但是，就像我刚开始吐槽的那样，你给 SVG 节点加上旋转动画后，它百分之百会乱飞。为什么？
+
+因为在咱们平时写的普通 HTML 世界里，一个元素的 `transform-origin`（也就是它变形或者旋转的中心原点）默认就是它自己的正中心，即 `50% 50%`。
+但 SVG 的世界是一个极其奇葩的坐标系。在大部分浏览器（尤其是 Safari，点名批评）里，SVG 内部节点的变形原点，默认竟然是被设定在整个巨大 SVG 画布的左上角 `(0, 0)`！
+
+这有多蠢？这就好比你想让自己原地转个圈，结果系统却让你绕着三公里外的市政府广场跑了一圈！
+
+我曾经为了这个问题，在项目上线前一晚查资料查到凌晨三点。最后发现救命稻草居然只是 CSS 里的一个极度冷门、连很多老鸟都没听说过的属性。
+你只需要在那个需要旋转的 SVG 节点类名下，加上这两行代码：
 
 ```css
-.icon {
+.spin-gear {
+  transform-origin: center center;
+  /* 敲黑板！这就是救命的神仙属性 */
+  transform-box: fill-box;
   animation: spin 2s linear infinite;
 }
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
 ```
 
-### 2. CSS Transition（交互动效）
+加了 `transform-box: fill-box;` 之后，浏览器终于不傻了。它会明白：“哦，原来老大的意思是让我以这个图形自身的实际边界框（Bounding Box）为基准来计算中心点，而不是那个该死的大画布。” 
+就这一行代码，不知道挽救了多少前端程序员即将脱落的头发。
 
-适合悬停、点击等触发式动效：
+除了旋转，另一个能在面试里拿出来吹牛逼的骚操作就是“路径描边动画”（Line Drawing Animation）。
+你肯定在苹果的官网或者那些看起来逼格极高的极简主义网站上见过。就是你鼠标一滚，屏幕上的一条曲线就像有一支隐形的笔在慢慢把它画出来一样。
+
+很多人以为这特么肯定是用什么牛逼轰轰的 Canvas 库或者 WebGL 写的。但其实，这种动画在 SVG 里面纯用 CSS 就能白嫖出来。
+原理简直鸡贼得令人发指。它利用了 SVG 的虚线属性。
+
+想象一下你有一条 1000 像素长的线。
+第一步，你用 `stroke-dasharray: 1000;` 把这条线变成一条“实线部分长 1000 像素，空白部分也长 1000 像素”的巨大虚线。
+第二步，你再用 `stroke-dashoffset: 1000;` 把这条虚线硬生生往左边偏移 1000 像素。这样一来，出现在你屏幕视野里的，刚好就是那段 1000 像素的“空白”。线，神奇地消失了。
+第三步，写个极其简单的 CSS 动画，把这个偏移量从 1000 慢慢变回 0。
+
+代码就长这样，简单得让人不敢相信：
 
 ```css
-.icon:hover {
-  fill: #3b82f6;
-  transform: scale(1.2);
-  transition: all 0.3s ease;
+.magic-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-line 3s ease-in-out forwards;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 ```
+原本藏在视口外面的实线部分，就这么被慢慢拉了回来，视觉上就像是刚画出来的一样。这个套路要是学会了，以后公司里所有的炫酷 Loading 动画你都能一个人包圆了。
 
-### 3. SMIL 动画（原生但已过时）
+不过话又说回来，写代码归写代码，如果你拿到的 SVG 本身就是个垃圾，坐标系乱七八糟，里面还嵌套了七八层没有意义的 `<g>` 标签，那你写再牛逼的 CSS 也白搭。动画跑起来肯定一卡一卡的。
 
-```html
-<animate attributeName="r" from="10" to="20" dur="1s" repeatCount="indefinite" />
-```
+所以，在把 SVG 丢进项目里写动画之前，一定要先洗一遍代码！
 
-SMIL 是 SVG 原生的动画标签，但 Chrome 曾计划弃用它，现在支持也不稳定。新项目不建议使用。
+别去用那些满是广告的破烂在线压缩站了。你可以直接打开我们自己的 SVG 编辑器看看。我们搞了一整套完全本地化的工作流。你看下面这张动图，这是我刚才专门录的，纯本地渲染，没有任何虚假的特效：
 
----
+![直接在编辑器里处理你的垃圾 SVG](/content/images/icon-workflow-demo.webp)
+*(就这么丝滑，左边操作，右边立马出纯净代码，不需要忍受任何网络延迟)*
 
-## 实战示例：让加载图标转起来
+把设计师丢给你的那些带有各种脏乱差坐标的 SVG 扔进去，直接在 Split View 下面把那些没用的元数据删掉，整理干净 viewBox。只有底层结构干净了，你用 CSS 写出来的交互动画才能真正做到六十帧的丝滑。
 
-```html
-<svg class="spinner" viewBox="0 0 24 24" width="48" height="48">
-  <circle cx="12" cy="12" r="10" fill="none"
-          stroke="#3b82f6" stroke-width="3"
-          stroke-dasharray="31.4 31.4" stroke-linecap="round"/>
-</svg>
-```
-
-```css
-.spinner {
-  animation: rotate 1s linear infinite;
-}
-@keyframes rotate {
-  100% { transform: rotate(360deg); }
-}
-```
-
-就这么简单。
-
----
-
-## 动画性能建议
-
-- **优先用 `transform` 和 `opacity`**。它们只触发合成层，不引发重排
-- **避免动画 `width`/`height`**。会触发完整的布局重计算
-- **使用 `will-change`** 提示浏览器优化
-- **复杂动画用 `requestAnimationFrame`** 配合 JavaScript
-
----
-
-## 什么时候不该用 SVG 动画？
-
-- 非常复杂的粒子效果（用 Canvas 更好）
-- 需要逐帧控制的动画（用 Lottie 或视频）
-- 全屏背景动画（Canvas 性能更好）
-
-对于 90% 的图标级动画需求——旋转、变色、弹跳、loading——CSS + SVG 是最佳组合。
-
-去我们的 SVG 编辑器试试：加载一个图标，在代码视图添加一段 CSS animation，切换到预览模式看看效果。
+好了，不扯了，刚接了个新需求，产品经理说要让那个心形图标被点击的时候不仅要弹跳，还要有一圈粒子炸开。我又要去跟 SVG 的坐标系搏斗了。记住那句咒语：`transform-box: fill-box;`。祝你们早日下班，永远不报错！

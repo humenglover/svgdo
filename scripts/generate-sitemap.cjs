@@ -24,15 +24,23 @@ const PAGES = [
   { path: '/about',          priority: '0.6', changefreq: 'monthly' },
   { path: '/privacy',       priority: '0.3', changefreq: 'monthly' },
   { path: '/resources',     priority: '0.8', changefreq: 'weekly' },
-  { path: '/resources/svg-basics',         priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-vs-png',         priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-optimization',   priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-animation',      priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-icons-guide',    priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-in-web',         priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-editor-guide',   priority: '0.7', changefreq: 'monthly' },
-  { path: '/resources/svg-to-png-guide',   priority: '0.7', changefreq: 'monthly' },
 ]
+
+// Dynamically extract article slugs from articles.ts
+try {
+  const articlesPath = path.resolve(__dirname, '..', 'src', 'data', 'articles.ts');
+  const articlesContent = fs.readFileSync(articlesPath, 'utf-8');
+  
+  // Use regex to find all slug: 'some-slug' or slug: "some-slug"
+  const slugRegex = /slug:\s*['"]([^'"]+)['"]/g;
+  let match;
+  while ((match = slugRegex.exec(articlesContent)) !== null) {
+    const slug = match[1];
+    PAGES.push({ path: `/resources/${slug}`, priority: '0.7', changefreq: 'monthly' });
+  }
+} catch (error) {
+  console.warn("Could not read articles.ts to dynamically add articles to sitemap:", error.message);
+}
 
 function generate() {
   const allUrls = []
