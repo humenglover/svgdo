@@ -1,3 +1,5 @@
+'use client';
+
 import { Component } from 'react'
 
 interface Props { children: React.ReactNode }

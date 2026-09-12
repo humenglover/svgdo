@@ -1,13 +1,9 @@
-import { useState, useRef, useEffect, useMemo, lazy, Suspense } from 'react'
-import { Routes, Route, Link, Outlet, useParams, useLocation, useNavigate, useBlocker } from 'react-router-dom'
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import AboutPage from './pages/AboutPage'
-import TermsOfService from './pages/TermsOfService'
-import { ErrorBoundary } from '@/components/ErrorBoundary'
+'use client';
 
-const Resources = lazy(() => import('./pages/Resources'))
-const ArticlePage = lazy(() => import('./pages/ArticlePage'))
-const NotFound = lazy(() => import('./pages/NotFound'))
+import { useState, useRef, useEffect, useMemo } from 'react'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ExportPanel } from '@/components/ExportPanel'
 import { useDropzone } from 'react-dropzone'
@@ -27,21 +23,55 @@ import {
 import { cn } from '@/utils'
 import toast, { Toaster } from 'react-hot-toast'
 import { useTheme } from '@/contexts/ThemeContext'
-import PageSEO from '@/components/PageSEO'
 import { ToolArticleBody } from '@/components/ToolArticleDialog'
 import { AdsterraBanner } from '@/components/AdsterraBanner'
 import { ExportSuccessModal } from '@/components/ExportSuccessModal'
 import { FullLogo } from '@/components/FullLogo'
 import PropertiesPanel from '@/components/PropertiesPanel'
 import Navbar from '@/components/Navbar'
+import { FALLBACK_ICONS } from '@/constants/icons'
 
 type MobileTab = 'canvas' | 'transform' | 'export' | 'properties'
 type ViewMode = 'split' | 'preview' | 'code'
 
-import { FALLBACK_ICONS } from '@/constants/icons'
-function EditorPage() {
+export default function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, toggle: toggleTheme } = useTheme()
+  const pathname = usePathname()
+  const currentPath = (pathname || '').replace(/^\//, '').replace(/\/$/, '').toLowerCase()
+  const seoKey = ['svg-to-png', 'svg-optimizer', 'svg-viewer', 'edit-svg'].includes(currentPath) ? currentPath : undefined
+
+  const pageHeroInfo = useMemo(() => {
+    if (currentPath === 'svg-to-png') {
+      return {
+        title: 'Free SVG to PNG Converter',
+        subtitle: 'Convert SVG vector graphics to crystal-clear, high-resolution PNG with transparent background. 100% private in-browser conversion.'
+      }
+    }
+    if (currentPath === 'svg-optimizer') {
+      return {
+        title: 'Free Online SVG Optimizer & Minifier',
+        subtitle: 'Minify and compress SVG code, strip unwanted metadata, precision artifacts, and reduce vector file sizes with zero quality loss.'
+      }
+    }
+    if (currentPath === 'svg-viewer') {
+      return {
+        title: 'Online SVG Viewer & Code Inspector',
+        subtitle: 'Instant SVG preview and inspection from files or raw SVG code. Inspect DOM nodes, colors, and layout in your browser.'
+      }
+    }
+    if (currentPath === 'edit-svg') {
+      return {
+        title: 'Free Online SVG Editor',
+        subtitle: 'Edit SVG elements, modify colors, strokes, shapes, and transforms online with zero cloud uploads.'
+      }
+    }
+    return {
+      title: 'Upload SVG',
+      subtitle: 'Drag & drop your SVG file here, or click to browse'
+    }
+  }, [currentPath])
+
   // Editor state
   const [svgCode, setSvgCode] = useState<string>('')
   const [originalSvg, setOriginalSvg] = useState<string>('')
@@ -140,11 +170,7 @@ function EditorPage() {
   }, [svgCode])
 
   // Prevent accidental client-side navigation (React Router links/back button)
-  const blocker = useBlocker(
-    ({ currentLocation, nextLocation }) =>
-      svgCode !== undefined && svgCode.trim().length > 0 &&
-      currentLocation.pathname !== nextLocation.pathname
-  );
+  // Blocker removed for Next.js;
 
   // Curated quick-start icons — first one is the site logo
   const QUICK_START_ICONS = [
@@ -810,10 +836,10 @@ function EditorPage() {
     <div className="flex-1 overflow-y-auto flex flex-col items-center bg-transparent">
       <div className="w-full max-w-3xl px-4 pt-6 pb-12 mx-auto flex flex-col items-center gap-5">
         {/* Upload Dropzone */}
-        <div onClick={() => fileInputRef.current?.click()} className="w-full border-2 border-dashed border-border hover:border-orange/50 rounded-2xl flex flex-col items-center justify-center py-6 px-4 cursor-pointer bg-white dark:bg-bg-surface shadow-sm hover:shadow-md transition-all group">
-          <h3 className="text-lg font-bold text-primary mb-1">Upload SVG</h3>
-          <p className="text-xs text-tertiary text-center max-w-[280px]">
-            Drag & drop your SVG file here, or click to browse
+        <div onClick={() => fileInputRef.current?.click()} className="w-full border-2 border-dashed border-border hover:border-orange/50 rounded-2xl flex flex-col items-center justify-center py-6 px-4 cursor-pointer bg-white dark:bg-bg-surface shadow-sm hover:shadow-md transition-all group text-center">
+          <h1 className="text-xl md:text-2xl font-black text-primary mb-1 tracking-tight">{pageHeroInfo.title}</h1>
+          <p className="text-xs md:text-sm text-secondary text-center max-w-[440px] leading-relaxed">
+            {pageHeroInfo.subtitle}
           </p>
         </div>
 
@@ -861,7 +887,6 @@ function EditorPage() {
 
   return (
     <>
-      <PageSEO />
       <Toaster position="top-center" />
       <ExportSuccessModal
         open={exportSuccessModal.open}
@@ -1494,57 +1519,6 @@ function EditorPage() {
           </div>
         </div>
       )}
-      {/* SPA Navigation Blocker Modal */}
-      {blocker.state === 'blocked' && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-bg-surface border border-border shadow-2xl rounded-2xl max-w-sm w-full overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-primary mb-2">
-                Unsaved Changes
-              </h3>
-              <p className="text-secondary text-sm leading-relaxed mb-6">
-                You have unsaved changes in your SVG editor. Leaving this page will discard your changes.
-              </p>
-              <div className="flex justify-end gap-3">
-                <button onClick={() => blocker.reset?.()} className="px-5 py-2.5 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl transition-colors">
-                  Stay on Page
-                </button>
-                <button onClick={() => blocker.proceed?.()} className="px-5 py-2.5 text-sm font-bold bg-red hover:opacity-90 text-white rounded-xl shadow-sm transition-opacity">
-                  Leave
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-
-    </>
-  )
-}
-
-const PageLoader = () => (
-  <div className="flex-1 flex items-center justify-center min-h-[50vh]">
-    <div className="w-6 h-6 rounded-full border-2 border-orange/20 border-t-orange animate-spin" />
-  </div>
-)
-
-
-export default function App() {
-  return (
-    <ErrorBoundary>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<EditorPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/resources/:slug" element={<ArticlePage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <CookieConsent />
-      </Suspense>
-    </ErrorBoundary>
+          </>
   )
 }

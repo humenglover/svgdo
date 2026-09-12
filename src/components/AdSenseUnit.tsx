@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 
 interface AdSenseUnitProps {
   adClient?: string;
@@ -11,15 +13,14 @@ interface AdSenseUnitProps {
 }
 
 export function AdSenseUnit({
-  adClient = 'ca-pub-8411665379717170', // Auto-detected from index.html
+  adClient = 'ca-pub-8411665379717170',
   adSlot,
   adFormat = 'auto',
   fullWidthResponsive = 'true',
   style = { display: 'block' },
   className = '',
 }: AdSenseUnitProps) {
-  const location = useLocation();
-
+  const pathname = usePathname();
   const isLoaded = React.useRef(false);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export function AdSenseUnit({
     } catch (e) {
       console.error('AdSense error:', e);
     }
-  }, [location.pathname]); // Re-trigger when the route changes
+  }, [pathname]);
 
   return (
     <div className={`adsense-container my-8 w-full flex flex-col items-center justify-center border border-border-default/40 rounded-xl p-3 bg-bg-surface/50 ${className}`}>

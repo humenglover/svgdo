@@ -1,3 +1,5 @@
+'use client';
+
 import { X, Info, HelpCircle } from 'lucide-react'
 import { cn } from '@/utils'
 import { AdsterraBanner } from './AdsterraBanner'

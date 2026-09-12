@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { Info, X } from 'lucide-react'
 import { cn } from '@/utils'
 
@@ -8,15 +10,23 @@ export function CookieConsent() {
   const [isRendered, setIsRendered] = useState(false)
 
   useEffect(() => {
-    const hasConsented = localStorage.getItem('cookie_consent') === 'true'
-    if (!hasConsented) {
-      setIsRendered(true)
-      setTimeout(() => setIsVisible(true), 500)
+    try {
+      const hasConsented = localStorage.getItem('cookie_consent') === 'true'
+      if (!hasConsented) {
+        setIsRendered(true)
+        setTimeout(() => setIsVisible(true), 500)
+      }
+    } catch {
+      // Ignore in restricted environments
     }
   }, [])
 
   const handleAccept = () => {
-    localStorage.setItem('cookie_consent', 'true')
+    try {
+      localStorage.setItem('cookie_consent', 'true')
+    } catch {
+      // Ignore
+    }
     setIsVisible(false)
     setTimeout(() => setIsRendered(false), 300)
   }
@@ -48,7 +58,7 @@ export function CookieConsent() {
               Accept
             </button>
             <Link 
-              to="/privacy"
+              href="/privacy/"
               onClick={() => setIsVisible(false)}
               className="px-3 py-2 text-xs font-semibold text-tertiary hover:text-primary transition-colors underline-offset-4 hover:underline"
             >

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react'
 import { ChevronDown, ChevronRight, Trash2, ArrowUp, ArrowDown, ArrowUpToLine, ArrowDownToLine } from 'lucide-react'
 import { cn } from '@/utils'

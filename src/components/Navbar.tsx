@@ -1,25 +1,27 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Sun, Moon, Menu, X } from 'lucide-react'
-import { FullLogo } from '@/components/FullLogo'
-import { useTheme } from '@/contexts/ThemeContext'
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { Sun, Moon, Menu, X } from 'lucide-react';
+import { FullLogo } from '@/components/FullLogo';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function Navbar() {
-  const { theme, toggle: toggleTheme } = useTheme()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { theme, toggle: toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
       <header className="sticky top-0 z-50 h-12 md:h-14 flex items-center justify-between px-3 md:px-5 border-b border-border shrink-0 bg-bg-surface">
-        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
           <FullLogo iconClassName="w-7 h-7 md:w-8 md:h-8" textClassName="h-[30px] md:h-[34px]" />
         </Link>
         <div className="flex items-center gap-2 md:gap-4">
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/about" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">About</Link>
-            <Link to="/resources" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">Tutorials</Link>
-            <Link to="/privacy" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">Privacy</Link>
-            <Link to="/terms" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">Terms</Link>
+            <Link href="/about" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">About</Link>
+            <Link href="/resources" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">Tutorials</Link>
+            <Link href="/privacy" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">Privacy</Link>
+            <Link href="/terms" className="text-sm font-semibold text-secondary hover:text-primary transition-colors">Terms</Link>
           </div>
           <div className="hidden md:block w-px h-4 bg-border mx-2"></div>
           <div className="hidden md:flex items-center gap-1">
@@ -39,7 +41,7 @@ export default function Navbar() {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
           <div className="relative flex flex-col w-64 max-w-[80%] h-full bg-bg-surface shadow-2xl animate-in slide-in-from-left duration-300">
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center">
+              <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center">
                 <FullLogo iconClassName="h-[20px] w-auto" textClassName="h-[22px] w-auto" />
               </Link>
               <button onClick={() => setIsMenuOpen(false)} className="p-1 text-secondary hover:text-primary rounded-lg transition-colors"><X size={18} /></button>
@@ -53,16 +55,16 @@ export default function Navbar() {
               </div>
 
               <div className="p-2 flex flex-col gap-1 border-t border-border">
-                <Link to="/about" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link href="/about" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   About
                 </Link>
-                <Link to="/resources" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link href="/resources" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   Tutorials
                 </Link>
-                <Link to="/privacy" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link href="/privacy" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   Privacy Policy
                 </Link>
-                <Link to="/terms" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
+                <Link href="/terms" onClick={() => setIsMenuOpen(false)} className="px-3 py-3 rounded-lg text-sm font-medium text-secondary hover:text-primary hover:bg-bg-subtle transition-colors">
                   Terms of Service
                 </Link>
               </div>
@@ -71,5 +73,5 @@ export default function Navbar() {
         </div>
       )}
     </>
-  )
+  );
 }

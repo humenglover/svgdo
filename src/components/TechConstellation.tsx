@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import { renderToStaticMarkup } from 'react-dom/server';
