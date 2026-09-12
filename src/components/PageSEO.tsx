@@ -1,9 +1,6 @@
 import { SITE_NAME } from '@/constants/site'
 import { Helmet } from 'react-helmet-async'
-import { useTranslation } from 'react-i18next'
 import { articles } from '@/data/articles'
-import { LANGUAGES, DEFAULT_LANGUAGE } from '@/locales/config'
-import { getLanguageByCode } from '@/locales/i18n'
 import { useLocation } from 'react-router-dom'
 
 const SITE_URL = typeof window !== 'undefined' ? window.location.origin : 'https://svgdo.com'
@@ -12,76 +9,57 @@ const OG_IMAGE = `${SITE_URL}/og-image.png`
 interface Props { seoKey?: string }
 
 export default function PageSEO({ seoKey }: Props) {
-  const { t, i18n } = useTranslation()
-  const lang = getLanguageByCode(i18n.language) || LANGUAGES[0]
   const location = useLocation()
 
-  let title: string, description: string, keywords: string[]
+  let title = 'SVGDO - Free Online SVG Editor | Fast, Secure & No Upload'
+  let description = 'The ultimate free online SVG editor. Experience lightning-fast, 100% local browser-based SVG editing, compression, and PNG export. Zero cloud uploads.'
+  let keywords = ['SVG editor', 'free SVG editor', 'online SVG editor', 'fast SVG optimizer', 'SVG to PNG converter', 'secure vector editor', 'browser-based SVG tool']
 
   if (seoKey === 'resources') {
-    title = t('common.resources.seoTitle')
-    description = t('common.resources.desc')
-    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+    title = 'Help Center & SVG Guides - SVGDO'
+    description = 'Learn SVG editing, vector path optimization, CSS animation, and web design best practices with our comprehensive guides.'
   } else if (seoKey === 'about') {
-    title = t('pages.about.title', 'About') + ' - SVGDO'
-    description = t('pages.about.subtitle', 'About SVGDO')
-    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+    title = 'About SVGDO - Free Online SVG Editor'
+    description = 'Explore and reshape browser-based vector graphics editing. Native, private, and lightning-fast.'
   } else if (seoKey === 'privacy') {
-    title = t('pages.privacy.title', 'Privacy Policy') + ' - SVGDO'
-    description = t('pages.privacy.lastUpdated', 'Privacy Policy')
-    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+    title = 'Privacy Policy - SVGDO'
+    description = 'SVGDO processes all images locally in your browser. Read our privacy policy — your data never leaves your device.'
   } else if (seoKey === 'terms') {
-    title = t('pages.terms.title', 'Terms of Service') + ' - SVGDO'
-    description = t('pages.terms.lastUpdated', 'Terms of Service')
-    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
+    title = 'Terms of Service - SVGDO'
+    description = 'The terms of service for using SVGDO, the free online SVG editor.'
   } else if (seoKey && articles.find(a => a.slug === seoKey)) {
     const article = articles.find(a => a.slug === seoKey)!
-    title = article.title[i18n.language] || article.title.en
-    description = article.excerpt[i18n.language] || article.excerpt.en
+    title = `${article.title} - SVGDO`
+    description = article.excerpt
     keywords = article.tags
-  } else {
-    title = t('seo.home.title')
-    description = t('seo.home.description')
-    keywords = (t('seo.home.keywords', { returnObjects: true }) as unknown as string[]) || []
   }
 
-  const parts = location.pathname.split('/').filter(Boolean)
-  const hasLangPrefix = LANGUAGES.some(l => l.code === parts[0])
-  const pathWithoutLang = hasLangPrefix ? '/' + parts.slice(1).join('/') : location.pathname
-  // Normalize trailing slash
-  const cleanPath = pathWithoutLang === '/' ? '' : (pathWithoutLang.endsWith('/') ? pathWithoutLang.slice(0, -1) : pathWithoutLang)
-
-  const canonicalUrl = `${SITE_URL}${i18n.language === DEFAULT_LANGUAGE ? cleanPath : `/${i18n.language}${cleanPath}`}`
+  const cleanPath = location.pathname === '/' ? '' : (location.pathname.endsWith('/') ? location.pathname.slice(0, -1) : location.pathname)
+  const canonicalUrl = `${SITE_URL}${cleanPath}`
 
   const jsonLd = seoKey && seoKey !== 'resources' ? {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title, description, url: canonicalUrl,
-    inLanguage: lang.code,
+    inLanguage: 'en',
     datePublished: articles.find(a => a.slug === seoKey)?.date,
   } : {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: title, description, url: canonicalUrl,
     applicationCategory: 'Multimedia', operatingSystem: 'Any',
-    inLanguage: lang.code,
+    inLanguage: 'en',
     offers: { '@type': 'Offer', price: '0' },
   }
 
   return (
     <Helmet>
-      <html lang={lang.htmlLang} />
+      <html lang="en" />
       <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(', ')} />
       <link rel="canonical" href={canonicalUrl} />
-
-      {/* Hreflang alternates for all supported languages */}
-      {LANGUAGES.map(l => (
-        <link key={l.code} rel="alternate" hrefLang={l.code} href={`${SITE_URL}${l.code === DEFAULT_LANGUAGE ? cleanPath : `/${l.code}${cleanPath}`}`} />
-      ))}
-      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}${cleanPath}`} />
 
       {/* Open Graph */}
       <meta property="og:type" content={seoKey && seoKey !== 'resources' ? 'article' : 'website'} />
@@ -91,7 +69,7 @@ export default function PageSEO({ seoKey }: Props) {
       <meta property="og:image" content={OG_IMAGE} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:locale" content={lang.ogLocale} />
+      <meta property="og:locale" content="en_US" />
       <meta property="og:site_name" content={SITE_NAME} />
 
       {/* Twitter Card */}

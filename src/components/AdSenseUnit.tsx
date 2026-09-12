@@ -39,7 +39,7 @@ export function AdSenseUnit({
   return (
     <div className={`adsense-container my-8 w-full flex flex-col items-center justify-center border border-border-default/40 rounded-xl p-3 bg-bg-surface/50 ${className}`}>
       <span className="text-[10px] uppercase font-bold tracking-wider text-secondary/60 mb-1.5 self-start px-1">
-        广告 / Advertisement
+        Advertisement
       </span>
       <div className="w-full min-h-[100px] overflow-hidden flex items-center justify-center">
         <ins

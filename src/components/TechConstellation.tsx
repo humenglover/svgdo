@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import * as echarts from 'echarts';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
@@ -16,7 +15,7 @@ const TECH_IDS = [
   { id: 'router', name: 'React Router', level: 2, icon: Route },
   { id: 'radix', name: 'Radix UI', level: 2, icon: LayoutTemplate },
   { id: 'framer', name: 'Framer Motion', level: 2, icon: Sparkles },
-  { id: 'i18next', name: 'i18next', level: 2, icon: Globe2 },
+  { id: 'canvas', name: 'Canvas API', level: 2, icon: Globe2 },
   { id: 'zustand', name: 'Zustand', level: 2, icon: Database },
   { id: 'lucide', name: 'Lucide Icons', level: 2, icon: Paintbrush },
   { id: 'tailwind', name: 'Tailwind CSS', level: 2, icon: Paintbrush },
@@ -41,32 +40,26 @@ const EDGES = [
 ];
 
 export default function TechConstellation() {
-  const { t } = useTranslation();
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!chartRef.current) return;
 
-    // Initialize ECharts instance
     const chart = echarts.init(chartRef.current, 'dark', { renderer: 'canvas' });
 
-    // Prepare ECharts nodes with SVG Data URIs for icons
     const nodes = TECH_IDS.map((tech) => {
       const isCore = tech.level === 0;
       const isPrimary = tech.level === 1;
       
       const size = isCore ? 64 : isPrimary ? 48 : 36;
-      // Map icon size relative to viewBox (100x100)
       const iconSize = isCore ? 40 : isPrimary ? 32 : 24;
       
-      // Beautiful glowing colors
       const color = isCore 
-        ? '#3b82f6' // Blue
+        ? '#3b82f6'
         : isPrimary 
-          ? '#06b6d4' // Cyan
-          : '#8b5cf6'; // Violet
+          ? '#06b6d4'
+          : '#8b5cf6';
           
-      // Render the glowing circle + icon directly into an SVG!
       const svgString = renderToStaticMarkup(
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
           <defs>
@@ -85,14 +78,13 @@ export default function TechConstellation() {
         </svg>
       );
       
-      // We must replace double quotes with single quotes inside the URI or encode it properly.
       const dataUri = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}`;
           
       return {
         id: tech.id,
         name: tech.name,
         symbol: `image://${dataUri}`,
-        symbolSize: size * (100 / 76), // Adjust symbol size because our circle radius is 38 (diameter 76%)
+        symbolSize: size * (100 / 76),
         label: {
           show: true,
           position: 'bottom',
@@ -109,9 +101,8 @@ export default function TechConstellation() {
       };
     });
 
-    // Prepare ECharts links
     const links = EDGES.map((edge) => {
-      const pseudoRandom = (edge.source + edge.target) / 30; // Deterministic random-like curve
+      const pseudoRandom = (edge.source + edge.target) / 30;
       return {
         source: TECH_IDS[edge.source].id,
         target: TECH_IDS[edge.target].id,
@@ -127,7 +118,6 @@ export default function TechConstellation() {
       };
     });
 
-    // Set ECharts Option
     const option: any = {
       backgroundColor: 'transparent',
       tooltip: { show: false },
@@ -139,13 +129,13 @@ export default function TechConstellation() {
           layout: 'force',
           data: nodes,
           links: links,
-          roam: true, // Allow panning and zooming
+          roam: true,
           label: {
             show: true
           },
           force: {
-            repulsion: 400,  // Increase repulsion so they push away and don't squeeze
-            edgeLength: [100, 180], // Dynamic edge length
+            repulsion: 400,
+            edgeLength: [100, 180],
             gravity: 0.05,
             layoutAnimation: true
           },
@@ -175,7 +165,7 @@ export default function TechConstellation() {
       window.removeEventListener('resize', handleResize);
       chart.dispose();
     };
-  }, [t]); // Re-render if language changes
+  }, []);
 
   return (
     <div className="w-full mt-12 mb-24 relative">
@@ -191,11 +181,8 @@ export default function TechConstellation() {
 
       {/* Main Galaxy Canvas */}
       <div className="relative w-full h-[600px] md:h-[700px] galaxy-bg rounded-[40px] overflow-hidden border border-white/5 shadow-2xl">
-        
-        {/* Core Nebula Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-500/10 blur-[120px] pointer-events-none rounded-full" />
         
-        {/* Starry Sky Particles */}
         {Array.from({ length: 40 }).map((_, i) => (
           <div
             key={i}
@@ -210,7 +197,6 @@ export default function TechConstellation() {
           />
         ))}
 
-        {/* ECharts Canvas */}
         <div ref={chartRef} className="w-full h-full relative z-10" />
       </div>
     </div>

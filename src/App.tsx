@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useMemo, lazy, Suspense } from 'react'
 import { Routes, Route, Link, Outlet, useParams, useLocation, useNavigate, useBlocker } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import AboutPage from './pages/AboutPage'
 import TermsOfService from './pages/TermsOfService'
@@ -28,10 +27,10 @@ import {
 import { cn } from '@/utils'
 import toast, { Toaster } from 'react-hot-toast'
 import { useTheme } from '@/contexts/ThemeContext'
-import i18n from '@/locales/i18n'
 import PageSEO from '@/components/PageSEO'
-import { Languages } from 'lucide-react'
 import { ToolArticleBody } from '@/components/ToolArticleDialog'
+import { AdsterraBanner } from '@/components/AdsterraBanner'
+import { ExportSuccessModal } from '@/components/ExportSuccessModal'
 import { FullLogo } from '@/components/FullLogo'
 import PropertiesPanel from '@/components/PropertiesPanel'
 import Navbar from '@/components/Navbar'
@@ -40,59 +39,8 @@ type MobileTab = 'canvas' | 'transform' | 'export' | 'properties'
 type ViewMode = 'split' | 'preview' | 'code'
 
 import { FALLBACK_ICONS } from '@/constants/icons'
-import { LanguageDropdown } from '@/components/LanguageDropdown'
-import { getLanguageByCode, getDefaultLanguage } from '@/locales/i18n'
-import { LANGUAGES, DEFAULT_LANGUAGE } from '@/locales/config'
-
-let hasCheckedDefaultLanguage = false;
-
-function LanguageSync() {
-  const { lang } = useParams<{ lang: string }>()
-  const navigate = useNavigate()
-  const location = useLocation()
-  
-  useEffect(() => {
-    if (lang && LANGUAGES.some(l => l.code === lang)) {
-      if (i18n.language !== lang) {
-        i18n.changeLanguage(lang)
-        localStorage.setItem('lang', lang)
-      }
-    } else if (!lang) {
-      if (!hasCheckedDefaultLanguage) {
-        hasCheckedDefaultLanguage = true;
-        const preferred = getDefaultLanguage()
-        if (preferred !== DEFAULT_LANGUAGE) {
-          // Redirect to the language-prefixed version on first load only
-          const newPath = `/${preferred}${location.pathname === '/' ? '' : location.pathname}`
-          navigate(newPath + location.search + location.hash, { replace: true })
-          return;
-        }
-      }
-      
-      if (i18n.language !== DEFAULT_LANGUAGE) {
-        i18n.changeLanguage(DEFAULT_LANGUAGE)
-      }
-    }
-  }, [lang, location.pathname, navigate])
-  
-  const isResourcesPage = location.pathname.match(/^\/([a-z]{2}\/)?resources\/?$/) !== null;
-  
-  return (
-    <>
-      <div style={{ display: isResourcesPage ? 'block' : 'none' }}>
-        <Suspense fallback={<PageLoader />}>
-          <Resources />
-        </Suspense>
-      </div>
-      <div style={{ display: isResourcesPage ? 'none' : 'block', height: '100%' }}>
-        <Outlet />
-      </div>
-    </>
-  )
-}
 function EditorPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { t } = useTranslation()
   const { theme, toggle: toggleTheme } = useTheme()
   // Editor state
   const [svgCode, setSvgCode] = useState<string>('')
@@ -122,6 +70,7 @@ function EditorPage() {
   const [pendingSvgCode, setPendingSvgCode] = useState<string | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('canvas')
   const [activePanels, setActivePanels] = useState<string[]>(['transform', 'optimize', 'export'])
+  const [exportSuccessModal, setExportSuccessModal] = useState<{ open: boolean; format: string }>({ open: false, format: 'svg' })
   const [nextSelectedIndex, setNextSelectedIndex] = useState<number | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const lastPanPos = useRef<{ x: number, y: number } | null>(null)
@@ -436,10 +385,10 @@ function EditorPage() {
       const doc = parser.parseFromString(svgCode, 'image/svg+xml')
       const errorNode = doc.querySelector('parsererror')
       if (errorNode) {
-        return errorNode.querySelector('div')?.textContent || errorNode.textContent || t('pages.svgConverter.syntaxError')
+        return errorNode.querySelector('div')?.textContent || errorNode.textContent || 'SVG syntax error'
       }
     } catch (e) {
-      return t('pages.svgConverter.syntaxError')
+      return 'SVG syntax error'
     }
     return null
   }, [svgCode])
@@ -520,13 +469,14 @@ function EditorPage() {
   }, [selectedElement, processedSVG, pan, zoom, viewMode])
 
   const onDrop = (acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0]
+    const file = acceptedFiles[0]
+    if (file && file.type === 'image/svg+xml') {
       const reader = new FileReader()
       reader.onload = (e) => {
         const text = e.target?.result as string
-        if (text && text.includes('<svg')) handleLoadNewSvg(text)
-        else alert('Please upload a valid SVG file.')
+        if (text) {
+          handleLoadNewSvg(text)
+        }
       }
       reader.readAsText(file)
     }
@@ -542,8 +492,8 @@ function EditorPage() {
       if (res.ok) {
         const text = await res.text()
         if (text.includes('<svg')) { handleLoadNewSvg(text); setShowLibrary(false) }
-        else toast.error(t('common.error.loadIconFailed'))
-      } else toast.error(t('common.error.loadIconFailed'))
+        else toast.error('Failed to load icon')
+      } else toast.error('Failed to load icon')
     } catch (e) { console.error(e) }
   }
 
@@ -552,9 +502,9 @@ function EditorPage() {
     setIsLoading(true)
     try {
       const result = await loadRemoteSVG(urlInput)
-      if (result.success && result.data) { handleLoadNewSvg(result.data); setShowUrlPrompt(false); setUrlInput(''); toast.success(t('pages.svgConverter.urlModal.loadSuccess')) }
-      else toast.error(result.error || t('common.error.loadSvgFailed'))
-    } catch (e: any) { toast.error(e.message || t('common.error.loadSvgFailed')) }
+      if (result.success && result.data) { handleLoadNewSvg(result.data); setShowUrlPrompt(false); setUrlInput(''); toast.success('SVG loaded successfully') }
+      else toast.error(result.error || 'Failed to load SVG')
+    } catch (e: any) { toast.error(e.message || 'Failed to load SVG') }
     finally { setIsLoading(false) }
   }
 
@@ -567,7 +517,7 @@ function EditorPage() {
     handleLoadNewSvg(codeInput)
     setShowCodePrompt(false)
     setCodeInput('')
-    toast.success(t('pages.svgConverter.urlModal.loadSuccess'))
+    toast.success('SVG loaded successfully')
   }
 
 
@@ -592,11 +542,11 @@ function EditorPage() {
         // Report savings against the ORIGINAL imported file for better UX
         const totalSavedBytes = origLen - optimized.length
         const percentage = ((totalSavedBytes / origLen) * 100).toFixed(1)
-        toast.success(t('pages.svgConverter.optimize.optimizeSuccess', { bytes: totalSavedBytes, percent: percentage }))
+        toast.success(`Optimized: Saved ${totalSavedBytes} B (${percentage}%)`)
       } else {
-        toast.success(t('pages.svgConverter.optimize.alreadyOptimized'))
+        toast.success('SVG is already optimized')
       }
-    } catch (e) { toast.error(t('pages.svgConverter.optimize.optimizeFailed')) }
+    } catch (e) { toast.error('Failed to optimize SVG') }
     finally { setIsOptimizing(false) }
   }
 
@@ -607,7 +557,7 @@ function EditorPage() {
         setSvgCode(originalSvg)
         setOptimizedCode('')
         pushToHistory(originalSvg)
-        toast.success(t('pages.svgConverter.optimize.restored'))
+        toast.success('Restored original SVG')
       }
     } else {
       setOptimizeMode(m)
@@ -617,8 +567,8 @@ function EditorPage() {
 
   const handleCopySVG = async () => {
     if (!svgCode) return
-    try { await navigator.clipboard.writeText(svgCode); toast.success(t('pages.svgConverter.optimize.copied')) }
-    catch { toast.error(t('common.error.copyFailed')) }
+    try { await navigator.clipboard.writeText(svgCode); toast.success('SVG copied to clipboard') }
+    catch { toast.error('Failed to copy to clipboard') }
   }
 
   const handleDownloadSVG = () => {
@@ -627,7 +577,7 @@ function EditorPage() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a'); a.href = url; a.download = 'icon.svg'; a.click()
     setTimeout(() => URL.revokeObjectURL(url), 100)
-    toast.success(t('pages.svgConverter.export.downloading'))
+    setExportSuccessModal({ open: true, format: 'svg' })
   }
 
   const handleTransform = (type: 'rotate90' | 'rotate180' | 'rotate270' | 'flipH' | 'flipV') => {
@@ -689,15 +639,16 @@ function EditorPage() {
       else if (exportBg === 'black') { ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, canvas.width, canvas.height) }
       const img = new Image()
       const uri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgCode)))}`
-      const timeout = setTimeout(() => { setIsExporting(false); toast.error(t('common.error.exportTimeout')) }, 30000)
+      const timeout = setTimeout(() => { setIsExporting(false); toast.error('Export timed out') }, 30000)
       img.onload = () => {
         clearTimeout(timeout); ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
         const a = document.createElement('a'); a.href = canvas.toDataURL('image/png'); a.download = 'icon.png'; a.click()
-        toast.success(t('pages.svgConverter.export.exported')); setIsExporting(false)
+        setIsExporting(false)
+        setExportSuccessModal({ open: true, format: 'png' })
       }
-      img.onerror = () => { clearTimeout(timeout); toast.error(t('common.error.exportFailed')); setIsExporting(false) }
+      img.onerror = () => { clearTimeout(timeout); toast.error('Export failed'); setIsExporting(false) }
       img.src = uri
-    } catch { toast.error(t('common.error.exportFailed')); setIsExporting(false) }
+    } catch { toast.error('Export failed'); setIsExporting(false) }
   }
 
   const togglePanel = (panel: string) => {
@@ -712,7 +663,7 @@ function EditorPage() {
             className={cn("flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-bold rounded-md transition-all",
               !svgCode ? "opacity-30 cursor-not-allowed" : viewMode === m ? "bg-white shadow-sm text-slate-900" : "text-secondary hover:text-primary")}>
             {m === 'preview' ? <Eye size={14} /> : m === 'split' ? <SplitSquareHorizontal size={14} /> : <Code2 size={14} />}
-            {t(`pages.svgConverter.toolbar.${m}`)}
+            {m === 'preview' ? 'Preview' : m === 'split' ? 'Split' : 'Code'}
           </button>
         ))}
       </div>
@@ -735,8 +686,18 @@ function EditorPage() {
               </button>
             ))}
             <div className="w-px h-4 bg-border mx-1"></div>
-            <button disabled={!svgCode} onClick={handleDownloadSVG} title="Download SVG" className={cn("p-1 md:p-1.5 rounded-md text-secondary hover:text-orange hover:bg-orange/10 transition-colors", !svgCode && "opacity-30")}>
-              <Download size={14} />
+            <button
+              disabled={!svgCode}
+              onClick={handleDownloadSVG}
+              title={svgCode ? 'Export SVG' : ''}
+              className={cn(
+                "p-1.5 rounded-lg transition-all flex items-center justify-center",
+                !svgCode
+                  ? "text-secondary/30 opacity-30 cursor-not-allowed"
+                  : "text-orange bg-orange/10 hover:bg-orange hover:text-white shadow-xs cursor-pointer"
+              )}
+            >
+              <Download size={15} />
             </button>
           </div>
         </div>
@@ -749,22 +710,22 @@ function EditorPage() {
       {/* 导入操作四宫格 */}
       <div className="p-4 grid grid-cols-2 gap-2 border-b border-border bg-white dark:bg-bg-surface shrink-0">
         <button onClick={() => fileInputRef.current?.click()} className="py-2.5 px-2 bg-orange/10 text-orange hover:bg-orange hover:text-white font-bold rounded-xl border border-orange/20 transition-colors shadow-sm text-xs truncate">
-          {t('pages.svgConverter.upload')}
+          Upload SVG
         </button>
         <button onClick={() => setShowCodePrompt(true)} className="py-2.5 px-2 bg-white dark:bg-bg-surface text-primary hover:text-orange hover:border-orange font-bold rounded-xl border border-border transition-colors shadow-sm text-xs truncate">
-          {t('pages.svgConverter.pasteCode')}
+          Paste Code
         </button>
         <button onClick={() => setShowUrlPrompt(true)} disabled={isLoading} className={cn("py-2.5 px-2 bg-white dark:bg-bg-surface text-primary hover:text-orange hover:border-orange font-bold rounded-xl border border-border transition-colors shadow-sm text-xs truncate", isLoading && "opacity-50 cursor-not-allowed")}>
           {isLoading ? '...' : 'URL'}
         </button>
         <button onClick={() => setShowLibrary(true)} className="py-2.5 px-2 bg-white dark:bg-bg-surface text-primary hover:text-orange hover:border-orange font-bold rounded-xl border border-border transition-colors shadow-sm text-xs truncate">
-          {t('pages.svgConverter.library')}
+          Icons Library
         </button>
       </div>
 
       {([
-        { key: 'transform', icon: Settings, title: t('pages.svgConverter.transform.title') },
-        { key: 'optimize', icon: CheckCircle, title: t('pages.svgConverter.optimize.title') },
+        { key: 'transform', icon: Settings, title: 'Transform' },
+        { key: 'optimize', icon: CheckCircle, title: 'Optimize' },
       ] as const).map(panel => (
         <div key={panel.key} className="border-b border-border">
           <button onClick={() => togglePanel(panel.key)} className="flex items-center justify-between w-full p-4 hover:bg-bg-subtle transition-colors">
@@ -774,7 +735,7 @@ function EditorPage() {
           {activePanels.includes(panel.key) && panel.key === 'transform' && (
             <div className="px-4 pb-4 space-y-4">
               <div className="space-y-2">
-                <label className="text-xs text-secondary">{t('pages.svgConverter.transform.rotate')}</label>
+                <label className="text-xs text-secondary">Rotation</label>
                 <div className="grid grid-cols-3 gap-2">
                   {([90, 180, 270] as const).map(deg => (
                     <button key={deg} disabled={!svgCode} onClick={() => handleTransform(`rotate${deg}` as any)} className={cn("py-1.5 bg-white dark:bg-bg-base border rounded-lg text-xs flex items-center justify-center gap-1", !svgCode ? "opacity-50 cursor-not-allowed" : "hover:border-orange hover:text-orange")}><RotateCw size={12} /> {deg}°</button>
@@ -782,10 +743,10 @@ function EditorPage() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs text-secondary">{t('pages.svgConverter.transform.flip')}</label>
+                <label className="text-xs text-secondary">Flip</label>
                 <div className="grid grid-cols-2 gap-2">
-                  <button disabled={!svgCode} onClick={() => handleTransform('flipH')} className={cn("py-1.5 border rounded-lg text-xs flex items-center justify-center gap-1", !svgCode ? "opacity-50 cursor-not-allowed" : "bg-white dark:bg-bg-base hover:border-orange hover:text-orange")}><FlipHorizontal size={12} /> {t('pages.svgConverter.transform.flipH')}</button>
-                  <button disabled={!svgCode} onClick={() => handleTransform('flipV')} className={cn("py-1.5 border rounded-lg text-xs flex items-center justify-center gap-1", !svgCode ? "opacity-50 cursor-not-allowed" : "bg-white dark:bg-bg-base hover:border-orange hover:text-orange")}><FlipVertical size={12} /> {t('pages.svgConverter.transform.flipV')}</button>
+                  <button disabled={!svgCode} onClick={() => handleTransform('flipH')} className={cn("py-1.5 border rounded-lg text-xs flex items-center justify-center gap-1", !svgCode ? "opacity-50 cursor-not-allowed" : "bg-white dark:bg-bg-base hover:border-orange hover:text-orange")}><FlipHorizontal size={12} /> Flip Horizontal</button>
+                  <button disabled={!svgCode} onClick={() => handleTransform('flipV')} className={cn("py-1.5 border rounded-lg text-xs flex items-center justify-center gap-1", !svgCode ? "opacity-50 cursor-not-allowed" : "bg-white dark:bg-bg-base hover:border-orange hover:text-orange")}><FlipVertical size={12} /> Flip Vertical</button>
                 </div>
               </div>
             </div>
@@ -794,12 +755,12 @@ function EditorPage() {
             <div className="px-4 pb-4 space-y-4">
               <div className="flex items-center justify-between bg-bg-subtle p-2.5 rounded-lg border border-border">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.original')}</span>
+                  <span className="text-[10px] text-secondary font-bold uppercase">Original</span>
                   <span className="text-xs font-mono text-primary font-medium">{originalSvg.length || svgCode.length} B</span>
                 </div>
                 <div className="h-4 w-px bg-border"></div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.current')}</span>
+                  <span className="text-[10px] text-secondary font-bold uppercase">Optimized</span>
                   <span className={cn("text-xs font-mono font-bold", optimizedCode && originalSvg && optimizedCode.length < originalSvg.length ? "text-green-500" : "text-primary")}>
                     {svgCode.length} B
                     {optimizedCode && originalSvg && optimizedCode.length < originalSvg.length && <span className="ml-1 opacity-80">(-{((1 - svgCode.length / originalSvg.length) * 100).toFixed(1)}%)</span>}
@@ -807,21 +768,21 @@ function EditorPage() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <label className="text-[10px] font-bold text-secondary uppercase shrink-0">{t('pages.svgConverter.optimize.mode')}</label>
+                <label className="text-[10px] font-bold text-secondary uppercase shrink-0">Mode</label>
                 <div className="flex-1 flex gap-2">
                   {(['safe', 'aggressive'] as const).map(m => (
                     <button key={m} onClick={() => handleToggleOptimize(m)} className={cn("flex-1 py-1.5 px-2 border rounded-lg text-xs font-bold transition-colors", optimizeMode === m ? "bg-orange text-white border-orange shadow-sm" : "bg-white dark:bg-bg-base border-border hover:border-orange text-primary hover:text-orange")}>
-                      {t(`pages.svgConverter.optimize.mode${m === 'safe' ? 'Safe' : 'Aggressive'}`)}
+                      {m === 'safe' ? 'Safe' : 'Aggressive'}
                     </button>
                   ))}
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 pt-4 border-t border-border">
                 <button disabled={!svgCode} onClick={handleCopySVG} className={cn("py-2 border rounded-lg text-xs font-medium flex justify-center items-center gap-2", !svgCode ? "bg-bg-muted cursor-not-allowed" : "bg-white dark:bg-bg-base hover:bg-bg-subtle")}>
-                  <Code2 size={12} /> {t('pages.svgConverter.optimize.copySvg')}
+                  <Code2 size={12} /> Copy SVG
                 </button>
-                <button disabled={!svgCode || !optimizedCode || !originalSvg} onClick={() => { if (originalSvg) { setSvgCode(originalSvg); setOptimizedCode(''); pushToHistory(originalSvg); toast.success(t('pages.svgConverter.optimize.restored')) } }} className={cn("py-2 border rounded-lg text-xs font-medium flex justify-center items-center gap-2", (!svgCode || !optimizedCode || !originalSvg) ? "bg-bg-muted cursor-not-allowed" : "bg-white dark:bg-bg-base hover:bg-bg-subtle")}>
-                  {t('pages.svgConverter.optimize.copyOriginal')}
+                <button disabled={!svgCode || !optimizedCode || !originalSvg} onClick={() => { if (originalSvg) { setSvgCode(originalSvg); setOptimizedCode(''); pushToHistory(originalSvg); toast.success('Restored original SVG') } }} className={cn("py-2 border rounded-lg text-xs font-medium flex justify-center items-center gap-2", (!svgCode || !optimizedCode || !originalSvg) ? "bg-bg-muted cursor-not-allowed" : "bg-white dark:bg-bg-base hover:bg-bg-subtle")}>
+                  Restore Original
                 </button>
               </div>
             </div>
@@ -831,11 +792,11 @@ function EditorPage() {
       {/* Export panel */}
       <div className="border-b border-border pb-4">
         <button onClick={() => togglePanel('export')} className="flex items-center justify-between w-full p-4 hover:bg-bg-subtle transition-colors">
-          <div className="flex items-center gap-2 text-sm font-bold text-primary"><Upload size={16} className="rotate-180" /> {t('pages.svgConverter.export.title')}</div>
+          <div className="flex items-center gap-2 text-sm font-bold text-primary"><Upload size={16} className="rotate-180" /> Export</div>
           {activePanels.includes('export') ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
         {activePanels.includes('export') && (
-          <ExportPanel svgCode={svgCode} />
+          <ExportPanel svgCode={svgCode} onExportSuccess={f => setExportSuccessModal({ open: true, format: f })} />
         )}
       </div>
 
@@ -850,9 +811,9 @@ function EditorPage() {
       <div className="w-full max-w-3xl px-4 pt-6 pb-12 mx-auto flex flex-col items-center gap-5">
         {/* Upload Dropzone */}
         <div onClick={() => fileInputRef.current?.click()} className="w-full border-2 border-dashed border-border hover:border-orange/50 rounded-2xl flex flex-col items-center justify-center py-6 px-4 cursor-pointer bg-white dark:bg-bg-surface shadow-sm hover:shadow-md transition-all group">
-          <h3 className="text-lg font-bold text-primary mb-1">{t('pages.svgConverter.upload')} SVG</h3>
+          <h3 className="text-lg font-bold text-primary mb-1">Upload SVG</h3>
           <p className="text-xs text-tertiary text-center max-w-[280px]">
-            {t('pages.svgConverter.empty.desc')}
+            Drag & drop your SVG file here, or click to browse
           </p>
         </div>
 
@@ -866,17 +827,21 @@ function EditorPage() {
         {/* Actions Area */}
         <div className="w-full grid grid-cols-3 gap-3">
           <button onClick={() => setShowCodePrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
-            <Code2 size={16} /> <span className="truncate">{t('pages.svgConverter.pasteCode')}</span>
+            <Code2 size={16} /> <span className="truncate">Paste Code</span>
           </button>
           <button onClick={() => setShowUrlPrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
             <LinkIcon size={16} /> URL
           </button>
           <button onClick={() => setShowLibrary(true)} className="flex items-center justify-center gap-2 p-3 bg-white dark:bg-bg-surface border border-border rounded-2xl shadow-sm hover:border-orange hover:text-orange text-sm font-bold text-primary transition-all">
-            <Library size={16} /> {t('pages.svgConverter.library')}
+            <Library size={16} /> Icons Library
           </button>
         </div>
+
+        {/* Adsterra Native Banner placed above examples */}
+        <AdsterraBanner className="!my-2 w-full" />
+
         <div className="w-full bg-white dark:bg-bg-surface rounded-2xl border border-border p-4 shadow-sm">
-          <h4 className="text-sm font-bold text-primary mb-3">{t('pages.svgConverter.empty.startFromExample')}</h4>
+          <h4 className="text-sm font-bold text-primary mb-3">Start from an example</h4>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
             {HOME_ICONS.map(name => (
               <button key={name} onClick={() => handleLoadPreset(name)} className="flex flex-col items-center gap-1.5 p-2 rounded-xl border border-border hover:border-orange hover:text-orange text-primary transition-all shadow-sm hover:shadow-md">
@@ -888,7 +853,7 @@ function EditorPage() {
         </div>
 
         <div className="mt-8 w-full">
-          <ToolArticleBody toolKey="svgConverter" />
+          <ToolArticleBody toolKey="svgConverter" showAd={false} />
         </div>
       </div>
     </div>
@@ -898,6 +863,11 @@ function EditorPage() {
     <>
       <PageSEO />
       <Toaster position="top-center" />
+      <ExportSuccessModal
+        open={exportSuccessModal.open}
+        onClose={() => setExportSuccessModal(prev => ({ ...prev, open: false }))}
+        format={exportSuccessModal.format}
+      />
       <input type="file" ref={fileInputRef} onChange={e => { if (e.target.files) onDrop(Array.from(e.target.files)) }} accept=".svg" className="hidden" />
 
       <div className="h-[100dvh] overflow-hidden flex flex-col bg-bg-base text-primary transition-colors">
@@ -917,7 +887,7 @@ function EditorPage() {
               <div className="absolute top-12 left-0 right-0 z-50 mx-auto max-w-2xl bg-red-500/95 text-white px-4 py-2.5 rounded-b-xl flex items-start gap-2 shadow-lg backdrop-blur-sm animate-in slide-in-from-top-4 duration-300 pointer-events-none">
                 <AlertTriangle size={16} className="shrink-0 mt-0.5" />
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold uppercase tracking-wider">{t('pages.svgConverter.syntaxError')}</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">SVG Syntax Error</span>
                   <span className="text-[11px] opacity-90 break-all leading-tight mt-0.5 font-mono">{syntaxError}</span>
                 </div>
               </div>
@@ -930,7 +900,7 @@ function EditorPage() {
                     <div className={cn("flex flex-col border-r border-border bg-[#1e1e1e] text-[#d4d4d4] font-mono text-sm overflow-hidden", viewMode === 'split' ? "w-1/2" : "w-full")}>
                       <div className="flex items-center justify-between px-4 py-2 border-b border-[#2d2d2d] bg-[#252526] shrink-0">
                         <span className="text-xs font-medium text-white/70">SVG Source</span>
-                        <button onClick={handleCopySVG} className="text-xs text-white/50 hover:text-white transition-colors flex items-center gap-1"><Code2 size={12} /> {t('pages.svgConverter.code.copy')}</button>
+                        <button onClick={handleCopySVG} className="text-xs text-white/50 hover:text-white transition-colors flex items-center gap-1"><Code2 size={12} /> Copy SVG</button>
                       </div>
                       <div className="flex-1 w-full h-full bg-[#1e1e1e] overflow-auto">
                         <Editor
@@ -1299,10 +1269,10 @@ function EditorPage() {
                     <MousePointer2 size={22} />
                   </div>
                   <h3 className="text-xs font-bold text-primary mb-2 uppercase tracking-widest">
-                    {t('common.panel.noSelection')}
+                    No Element Selected
                   </h3>
                   <p className="text-[11px] text-secondary/70 leading-relaxed max-w-[160px]">
-                    {t('common.panel.noSelectionHint')}
+                    Click on any SVG element to edit its fill, stroke, size and styles
                   </p>
                 </div>
               </div>
@@ -1317,32 +1287,32 @@ function EditorPage() {
               {mobileTab === 'canvas' && (
                 <div className="p-4 space-y-5">
                   <div className="grid grid-cols-2 gap-2">
-                    <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-2 p-3 bg-orange/10 text-orange font-bold rounded-xl border border-orange/20"><Upload size={18} /> <span className="text-sm">{t('pages.svgConverter.upload')}</span></button>
-                    <button onClick={() => setShowCodePrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><Code2 size={18} /> <span className="text-sm">{t('pages.svgConverter.pasteCode')}</span></button>
+                    <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-2 p-3 bg-orange/10 text-orange font-bold rounded-xl border border-orange/20"><Upload size={18} /> <span className="text-sm">Upload SVG</span></button>
+                    <button onClick={() => setShowCodePrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><Code2 size={18} /> <span className="text-sm">Paste Code</span></button>
                     <button onClick={() => setShowUrlPrompt(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><LinkIcon size={18} /> <span className="text-sm">URL</span></button>
-                    <button onClick={() => setShowLibrary(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><Library size={18} /> <span className="text-sm">{t('pages.svgConverter.library')}</span></button>
+                    <button onClick={() => setShowLibrary(true)} className="flex items-center justify-center gap-2 p-3 bg-bg-subtle text-primary font-bold rounded-xl border"><Library size={18} /> <span className="text-sm">Icons Library</span></button>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs text-secondary font-bold">{t('common.viewMode')}</label>
+                    <label className="text-xs text-secondary font-bold">View Mode</label>
                     <div className="flex bg-bg-muted rounded-lg p-1">
                       <button
                         onClick={() => setViewMode('preview')}
                         className={cn("flex-1 flex items-center justify-center py-2 rounded-md text-xs font-bold transition-all", viewMode === 'preview' ? "bg-white shadow-sm text-slate-900" : "text-secondary hover:text-primary")}
                       >
-                        <Eye size={14} className="mr-1.5" /> {t('pages.svgConverter.toolbar.preview')}
+                        <Eye size={14} className="mr-1.5" /> Preview
                       </button>
                       <button
                         onClick={() => setViewMode('split')}
                         className={cn("flex-1 flex items-center justify-center py-2 rounded-md text-xs font-bold transition-all", viewMode === 'split' ? "bg-white shadow-sm text-slate-900" : "text-secondary hover:text-primary")}
                       >
-                        <SplitSquareHorizontal size={14} className="mr-1.5" /> {t('pages.svgConverter.toolbar.split')}
+                        <SplitSquareHorizontal size={14} className="mr-1.5" /> Split
                       </button>
                       <button
                         onClick={() => setViewMode('code')}
                         className={cn("flex-1 flex items-center justify-center py-2 rounded-md text-xs font-bold transition-all", viewMode === 'code' ? "bg-white shadow-sm text-slate-900" : "text-secondary hover:text-primary")}
                       >
-                        <Code2 size={14} className="mr-1.5" /> {t('pages.svgConverter.toolbar.code')}
+                        <Code2 size={14} className="mr-1.5" /> Code
                       </button>
                     </div>
                   </div>
@@ -1359,7 +1329,7 @@ function EditorPage() {
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full min-h-[200px] p-5 text-secondary/70">
                       <MousePointer2 size={24} className="mb-2 opacity-50" />
-                      <p className="text-xs font-medium">{t('common.panel.noSelection')}</p>
+                      <p className="text-xs font-medium">No Element Selected</p>
                     </div>
                   )}
                 </div>
@@ -1370,18 +1340,18 @@ function EditorPage() {
                     {([90, 180, 270] as const).map(d => <button key={d} onClick={() => handleTransform(`rotate${d}` as any)} className="py-2 border rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm bg-white dark:bg-bg-base"><RotateCw size={14} /> {d}°</button>)}
                   </div>
                   <div className="grid grid-cols-2 gap-2">
-                    <button onClick={() => handleTransform('flipH')} className="py-2 border rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm bg-white dark:bg-bg-base"><FlipHorizontal size={14} /> {t('pages.svgConverter.transform.flipH')}</button>
-                    <button onClick={() => handleTransform('flipV')} className="py-2 border rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm bg-white dark:bg-bg-base"><FlipVertical size={14} /> {t('pages.svgConverter.transform.flipV')}</button>
+                    <button onClick={() => handleTransform('flipH')} className="py-2 border rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm bg-white dark:bg-bg-base"><FlipHorizontal size={14} /> Flip Horizontal</button>
+                    <button onClick={() => handleTransform('flipV')} className="py-2 border rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm bg-white dark:bg-bg-base"><FlipVertical size={14} /> Flip Vertical</button>
                   </div>
                   <div className="space-y-4 pt-3 border-t border-border">
                     <div className="flex items-center justify-between bg-bg-subtle p-3 rounded-xl border border-border">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.original')}</span>
+                        <span className="text-[10px] text-secondary font-bold uppercase">Original</span>
                         <span className="text-sm font-mono text-primary font-bold">{originalSvg.length || svgCode.length} B</span>
                       </div>
                       <div className="h-4 w-px bg-border"></div>
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] text-secondary font-bold uppercase">{t('pages.svgConverter.optimize.current')}</span>
+                        <span className="text-[10px] text-secondary font-bold uppercase">Optimized</span>
                         <span className={cn("text-sm font-mono font-bold", optimizedCode && originalSvg && optimizedCode.length < originalSvg.length ? "text-green-500" : "text-primary")}>
                           {svgCode.length} B
                           {optimizedCode && originalSvg && optimizedCode.length < originalSvg.length && <span className="ml-1.5 opacity-90">(-{((1 - svgCode.length / originalSvg.length) * 100).toFixed(1)}%)</span>}
@@ -1390,11 +1360,11 @@ function EditorPage() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <label className="text-xs font-bold text-secondary uppercase shrink-0">{t('pages.svgConverter.optimize.mode')}</label>
+                      <label className="text-xs font-bold text-secondary uppercase shrink-0">Mode</label>
                       <div className="flex-1 flex gap-2">
                         {(['safe', 'aggressive'] as const).map(m => (
                           <button key={m} onClick={() => handleToggleOptimize(m)} className={cn("flex-1 py-2 px-3 border rounded-xl text-sm font-bold transition-colors shadow-sm", optimizeMode === m ? "bg-orange text-white border-orange" : "bg-white dark:bg-bg-base border-border text-primary")}>
-                            {t(`pages.svgConverter.optimize.mode${m === 'safe' ? 'Safe' : 'Aggressive'}`)}
+                            {m === 'safe' ? 'Safe' : 'Aggressive'}
                           </button>
                         ))}
                       </div>
@@ -1403,7 +1373,7 @@ function EditorPage() {
                 </div>
               )}
               {mobileTab === 'export' && (
-                <ExportPanel svgCode={svgCode} />
+                <ExportPanel svgCode={svgCode} onExportSuccess={f => setExportSuccessModal({ open: true, format: f })} />
               )}
             </div>
             <div className="flex items-center p-1 border-t border-border bg-bg-subtle shrink-0" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
@@ -1427,13 +1397,13 @@ function EditorPage() {
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4">
           <div className="w-full max-w-4xl max-h-[85vh] bg-[#f8f9fa] dark:bg-bg-base rounded-2xl shadow-2xl flex flex-col overflow-hidden">
             <div className="flex items-center justify-between p-4 bg-white dark:bg-bg-surface border-b border-border shrink-0">
-              <div className="flex items-center gap-2 text-primary font-bold"><Grid size={18} /> {t('pages.svgConverter.libraryModal.title')}</div>
+              <div className="flex items-center gap-2 text-primary font-bold"><Grid size={18} /> Icons Library</div>
               <button onClick={() => setShowLibrary(false)} className="p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-bg-subtle"><X size={18} /></button>
             </div>
             <div className="p-4 bg-white dark:bg-bg-surface border-b border-border shrink-0">
               <div className="relative">
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary" />
-                <input type="text" value={librarySearch} onChange={e => { setLibrarySearch(e.target.value); setLibraryLimit(30) }} placeholder={t('pages.svgConverter.libraryModal.search')} className="w-full pl-9 pr-4 py-2.5 bg-bg-subtle border border-border rounded-xl text-sm outline-none focus:border-orange" />
+                <input type="text" value={librarySearch} onChange={e => { setLibrarySearch(e.target.value); setLibraryLimit(30) }} placeholder="Search icons..." className="w-full pl-9 pr-4 py-2.5 bg-bg-subtle border border-border rounded-xl text-sm outline-none focus:border-orange" />
               </div>
             </div>
             <div className="flex-1 overflow-y-auto p-4">
@@ -1447,7 +1417,7 @@ function EditorPage() {
               </div>
               {iconNames.filter(n => n.includes(librarySearch.toLowerCase())).length > libraryLimit && (
                 <div className="py-8 flex justify-center">
-                  <button onClick={() => setLibraryLimit(l => l + 30)} className="px-6 py-2 bg-white dark:bg-bg-surface border border-border rounded-full text-sm font-bold hover:text-orange hover:border-orange shadow-sm">{t('pages.svgConverter.libraryModal.loadMore')}</button>
+                  <button onClick={() => setLibraryLimit(l => l + 30)} className="px-6 py-2 bg-white dark:bg-bg-surface border border-border rounded-full text-sm font-bold hover:text-orange hover:border-orange shadow-sm">Load More</button>
                 </div>
               )}
             </div>
@@ -1460,17 +1430,17 @@ function EditorPage() {
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4">
           <div className="w-full max-w-md bg-white dark:bg-bg-surface rounded-2xl shadow-2xl flex flex-col overflow-hidden">
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <div className="flex items-center gap-2 text-primary font-bold"><LinkIcon size={18} /> {t('pages.svgConverter.urlModal.title')}</div>
+              <div className="flex items-center gap-2 text-primary font-bold"><LinkIcon size={18} /> Load from URL</div>
               <button onClick={() => setShowUrlPrompt(false)} className="p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-bg-subtle"><X size={18} /></button>
             </div>
             <div className="p-6 space-y-4">
-              <p className="text-sm text-secondary">{t('pages.svgConverter.urlModal.desc')}</p>
-              <input type="text" autoFocus placeholder={t('pages.svgConverter.urlModal.placeholder')} value={urlInput} onChange={e => setUrlInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleLoadFromURL() }}
+              <p className="text-sm text-secondary">Enter a public SVG URL to import directly into the editor.</p>
+              <input type="text" autoFocus placeholder="https://example.com/icon.svg" value={urlInput} onChange={e => setUrlInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleLoadFromURL() }}
                 className="w-full px-4 py-3 bg-bg-subtle border border-border rounded-xl text-sm outline-none focus:border-orange" />
               <div className="flex justify-end gap-2 pt-2">
-                <button onClick={() => setShowUrlPrompt(false)} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">{t('pages.svgConverter.urlModal.cancel')}</button>
+                <button onClick={() => setShowUrlPrompt(false)} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">Cancel</button>
                 <button onClick={handleLoadFromURL} disabled={!urlInput || isLoading} className={cn("px-5 py-2 text-sm font-bold rounded-xl shadow-sm transition-all", !urlInput || isLoading ? "bg-bg-muted text-tertiary cursor-not-allowed" : "bg-orange hover:opacity-90 text-white")}>
-                  {isLoading ? t('common.loading') : t('pages.svgConverter.urlModal.load')}
+                  {isLoading ? 'Loading...' : 'Load SVG'}
                 </button>
               </div>
             </div>
@@ -1483,16 +1453,16 @@ function EditorPage() {
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4">
           <div className="w-full max-w-lg bg-white dark:bg-bg-surface rounded-2xl shadow-2xl flex flex-col overflow-hidden">
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <div className="flex items-center gap-2 text-primary font-bold"><Code2 size={18} /> {t('pages.svgConverter.pasteCodeTitle')}</div>
+              <div className="flex items-center gap-2 text-primary font-bold"><Code2 size={18} /> Paste SVG Code</div>
               <button onClick={() => setShowCodePrompt(false)} className="p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-bg-subtle"><X size={18} /></button>
             </div>
             <div className="p-6 space-y-4">
               <textarea autoFocus placeholder="<svg>...</svg>" value={codeInput} onChange={e => setCodeInput(e.target.value)} rows={8}
                 className="w-full px-4 py-3 bg-bg-subtle border border-border rounded-xl text-sm outline-none focus:border-orange font-mono resize-none" />
               <div className="flex justify-end gap-2 pt-2">
-                <button onClick={() => setShowCodePrompt(false)} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">{t('pages.svgConverter.urlModal.cancel')}</button>
+                <button onClick={() => setShowCodePrompt(false)} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">Cancel</button>
                 <button onClick={handleLoadFromCode} disabled={!codeInput} className={cn("px-5 py-2 text-sm font-bold rounded-xl shadow-sm transition-all", !codeInput ? "bg-bg-muted text-tertiary cursor-not-allowed" : "bg-orange hover:opacity-90 text-white")}>
-                  {t('pages.svgConverter.urlModal.load')}
+                  Load SVG
                 </button>
               </div>
             </div>
@@ -1506,18 +1476,18 @@ function EditorPage() {
           <div className="w-full max-w-sm bg-white dark:bg-bg-surface rounded-2xl shadow-2xl flex flex-col overflow-hidden">
             <div className="flex items-center gap-2 p-4 border-b border-border text-primary font-bold">
               <AlertTriangle size={18} className="text-orange" />
-              {t('common.warning')}
+              Warning
             </div>
             <div className="p-6 space-y-6">
               <p className="text-sm text-secondary font-medium">
-                {t('common.confirmOverwrite')}
+                Loading a new SVG will overwrite your current canvas. Are you sure you want to proceed?
               </p>
               <div className="flex justify-end gap-2">
                 <button onClick={() => { setShowOverwritePrompt(false); setPendingSvgCode(null) }} className="px-5 py-2 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl">
-                  {t('pages.svgConverter.urlModal.cancel')}
+                  Cancel
                 </button>
                 <button onClick={confirmLoadNewSvg} className="px-5 py-2 text-sm font-bold bg-orange hover:opacity-90 text-white rounded-xl shadow-sm transition-all">
-                  {t('common.confirm')}
+                  Confirm
                 </button>
               </div>
             </div>
@@ -1530,17 +1500,17 @@ function EditorPage() {
           <div className="bg-bg-surface border border-border shadow-2xl rounded-2xl max-w-sm w-full overflow-hidden animate-in zoom-in-95 duration-200">
             <div className="p-6">
               <h3 className="text-xl font-bold text-primary mb-2">
-                {t('common.leaveWarningTitle')}
+                Unsaved Changes
               </h3>
               <p className="text-secondary text-sm leading-relaxed mb-6">
-                {t('common.leaveWarningDesc')}
+                You have unsaved changes in your SVG editor. Leaving this page will discard your changes.
               </p>
               <div className="flex justify-end gap-3">
                 <button onClick={() => blocker.reset?.()} className="px-5 py-2.5 text-sm font-medium text-secondary hover:bg-bg-subtle rounded-xl transition-colors">
-                  {t('common.cancel')}
+                  Stay on Page
                 </button>
                 <button onClick={() => blocker.proceed?.()} className="px-5 py-2.5 text-sm font-bold bg-red hover:opacity-90 text-white rounded-xl shadow-sm transition-opacity">
-                  {t('common.leave')}
+                  Leave
                 </button>
               </div>
             </div>
@@ -1565,25 +1535,13 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/" element={<LanguageSync />}>
-            <Route index element={<EditorPage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="privacy" element={<PrivacyPolicy />} />
-            <Route path="terms" element={<TermsOfService />} />
-            <Route path="resources" element={<Resources />} />
-            <Route path="resources/:slug" element={<ArticlePage />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          
-          <Route path="/:lang" element={<LanguageSync />}>
-            <Route index element={<EditorPage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="privacy" element={<PrivacyPolicy />} />
-            <Route path="terms" element={<TermsOfService />} />
-            <Route path="resources" element={<Resources />} />
-            <Route path="resources/:slug" element={<ArticlePage />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
+          <Route path="/" element={<EditorPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/:slug" element={<ArticlePage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
       </Suspense>
